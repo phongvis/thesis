@@ -1,0 +1,13 @@
+*.aux
+thesis.bbl
+thesis.blg
+thesis.idx
+thesis.lof
+thesis.log
+thesis.lot
+thesis.nlo
+thesis.out
+*.gz
+*.toc
+*.ini
+*.log
