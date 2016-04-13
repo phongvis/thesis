@@ -11,3 +11,4 @@ thesis.out
 *.toc
 *.ini
 *.log
+.Rhistory

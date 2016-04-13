@@ -39,23 +39,10 @@
   %  {libertine}
   %  % load font from system font
   %  \newfontfamily\libertinesystemfont{Linux Libertine O}
-  
-  \usepackage{libertine}
-  
-%  \renewcommand{\familydefault}{\rmdefault}
-%   \usepackage{libertine}
-%  \renewcommand{\rmdefault}{ppl}
 
-  % Phong: change headings to san-serif
-  \usepackage{titlesec}
-%  \titleformat{\chapter}[display]
-%  {\normalfont\sffamily\huge\bfseries\color{blue}}
-%  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
-%  
-  
-  \titleformat{\chapter}[display]{\sffamily\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-  \titleformat{\section}{\sffamily\Large\bfseries}{\thesection}{16pt}{}
-  \titleformat{\subsection}{\sffamily\large\bfseries}{\thesubsection}{14pt}{}
+  \usepackage{palatino}
+  \setmainfont{Palatino}
+  \setsansfont{Helvetica Neue}
 \fi
 
 % *****************************************************************************
@@ -71,11 +58,13 @@
 % Captions: This makes captions of figures use a boldfaced small font.
 %\RequirePackage[small,bf]{caption}
 
-\RequirePackage[labelsep=space,tableposition=top]{caption}
-\renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
+\RequirePackage[bf,font={small,sf}]{caption}
 
 
 % *************************** Graphics and figures *****************************
+
+% Allow xeLatex to include images without specifying extension
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 %\usepackage{rotating}
 %\usepackage{wrapfig}
@@ -217,3 +206,16 @@
 %\fi
 
 % Example todo: \mynote{Hey! I have a note}
+
+% Format headings
+\usepackage{titlesec}  
+
+\titleformat{\chapter}[display]
+{\bfseries\filcenter}
+{\LARGE\usefont{OT1}{cmr}{b}{n}\selectfont Chapter \thechapter}
+{0pt}
+{\color{Dandelion}\Huge\usefont{OT1}{lmss}{b}{n}\selectfont}
+
+\titleformat{\section}{\sffamily\Large\bfseries\color{Brown}}{\thesection}{16pt}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{Brown}}{\thesubsection}{14pt}{}
+\titleformat{\subsubsection}{\sffamily\bfseries\color{Brown}}{\thesubsubsection}{12pt}{}
