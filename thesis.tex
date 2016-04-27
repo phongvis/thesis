@@ -1,7 +1,7 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for info on how to use the template
 
-\documentclass[a4paper,12pt,customfont,numbered,print,draftclassic]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,customfont,numbered,print]{Classes/PhDThesisPSnPDF}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -135,22 +135,21 @@
 % ******************************** Main Matter *********************************
 \mainmatter
 
-\include{Chapter1/chapter1}
-%\include{Chapter2/chapter2}
-%\include{Chapter3/chapter3}
-%\include{Chapter4/chapter4}
-%\include{Chapter5/chapter5}
-%\include{Chapter6/chapter6}
-%\include{Chapter7/chapter7}
 
-
+\include{Chapter1/main}
+%\include{Chapter2/main}
+%\include{Chapter3/main}
+%\include{Chapter4/main}
+%\include{Chapter5/main}
+\include{Chapter6/main}
+%\include{Chapter7/main}
 
 % ********************************** Back Matter *******************************
 % Backmatter should be commented out, if you are using appendices after References
 %\backmatter
 
 % ********************************** Bibliography ******************************
-\begin{spacing}{0.9}
+%\begin{spacing}{0.9}
 
 % To use the conventional natbib style referencing
 % Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
@@ -171,7 +170,7 @@
 %\printbibliography[heading=bibintoc, title={References}]
 
 
-\end{spacing}
+%\end{spacing}
 
 % ********************************** Appendices ********************************
 

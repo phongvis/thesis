@@ -13,9 +13,10 @@
 %\setlength{\parskip}{0.5em}
 % Ragged bottom avoids extra whitespaces between paragraphs
 \raggedbottom
-% To remove the excess top spacing for enumeration, list and description
-%\usepackage{enumitem}
-%\setlist[enumerate,itemize,description]{topsep=0em}
+% To remove the excess top spacing for enumeration, list and description.
+% Phong: actually for me, spacing among items is too much.
+\usepackage{enumitem}
+\setlist[enumerate,itemize,description]{itemsep=0em}
 
 % *****************************************************************************
 % ******************* Fonts (like different typewriter fonts etc.)*************
@@ -41,8 +42,8 @@
   %  \newfontfamily\libertinesystemfont{Linux Libertine O}
 
   \usepackage{palatino}
-  \setmainfont{Palatino}
-  \setsansfont{Helvetica Neue}
+%  \setmainfont{Palatino}
+%  \setsansfont{Helvetica Neue}
 \fi
 
 % *****************************************************************************
@@ -56,14 +57,13 @@
 % ********************Captions and Hyperreferencing / URL **********************
 
 % Captions: This makes captions of figures use a boldfaced small font.
-%\RequirePackage[small,bf]{caption}
-
 \RequirePackage[bf,font={small,sf}]{caption}
+\usepackage{url}
 
 
 % *************************** Graphics and figures *****************************
 
-% Allow xeLatex to include images without specifying extension
+% Allow XeLatex to include images without specifying extension
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 %\usepackage{rotating}
@@ -80,14 +80,19 @@
 %\usepackage{sty/caption/subcaption}
 \usepackage{subcaption}
 
+
 % ********************************** Tables ************************************
 \usepackage{booktabs} % For professional looking tables
 \usepackage{multirow}
+\setlength{\tabcolsep}{8pt} % a bit more space between columns
 
 %\usepackage{multicol}
 %\usepackage{longtable}
-%\usepackage{tabularx}
-
+\usepackage{tabularx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 % *********************************** SI Units *********************************
 \usepackage{siunitx} % use this package module for SI units
@@ -156,8 +161,8 @@
 
 % ********************** TOC depth and numbering depth *************************
 
-\setcounter{secnumdepth}{2}
-\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
 
 % ******************************* Nomenclature *********************************
@@ -197,7 +202,7 @@
 % ******************************** Todo Notes **********************************
 %% Uncomment the following lines to have todonotes.
 
-%\ifsetDraft
+%\ifsetDraftClassic
 %	\usepackage[colorinlistoftodos]{todonotes}
 %	\newcommand{\mynote}[1]{\todo[author=kks32,size=\small,inline,color=green!40]{#1}}
 %\else
@@ -207,15 +212,44 @@
 
 % Example todo: \mynote{Hey! I have a note}
 
+% Always include todo notes
+\usepackage[colorinlistoftodos]{todonotes}
+\presetkeys{todonotes}{inline,color=yellow!50,size=\small\sffamily}{}
+\newcommand{\note}[2][]{\todo[author=#1,color=green!50]{#2}}
+\newcommand{\issue}[1]{\todo[color=red!50]{#1}}
+% ******************************** Phong's additional changes **********************************
 % Format headings
 \usepackage{titlesec}  
 
 \titleformat{\chapter}[display]
-{\bfseries\filcenter}
-{\LARGE\usefont{OT1}{cmr}{b}{n}\selectfont Chapter \thechapter}
-{0pt}
-{\color{Dandelion}\Huge\usefont{OT1}{lmss}{b}{n}\selectfont}
+	{\bfseries\filcenter}
+	{\LARGE\usefont{T1}{cmr}{b}{n}\selectfont Chapter \thechapter}{0pt}
+	{\color{NavyBlue}\Huge\usefont{T1}{lmss}{b}{n}\selectfont}
+\titleformat{\section}{\bfseries\sffamily\Large\color{Brown}}{\thesection}{16pt}{}
+\titleformat{\subsection}{\bfseries\sffamily\large\color{Brown}}{\thesubsection}{14pt}{}
+\titleformat{\subsubsection}{\bfseries\sffamily\color{Brown}}{\thesubsubsection}{12pt}{}
+\titleformat{\paragraph}[runin]{\sffamily\bfseries\color{Brown}}{\theparagraph}{}{}
+\titleformat{\subparagraph}[runin]{\sffamily\itshape\color{Brown}}{\thesubparagraph}{}{}
 
-\titleformat{\section}{\sffamily\Large\bfseries\color{Brown}}{\thesection}{16pt}{}
-\titleformat{\subsection}{\sffamily\large\bfseries\color{Brown}}{\thesubsection}{14pt}{}
-\titleformat{\subsubsection}{\sffamily\bfseries\color{Brown}}{\thesubsubsection}{12pt}{}
+% Improve verbatim
+\usepackage{listings}
+\lstset{
+	columns=flexible,
+	breaklines=true
+}
+
+% check and cross
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+% continued numbered list
+\newcounter{listnum}
+
+% colored text to distinguish schematization, case building and presentation
+\newcommand{\schema}[1]{\textcolor[HTML]{DE6A10}{#1}}
+\newcommand{\case}[1]{\textcolor[HTML]{0365C0}{#1}}
+\newcommand{\present}[1]{\textcolor[HTML]{00882B}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\purple}[1]{\textcolor{RoyalPurple}{#1}}

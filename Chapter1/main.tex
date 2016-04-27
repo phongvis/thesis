@@ -1,0 +1,141 @@
+\chapter{Introduction}
+
+\graphicspath{{Chapter1/figures/}}
+
+\todo{Make analytic provenance a chosen approach rather than a default one, so only introduce sensemaking}
+
+Introduce to sensemaking
+\todo{sensemaking here doesn't only apply to interactive exploration of data using visualization/visual analytics systems; it also includes browser-based online sensemaking of everyday tasks as our last two papers}
+
+Challenges in support sensemaking
+
+
+\section{Research Problem and Approach}
+The overall goal of this research is to \textbf{examine how to support users in their sensemaking process}.
+
+Introduce analytic provenance approach and why it's a potential direction. Also visualization.
+ 
+Introduce the 3 fundamental stages of an analytic provenance pipeline: capture, visualize and utilize
+
+The overall research problem is broken down into the following research questions, each maps to a stage above. 
+\todo{Elaborate each question and explain why it is challenging}
+\begin{enumerate}
+	\item \textbf{What provenance information has the potential to support sensemaking and how to capture it?} 
+%	current approach (manual, auto), why is it challenging (high-level reasoning inference)
+	\item \textbf{How to design interactive visualizations of the captured provenance to support sensemaking?}
+%	 show overview (node-link diagrams) visual narrative construction, reasoning workspace
+	\item \textbf{How can the visualized provenance be used to support sensemaking?} 
+%	direct sensemaking support, reapply the captured process to the new dataset (workflow), reuse other process to improve our own sensemaking (tutorial is one simple application)
+\end{enumerate}
+
+% (an overview sentence first?)
+\issue{This is to answer the question ``How do you go about solving your research question?''. Is there any methodological approach that is the same as what I have done?}
+We investigate both manual and automatic approaches in capturing analytic provenance. We develop visualizations to explore different aspects of the captured data including temporal, categorical, hierarchical, spatial and causal information. We characterize the sensemaking support into three processes in the sensemaking loop of PCM including schematization, case building and presentation. Finally, besides direct sensemaking support, we also examine whether and how can analytic provenance help one to understand the sensemaking process completed by others. The proposed solutions are designed and validated using the nested model proposed by Tamara Munzner~\cite{Munzner2009}. We break down the work in each stage and combine them into a visualization system. Requirements -- Design -- Implementation -- Evaluation. We choose two domains to target: intelligence analysis, which is the original context for Pirolli and Card's sensemaking model and online browser-based, which is more applicable.
+
+\todo{make sure there's a strong link between the research problem/questions and subsequent chapters. Make it as explicit as possible so that readers know what come next and why}
+
+\missingfigure{summarize what will come next and how they map/link to the research questions}
+
+\section{Research Contributions}
+
+\section{Thesis Outline} 
+
+\begin{lstlisting}
+1. How do we structure the sensemaking support provided by AP?
+ - the sensemaking loop in Pirolli - Card's model: schematize - build case - present
+ - collect - curate - communicate
+2. Where to include SM-VAST?
+ - The case building (and a bit of presentation) support in SM-VAST and SenseMap is the same
+3. Can the design requirements in SenseMap be generalized for the entire thesis?
+4. Chapter structure and title
+5. Is it all about information visualization rather than visual analytics?
+6. Literature Review: what to include? things that not obviously related to SM and AP such as set visualization and qualitative analysis
+- sensemaking
+  - overview
+  - PCM
+  - DFM
+  - sm on the web?
+- visualization
+  - overview
+  - how vis can help support sm 
+- analytic provenance:
+  - modeling
+  - capture
+  - visualize
+  - use
+- challenges, gaps in the literature and we're addressing them in this thesis.
+Specific related work such as details of timeline/set vis and qualitative analysis put in corresponding chapters
+7. It seems to me that the current SenseMap is quite incomplete with a few critical problems. So, I want to do a second phase to address them. Also, it will be easier for me to report in the thesis if I take the leading role in all major parts of SenseMap.
+- bad window management: use two monitors?
+- lost track: 
+  - make newly added nodes visible
+  - regain awareness of recently added nodes since the last time looking at the history map?
+  - show temporal information
+- lost trust/reassurance: fix linking problem and cricitcal bugs
+- suggested features: add a free note, a label attaching to a node/link
+- support more communication?
+
+\end{lstlisting}
+
+\begin{table}[ht]
+	\small\sffamily
+	\centering
+	\caption{Analytic provenance in my work.}
+	\begin{tabularx}{\columnwidth}{L{.14\columnwidth}YL{.2\columnwidth}L{.36\columnwidth}}
+		\toprule
+		Name & Capture & Visualize & Support \\ 
+		\midrule
+		SchemaLine & \red{manual note} & aesthetically pleasing yet compact \textbf{timeline} & \schema{-- interactive temporal schema construction from user notes\linebreak-- interaction for sensemaking activities in DFM}\\ \addlinespace
+		
+		SM-VAST & \red{manual finding, able to revisit, multiple sources} & \textbf{node-link} diagram & -- auditability (revisit captured vis) \linebreak-- overview and replayability of the sensemaking process \case{\linebreak-- hypothesis generation: users to assign supporting and contradicting arguments} \linebreak \present{-- interactive narrative construction} \linebreak -- collaborative sensemaking (both sync. and async.)\\ \addlinespace
+
+		TimeSets & & timeline with \textbf{set} relations \\ \addlinespace
+		
+		SAVI & & TimeSets to show tweets, findings(?) & \\ \addlinespace
+		
+		SenseMap & \purple{auto actions with semantic extraction} & -- \textbf{tree} for auto collection \linebreak -- node-link diagram for curation & \schema{-- collection: overview of the process, relevance assessment} \linebreak \case{-- curation: spatial organization, casual relationship, reasoning} \linebreak \present{-- communication: complete picture, raw data, varied audience, share} \\ \addlinespace
+		
+		SensePath & & timeline of actions with type and duration (compact \textbf{time/set}) & -- help understand the sensemaking process of others \linebreak-- support transcription and coding in qualitative data analysis\\ 
+		\bottomrule
+	\end{tabularx} 
+\end{table}
+
+\begin{table}[ht]
+	\small\sffamily
+	\centering
+	\caption{An analytic provenance approach to support sensemaking.}
+	\begin{tabularx}{\columnwidth}{YL{.2\columnwidth}L{.5\columnwidth}}
+		\toprule
+		Capture & Visualize & Support \\ 
+		\midrule
+		\red{-- manual highlight/note \linebreak -- manual finding, able to revisit, multiple sources} \linebreak -- \purple{auto actions with semantic extraction} &
+		
+		-- aesthetically pleasing yet compact timeline \linebreak 
+		-- timeline with set relations \linebreak 
+		-- hierarchical \linebreak -- spatial \linebreak -- causal & 
+		
+		\schema{Schematization}\linebreak
+		-- temporal schema (SchemaLine) \linebreak
+		-- temporal/categorical schema (TimeSets -- \textbf{not used to show findings yet})\linebreak
+		-- hierarchical schema (SenseMap -- History Map) \linebreak
+		-- spatial/causal schema (SenseMap -- Knowledge Map) \linebreak
+		-- interaction for sensemaking activities in DFM (\textbf{only in SchemaLine}) 
+		
+		\bigskip\case{Case Building} (both SM-VAST and SenseMap)\linebreak
+		-- hypothesis generation: users to assign supporting and contradicting evidence \linebreak
+		-- hypothesis verification: access raw data\linebreak
+		-- alternative hypothesis: access live data allowing trying different things		
+	
+		\bigskip\present{Presentation}\linebreak
+		-- interactive narrative construction (both SM-VAST and SenseMap)\linebreak
+		-- complete picture, varied audience (multiple level: result -- process -- data), share 
+		
+		\bigskip\textbf{ALL}\linebreak		
+		-- auditability (revisit captured vis) \linebreak-- overview and replayability of the sensemaking process (SM-VAST) and the data exploration process (History Map)\linebreak -- collaborative sensemaking (both sync. and async.)
+		
+		\bigskip\textbf{OTHER}\linebreak		
+		-- help understand the sensemaking process of others \linebreak-- support transcription and coding in qualitative data analysis\\ 
+
+		\bottomrule
+	\end{tabularx} 
+\end{table}

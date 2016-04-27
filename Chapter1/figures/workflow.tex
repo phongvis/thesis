@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc}
+\usepackage{xcolor}
+\definecolor{sm}{HTML}{F39019}
+\definecolor{ap}{HTML}{51A7F9}
+\definecolor{data}{HTML}{70BF41}
+
+\begin{document}
+% Define block styles
+\tikzstyle{sm} = [rectangle, rounded corners=0.2cm,minimum height=1cm, draw=black,fill=sm]
+\tikzstyle{ap} = [rectangle, minimum height=1cm,draw=black,fill=ap]
+\tikzstyle{data} = [trapezium, minimum height=.75cm, trapezium left angle=70, trapezium right angle=110,draw=black, fill=data]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+    
+\begin{tikzpicture}[node distance=1cm, auto]
+\tikzstyle{every node}=[font=\sffamily]
+\node (sm) [sm] {Sensemaking};
+\node (capture) [ap, right=of sm] {Capture};
+\node (data) [data, right=of capture] {data};
+\node (vis) [ap, right=of data] {Visualize};
+\draw [arrow] (sm) -- (capture);
+\draw [arrow] (capture) -- (data);
+\draw [arrow] (data) -- (vis);
+\draw [arrow] (vis.south) |- ++(0,-0.5) -| (sm.south); 
+\node [rectangle,fill=white,yshift=-1cm] at ($(vis)!0.5!(sm)$) {support};
+\end{tikzpicture}
+
+\end{document}

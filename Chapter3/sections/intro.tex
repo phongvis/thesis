@@ -1,0 +1,39 @@
+\section{Introduction}
+\label{sec:intro}
+
+% Overview of timeline visualization and the role in sensemaking
+A timeline is a chronicle of events and its visualization is to plot events along the time axis and position them at the time points at which they occur or the ranges over which they last~\cite{Plaisant1996a}. 
+% Overview of sensemaking
+Sensemaking involves gathering information, representing it in a schema, analyzing that representation, and possibly discovering new knowledge or informing further actions~\cite{Card1999}. 
+% Motivation of using timeline in sensemaking
+Pirolli and Card suggest the usefulness of timeline visualizations in the schematization process in their sensemaking model~\cite{Pirolli2005}. A timeline helps coordinate events in the dataset chronologically; therefore, it may help reveal temporal relationships and reduce analysts' effort in memorizing them.
+
+% VA systems use timeline. Show its useful application.
+\note{move this and next paragraph after the introduction/discussion of sensemaking, so we can say why the existing methods don't support sensemaking?} Several visual analytics systems integrate timeline visualizations for different purposes. POLESTAR~\cite{Pioch2006} and HARVEST~\cite{Gotz2006} allow users to take notes, define new knowledge, and visualize them in a timeline. Jigsaw~\cite{Gorg2013} provides automatic extraction of entities (people, places, organizations, etc.), and a timeline to organize them. nSpace2 Sandbox~\cite{SandboxTimeline2012} allows the creation of multiple bands within the timeline to classify different types of artifacts in the system.
+
+% Problem of exisiting timelines in VA systems
+However, the timeline visualizations in these systems suffer from several drawbacks. They either lack an automatic layout~\cite{Pioch2006} or use an overly-simplistic linear layout~\cite{SandboxTimeline2012}. As a result, the visualization requires significant effort from users to manually arrange the data items. \note{it is not very useful without the context of sensemaking} 
+Schematization~\cite{Pirolli2005} is an important process in sensemaking: it involves organizing information into groups or categories\note[k]{is this correct?}, e.g., because it relates to the same person or forms a causal narrative. This can later help analysts form hypotheses about the problem being researched. It is useful to show such information visually on a timeline\note[k]{any reference?}, so that analysts can study and discover higher-level temporal patterns and relations between groups of events, instead of only those between individual pieces of information. 
+
+%However, the timeline visualizations in these systems usually are not designed for the various tasks and processes identified in sensemaking models such as the Pirolli-Card model~\cite{Pirolli2005} and the Data-Frame model~\cite{Klein2003} \note[p]{is this statement too strong? we need to prove in related work?}. For instance, \emph{Read \& Extract}~\cite{Pirolli2005} requires the capability to selectively display information on the timeline, so analysts can focus on what interests them. This can also mitigate potential information overload and make it easier to identify any temporal relationships. Supporting Read \& Extract also means the timeline should integrate with analyst note taking so users can easily record discoveries and link them to the data that led to the findings. The latter forms part of Analytic Provenance~\cite{North2011}, which is important for sensemaking review, sharing, and reporting \note[k]{Rick, can we use the DIVA paper as the reference here?}.
+
+Sensemaking is a highly iterative process, with each component closely connected to the rest. The Pirolli-Card model~\cite{Pirolli2005} depicts it as a hierarchy of sensemaking loops, with the entire process (the top-level loop) divided recursively into smaller sensemaking loops. The Data-Frame model~\cite{Klein2003} consists of a few interconnected iterative loops, each for a certain type of sensemaking activity. The implication for timeline visualization is that it needs to support the dynamic nature of sensemaking by allowing analysts to interactively create and edit timelines and by providing close integration with other elements of a visual analytics environment, such as visual exploration and argumentation, to support the tight connections between sensemaking tasks. Also, these need to be achieved through intuitive and fluid interaction, so as not to require extra cognitive effort and distract analysts from their current train of thought. \note{I think the contributions below should reflect/map the sensemaking requirements discussed here. Currently the contribution is too brief, and doesn't map to each sentence here.}
+
+In this paper, we introduce a new timeline visualization, SchemaLine, which is designed to address the aforementioned issues. More specifically, SchemaLine contributes
+\begin{itemize}
+	\item a visual design for an interactive timeline that groups notes into schema determined by the analyst,
+	\item an algorithm to automatically generate a compact and aesthetically pleasing visualization of these schema on the timeline, and
+	\item a set of fluid interactions with the timeline to support the sensemaking activities defined in the Data-Frame model.
+%	\item Allows selective data display on the timeline to reduce information overload in the Read \& Extract task. A layout algorithm is provided to automatically generate a compact and aesthetically pleasing layout.
+%	\item Allows integration of timeline visualization with analysis notes, so findings can be easily recorded and linked to the, information that led to them. This not only facilitates note taking, but also captures the `provenance' of the analysis, i.e., the data source that resulted in the discoveries.
+%	\item Allows schematization of timeline events through visual grouping, which facilitates discovery of temporal patterns and relations at higher level (group level). Multiple groupings are supported. 
+%	\item Allows interactive visual construction and editing of a timeline to match the dynamic nature of the sensemaking process. This is achieved through carefully designed visual representation and interaction to reduce cognitive effort and interruption. Smooth transition animation is also included to help analysts maintain their mental map. 
+%	\item Allow tight integration with other components in the visual analytics environment, such as interactive visual exploration, to support the interconnections between different sensemaking processes.
+\end{itemize}
+
+We conducted a preliminary study to evaluate the effectiveness of SchemaLine in supporting sensemaking. The participants found SchemaLine easy to use and its features effective for the given sensemaking tasks. 
+%%A video is produced to accompany this paper and it can be found online here \note[k]{Rick, a link to the youtube version of the video?} 
+%%Video is additional and not directly part of the work - don't need to ref it in the paper
+\note{Should we mention somewhere in the Introduction that this is NOT about narrative or story construction?}
+
+% The application prototype can be found at \url{http://www.youtube.com/watch?v=zxF-TEF11F8}.
