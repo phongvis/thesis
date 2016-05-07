@@ -41,9 +41,14 @@
   %  % load font from system font
   %  \newfontfamily\libertinesystemfont{Linux Libertine O}
 
-  \usepackage{palatino}
-%  \setmainfont{Palatino}
-%  \setsansfont{Helvetica Neue}
+\usepackage{libertine}
+\ifxetex
+	\usepackage{fontspec}
+	\setsansfont{Helvetica Neue}
+%	\setromanfont{Palatino}
+\else
+	\renewcommand*\sfdefault{phv}
+\fi
 \fi
 
 % *****************************************************************************
@@ -222,14 +227,14 @@
 \usepackage{titlesec}  
 
 \titleformat{\chapter}[display]
-	{\bfseries\filcenter}
-	{\LARGE\usefont{T1}{cmr}{b}{n}\selectfont Chapter \thechapter}{0pt}
-	{\color{NavyBlue}\Huge\usefont{T1}{lmss}{b}{n}\selectfont}
-\titleformat{\section}{\bfseries\sffamily\Large\color{Brown}}{\thesection}{16pt}{}
-\titleformat{\subsection}{\bfseries\sffamily\large\color{Brown}}{\thesubsection}{14pt}{}
-\titleformat{\subsubsection}{\bfseries\sffamily\color{Brown}}{\thesubsubsection}{12pt}{}
-\titleformat{\paragraph}[runin]{\sffamily\bfseries\color{Brown}}{\theparagraph}{}{}
-\titleformat{\subparagraph}[runin]{\sffamily\itshape\color{Brown}}{\thesubparagraph}{}{}
+	{\filcenter}
+	{\LARGE Chapter \thechapter}{0pt}
+	{\color{NavyBlue}\Huge\fontfamily{lmr}\bfseries}
+\titleformat{\section}{\fontfamily{cmss}\bfseries\Large\color{Brown}}{\thesection}{16pt}{}
+\titleformat{\subsection}{\fontfamily{cmss}\bfseries\large\color{Brown}}{\thesubsection}{14pt}{}
+\titleformat{\subsubsection}{\fontfamily{cmss}\bfseries\color{Brown}}{\thesubsubsection}{12pt}{}
+\titleformat{\paragraph}[runin]{\fontfamily{cmss}\bfseries\color{Brown}}{\theparagraph}{}{}
+\titleformat{\subparagraph}[runin]{\fontfamily{cmss}\itshape\color{Brown}}{\thesubparagraph}{}{}
 
 % Improve verbatim
 \usepackage{listings}
@@ -239,7 +244,8 @@
 }
 
 % check and cross
-\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+%xelatex incompatible
+%\usepackage{amssymb}% http://ctan.org/pkg/amssymb
 \usepackage{pifont}% http://ctan.org/pkg/pifont
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
@@ -253,3 +259,6 @@
 \newcommand{\present}[1]{\textcolor[HTML]{00882B}{#1}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\purple}[1]{\textcolor{RoyalPurple}{#1}}
+
+% Emphasized text
+\newcommand{\strong}[1]{{\fontfamily{cmss}\bfseries\color{Brown}{#1}}} 

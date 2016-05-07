@@ -1,0 +1,50 @@
+\documentclass[tikz]{standalone}
+
+\input{../../Preamble/tikz}
+
+\begin{document}
+
+\tikzstyle{box} = [draw=gray!0,minimum height=1.8cm]
+
+\begin{tikzpicture}[node distance=1.3cm]
+
+% 4 big boxes first
+\node (b1) [box, minimum width = 2cm] {};
+\node (b2) [box, minimum width = 3.1cm, right=1.5 of b1] {};
+\node (b3) [box, minimum width = 3.9cm, right=of b2] {};
+\node (b4) [box, minimum width = 3.6cm, right=of b3] {};
+\draw [arrow, draw=gray!50, shorten >= -.4cm, shorten <= -.4cm] (b1.south west) -- (b1.south east) node[near end, xshift=.6cm, yshift=.25cm] {\small\textcolor{gray}{time}};
+\draw [arrow, draw=gray!50, shorten >= -.1cm, shorten <= -.1cm] (b2.south west) -- (b2.south east);
+\draw [arrow, draw=gray!50, shorten >= -.1cm, shorten <= -.1cm] (b3.south west) -- (b3.south east);
+\draw [arrow, draw=gray!50, shorten >= -.1cm, shorten <= -.1cm] (b4.south west) -- (b4.south east);
+
+\node [below=.1 of b1, text width=3cm, align=center] {\large \textrm{N1} at position of its time};
+\node [below=.1 of b2, text width=3.3cm, align=center] {\large \textrm{N2} at position \\of its time, \\same level as \textrm{N1}};
+\hyphenation{giving}\node [below=.1 of b3, text width=4.2cm, align=center] {\large \textrm{N2} shifted left \\allowing \textrm{N3} to stay at the same level as \textrm{N2}};
+\node [below=.1 of b4, text width=4.4cm, align=center] {\large \textrm{N3} cannot be shifted  without overlap, \\\textrm{N4} moves up one level};
+
+% Details for each box
+\node (n1) [cg, below=-.2 of b1.south west, anchor=south west, xshift=.2cm] {\rmfamily\Large N1};
+
+\node (n1) [cg, below=-.2 of b2.south west, anchor=south west, xshift=.2cm] {\rmfamily\Large N1};
+\node (n2) [cg, right=.8 of n1.east] {\rmfamily\Large N2};
+
+\node (n1) [cg, below=-.2 of b3.south west, anchor=south west, xshift=.2cm] {\rmfamily\Large N1};
+\node (n2) [cg, right=.2 of n1.east] {\rmfamily\Large N2};
+\node (n3) [cg, right=.2 of n2.east, minimum width=1.2cm] {\rmfamily\Large N3};
+
+\node (n1) [cg, below=-.2 of b4.south west, anchor=south west, xshift=.2cm] {\rmfamily\Large N1};
+\node (n2) [cg, right=.2 of n1.east] {\rmfamily\Large N2};
+\node (n3) [cg, right=.2 of n2.east, minimum width=1.2cm] {\rmfamily\Large N3};
+\node (n4) [cg, above=.2 of n3, minimum width=1cm] {\rmfamily\Large N4};
+
+% Big boxes as numbered steps
+%\draw [draw=gray!50, rounded corners, very thick] ($(b1.north west) - (.7,0)$) rectangle ($(b4.south east) + (.5,-1.7)$);
+%\node (s1) [circle, very thick, draw=gray!50, fill=white, left=of b1.north west, anchor=west, xshift=.8cm] {\Large\rmfamily1};
+%\node (s2) [circle, very thick, draw=gray!50, fill=white, left=of b2.north west, anchor=west, xshift=.8cm] {\Large\rmfamily2};
+%\node (s3) [circle, very thick, draw=gray!50, fill=white, left=of b3.north west, anchor=west, xshift=.8cm] {\Large\rmfamily3};
+%\node (s4) [circle, very thick, draw=gray!50, fill=white, left=of b4.north west, anchor=west, xshift=.8cm] {\Large\rmfamily4};
+
+\end{tikzpicture}
+
+\end{document}

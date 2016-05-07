@@ -1,7 +1,7 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for info on how to use the template
 
-\documentclass[a4paper,12pt,customfont,numbered,print]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,customfont,numbered,print,custommargin,oneside]{Classes/PhDThesisPSnPDF}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -110,7 +110,7 @@
 \frontmatter
 
 \begin{titlepage}
-%  \maketitle
+  \maketitle
 \end{titlepage}
 
 
@@ -120,29 +120,29 @@
 %\include{Abstract/abstract}
 
 % *********************** Adding TOC and List of Figures ***********************
+\renewcommand{\contentsname}{Contents}
+\tableofcontents
 
-%\tableofcontents
-%
 %\listoffigures
 %
 %\listoftables
 
 % \printnomenclature[space] space can be set as 2em between symbol and description
 %\printnomenclature[3em]
-
 %\printnomenclature
+
 
 % ******************************** Main Matter *********************************
 \mainmatter
 
 
-\include{Chapter1/main}
-%\include{Chapter2/main}
-%\include{Chapter3/main}
-%\include{Chapter4/main}
-%\include{Chapter5/main}
-\include{Chapter6/main}
-%\include{Chapter7/main}
+%\include{test-figures}
+\include{Chapter1/intro}
+\include{Chapter2/background}
+\include{Chapter3/schemaline}
+\include{Chapter4/timesets}
+\include{Chapter6/sensemap}
+\include{Chapter5/sensepath}
 
 % ********************************** Back Matter *******************************
 % Backmatter should be commented out, if you are using appendices after References

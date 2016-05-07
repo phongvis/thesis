@@ -1,0 +1,91 @@
+\section{Visualization of Provenance Data}
+\subsection{Temporal Visualization}
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=\columnwidth]{Annotation.png}
+%\caption{An example of annotation on visualisations \cite{Heer2009}.}
+%\label{fig:Annotation}
+%\end{figure}
+Typically, events are not visualised because they do not carry much information and the number of events is high. Actions and states (the visual results of the actions) are commonly visualised together to depict the \textit{analysis process}. Sub-tasks and tasks are illustrated in the graphical \textit{reasoning process}. 
+
+\subsubsection{Visualising the Analysis Process}
+Methods of visualising individual actions and states will be discussed, and followed by methods of chaining them together to visualise the entire analysis process. 
+
+\paragraph{Visual Representation of States}
+Conventionally, the space for rendering a state is limited because a small portion of the display area is reserved for provenance information; whereas, the much larger portion is used for data exploration \cite{Shrinivasan2008, Gotz2009, Kadivar2009}. Therefore, a small-scale visualisation of the captured state is popular \cite{Hightower1998} (Figure \ref{fig:thumbnail1}). To recall the affect of the performed action, the miniature can highlight the difference from the previous state \cite{Klemmer2002} (Figure \ref{fig:thumbnail2}), or combine both the former and the latter visualisations corresponding to that action \cite{Kurlander1988} (Figure \ref{fig:thumbnail3}).
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{The exact miniature of a web-site\cite{Hightower1998}.}{\label{fig:thumbnail1}\includegraphics[height=.36\columnwidth]{Thumbnail1.png}} \hspace{0.05cm}
+\subcaptionbox{Each rectangle represents a post-it note. Modified post-it notes are highlighted with green colour \cite{Klemmer2002}.}{\label{fig:thumbnail2}\includegraphics[height=.36\columnwidth]{Thumbnail2.png}} \hspace{0.05cm}
+\subcaptionbox{In a graphical editor, combining the state before the action (above) and the state after the action (bottom) \cite{Kurlander1988}.}{\label{fig:thumbnail3}\includegraphics[height=.36\columnwidth]{Thumbnail3.png}}
+\caption{Examples of visual representations of states.}
+\label{fig:State-Respresentation}
+\end{figure}
+
+\paragraph{Visual Representation of Actions}
+Typically, a system supports a certain number of actions; and thus allows using icons to visually distinguish different kinds of actions besides texts \cite{Gotz2009} (Figure \ref{fig:edgeTypes1}). Actions are also commonly represented as edges in a graph to connect two states. Therefore, graph edges can be stylised to reflect the characteristics of the represented actions \cite{Ma1999} (Figure \ref{fig:edgeTypes2}).
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{Using icons to represent actions including query, filter, change-view and inspect \cite{Gotz2009}.}{\label{fig:edgeTypes1}\includegraphics[width=\columnwidth]{EdgeTypes1.png}}
+\subcaptionbox{Using stylish edges to represent actions including changing colour map, rotating, shading, changing opacity, zooming and sampling \cite{Ma1999}.}{\label{fig:edgeTypes2}\includegraphics[width=\columnwidth]{EdgeTypes2.png}}
+\caption{Examples of using visual representations of different types of actions.}
+\label{fig:Action-Respresentation}
+\end{figure}
+
+\paragraph{Layout of Actions and States}
+Typically, the system begins with an initial state (node). When the user performs an action, a new node is created for the current state, and a new edge is added to connect the previous node with the current node. Gradually, a string of nodes and edges is built in the chronological order. The system can support revisiting to the previous state. If a new action is performed at that state, a new branch will be forked to store forthcoming actions. Therefore, the analysis process has the layout of a \textit{direct acyclic graph}, or a \textit{tree} if revisited links are not explicitly visualised.
+
+To not distract analysts from the primary data exploration and save space, several techniques have been proposed to reduce the display area of the provenance graph: organising trees in the right horizontal-vertical layout \cite{Shrinivasan2008}, displaying only nodes of the active branch that led to the selected visualisation \cite{Klemmer2002}, allowing graph nodes be expandable/collapsible on demand \cite{Bavoil2005}, supporting zoom-able and pan-able interface \cite{Dunne2012}, and applying distortion techniques to focus on more relevant states \cite{Meng1998}.
+
+The order of actions can be interpreted through the direction of edges in the provenance graph. Moreover, exact time gap between actions can also be measured and visually encoded into the visualisation. VisTrails \cite{Bavoil2005} colour-codes the background of visualisation nodes according to when they are created (Figure \ref{fig:tree1}); and Aruvi \cite{Shrinivasan2008} uses the length of edges to represent the distance in terms of time between two states (Figure \ref{fig:tree2}). This time indication can be updated only when a new node is added, or continuously to reflect the fact that time is always flying. In the latter case, endlessly, background nodes will become lighter and edge lengths will become shorter. This \textit{time-travel} interface is implemented in Visage \cite{Derthick2001}. %TODO: Kai: it's not clear
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{The darker node refers to the later visualisations \cite{Bavoil2005}.}{\label{fig:tree1}\includegraphics[height=0.21\columnwidth]{Tree-Time-Colour.png}} \hspace{0.1cm}
+\subcaptionbox{The edge length represents time distance between two connecting nodes \cite{Shrinivasan2008}.}{\label{fig:tree2}\includegraphics[height=0.21\columnwidth]{Tree-Time-Edge-Length.png}}
+\caption{Examples of encoding time into provenance visualisation.}
+\label{fig:Action-TimeGap}
+\end{figure}
+
+The provenance space can be unified with the data exploration space, where each node of the provenance graph represents a fully interactive visualisation. Zoom-able and pan-able interface needs to be supported to allow users either to focus on the current visualisation  (Figure \ref{fig:focus}) or to observe the entire context of the analysis process (Figure \ref{fig:context}).
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{Focus view on the active visualisation.}{\label{fig:focus}\includegraphics[height=0.57\columnwidth]{GraphTrail-Focus.png}} \hspace{0.1cm}
+\subcaptionbox{Context view to see the overview of what has been done.}{\label{fig:context}\includegraphics[height=0.57\columnwidth]{GraphTrail-Context.png}}
+\caption{An example of integration of the provenance space into the data exploration space \cite{Dunne2012}.}
+\label{fig:IntegratedView}
+\end{figure}
+
+\subsubsection{Visualising the Reasoning Process}
+\label{sub:reasoningprocess}
+The Aruvi system \cite{Shrinivasan2008} allows analysts to freely compose the reasoning process by using a graphical editor. Users can take note in rectangles or ellipses, and use arrows to connect them. Conventionally, nodes can be referred as \textit{evidence}, \textit{assumptions} or \textit{hypotheses}, and arrows can be referred as \textit{causal relationships}. Nodes in the editor can be linked to the captured visualisations to help explain its reasoning, and these nodes are marked with a star to indicate the existence of the linked visualisations. Instead of using a graphical editor and an implicit convention to map drawing shapes with reasoning artefacts, Scalable Reasoning System \cite{Pike2009a} provides a more formal method to document the reasoning process. A captured visualisation can be dropped to the reasoning space to create a node. The node shows the miniature of the captured visualisation and can be tagged as an \textit{evidence} artefact. An evidence can be converted to a \textit{casual relationship} and its rectangular shape will become an edge. An \textit{assumption} is a free note and can be upgraded as a \textit{hypothesis} when it is supported by an evidence. Figure \ref{fig:ReasoningDocumenting} shows those two examples of reasoning process visualisation.
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{Using graphical editor to freely construct the mental model \cite{Shrinivasan2008}.}{\label{fig:knowledgeview}\includegraphics[height=0.39\columnwidth]{Knowledge-View.png}} \hspace{0.1cm}
+\subcaptionbox{A formal reasoning diagram with different types of artefacts: evidence, casual relationship, assumption and hypothesis \cite{Pike2009a}.}{\label{fig:reasoningworkspace}\includegraphics[height=.39\columnwidth]{Reasoning-Workspace.png}}
+\caption{Examples of visualising the reasoning process.}
+\label{fig:ReasoningDocumenting}
+\end{figure}
+
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=.7\textwidth]{Perspective-View.png}
+%\caption{An example of using perspective view in provenance visualisation layout: further objects are smaller \cite{Meng1998}.}
+%\label{fig:Perspective-View}
+%\end{figure}
+
+%\subsubsection{Other Techniques}
+%Instead of displaying the history of actions in a temporal order, other factors can be used to reveal different aspects of the analysis process; for example, the flow of data retrieved during the course of the analysis is shown in the \textit{dependency graph} \cite{Kadivar2009} (Figure \ref{fig:Dependency-Graph}). The implemented system uses a scripting language to model the analysis process and each set of retrieved data is assigned to a variable; and thus, uses variable names to visualise the active data in each analysis step. However, this method may not be easy to apply to a generic non-scripting language system because it is not easy to visualise the difference between each set of data.
+%
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=.75\textwidth]{Dependency-Graph.png}
+%\caption{Dependency graph of the analysis session of a scenario from the novel \textit{The Day of the Jackal} \cite{Kadivar2009}. First, the analyst searches for person \textit{Montpellier} and the result is assigned to \textit{entPerMont}. Then, all reports related to Montepellier are fetched to \textit{repMont}. All persons mentioned in those reports are listed for further investigation (\textit{entPerRelMont}). The analyst notices on \textit{Duggan} and continues investigating that person. This is the flow that the analyst investigates the case; however, in the data perspective, after noticing Duggan, the analyst restarts the steps as he or she did with Montepellier. Therefore, in terms of data, Montepellier and Duggan are two independent branches in the data analysis tree.}
+%\label{fig:Dependency-Graph}
+%\end{figure}
+%
+%Another method to recall the analysis process is through the statistical usages of the system such as the most used visualisation tools and most investigated data objects \cite{Shrinivasan2009a}. This method provides a good overview of the analysis; however, it cannot show the sequence of actions performed during the analysis.

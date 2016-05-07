@@ -1,0 +1,50 @@
+\documentclass[tikz]{standalone}
+
+\input{../../Preamble/tikz}
+
+\begin{document}
+
+\tikzstyle{schema} = [minimum width=3cm,minimum height=.5cm]
+\tikzstyle{box} = [very thick,draw=gray!50,minimum height=3.5cm]
+\tikzstyle{next} =[single arrow, fill=gray!50, text width=.8cm, text height=.16cm, single arrow head extend=.16cm]
+
+\begin{tikzpicture}[node distance=1.7cm]
+
+% 4 big boxes first
+\node (b1) [box, minimum width = 3.7cm] {};
+\node (b2) [box, minimum width = 4.9cm, right=of b1] {};
+\node (b3) [box, minimum width = 4.9cm, right=of b2] {};
+\node (b4) [box, minimum width = 4.9cm, right=of b3] {};
+
+\node [below=0 of b1] {\LARGE Order schemas};
+\node [below=0 of b2] {\LARGE Layout individual schemas};
+\node [below=0 of b3] {\LARGE Compact schemas};
+\node [below=0 of b4] {\LARGE Add non-schema events};
+
+\node[next, right=0.2 of b1] {};
+\node[next, right=0.2 of b2] {};
+\node[next, right=0.2 of b3] {};
+
+% Details for each box
+\node (r1) [schema, c1, below=-.2 of b1.south west, anchor=south west, xshift=.5cm, label=left:\Large\rmfamily1] {};
+\node (r2) [schema, c2, above=.1 of r1, label=left:\Large\rmfamily2] {};
+\node (r3) [schema, c3, above=.1 of r2, label=left:\Large\rmfamily3] {};
+
+\path[c1] ($(b2.south west) + (.2,.2)$) -| ++(2,.5) -| ++(1.5,.5) -| ++(1,.5) -|++(-1.3,-.5) -|++(-1.5,-.5) -| ++(-1.7,0) -- cycle;
+\path[c2] ($(b2.south west) + (.4,1.8)$) -| ++(1.3,.5) -| ++(1.5,.5)  -|++(-1.8,-.5) -| ++(-1,0) -- cycle;
+\path[c3] ($(b2.south west) + (1.5,2.9)$) -| ++(3,.5) -| ++(-3,0) -- cycle;
+
+\path[c1] ($(b3.south west) + (.2,.2)$) -| ++(2,.5) -| ++(1.5,.5) -| ++(1,.5) -|++(-1.3,-.5) -|++(-1.5,-.5) -| ++(-1.7,0) -- cycle;
+\path[c2] ($(b3.south west) + (.4,.8)$) -| ++(1.3,.5) -| ++(1.5,.5)  -|++(-1.8,-.5) -| ++(-1,0) -- cycle;
+\path[c3] ($(b3.south west) + (1.5,1.9)$) -| ++(3,.5) -| ++(-3,0) -- cycle;
+
+\path[c1] ($(b4.south west) + (.2,.2)$) -| ++(2,.5) -| ++(1.5,.5) -| ++(1,.5) -|++(-1.3,-.5) -|++(-1.5,-.5) -| ++(-1.7,0) -- cycle;
+\path[c2] ($(b4.south west) + (.4,.8)$) -| ++(1.3,.5) -| ++(1.5,.5)  -|++(-1.8,-.5) -| ++(-1,0) -- cycle;
+\path[c3] ($(b4.south west) + (1.5,1.9)$) -| ++(3,.5) -| ++(-3,0) -- cycle;
+\path[cg] ($(b4.south west) + (3.8,.2)$) -| ++(.9,.5) -| ++(-.9,0) -- cycle;
+\path[cg] ($(b4.south west) + (.4,1.9)$) -| ++(.9,.5) -| ++(-.9,0) -- cycle;
+\path[cg] ($(b4.south west) + (2.4,2.5)$) -| ++(1.3,.5) -| ++(-1.3,0) -- cycle;
+
+\end{tikzpicture}
+
+\end{document}

@@ -12,3 +12,5 @@ thesis.out
 *.ini
 *.log
 .Rhistory
+thesis.bcf
+thesis.run.xml
