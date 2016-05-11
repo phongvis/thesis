@@ -40,16 +40,13 @@
   %  {libertine}
   %  % load font from system font
   %  \newfontfamily\libertinesystemfont{Linux Libertine O}
-
+  
+\usepackage{mathpazo}
 \usepackage{libertine}
-\ifxetex
-	\usepackage{fontspec}
-	\setsansfont{Helvetica Neue}
-%	\setromanfont{Palatino}
-\else
-	\renewcommand*\sfdefault{phv}
+\renewcommand*\sfdefault{phv}
+
 \fi
-\fi
+
 
 % *****************************************************************************
 % **************************** Custom Packages ********************************
@@ -159,7 +156,7 @@
 
 % *********** To change the name of Table of Contents / LOF and LOT ************
 
-%\renewcommand{\contentsname}{My Table of Contents}
+\renewcommand{\contentsname}{Contents}
 %\renewcommand{\listfigurename}{My List of Figures}
 %\renewcommand{\listtablename}{My List of Tables}
 
@@ -229,12 +226,12 @@
 \titleformat{\chapter}[display]
 	{\filcenter}
 	{\LARGE Chapter \thechapter}{0pt}
-	{\color{NavyBlue}\Huge\fontfamily{lmr}\bfseries}
-\titleformat{\section}{\fontfamily{cmss}\bfseries\Large\color{Brown}}{\thesection}{16pt}{}
-\titleformat{\subsection}{\fontfamily{cmss}\bfseries\large\color{Brown}}{\thesubsection}{14pt}{}
-\titleformat{\subsubsection}{\fontfamily{cmss}\bfseries\color{Brown}}{\thesubsubsection}{12pt}{}
-\titleformat{\paragraph}[runin]{\fontfamily{cmss}\bfseries\color{Brown}}{\theparagraph}{}{}
-\titleformat{\subparagraph}[runin]{\fontfamily{cmss}\itshape\color{Brown}}{\thesubparagraph}{}{}
+	{\color{NavyBlue}\Huge\sffamily}
+\titleformat{\section}{\sffamily\Large\color{Brown}}{\thesection}{16pt}{}
+\titleformat{\subsection}{\sffamily\large\color{Brown}}{\thesubsection}{14pt}{}
+\titleformat{\subsubsection}{\sffamily\color{Brown}}{\thesubsubsection}{12pt}{}
+\titleformat{\paragraph}[runin]{\sffamily\bfseries\color{Brown}}{\theparagraph}{}{}
+\titleformat{\subparagraph}[runin]{\sffamily\itshape\color{Brown}}{\thesubparagraph}{}{}
 
 % Improve verbatim
 \usepackage{listings}
@@ -242,13 +239,6 @@
 	columns=flexible,
 	breaklines=true
 }
-
-% check and cross
-%xelatex incompatible
-%\usepackage{amssymb}% http://ctan.org/pkg/amssymb
-\usepackage{pifont}% http://ctan.org/pkg/pifont
-\newcommand{\cmark}{\ding{51}}%
-\newcommand{\xmark}{\ding{55}}%
 
 % continued numbered list
 \newcounter{listnum}
@@ -262,3 +252,10 @@
 
 % Emphasized text
 \newcommand{\strong}[1]{{\fontfamily{cmss}\bfseries\color{Brown}{#1}}} 
+\newcommand{\ppl}[1]{\fontfamily{ppl}{\selectfont{#1}}}
+
+% check and cross
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%

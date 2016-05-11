@@ -5,21 +5,35 @@
 \tikzstyle{sm} = [roundrect, c1, minimum height=0.8cm]
 \tikzstyle{data} = [io, cg, text width=1.8cm, align=center]
 
+\tikzstyle{box} = [thick, draw, align=center, minimum height=1.2cm]
+
 \begin{document}
 	
-\begin{tikzpicture}[node distance=1cm, auto]
-\node (sm) [sm] {Sensemaking};
-\node (capture) [cg, rect, minimum height=0.8cm, right=of sm] {Capture};
-\node (data) [data, right=of capture] {provenance data};
-\node (vis) [c2, rect, minimum height=0.8cm, right=of data] {Visualize};
-%\node (reuse) [ap, right=of vis] {Reuse};
+%\begin{tikzpicture}[node distance=1cm]
+%\node (sm) [sm] {Sensemaking};
+%\node (capture) [cg, rect, minimum height=0.8cm, right=of sm] {Capture};
+%\node (data) [data, right=of capture] {provenance data};
+%\node (vis) [c2, rect, minimum height=0.8cm, right=of data] {Visualize};
+%%\node (reuse) [ap, right=of vis] {Reuse};
+%
+%\draw [arrow] (sm) -- (capture);
+%\draw [arrow] (capture) -- (data);
+%\draw [arrow] (data) -- (vis);
+%%\draw [arrow] (vis) -- (reuse);
+%\draw [arrow, rounded corners] (vis.south) |- ++(0,-0.5) -| (sm.south); 
+%\node [rectangle,fill=white,inner ysep=0,yshift=-.95cm] at ($(vis)!0.5!(sm)$) {support};
+%\end{tikzpicture}
 
-\draw [arrow] (sm) -- (capture);
-\draw [arrow] (capture) -- (data);
-\draw [arrow] (data) -- (vis);
-%\draw [arrow] (vis) -- (reuse);
-\draw [arrow, rounded corners] (vis.south) |- ++(0,-0.5) -| (sm.south); 
-\node [rectangle,fill=white,inner ysep=0,yshift=-.95cm] at ($(vis)!0.5!(sm)$) {support};
+\begin{tikzpicture}[node distance=1cm]
+\node (sm) [box, c1] {Sensemaking \\System};
+\node (data) [box, c2, right=2cm of sm] {Provenance \\Data};
+\node (vis) [box, c3, right=2cm of data] {Visualization};
+
+\draw [arrow] (sm) -- (data) node[midway, yshift=.2cm] {\rmfamily capture};
+\draw [arrow] (data) -- (vis) node[midway, yshift=.2cm] {\rmfamily visualize};
+\draw [arrow, rounded corners] (vis.south) |- ++(0,-.8) -| (sm.south); 
+\node [rectangle,fill=white,inner ysep=0,yshift=-1.2cm] at ($(vis)!0.5!(sm)$) {\rmfamily analyze};
 \end{tikzpicture}
+
 	
 \end{document}

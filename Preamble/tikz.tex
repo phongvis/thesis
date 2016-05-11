@@ -1,12 +1,7 @@
 % Font
-\ifxetex
-	\usepackage{fontspec}
-	\setsansfont{Helvetica Neue}
-	\setromanfont{Palatino}
-\else
-	\renewcommand*\sfdefault{phv}
-	\renewcommand*\rmdefault{ppl}
-\fi
+\usepackage{mathpazo}
+\usepackage{libertine}
+\renewcommand*\sfdefault{phv}
 
 \large
 
@@ -22,7 +17,7 @@
 % tikz
 \usepackage{tikz}
 \tikzstyle{every node}=[font=\sffamily]
-\usetikzlibrary{shapes,arrows,positioning,calc,decorations.markings}
+\usetikzlibrary{shapes,arrows,positioning,calc,decorations.markings,backgrounds}
 \tikzstyle{c1} = [thick,draw=b1,fill=f1]
 \tikzstyle{c2} = [thick,draw=b2,fill=f2]
 \tikzstyle{c3} = [thick,draw=b3,fill=f3]

@@ -1,45 +1,55 @@
-\chapter{Timeline Visualization with Set Relations of Provenance Data}
+\chapter{Visualizing Temporal and Thematic Relationships}
 
 \graphicspath{{Chapter4/figures/}}
-The timeline visualization in Chapter 4 cannot show events belonging to multiple sets. In this chapter, we introduce a novel timeline visualization technique, TimeSets, that helps make sense of complex temporal datasets by showing the set relationships among individual events. TimeSets visually groups events that share a topic, such as a place or a person, while preserving their temporal order. It dynamically adjusts the level of detail for each event to suit the amount of information and display estate. 
-
-\section{Introduction}
-The current limitation
-\begin{itemize}
-	\item no or very simple layout which is cluttered and space-inefficient
-	\item designed for presenting a known story rather than interactively constructing a hidden one
-\end{itemize} 
-
-The contribution: TimeSets
-\begin{itemize}
-	\item clearly shows the events within a set over time and their relationships with other sets; 
-	\item dynamically adjusts the level of details of each event to suit the amount of information and display estate;
-	\item uses color gradient backgrounds for events belonging to multiple sets and curved set outlines to emphasize its grouping.
-\end{itemize}
-
-\section{Design}
-Visual representation of individual events and sets
-
-\section{Layout}
-Describe the layout algorithm.
-
-\section{Evaluation}
-A controlled experiment with 30 participants to compare TimeSets and the state-of-the-art set visualization technique -- KelpFusion.
-
-\section{Case Study 1: Publication Data}
-Shows an application of TimeSets to publication data of 200 articles and 8 sets.
-
-\section{Case Study 2: VAST Challenge 2014}
-Shows an application of TimeSets to tweets data. 
-
-Also use TimeSets to show user findings [not done yet! currently, findings are shown as a node-link diagram.]
-
-\section{Conclusion}
+%The timeline visualization in Chapter 4 cannot show events belonging to multiple sets. In this chapter, we introduce a novel timeline visualization technique, TimeSets, that helps make sense of complex temporal datasets by showing the set relationships among individual events. TimeSets visually groups events that share a topic, such as a place or a person, while preserving their temporal order. It dynamically adjusts the level of detail for each event to suit the amount of information and display estate. 
+%
+%\section{Introduction}
+%The current limitation
+%
+%\begin{itemize}
+%	\item similarity: use colors or shapes to indicate sets -- not powerful 
+%	\item proximity: not space-efficient
+%	\item uniform connectedness: cluttered
+%\end{itemize}
+%
+%The contribution: TimeSets
+%\begin{itemize}
+%	\item clearly shows the events within a set over time and their relationships with other sets; 
+%	\item dynamically adjusts the level of details of each event to suit the amount of information and display estate;
+%	\item uses color gradient backgrounds for events belonging to multiple sets and curved set outlines to emphasize its grouping.
+%\end{itemize}
+%
+%\section{Design}
+%Visual representation of individual events and sets
+%
+%
+%\begin{figure*}[ht]
+%	\centering
+%	\includegraphics[width=\linewidth]{figure1}
+%	\caption{TimeSets visualization of the CIA leak case. The timeline contains events that happened from 2002 to 2007, each has a timestamp or an interval, a label, and topics such as ``White House''. Events are positioned along the horizontal time axis based on timestamps, and vertically grouped by topics. A time-point event is shown with a white circle to its left, and an interval event with a horizontal bar on top showing its timespan. Each topic has a unique color (see the legend in the bottom right corner), and events shared by two topics have gradient backgrounds, transitioning between the colors of the two topics.}
+%	\label{fig:teaser}
+%\end{figure*}
+%
+%\section{Layout}
+%Describe the layout algorithm.
+%
+%\section{Evaluation}
+%A controlled experiment with 30 participants to compare TimeSets and the state-of-the-art set visualization technique -- KelpFusion.
+%
+%\section{Case Study 1: Publication Data}
+%Shows an application of TimeSets to publication data of 200 articles and 8 sets.
+%
+%\section{Case Study 2: VAST Challenge 2014}
+%Shows an application of TimeSets to tweets data. 
+%
+%Also use TimeSets to show user findings [not done yet! currently, findings are shown as a node-link diagram.]
+%
+%\section{Conclusion}
 
 %\input{Chapter4/sections/intro.tex}
 %%\input{Chapter4/sections/related-work.tex}
 %\input{Chapter4/sections/setvis.tex}
-%\input{Chapter4/sections/layout.tex}
-%\input{Chapter4/sections/case-study.tex}
+\input{Chapter4/sections/layout.tex}
+\input{Chapter4/sections/case-study.tex}
 %\input{Chapter4/sections/evaluation.tex}
 %\input{Chapter4/sections/conclusion.tex}

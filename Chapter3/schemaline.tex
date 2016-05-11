@@ -1,4 +1,4 @@
-\chapter{Timeline Visualization of Provenance Data}
+\chapter{Exploring Temporal Relationship of User Annotations}
 
 \graphicspath{{Chapter3/figures/}}
 
@@ -9,10 +9,9 @@ The importance of timeline visualization in supporting sensemaking.
 
 The current limitation
 \begin{itemize}
-	\item similarity: use colors or shapes to indicate sets -- not powerful 
-	\item proximity: not space-efficient
-	\item uniform connectedness: cluttered
-\end{itemize} 
+	\item no or very simple layout which is cluttered and space-inefficient
+	\item designed for presenting a known story rather than interactively constructing a hidden one
+\end{itemize}  
 
 The contribution
 \begin{itemize}
@@ -22,10 +21,18 @@ The contribution
 \end{itemize}
 
 \section{Requirements}
-[not in the paper yet! List requirements -- drawn from the literature -- that SchemaLine need to support]
+[not in the paper yet! List requirements that SchemaLine need to support including the ability to sensemaking activities from Data--frame model]
 
-\section{Design}
+\section{Visual Design}
 Visual representation of individual events and schemas
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\linewidth]{teaser}
+	\caption{SchemaLine: each piece of text is an analyst note, positioned along the time axis at when the event happened. Related notes are linked together to form a ``schema'' or ``frame''. There are three frames in this example represented as colored rectilinear paths. Small color-coded rectangles on the left side of notes are ``categories''.}
+	\label{fig:teaser}
+\end{figure}
 
 \section{Algorithm}
 
@@ -35,8 +42,8 @@ Describe the algorithm that produces the compact layout of schemas and events.
 %\subsection{Schema Outline}
 %Describe the algorithm that produces the polygonal outline covering all events within a schema.
 
-\section{Sensemaking with SchemaLine}
-Discuss how SchemaLine's interactions support sensemaking activities in the Data--frame model. [the requirement for this support should be mentioned in the Requirements section.]
+%\section{Sensemaking with SchemaLine}
+%Discuss how SchemaLine's interactions support sensemaking activities in the Data--frame model. [the requirement for this support should be mentioned in the Requirements section.]
 
 \section{Application}
 Discuss the integration of SchemaLine into INVISQUE. SchemaLine receives data input as user notes of INVISQUE and the linking between schemas and index-cards.
@@ -45,6 +52,8 @@ Discuss the integration of SchemaLine into INVISQUE. SchemaLine receives data in
 A case study with 3 participants (different backgrounds) to use INVISQUE+SchemaLine to solve an intelligence analysis task using VAST Challenge 2011 dataset. Report how they used the tool, how the tool might help them.
 
 \section{Conclusion}
+
+
 %\input{Chapter3/sections/intro.tex}
 %%\input{Chapter3/sections/related-work.tex}
 %\input{Chapter3/sections/design.tex}

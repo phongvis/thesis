@@ -1,4 +1,4 @@
-\section{TimeSets Layout}
+\section{Layout}
 
 The layout algorithm, determining the positions of sets and events within them,  consists of four steps. First, the vertical ordering of sets is computed to ensure that two sets that share events are next to each other wherever possible. Then, sets are further divided into layers, and events are assigned to them according to their memberships. After that, the position and length of each event are computed, within the given display space. Finally, layers are compacted to remove any gaps between them, before layer sizes are adjusted to allow for a consistent level of detail across all sets. 
 
@@ -76,19 +76,19 @@ Aggregation allows TimeSets to handle a large number of events. However, the vis
 \begin{figure}[ht]
 	\centering
 	\subcaptionbox{No encoding.}{\label{fig:aggregate-0}
-		\includegraphics[width=.3\columnwidth]{figure12a}}
-	\hfill
+		\includegraphics[width=.47\columnwidth]{figure12a}}
+	\\
 	\subcaptionbox{Scale with the width of the bounding rectangle.}{\label{fig:aggregate-1}
-		\includegraphics[width=.3\columnwidth]{figure12b}}
+		\includegraphics[width=.47\columnwidth]{figure12b}}
 	\hfill
 	\subcaptionbox{Each dot is an event at when it happens.}{\label{fig:aggregate-2}
-		\includegraphics[width=.3\columnwidth]{figure12c}}
+		\includegraphics[width=.47\columnwidth]{figure12c}}
 	\\
-	\subcaptionbox{Color code the background of the bounding rectangle.}[.45\columnwidth]{\label{fig:aggregate-3}
-		\includegraphics[width=.3\columnwidth]{figure12d}}
+	\subcaptionbox{Color code the background of the bounding rectangle.}{\label{fig:aggregate-3}
+		\includegraphics[width=.47\columnwidth]{figure12d}}
 	\hfill
-	\subcaptionbox[.4\columnwidth]{Scale with the font size of the label.}[.45\columnwidth]{\label{fig:aggregate-4}
-		\includegraphics[width=.3\columnwidth]{figure12e}}
+	\subcaptionbox{Scale with the font size of the label.}{\label{fig:aggregate-4}
+		\includegraphics[width=.47\columnwidth]{figure12e}}
 	\caption{Different visual representations of the number of events in an aggregate.}
 	\label{fig:aggreate}
 \end{figure}

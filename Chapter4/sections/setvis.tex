@@ -1,13 +1,14 @@
-\section{TimeSets Visualization}
+\section{Visual Design}
 
-\subsection{Events}
-In TimeSets, an event is visualized as a line of text, showing its \emph{label}. The visual indicator of event time is a circle (for a time-point event), or a horizontal bar (for an interval event). The \textit{time circle} is shown to the left of the label, while the \textit{time bar} is shown above the label. The time bar is semi-transparent for overlapping interval events, so the intersection part is visually different. To accommodate a large number of events, labels have three possible levels of detail: 
-\begin{itemize}
-	\item Complete: the entire event label is shown.
-	\item Trimmed: only the first few words are shown, followed by three dots at the end.
-	\item Aggregated: a few events are combined into a new one with its label indicating the number of events, such as ``2 events''.
-\end{itemize}	
-The text border of an aggregated event is colored to make it visually different from non-aggregated events. Its time bar begins at the starting time of the earliest event, and ends at the finishing time of the latest event within the aggregate. Figure~\ref{fig:event-representation} shows a complete time-point, a trimmed time-point, an interval, an aggregate of two events, and two overlapping interval events.
+\subsection{Event}
+In TimeSets, an event is represented as a line of text -- \emph{label} -- summarizing its content. A glyph is used to indicate the temporal information. For time-point events, a \emph{circle} is shown at the left of the label. For interval events, a \emph{bar} is shown at the top of the label. When two interval events overlap, their time bars are shown with half opacity to make the intersection visible. To accommodate a large number of events, labels have three possible levels of detail: 
+\begin{enumerate}
+	\item \textbf{Complete}. The entire event label is shown.
+	\item \textbf{Trimmed}. Only the first few words are shown, finished with three dots (\dots) to indicate the incomplete label.
+	\item \textbf{Aggregated}. Events are grouped and labeled with the number of events. A colored border is added to the label to make the aggregate more noticeable. The time bar of an aggregate spans the starting time of its earliest event and the finishing time of its latest event.
+\end{enumerate}	
+
+Figure~\ref{fig:event-representation} shows examples a complete time-point event, a trimmed time-point event, an interval event, an aggregate of two events, and two overlapping interval events.
 
 \begin{figure}[ht]
 \centering
@@ -16,16 +17,16 @@ The text border of an aggregated event is colored to make it visually different 
 \label{fig:event-representation}
 \end{figure}
 
-\subsection{Sets}
+\subsection{Set}
 \subsubsection{Design Overview}
-As discussed in the related work, Gestalt principles of grouping are commonly used to show set relationships among events, most effectively uniform connectedness and proximity. Therefore, we also apply these two principles in our design. Proximity is achieved by moving same-set events close together, and coloring the set background makes the events visually connected.
+As discussed in the related work \todo{ref}, Gestalt's principles of grouping are commonly used to show set relationships among events, most effectively uniform connectedness and proximity. Therefore, we also apply these two principles in our design. Proximity is achieved by moving same-set events close together, and coloring the set background makes the events visually connected.
 
 Because the horizontal position of each event is decided by its timestamp, spatial grouping is achieved through vertical positioning. The sets are stacked vertically, and each set is further divided into a maximum of three horizontal \emph{layers}: a top and a bottom layer for events shared with the set above and below respectively (if they exist), and a middle layer for other events in the set. There are maximal $2n-1$ layers in total for $n$ sets of events. Figure~\ref{fig:layering} shows the layering for three sets. 
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.5\columnwidth]{figure3}
-\caption{Layering for three sets $S_1$, $S_2$, and $S_3$. $L_2$ consists of events shared by $S_1$ and $S_2$, and $L_4$ consists of events shared by $S_2$ and $S_3$. Those shared events are red circles.}
+\caption{Layering for three sets $S_1$, $S_2$, and $S_3$. $L_2$ includes events shared by $S_1$ and $S_2$, and $L_4$ includes events shared by $S_2$ and $S_3$. Shared events are shown in red.}
 \label{fig:layering}
 \end{figure}
 
@@ -97,11 +98,11 @@ With the vertical layering of sets as discussed above, three sets cannot be plac
 
 \begin{figure}[ht]
 	\centering
-	\subcaptionbox{Each circle represents a set.}{\label{fig:eventmembership1}\includegraphics[width=.29\columnwidth]{figure8a}}
+	\subcaptionbox{Each circle represents a set.}[.3\columnwidth]{\label{fig:eventmembership1}\includegraphics[width=.25\columnwidth]{figure8a}}
 	\hfill
-	\subcaptionbox{Each ring represents a set.}{\label{fig:eventmembership2}\includegraphics[width=.29\columnwidth]{figure8b}}
+	\subcaptionbox{Each ring represents a set.}[.3\columnwidth]{\label{fig:eventmembership2}\includegraphics[width=.25\columnwidth]{figure8b}}
 	\hfill
-	\subcaptionbox{Each color in the gradient background represents a set.}{\label{fig:eventmembership3}\includegraphics[width=.29\columnwidth]{figure8c}}
+	\subcaptionbox{Each color in the gradient background represents a set.}[.3\columnwidth]{\label{fig:eventmembership3}\includegraphics[width=.25\columnwidth]{figure8c}}
 	\caption{Multiple-set events visualization. Event 1 is single-set. Event 2 is double-set. Event 3 is triple-set.}
 	\label{fig:eventmembership}
 \end{figure}

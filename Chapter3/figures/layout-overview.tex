@@ -26,9 +26,9 @@
 \node[next, right=0.2 of b3] {};
 
 % Details for each box
-\node (r1) [schema, c1, below=-.2 of b1.south west, anchor=south west, xshift=.5cm, label=left:\Large\rmfamily1] {};
-\node (r2) [schema, c2, above=.1 of r1, label=left:\Large\rmfamily2] {};
-\node (r3) [schema, c3, above=.1 of r2, label=left:\Large\rmfamily3] {};
+\node (r1) [schema, c1, below=-.2 of b1.south west, anchor=south west, xshift=.5cm, label=left:\Large$1$] {};
+\node (r2) [schema, c2, above=.1 of r1, label=left:\Large$2$] {};
+\node (r3) [schema, c3, above=.1 of r2, label=left:\Large$3$] {};
 
 \path[c1] ($(b2.south west) + (.2,.2)$) -| ++(2,.5) -| ++(1.5,.5) -| ++(1,.5) -|++(-1.3,-.5) -|++(-1.5,-.5) -| ++(-1.7,0) -- cycle;
 \path[c2] ($(b2.south west) + (.4,1.8)$) -| ++(1.3,.5) -| ++(1.5,.5)  -|++(-1.8,-.5) -| ++(-1,0) -- cycle;
