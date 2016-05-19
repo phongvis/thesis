@@ -4,40 +4,26 @@
 
 \begin{document}
 
-\tikzstyle{aggregate} = [ultra thick,rectangle,draw=white!40]
-\tikzstyle{icon} = [circle,fill=white!40]
-\tikzstyle{bar} = [very thick,rectangle,fill=white!40]
+\tikzstyle{aggregate} = [ultra thick,rectangle,draw=f1]
+\tikzstyle{icon} = [circle,scale=0.7,fill=f1]
+\tikzstyle{bar} = [very thick,rectangle,fill=f1]
 \tikzstyle{barSemi} = [very thick,rectangle,fill=f1,opacity=0.5]
 	
-\begin{tikzpicture}
-\node[icon](i1)[scale=0.7,fill=f1]{};
-\node(q1)[right=of i1,xshift=-1.1cm,yshift=-0.035cm]{Time-point event};
-\node[](q2)[right=of q1,xshift=-0.2cm]{Interval event};
-\node[bar](i2)[above =of q2.west,anchor=west,xshift=0.13cm,yshift=-0.77cm, minimum width=2cm,scale=0.6,fill=f1]{};
-\node[aggregate](q3)[right=of q2,xshift=-0.3cm,draw=f1]{2 events};
-\node[bar](i3)[above =of q3.west,anchor=west,yshift=-0.77cm, xshift=-0.01cm,minimum width=3cm,scale=0.6,fill=f1]{};
+\begin{tikzpicture}[framed, background rectangle/.style={thick,draw=gray!50}]
+\node(i1) [icon]{};
+\node(q1) [right=-0.1 of i1, yshift=-0.035cm]{Time-point event};
+\node(i2) [icon, right=of q1]{};
+\node(q2) [right=-0.1 of i2, yshift=-0.035cm]{Time-point ...};
+\node(q3)[aggregate, right=of q2,xshift=-0.3cm]{10 events};
+\node[bar](i3)[above =of q3.west,anchor=west,yshift=-0.75cm, xshift=-0.01cm,minimum width=3.5cm,scale=0.6]{};
 
-\node(p1)[icon,below=0.6 of i1][scale=0.7,fill=f1]{};
-\node(q1)[right=of p1,xshift=-1.1cm,yshift=-0.035cm]{Time-point ...};
+\node(q4) [below=of q1.west, anchor=west]{Interval event 1};
+\node[bar, above =of q4.west,anchor=west,xshift=0.13cm,yshift=-0.75cm, minimum width=2cm,scale=0.6]{};
 
-\node[](q3)[right=0.25 of q1]{Interval event 2};
-\node[barSemi](i3)[above =of q3.west,anchor=west,xshift=0.1cm,yshift=-0.75cm, minimum width=7cm,scale=0.67]{};
-\node[](q4)[right=.7 of q3]{Interval event 3};
-\node[barSemi](i4)[above =of q4.west,anchor=west,xshift=0.1cm,yshift=-0.75cm, minimum width=3cm,scale=0.67]{};
+\node(q5)[right=of q4]{Interval event 2};
+\node(i3)[barSemi, above =of q5.west,anchor=west,xshift=0.13cm,yshift=-0.75cm, minimum width=7cm,scale=0.6]{};
+\node(q6)[right=.7 of q5]{Interval event 3};
+\node(i4)[barSemi, above =of q6.west,anchor=west,xshift=0.13cm,yshift=-0.75cm, minimum width=3cm,scale=0.6]{};
 \end{tikzpicture}
-
-%\begin{tikzpicture}[show background rectangle, background rectangle/.style={fill=b1!50}]
-%\node[icon](i1)[scale=0.7]{};
-%\node(q1)[right=of i1,xshift=-1.1cm,yshift=-0.035cm]{Time-point event};
-%\node[](q2)[right=of q1,xshift=-0.2cm]{Interval event};
-%\node[bar](i2)[above =of q2.west,anchor=west,xshift=0.13cm,yshift=-0.77cm, minimum width=2cm,scale=0.6]{};
-%\node[aggregate](q3)[right=of q2,xshift=-0.3cm]{2 events};
-%\node[bar](i3)[above =of q3.west,anchor=west,yshift=-0.77cm, xshift=-0.01cm,minimum width=3cm,scale=0.6]{};
-%
-%\node[](q3)[below=of i1.west,anchor=west,xshift=-0.1cm,yshift=0.2cm]{Interval event 2};
-%\node[barSemi](i3)[above =of q3.west,anchor=west,xshift=0.1cm,yshift=-0.75cm, minimum width=7cm,scale=0.67]{};
-%\node[](q4)[right=of q3]{Interval event 3};
-%\node[barSemi](i4)[above =of q4.west,anchor=west,xshift=0.1cm,yshift=-0.75cm, minimum width=3cm,scale=0.67]{};
-%\end{tikzpicture}
 
 \end{document}

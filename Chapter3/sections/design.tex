@@ -1,33 +1,33 @@
-\section{Sensemaking with Timeline Visualizations}
-\label{sec:design}
+\section{Design Research and Requirements}
 
-%Why timeline, why schematization.
+right from the beginning, we should know that what is going to be addressed in each chapter and why
+
+should we mention the motivation 
+
+for example, we know that the thesis address the problem by advancing from manual capture - process to automatic capture - rationale
+
+the goal of this chapter is to understand the temporal relationship through user annotations - it's clear at the title
+
+yes you can do that in the introduction - why understanding such process is important.
+
+what should we write in this section?
+
+what do we do to understand the existing process, then elicit requirements to provide support
+
+goal: understand sense
+
+\subsection{Design Research}
 SchemaLine is intended to support tasks in sensemaking of temporal data and is influenced by the well-established sensemaking model proposed by Pirolli and Card~\cite{Pirolli2005}. This model organizes the sensemaking process into two loops: the foraging loop, which involves searching, extracting and organizing information; and the sensemaking loop, which involves building schema, creating and testing hypotheses, and presentation. In this model, \emph{schematization} serves as a bridge connecting the foraging loop and the sensemaking loop. It is a crucial step in converting raw evidence to rational explanations. Pirolli and Card suggest that the schematization process should be supported by a computer-based tool that coordinates events in the dataset to reveal relationships between them and to leverage analysts' effort in memorizing them~\cite{Pirolli2005}. As a result, we decided to investigate timeline visualization support for sensemaking. A timeline can not only reveal the temporal relationships among the findings, but also have a considerable impact on how easily they can be understood: when Pennington and Hastie~\cite{Pennington1991} studied the impact of evidence presentation order on juror decision making, they found that information was easier to understand when presented in chronological order and thus had a significant impact on jurors' decisions. 
-
-%\begin{figure}
-%\centering
-%\includegraphics[width=\columnwidth]{pirolli-card-model-2}
-%\caption{The Pirolli-Card's Sensemaking Model~\cite{Pirolli2005}. SchemaLine is designed to support the \textbf{Schematize} process in this model.\note[k]{can remove this figure if need space}}
-%\label{fig:pirolli-card-model}
-%\end{figure}
-
-%Considering schematization as the core of SchemaLine, we design it with the following principles.
-
-%\begin{description}
-%	\item [P1] Input of SchemaLine are evidence files and output of SchemaLine are schemata -- temporal representations of evidence. The visualization needs to be aesthetically pleasing and automatically generated.
-%	\item [P2] The schematization needs to be seamlessly integrated into the whole sensemaking system to allow iterative refinement and reduce user efforts.
-%\end{description}
 
 We find that the cognitive processes in the schematization process are well elaborated through different sensemaking activities in the Data-Frame model proposed by Klein et al.~\cite{Klein2003}. These sensemaking activities are \emph{Connect data to a frame}, \emph{Elaborate a frame}, \emph{Question a frame}, \emph{Preserve a frame}, and \emph{Reframe}. Sensemaking activities begin when a surprise, unexpected event with respect to our prior knowledge appears. The analyst forms an initial account for the unexpected event by connecting some evidence. In the Data-Frame model's terminology, the analyst tries to match some data to create an initial frame. When encountering new data, the analyst can either add it to the frame to elaborate the frame (if it fits to the frame) or remove existing data (if it cannot fit the frame anymore). The analyst starts questioning the frame when they detect inconsistencies between data, or poor quality data in the frame. Then, they need to decide between preserving the frame by looking for more data, or reframing it by comparing it with other frames, or seeking a completely new frame. Because of the various and detailed sensemaking activities surrounding the \textit{frame} in the Data-Frame model, we decide to support all these five activities in our the timeline visualization through fluid user interactions. The terms `schema' and `frame' are used to refer to the same concept throughout this paper.
 
-%\begin{description}
-%	\item [P3] Frame creation, frame elaboration, frame questioning, and reframing in Data-Frame model should be supported by fluid user interactions.
-%\end{description}
-%
-%SchemaLine is designed to support both Pirolli-Card model and Data-Frame model. Schema -- Frame and note -- data are two pairs of similar concepts and will be used interchangeably in the paper.
+After discovering a number of relevant events or pieces of evidence, the analyst starts combining them to form a \textit{schema}. A schema is a set of related events that are connected to each other in a certain way. For example, a schema might contain all events about a particular person. Figure~\ref{fig:schema} shows examples of schema. 
 
-%The SchemaLine is part of a Visual Analytics system called INVISQUE~\cite{Wong2011}, which provides the interactive visual interface for the \emph{Search \& Filter} sub-loop. The clusters of search  results from this sub-loop (\emph{Shoebox}) will be examined by the analyst and those of interest with related notes (\emph{Evidence File}) will be added to the SchemaLine (the Read \& Extract sub-loop). Analysts will then be able to interactively schematize the selected information using the SchemaLine. Some of these may form a narrative or story, thus the name of SchemaLine. While the SchemaLine visualization may help analysts form some hypotheses, it will require other Visual Analytics tools to test these hypotheses and construct narrative. These processes are beyond the scope of the SchemaLine. Both Schematize and Read \& Extract are iterative processes: once analysts find any ``scheme'' in the visualization, they can search the SchemaLine for information belonging to the same scheme (\emph{Evidence Search}) or go back to the search results to look for more relevant information (\emph{Relation Search}).  
-%
-%The design of the SchemaLine also follows the Data-Frame model~\cite{Klein2003}, which describes the dynamic and the iterative process of sensemaking. There are four main processes in this model: \emph{Create a frame}, \emph{Question a frame}, \emph{Elaborate a frame}, and \emph{Reframe}. Analysts start with frame creation, during which they try to fit the existing data into a frame. The frame is questioned when new data are discovered that can not be explained. This leads to either the refinement of the existing frame to fit the new data (``Elaborate a frame'') or the construction of a new frame (``Reframe'').
-%
-%In the case of SchemaLine, we consider the search results as ``data'' and construct a scheme using the SchemaLine as ``Create frame''. The interactive editing of the SchemaLine scheme can be either ``Elaborate a frame'' or ``Reframe''. The focus of the SchemaLine design is to make these tasks and the transitions between them as effortless as possible. Frame creation and refinement are achieved through simple and intuitive interaction. The links between data and frame are always visually available, which makes it easy to check when performing the ``Question a frame'' process. Features such as comparing multiple schemes can help examine alternative frames. 
+\subsection{Requirements}
+We propose the following requirements...
+\begin{enumerate}
+	\item \textbf{Automatic layout}. Provide an automatic layout to leverage users from manually arrange the events.
+	\item \textbf{Natural flow}. Easy to follow events within the same schema chronologically.
+	\item \textbf{Data--frame activities}. Enable users to perform sensemaking activities described in the Data--frame model through fluid interactions.
+\end{enumerate}
+

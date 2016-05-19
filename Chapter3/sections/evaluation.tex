@@ -1,15 +1,31 @@
 \section{Evaluation}
-\label{sec:evaluation}
+We first integrate SchemaLine into an existing visual analytics system, and then evaluate its usefulness in \annote{supporting sensemaking}{more precise of the support}.
 
-We first discuss the integration of SchemaLine into an existing visual analytics system, and then conduct an evaluation of SchemaLine's usefulness in supporting sensemaking of temporal data.
+\subsection{Application}
+% Overview of INVISQUE
+We integrate SchemaLine into INVISQUE -- INteractive VIsual Search and QUery Environment -- designed for interactive exploration of text documents~\cite{Wong2011}. INVISQUE organizes search results in a two-dimensional spatial canvas, with each dimension representing a customized attribute. For example, articles of \emph{publication data} can be ordered horizontally by date and vertically by citation count. Search results from a keyword are shown as a cluster of \emph{index-cards}, each representing a document with selected information such as publication title, date, keywords and authors. Figure~\ref{fig:invisque} shows a screenshot of INVISQUE.
 
-\subsection{An Application of SchemaLine}
-To evaluate the usefulness of SchemaLine, we integrated it into an existing sensemaking system that also follows the Pirolli-Card model. We choose our own research framework, INVISQUE~\cite{Wong2011}, an INteractive VIsual Search and QUery Environment, so that the integration can be done at the code level. Following the Pirolli-Card model, SchemaLine uses the output of the Read \& Extract process, evidence files, as the input.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{invisque}
+	\caption{INVISQUE interface. It shows two sets of search results for ``network'' and ``security'' from a publication dataset. Each article is displayed as an index-card with citation count at the top left corner, publication year at the top right corner; and title, keywords and authors at the center.}
+	\label{fig:invisque}
+\end{figure}
 
-\note{Do we need a screenshot of how SchemaLine looks like in invisque?} INVISQUE provides keyword search capability to address the Search \& Filter process. The search results are shown as a cluster of \textit{index-cards}, each representing a document with selected information. For example, an index-card might have title, publishing date, and the first lines of the full article for a news report. The analyst can take notes while reading it. Notes will be saved and rendered at the bottom of the index-card. Notes are considered as \textit{evidence files} in the Pirolli-Card model and used as the input of SchemaLine. To minimize the analyst's effort, when they finishes entering a note, both the note and its associated document are passed to SchemaLine and automatically added to or updated on the timeline. Left-mouse double-clicking on the note will open the original document in index-card metaphor. After examining search results, the analyst can minimize the cluster and leave only the search term visible, to make more screen space available for new searches but still be able to recall them back later. We color-code the minimized clusters with the aforementioned small rectangles inside the note rectangle. This helps indicate the provenance of each note and may support sensemaking activities at a later stage.
+% Integration
+We add an \emph{annotation} feature enabling users to record their thoughts while reading documents. These annotations are important to users, thus are also displayed on the index-cards. We choose them as the input \emph{events} of the SchemaLine visualization. SchemaLine is placed at the bottom of INVISQUE.
+After the user makes a note, or annotation, it is immediately added to SchemaLine as a new event. Double clicking on an event will open the document containing that note as an index-card enabling the user to quickly reexamine the original information resource.
 
-%For example, in Fig.~\ref{fig:teaser}, the note ``Mass deaths of livestock has been reported in farms'' has a small red rectangle and the collapsed search keyword ``animal deaths'' also has red color. It indicates that the note is taken from the document which is the result of ``animal deaths'' search. 
-%%\vspace{-3mm}
+% Attribute mapping
+The \emph{temporal information} of documents, such as ``publication date'', is initially assigned to that of events, and can be changed later by users to match the correct meaning. The \emph{label} of an event is simply the content of an annotation itself. In INVISQUE, we color code search keywords that contain annotated documents, and use them as \emph{categories} for events. Because a document can be returned from different searches, it can also contain multiple categories. This mapping provides context for the annotations: what did I search for (the original keyword) and what are other related concepts (other search keywords returning the same document)? This context may help users to discover interesting patterns through their annotations later. Figure~\ref{fig:invisque-schemaline} shows a screenshot of INVISQUE with SchemaLine integrated.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{invisque-schemaline}
+	\caption{INVISQUE with SchemaLine at the bottom. The timeline consists of three events, which are user taken notes. Color coded categories of events indicate keywords that were searched for.}
+	\label{fig:invisque-schemaline}
+\end{figure}
+
 \subsection{Case Studies}
 Evaluating the usefulness of SchemaLine in supporting sensemaking is challenging. It is categorized as \textit{evaluating visual data analysis and reasoning} -- one of seven scenarios in the information visualization empirical studies by Lam et al.~\cite{Lam2012}. Because of the difficulties of this evaluation type, such as the fluidity and various approaches used by analysts and the quantification of the analysis results, evaluations are typically case studies with realistic datasets and domain experts as participants.
 

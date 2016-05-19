@@ -1,0 +1,34 @@
+\documentclass[tikz]{standalone}
+
+\input{../../Preamble/tikz}
+
+\begin{document}
+
+\tikzstyle{aggregate} = [ultra thick,rectangle,draw=f1,minimum height=.6cm]
+\tikzstyle{icon} = [circle,scale=0.35,fill=b2,opacity=0.5]
+\tikzstyle{bar} = [very thick,rectangle,fill=f1]
+	
+\begin{tikzpicture}[framed, background rectangle/.style={thick,draw=gray!50}]
+\node(b1) [aggregate] {3 events};
+\node[bar, above =of b1.west,anchor=west,xshift=-0.01cm,yshift=-0.74cm, minimum width=2cm,scale=0.6]{};
+
+\node(b2) [aggregate, right=of b1] {9 events};
+\node[bar, above =of b2.west,anchor=west,xshift=-0.01cm,yshift=-0.74cm, minimum width=4cm,scale=0.6]{};
+
+\node(e1)[icon,anchor=north west, xshift=0.13cm, yshift=-0.07cm] at (b1.north west){};
+\node(e2) [icon, right=0.25 of e1] {};
+\node(e3) [icon, right=0.53 of e2] {};
+
+\node(e1)[icon,anchor=north west, xshift=0.13cm, yshift=-0.07cm] at (b2.north west){};
+\node [icon, right=-0.06 of e1] {};
+\node [icon, right=0.13 of e1] {};
+\node [icon, right=0.53 of e1] {};
+\node [icon, right=0.57 of e1] {};
+\node [icon, right=0.93 of e1] {};
+\node [icon, right=1.25 of e1] {};
+\node [icon, right=1.73 of e1] {};
+\node [icon, right=2.1 of e1] {};
+
+\end{tikzpicture}
+
+\end{document}

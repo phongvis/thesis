@@ -214,24 +214,65 @@
 
 % Example todo: \mynote{Hey! I have a note}
 
+% Use this package to annotate on specific text
+\usepackage[inline]{Sty/trackchanges}
+
 % Always include todo notes
 \usepackage[colorinlistoftodos]{todonotes}
-\presetkeys{todonotes}{inline,color=yellow!50,size=\small\sffamily}{}
-\newcommand{\note}[2][]{\todo[author=#1,color=green!50]{#2}}
-\newcommand{\issue}[1]{\todo[color=red!50]{#1}}
+\presetkeys{todonotes}{size=\scriptsize\sffamily}{}
+\newcommand{\issue}[1]{\todo[inline,color=red!50]{#1}}
+
+
 % ******************************** Phong's additional changes **********************************
 % Format headings
 \usepackage{titlesec}  
 
-\titleformat{\chapter}[display]
-	{\filcenter}
-	{\LARGE Chapter \thechapter}{0pt}
-	{\color{NavyBlue}\Huge\sffamily}
-\titleformat{\section}{\sffamily\Large\color{Brown}}{\thesection}{16pt}{}
-\titleformat{\subsection}{\sffamily\large\color{Brown}}{\thesubsection}{14pt}{}
-\titleformat{\subsubsection}{\sffamily\color{Brown}}{\thesubsubsection}{12pt}{}
-\titleformat{\paragraph}[runin]{\sffamily\bfseries\color{Brown}}{\theparagraph}{}{}
-\titleformat{\subparagraph}[runin]{\sffamily\itshape\color{Brown}}{\thesubparagraph}{}{}
+%\titleformat{\chapter}[display]
+%	{\filcenter}
+%	{\color{Gray}\Huge Chapter \thechapter}{0pt}
+%	{\color{NavyBlue}\Huge\sffamily}
+\titleformat{\section}{\sffamily\Large\color{NavyBlue}}{\thesection}{16pt}{}
+\titleformat{\subsection}{\sffamily\large\color{NavyBlue}}{\thesubsection}{14pt}{}
+\titleformat{\subsubsection}{\sffamily\color{NavyBlue}}{\thesubsubsection}{12pt}{}
+\titleformat{\paragraph}[runin]{\sffamily\bfseries\color{NavyBlue}}{\theparagraph}{}{}
+\titleformat{\subparagraph}[runin]{\sffamily\itshape\color{NavyBlue}}{\thesubparagraph}{}{}
+
+% fancy chapter
+\definecolor{chapbgcolor}{HTML}{DFEDFF}
+\definecolor{chapnumcolor}{HTML}{7FB7FF}
+
+\usepackage[Bjornstrup]{fncychap}
+\ChNumVar{\fontsize{76}{80}\usefont{T1}{phv}{m}{n}\selectfont}
+\ChTitleVar{\raggedleft\color{NavyBlue}\Huge\sffamily}
+
+\makeatletter
+
+\renewcommand\DOCH{%
+	\settowidth{\py}{\CNoV\thechapter}
+	\addtolength{\py}{-10pt}
+	\fboxsep=0pt%
+	\colorbox{chapbgcolor}{\rule{0pt}{40pt}\parbox[b]{\textwidth}{\hfill}}%
+	\kern-\py\raise20pt%
+	\hbox{\color{chapnumcolor}\CNoV\thechapter}\\%
+}
+
+\renewcommand\DOTI[1]{%
+	\nointerlineskip\raggedright%
+	\fboxsep=\myhi%
+	\vskip-1ex%
+	\colorbox{chapbgcolor}{\parbox[t]{\mylen}{\CTV\FmTi{#1}}}\par\nobreak%
+	\vskip 40pt%
+}
+
+\renewcommand\DOTIS[1]{%
+	\fboxsep=0pt
+	\colorbox{chapbgcolor}{\rule{0pt}{40pt}\parbox[b]{\textwidth}{\hfill}}\\%
+	\nointerlineskip\raggedright%
+	\fboxsep=\myhi%
+	\colorbox{chapbgcolor}{\parbox[t]{\mylen}{\CTV\FmTi{#1}}}\par\nobreak%
+	\vskip 40pt%
+}
+\makeatother
 
 % Improve verbatim
 \usepackage{listings}
@@ -243,13 +284,6 @@
 % continued numbered list
 \newcounter{listnum}
 
-% colored text to distinguish schematization, case building and presentation
-\newcommand{\schema}[1]{\textcolor[HTML]{DE6A10}{#1}}
-\newcommand{\case}[1]{\textcolor[HTML]{0365C0}{#1}}
-\newcommand{\present}[1]{\textcolor[HTML]{00882B}{#1}}
-\newcommand{\red}[1]{\textcolor{red}{#1}}
-\newcommand{\purple}[1]{\textcolor{RoyalPurple}{#1}}
-
 % Emphasized text
 \newcommand{\strong}[1]{{\fontfamily{cmss}\bfseries\color{Brown}{#1}}} 
 \newcommand{\ppl}[1]{\fontfamily{ppl}{\selectfont{#1}}}
@@ -259,3 +293,12 @@
 \usepackage{pifont}% http://ctan.org/pkg/pifont
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
+
+% for the TimeSets citation figure
+\newcommand{\tshierarchy}{\colorbox[HTML]{8dd3c7}{\emph{hierarchy}}}
+\newcommand{\tsinteraction}{\colorbox[HTML]{bebada}{\emph{interaction}}}
+\newcommand{\tsoverview}{\colorbox[HTML]{FDB462}{\emph{overview}}}
+\newcommand{\tsnetwork}{\colorbox[HTML]{FCCDE5}{\emph{network}}}
+\newcommand{\tsgraph}{\colorbox[HTML]{80b1d3}{\emph{graph}}}
+\newcommand{\tsclustering}{\colorbox[HTML]{B3DE69}{\emph{clustering}}}
+\newcommand{\tsevaluation}{\colorbox[HTML]{FFFFb3}{\emph{evaluation}}}

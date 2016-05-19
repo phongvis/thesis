@@ -1,116 +1,117 @@
 \section{Visual Design}
 
 \subsection{Event}
-In TimeSets, an event is represented as a line of text -- \emph{label} -- summarizing its content. A glyph is used to indicate the temporal information. For time-point events, a \emph{circle} is shown at the left of the label. For interval events, a \emph{bar} is shown at the top of the label. When two interval events overlap, their time bars are shown with half opacity to make the intersection visible. To accommodate a large number of events, labels have three possible levels of detail: 
+An event is represented as a line of text -- \emph{label} -- summarizing its content, and a glyph indicating its temporal information. For a time-point event, a \emph{circle} is shown at the left of the label. For an interval event, a \emph{bar} is shown at the top of the label. When two interval events overlap, their time bars are displayed with half opacity to make the intersection visible. To accommodate a large number of events, labels have three possible levels of detail: 
 \begin{enumerate}
-	\item \textbf{Complete}. The entire event label is shown.
-	\item \textbf{Trimmed}. Only the first few words are shown, finished with three dots (\dots) to indicate the incomplete label.
-	\item \textbf{Aggregated}. Events are grouped and labeled with the number of events. A colored border is added to the label to make the aggregate more noticeable. The time bar of an aggregate spans the starting time of its earliest event and the finishing time of its latest event.
+	\item \textbf{Complete}. The entire label is shown.
+	\item \textbf{Trimmed}. Only the first few words are shown and ended with three dots (\dots) to indicate that the visible label is incomplete.
+	\item \textbf{Aggregated}. Events are grouped and labeled with the total number of them. A colored border is added to the label to make the aggregate more noticeable. The time bar of an aggregate spans the starting time of its earliest event and the finishing time of its latest event.
 \end{enumerate}	
 
-Figure~\ref{fig:event-representation} shows examples a complete time-point event, a trimmed time-point event, an interval event, an aggregate of two events, and two overlapping interval events.
+Figure~\ref{fig:event-representation} shows examples these different visual representation of events.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 \centering
-\includegraphics[width=.8\columnwidth]{figure2}
-\caption{Visual representations of complete and trimmed time-point events, interval, aggregated, and overlapping events.}
+\includegraphics[width=.8\columnwidth]{figure2}\caption{Visual representations of events. Top row, left to right: a complete time-point event, a trimmed time-point event, and a aggregate of 10 events. Bottom row, left to right: an interval event, and two overlapping interval events.}
 \label{fig:event-representation}
 \end{figure}
 
 \subsection{Set}
 \subsubsection{Design Overview}
-As discussed in the related work \todo{ref}, Gestalt's principles of grouping are commonly used to show set relationships among events, most effectively uniform connectedness and proximity. Therefore, we also apply these two principles in our design. Proximity is achieved by moving same-set events close together, and coloring the set background makes the events visually connected.
+As discussed in Section\note{ref}, Gestalt's principles of grouping are commonly used to show set relationships among events, most effectively are \emph{proximity} and \emph{uniform connectedness}. Therefore, we also apply these two principles in our design: events belonging to the same set are located close together, and the background of an entire set is colored to make its events visually connected.
 
-Because the horizontal position of each event is decided by its timestamp, spatial grouping is achieved through vertical positioning. The sets are stacked vertically, and each set is further divided into a maximum of three horizontal \emph{layers}: a top and a bottom layer for events shared with the set above and below respectively (if they exist), and a middle layer for other events in the set. There are maximal $2n-1$ layers in total for $n$ sets of events. Figure~\ref{fig:layering} shows the layering for three sets. 
+Spatial grouping is achieved through vertical positioning because the horizontal position of each event is already fixed by its temporal information. Sets are stacked vertically, and each set is further divided into a maximum of three \emph{layers}: the top and the bottom layer for events shared with the set above and below respectively (if they exist), and the middle layer for other events in the set. Figure~\ref{fig:layering} shows an example of a layering for three sets.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 \centering
 \includegraphics[width=.5\columnwidth]{figure3}
-\caption{Layering for three sets $S_1$, $S_2$, and $S_3$. $L_2$ includes events shared by $S_1$ and $S_2$, and $L_4$ includes events shared by $S_2$ and $S_3$. Shared events are shown in red.}
+\caption{Layering for three sets $S_1$, $S_2$, and $S_3$. $L_2$ includes events shared by $S_1$ and $S_2$, and $L_4$ includes events shared by $S_2$ and $S_3$. Shared events are shown in red. $S_2$ consists of events in three layers $L_2$, $L_3$, and $L_4$.}
 \label{fig:layering}
 \end{figure}
 
-\begin{figure}[ht]
+Shared events between two non-neighboring sets can reside in one set and connect to the other set using visual links such as curves~\cite{Alper2011} or areas~\cite{Meulemans2013}. Figure~\ref{fig:layering-1} shows an approach to connect shared events (red squares) using straight edges and link them to the orange set to indicate that they also belong to that set. An alternative approach is to duplicate shared events in both sets. In Figure~\ref{fig:layering-2}, red squares are duplicated in both the green and orange sets. Duplication consumes more display space and could make viewers confuse when seeing same events multiple times. However, it ensures all events of the same set being located close together, which makes the visualization compact. Also, a study by Henry Riche and Dwyer~\cite{Riche2010} shows that complex set-intersection shapes reduce readability compared to item duplication. Aiming for a clear visualization, which is crucial for interactive set construction, we decide to duplicate events that belong to non-neighboring sets. Confused duplication and scalability will be addressed later using interaction and layout algorithm respectively.
+
+\begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Visual links connect shared events from one set to another set.}[.46\columnwidth]
-		{\includegraphics[width=.35\columnwidth]{figure4a}}\label{fig:layering-1}
+	\subcaptionbox{Shared events are connected by edges in the green set, and linked to the orange set.\label{fig:layering-1}}[.47\columnwidth]
+	{\includegraphics[width=.35\columnwidth]{figure4a}}
 	\hfill	
-	\subcaptionbox{Shared events are duplicated in both sets.}[.46\columnwidth]
-		{\includegraphics[width=.35\columnwidth]{figure4b}}\label{fig:layering-2}
-	\caption{Visualizing shared events (red squares) between two non-neighboring sets.}
+	\subcaptionbox{Shared events are duplicated in both green and orange sets.\label{fig:layering-2}}[.47\columnwidth]
+	{\includegraphics[width=.35\columnwidth]{figure4b}}
+	\caption{Shared events (red squares) visualization of two non-neighboring sets.}
 	\label{fig:layering-compare}
 \end{figure}
 
-Shared events between two non-neighboring sets can reside in one set and connect to the other set using visual links such as curves~\cite{Alper2011} or areas~\cite{Meulemans2013}. Figure~\ref{fig:layering-1} shows a possible method of connecting the shared events (red squares) using edges and linking them to the yellow set to indicate that they also belong to that set. The alternative approach is to duplicate them in both sets. In Figure~\ref{fig:layering-2}, red squares are duplicated in both the blue and yellow sets. Duplication consumes more display space and could make viewers confuse when seeing same events multiple times. However, duplication allows all events of a same set being placed close together, which provides a compact visualization and easy comparison. Also, the study by Henry Riche and Dwyer~\cite{Riche2010} shows that complex set intersection shapes reduce readability compared to item duplication. Aiming for a clear visualization, we decided to duplicate events that belong to non-neighboring sets. Confused duplication and scalability will be addressed later using interaction and layout algorithm respectively.
-
-In subsequent sections, we discuss the detail of the set visualization algorithm, which consists of two main steps: the generation of set shapes, and then their coloring.
+In subsequent sections, we discuss the detail of the set visualization algorithm, which consists of two main steps: generating set shapes, and then coloring them.
 
 \subsubsection{Shape Generation}
 \label{sub:shapesgeneration}
-This algorithm takes as input a list of bounding-boxes of the set's events, and generates a closed-curve containing all these rectangles. The sizes and positions of the bounding boxes are decided by the layout algorithm described in the next section. A rectilinear shape can be generated using the scan-line algorithm~\cite{Foley1997}, as shown in Figure~\ref{fig:shape1}. The number of bends along the line is often used to assess the aesthetics and legibility of visualizations~\cite{Tanahashi2012}. Even though the generated shape provides the minimal \textit{data-ink} ratio~\cite{Tufte1986}, a large number of line bends may reduce its legibility. 
+This algorithm takes as input a list of bounding-boxes of the set's events, and generates a closed-curve containing all these boxes. The sizes and positions of the bounding boxes are decided by the layout algorithm described in the next section. A rectilinear shape can be generated using a scan-line algorithm~\cite{Foley1997}, as shown in Figure~\ref{fig:shape1}. The number of bends along the border is often used to assess the aesthetics and legibility of visualizations~\cite{Tanahashi2012}. Even though the generated shape provides the minimal \textit{data-ink} ratio~\cite{Tufte1986}, a large number of line bends may reduce its legibility. 
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 	\centering
-	\subcaptionbox{The rectilinear shape, generated by a scan-line algorithm.} 
-		{\includegraphics[width=.47\columnwidth]{figure5a}}\label{fig:shape1}
+	\subcaptionbox{The original rectilinear shape generated by a scan-line algorithm.\label{fig:shape1}} 
+	{\includegraphics[width=.47\columnwidth]{figure5a}}
 	\hfill
-	\subcaptionbox{The simplified shape by flattening and removing jags (red eclipse).}
-		{\includegraphics[width=.47\columnwidth]{figure5b}}\label{fig:shape2}
+	\subcaptionbox{The simplified shape by flattening and removing jags (red eclipse).\label{fig:shape2}}
+	{\includegraphics[width=.47\columnwidth]{figure5b}}
 	\caption{Rectilinear shape generation.}
 	\label{fig:shape}
 \end{figure}
 
-To reduce the number of line bends, the top and the bottom sides of the set outline are flattened. The left and right sides  are kept unchanged because they indicate the event timespan. On either side, the path can be ``jagged'' if two events start or end close to each other. Those close vertical segments are combined to reduce line bends if their horizontal gap is smaller than a threshold. This trades off time accuracy for outline smoothness and can be controlled by the user. Figure~\ref{fig:shape2} shows the result of this simplification. 
+To reduce the number of line bends, the top and the bottom sides of the set outline are flattened. The left and right sides  are kept unchanged because they indicate the temporal information of events. On both sides, the outline can be ``jagged'' if two events start or end close to each other. Those close vertical segments are combined to reduce line bends if their horizontal gap is smaller than some threshold. This trades off time accuracy for outline smoothness and can be adjusted by the user. Figure~\ref{fig:shape2} shows the result of this simplification. 
 
-To reduce the degree of line bends, the algorithm converts vertical segments to diagonal ones wherever possible, such as  $e_2$ and $e_3$ in Figure~\ref{fig:generation1}. Smoother lines are easier to follow~\cite{Kim2010}, thus the algorithm further converts diagonal segments to B\'{e}zier curves and replaces right corners with quadrant arcs as in Figure~\ref{fig:generation2}.
+To reduce the degree of line bends, vertical segments are converted to diagonal ones wherever possible, such as  $e_2$ and $e_3$ in Figure~\ref{fig:generation1}. Smoother lines are easier for users to follow~\cite{Kim2010}, thus diagonal segments are further converted to B\'{e}zier curves, and squared corners are replaced by quadrant arcs as in Figure~\ref{fig:generation2}.
 
 \begin{figure}[ht]
 	\centering
-	\subcaptionbox{Vertical segments $e_2$ and $e_3$ are converted to diagonal ones (dashed lines).}
-		{\includegraphics[width=.47\columnwidth]{figure6a}}\label{fig:generation1}
+	\subcaptionbox{Vertical segments $e_2$ and $e_3$ are converted to diagonal ones (dashed lines).\label{fig:generation1}}
+		{\includegraphics[width=.47\columnwidth]{figure6a}}
 	\hfill
-	\subcaptionbox{Right corners are replaced by quadrants. $e_2$ and $e_3$ are smoothened by B\'{e}zier curves.}
-		{\includegraphics[width=.47\columnwidth]{figure6b}}\label{fig:generation2}
+	\subcaptionbox{Squared corners are replaced by quadrant arcs. $e_2$ and $e_3$ are smoothened by B\'{e}zier curves.\label{fig:generation2}}
+		{\includegraphics[width=.47\columnwidth]{figure6b}}
 	\caption{Shape smoothening by reducing the degree of line bends.}
 	\label{fig:generation}
 \end{figure}
 
-\subsubsection{Coloring}
-Each set is filled with a color selected from Qualitative Set 2 of ColorBrewer~\cite{Harrower2003} to make them easily distinguishable. Two color filling options are considered: only the time circle or the entire event label. Our design follows uniform connectedness principle requiring visual connection among same-set events. When they are visually connected and only their time circles are filled, additional edges may reduce the readability. KelpFusion~\cite{Meulemans2013} follows this approach using lines and areas to connect time circles reducing its readability as in Figure~\ref{fig:evaluation2}. In the second option, filling the entire label may produce a false impression about the event's time range. We choose this option and lessen the effect by coloring the gap between events as in Figure~\ref{fig:evaluation1}. It also helps increase the sense of grouping compared to filling only the time circles.
+\subsubsection{Set Coloring}
+Each set is filled with a color selected from Qualitative Set 2 of ColorBrewer~\cite{Harrower2003} to make them easily distinguishable. Two color filling options are considered: only the time circle and the entire label. Our design follows uniform connectedness principle requiring visual connection among same-set events. When they are visually connected and only their time circles are filled, intersection between edges and text may reduce the readability of the visualization. Figure~\ref{fig:evaluation2} shows an example of KelpFusion~\cite{Meulemans2013} using this approach. In the second option, filling the entire label may produce a false understanding about the temporal information of events. We choose this option and lessen the effect by coloring the gap between events as in Figure~\ref{fig:evaluation1}. It also helps increase the sense of grouping compared to filling only the time circles.
 
-The standard coloring method for set intersections is color blending as commonly used for Venn diagrams~\cite{Ware2013}. Color for each set is half-transparent, and alpha blending is applied to produce the new color for the intersection. However, the result may be irrelevant to the two inputs and confused as the color for a new set. For instance, in Figure~\ref{fig:layering}, the yellow color of layer $L_2$ is not naturally considered as the common between light yellow of set $S_1$ and light green of set $S_2$.
+One common coloring method for set intersections is \emph{color blending} as used in Venn diagrams~\cite{Ware2013}. Color for each set is half-transparent, and alpha blending is applied to produce a new color for the intersection. However, the output color may look irrelevant to the two input colors and may be confused as the color for a new set rather than the intersection part.
 
-To address this issue, we fill the intersection with a linear color gradient changing between the two set colors as in Figure~\ref{fig:gradient1}. While the gradient provides a smooth transition, it becomes difficult to recognize the two ends of the intersection. For example, it is not clear from Figure~\ref{fig:gradient1} that the background of the event \textit{Rove's 4th grand jury appearance} (2\textsuperscript{nd} row top down) is pure yellow or it has a mix of green as well. To solve this problem, multiple color transitions are used instead of a single transition. For instance, in Figure~\ref{fig:gradient2}, the color transitions between green and yellow are repeated multiple times so that both colors are clearly shown in every row of the intersection, and there is no significant difference in color perception among these rows.
+To address this issue, we fill the intersection with a linear color gradient changing between the two set colors as in Figure~\ref{fig:gradient1}. While the gradient provides a smooth transition, it becomes difficult to recognize the two ends of the intersection. For example, it is not clear from Figure~\ref{fig:gradient1} that the background of the event ``Rove's 4th grand jury appearance'' (the second row from top to bottom) is pure yellow or it has a mix of green as well. To solve this problem, multiple color transitions are used instead of a single transition. For instance, in Figure~\ref{fig:gradient2}, the color transitions between green and yellow are repeated multiple times so that both colors are clearly shown in every row of the intersection.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Intersection shown as a single color gradient.}
-		{\includegraphics[width=0.48\columnwidth]{figure7a}}\label{fig:gradient1}
+	\subcaptionbox{Intersection shown as a single color gradient.\label{fig:gradient1}}
+		{\includegraphics[width=0.47\columnwidth]{figure7a}}
 	\hfill
-	\subcaptionbox{Intersection shown as multiple color gradients.}
-		{\includegraphics[width=0.48\columnwidth]{figure7b}}\label{fig:gradient2}
+	\subcaptionbox{Intersection shown as multiple color gradients.\label{fig:gradient2}}
+		{\includegraphics[width=0.47\columnwidth]{figure7b}}
 	\caption{Color gradient technique to encode set memberships. The gradient area shows three shared events between two sets.}
 	\label{fig:gradient}
 \end{figure}
 
-\subsubsection{Multiple-set Events Visualization}
-With the vertical layering of sets as discussed above, three sets cannot be placed closed to each other; therefore, it is impossible to visualize intersections among three sets or more. This is also a challenging problem with many state-of-the-art methods~\cite{Alsallakh2014}. To address this issue, similar to non-neighboring sets, we replicate events for each set they belong to so that all events in a same set stay close together providing a compact visualization and easy comparison. To provide full set memberships of events, one method is drawing edges to connect all replicates of the same event together. However, this may produce a cluttered visualization with many edge crossings. Another method is to color code the event according to its set memberships. One approach is to color the event's time icon preceding its label using either multiple circles (Figure~\ref{fig:eventmembership1}) or concentric rings (Figure~\ref{fig:eventmembership2}). The former requires more horizontal space, while the latter needs more vertical space. Another approach is to color the background of the event's label. Color gradient is used for a smooth color transition as in Figure~\ref{fig:eventmembership3}. This visual encoding is consistent with the use of color gradient to show 2-set intersections. However, a timeline with many long-label events may produce a too colorful and distracted visualization. Also, limited label height may hamper the detection of color transition. To solve these problems, color is transitioned from left to right, and only run through a first few characters of the event label. Figure~\ref{fig:citations} shows this technique in a visualization with 200 events.
+\subsubsection{Multiple-set Events}
+With the vertical layering of sets as discussed earlier, three sets cannot be placed adjacently; therefore, it is unable to visualize intersections among three sets or more. This is also a challenging problem with other state-of-the-art methods~\cite{Alsallakh2014}. To address this issue, similar to non-neighboring sets, we replicate events for each set that they belong to so that all events in the same set stay close together producing a compact visualization. To provide full set memberships of events, one method is connecting all replicates of the same event using edges. However, this may produce a cluttered visualization with many edge crossings. Another method is to color code the event according to its set memberships. The first option is to color the event time circle using either multiple circles (Figure~\ref{fig:eventmembership1}) or concentric rings (Figure~\ref{fig:eventmembership2}). The former requires more horizontal space, whereas the latter needs more vertical space. Another option is to color the background of the event label. Color gradient is used for a smooth color transition as in Figure~\ref{fig:eventmembership3}. This visual encoding is consistent with the use of color gradient to show two-set intersections. However, a timeline with many long-label events may produce a too colorful and distracted visualization. Also, limited label height may hamper the detection of color transition. To solve these problems, color is transitioned from left to right, and only run through a first few characters of the event label (Figure~\ref{fig:eventmembership4}). Figure~\ref{fig:citations} shows this technique in a visualization of 200 events.
 
 \begin{figure}[ht]
 	\centering
-	\subcaptionbox{Each circle represents a set.}[.3\columnwidth]{\label{fig:eventmembership1}\includegraphics[width=.25\columnwidth]{figure8a}}
+	\subcaptionbox{Each circle represents a set.\label{fig:eventmembership1}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8a}}
 	\hfill
-	\subcaptionbox{Each ring represents a set.}[.3\columnwidth]{\label{fig:eventmembership2}\includegraphics[width=.25\columnwidth]{figure8b}}
+	\subcaptionbox{Each ring represents a set.\label{fig:eventmembership2}}[.22\columnwidth]{\includegraphics[height=.19\columnwidth]{figure8b}}
 	\hfill
-	\subcaptionbox{Each color in the gradient background represents a set.}[.3\columnwidth]{\label{fig:eventmembership3}\includegraphics[width=.25\columnwidth]{figure8c}}
-	\caption{Multiple-set events visualization. Event 1 is single-set. Event 2 is double-set. Event 3 is triple-set.}
+	\subcaptionbox{Vertical gradient: each color represents a set.\label{fig:eventmembership3}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8c}}
+	\hfill
+	\subcaptionbox{Horizontal gradient: each color represents a set.\label{fig:eventmembership4}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8d}}
+	\caption{Multiple-set events visual representation. Event 1 is single-set. Event 2 is double-set. Event 3 is triple-set.}
 	\label{fig:eventmembership}
 \end{figure}
 
-For interval events, only the label background method can work because it does not have time circles, which can be added but at the cost of extra display space. Time bars can be used to show set memberships by dividing into multiple horizontal parts, each color for one set. However, this could be mis-interpreted as an event having different set membership in each part of its timespan.
+For interval events, only coloring the background of labels can be used because they do not have time circles, which can be added but at the cost of extra display space. Time bars can be used to show set memberships by dividing into multiple horizontal parts, each color for one set. However, this could be misinterpreted as an event having different set membership in each part of its timespan.
 
 \subsection{Interaction}
 \label{sub:interaction}
-Interactive features are implemented to support timeline exploration. Details-on-demand provides related information without information overload. Mouse-over an event reveals its starting/ending time and complete label. When none of the multiple-set visualization techniques proposed above is used to statically display the full set memberships of an event, it is possible to use interaction to reveal that information. When an event is hovered, all of its replicates are highlighted, thus allows detecting all sets it belongs to. This method prevents adding an extra ink to the visualization; however, it requires users to discover the set information manually. 
+Interactive features are implemented to support timeline exploration. Mouse hovering an event reveals its temporal information and the complete label. When none of the multiple-set visualization techniques proposed earlier is used to statically display the full set memberships of an event, it is possible to use interaction to reveal that information. When an event is hovered, all of its replicates are highlighted enabling easy examination of the its full set memberships. This method prevents adding extra ink to the visualization; however, it requires users to discover the set information manually. 
 
-TimeSets provides interactive set filtering and time range navigation (zooming and panning). Clicking on a set in the legend (bottom-right corner in Figure~\ref{fig:teaser}) toggles its visibility. Time range zooming is performed using the mouse-wheel and the panning is controlled by dragging. Users can also interactively modify set ordering by changing the order in the legend through drag-and-drop. A smooth animated transition is provided for all the interactions to help users maintain their mental map~\cite{Elmqvist2011}. A demonstration of these interactive features can be found in the supplemental video.
+TimeSets provides interactive set filtering and focused time window changing via zooming and panning. Clicking on a set in the legend (bottom-right corner in Figure~\ref{fig:teaser}) toggles its visibility. Time zoom is performed via the mouse-wheel button and pan is controlled by dragging the left mouse button. Users can also interactively modify set ordering by changing the order in the legend through drag-and-drop. A smooth animated transition is provided for all the interactions to help users maintain their mental maps~\cite{Elmqvist2011}.

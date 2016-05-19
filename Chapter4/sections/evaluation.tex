@@ -1,19 +1,19 @@
 \section{Evaluation}
 
 \subsection{Method}
-% Overview of our method
-We considered timeline visualizations that apply the two most powerful Gestalt principles of grouping to include in the evaluation. For \textit{proximity} principle, as discussed in the related work, LifeLines~\cite{Plaisant1996a} cannot show multi-set events, and storyline visualizations~\cite{Liu2013} only work for interval multi-set events. For \textit{uniform connectedness} principle, methods that connect all events belonging to the same set together without using a designated layout to reduce edge crossings such as tmViewer~\cite{Kumar1998} produce a cluttered visualization. To the best of our knowledge, there is no existing visualization that is designed to show multi-set relations and temporal information of events together. Therefore, rather than evaluating both the layout and the set visualization technique of TimeSets, we decided to focus only on the second one. We compared TimeSets with a set visualization technique that can apply on top of an existing timeline. We chose KelpFusion because among similar techniques, it has been shown to have the best performance in readability tasks in both accuracy and completion time~\cite{Meulemans2013}. We acknowledged that KelpFusion was not specifically designed to work with timelines. However, KelpFusion can work with any given layouts, and it is the best choice for this evaluation. We conducted a controlled experiment to compare TimeSets and KelpFusion. It followed a within-subject design; and accuracy, time and user preference were collected.
+We considered timeline visualization techniques that use the two most powerful Gestalt 's principles of grouping in the evaluation. For the \emph{proximity} principle, as discussed in the related work\note{update}, LifeLines~\cite{Plaisant1996a} cannot show multiple-set events, and storyline visualizations~\cite{Liu2013} only work with interval events. For the \emph{uniform connectedness} principle, methods that connect all events belonging to the same set together without using a designated layout to reduce edge crossings such as tmViewer~\cite{Kumar1998} produce a cluttered visualization. To the best of our knowledge, there is no existing visualization that is designed to show multi-set relations and temporal information of events together. Therefore, rather than evaluating both the layout and the set visualization technique of TimeSets, we decided to focus only on the second one. We compared TimeSets with a set visualization technique that can apply on top of an existing timeline. We chose KelpFusion because among similar techniques, it has been shown to have the best performance in readability tasks in both accuracy and completion time~\cite{Meulemans2013}. We acknowledged that KelpFusion was not specifically designed to work with timelines. However, KelpFusion can work with any given layouts, and it is the best choice for this evaluation. We conducted a controlled experiment to compare TimeSets and KelpFusion. It followed a within-subject design; and accuracy, time and user preference were collected.
  
 \subsubsection{Datasets}
-We used generated data for the experiment to remove the possibility that participants might be distracted by their existing knowledge of scenarios. Only time-point events are used because KelpFusion needs a set of points as its input. The complexity of dataset was controlled by two parameters: the number of sets and the average number of events per set. Overall, half of the events were part of more than one set; this is the same ratio as in the CIA Leak case dataset. The details of the four levels of complexity used in the experiment are shown in Table~\ref{table:dataset}.
+We used generated data for the experiment to avoid that participants might be distracted by their prior knowledge. Only time-point events are used because KelpFusion can only takes input as a set of points. The complexity of the dataset was controlled by two parameters: the number of sets and the average number of events per set. Overall, half of the events were multiple-set; this is the same ratio as in a real-world dataset: CIA Leak case. The details of the four levels of complexity used in the experiment are shown in Table~\ref{table:dataset}.
 
 \begin{table}[ht]
 \centering
-\caption{Data Set Statistics}
+\sffamily\small
+\caption{Dataset Statistics}
 \label{table:dataset}
 \begin{tabular}{cccc}
 	\toprule
-	Complexity & \# sets & \# events & \# intersections \\ 
+	\textbf{Complexity} & \textbf{\# Sets} & \textbf{\# Events} & \textbf{\# Intersections} \\ 
 	\midrule
 	Level 1 & 3 & 30 & 15 \\ 
 	Level 2 & 3 & 45 & 23 \\ 
@@ -23,14 +23,14 @@ We used generated data for the experiment to remove the possibility that partici
 \end{tabular} 
 \end{table}
 
-We introduce three approaches to visualize intersections between more than two sets; however, evaluating all of them would triple the number of trials and make the experiment too long. We plan a separate experiment to study which method is the most effective as our future work. In this experiment, we only tested two-sets intersections and simple white circles are used for events' time indicators. 
+We introduce four approaches to visualize intersections between more than two sets; however, evaluating all of them would triple the number of trials and make the experiment too long. We plan a separate experiment to study which method is the most effective as our future work. In this experiment, we only tested two-sets intersections and simple white circles are used for events' time indicators. 
 
 Images of this dataset using the KelpFusion method were generously provided by the method's author. To avoid bias, our method also used static images instead of interactive visualizations. Colors for both methods were Qualitative Set 2 of ColorBrewer~\cite{Harrower2003}. KelpFusion does not have its own layout; therefore, our layout algorithm was used for both settings. Only one algorithm is used to prevent adding another factor to the experiment, which doubles the number of trials for participants. The traceability algorithm was chosen because reading comprehension is not required for the tasks. Figure~\ref{fig:evaluation} shows example images used in the experiment. 
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 	\centering
-	\subcaptionbox{TimeSets.}{\label{fig:evaluation1}\includegraphics[width=\linewidth]{figure14a}}\\
-	\subcaptionbox{KelpFusion.}{\label{fig:evaluation2}\includegraphics[width=\linewidth]{figure14b}}
+	\subcaptionbox{TimeSets.\label{fig:evaluation1}}{\includegraphics[width=\linewidth]{figure14a}}\\
+	\subcaptionbox{KelpFusion.\label{fig:evaluation2}}{\includegraphics[width=\linewidth]{figure14b}}
 	\caption{Example images used in the experiment.}
 	\label{fig:evaluation}
 \end{figure}
@@ -39,11 +39,12 @@ Images of this dataset using the KelpFusion method were generously provided by t
 
 \begin{table}[ht]
 \centering
+\sffamily\small
 \caption{Tasks used in our experiment}
 \label{table:tasks}
 \begin{tabular}{rl}
 	\toprule
-	Task & Example \\ 
+	\textbf{Task} & \textbf{Example} \\ 
 	\midrule
 	SetOverview & Roughly estimate which set has more events:  A or B \\&(please do \textbf{NOT} count the number of events)? \\		
  	IntersectionCompare & Which set pair shares more events: A\&B or C\&D\\&  (please count the number of events)? \\ 
@@ -64,18 +65,18 @@ We use general questions to help preserve the external validity of the experimen
 We used two question sets with comparable difficulty and counterbalanced the order of the visualization techniques as well as the order of question sets to reduce learning effects. We fixed the order of task types and the order of difficulty in each type from simple to complex. For each task, the question and all the answer options were displayed without the visualization. Once participants finished reading, they clicked a button to reveal the figure, when the timing started. This is to reduce the affect of individual differences in reading and comprehension speed on the measured time. 
 
 \subsection{Hypotheses}
-\label{sec:hypotheses}
 
+For task performance, we hypothesized that
 \begin{description}
-	\item [H1.] TimeSets will have higher accuracy and shorter completion time for all tasks compared to KelpFusion. The colored set background in TimeSets can have a stronger sense of grouping than the line connection in KelpFusion, which may make the set-related tasks easier. Also, shared events are visually grouped in TimeSets, separating from the non-shared ones. This may help its performance in tasks related to shared events.
+	\item [H1.] Overall, TimeSets will outperform KelpFusion in both time and accuracy. The colored backgrounds of sets in TimeSets produce a stronger sense of grouping than the connected paths in KelpFusion. Also, in TimeSets, shared events are visually connected, separated from the non-shared ones.
 	
-	\item [H2.] TimeSets will require less time for the SetOverview task than KelpFusion, but will be less accurate. The color background in TimeSets makes it easier to recognize a group. However, the set size is not a precise indicator of event number because it is also affected by the label lengths and the gap between events.
+	\item [H2.] For the \emph{SetOverview} task, participants using TimeSets will be faster but less accurate than using KelpFusion. In TimeSets, the colored background makes sets more noticeable; however, the colored area is not always proportional to the set size, which may lead to a misunderstanding for participants. 
 	
-	\item [H3.] TimeSets will outperform KelpFusion in time and accuracy on both IntersectionCompare and IntersectionPattern tasks. In TimeSets, shared events are visually grouped in its own layer, whereas in KelpFusion, they are mixed with non-shared events, which may affect its performance for tasks involves share events.
+	\item [H3.] For both the \emph{IntersectionCompare} and \emph{IntersectionPattern} tasks, TimeSets will outperform KelpFusion in both time and accuracy. In TimeSets, shared events are visually connected in its own layer, whereas in KelpFusion, they are mixed with non-shared events.
 	
-	\item [H4.] TimeSets will outperform KelpFusion in the DifferenceCount task. Similar to the last hypothesis, in TimeSets, events not belonging to neighboring sets have their own layer with a unique background color, whereas in KelpFusion such events are mixed with the shared events. This can make this task easier with TimeSets.
+	\item [H4.] For the \emph{DifferenceCount} task, TimeSets will outperform KelpFusion in both time and accuracy. In TimeSets, events that do not belong to neighboring sets have their own layer with a unique background color, whereas in KelpFusion, they are mixed with the shared events.
 	
-	\item [H5.] KelpFusion will outperform TimeSets in the SetBiggestYear task. When looking at elements in each year, connected lines in KelpFusion make it easier to count, compared to TimeSets.
+	\item [H5.] For the \emph{SetBiggestYear} task, KelpFusion will outperform TimeSets in both time and accuracy. When focusing on events in each year, connected lines in KelpFusion make it easier to count.
 \end{description}
 
 For user preference, we hypothesized that
@@ -84,60 +85,60 @@ For user preference, we hypothesized that
 	
 	\item [H7.] TimeSets will be more aesthetically pleasing than KelpFusion with smooth curves and smooth color changes compared to straight lines and plain colors.
 	
-	\item [H8.] TimeSets will be less cluttered than KelpFusion because it uses simple shapes, while KelpFusion uses a combination of lines and areas.
+	\item [H8.] TimeSets will be less cluttered than KelpFusion because it uses simple shapes, whereas KelpFusion uses a combination of lines and areas.
 	
-	\item [H9.] TimeSets will provide a stronger sense of grouping than KelpFusion because it colors the entire background of the set.
+	\item [H9.] TimeSets will provide a stronger sense of grouping than KelpFusion because it colors the entire background of a set.
 \end{description}
 
 \subsection{Results}
 We used a repeated-measure analysis of variance (RM-ANOVA) to analyze the task accuracy and completion time. Accuracy is measured as the percentage of correct answers. The logarithm of completion time is used to normalize its skewed distribution.
 
 \subsubsection{Accuracy}
-Figure~\ref{fig:accuracy} shows the mean accuracy. The RM-ANOVA test revealed a significant main effect of visualization technique ($F(1,29)=4.99, p<.05$), showing that accuracy was significantly higher with TimeSets. There was also a significant main effect of task type ($F(4,116)=8.89, p<.00001$). No significant effect of the visualization $\times$ task interaction was found ($F(4,116)=1.85, p=.12$). Paired t-tests were conducted to investigate the performance difference for each task. A significant effect was found in three tasks: IntersectionCompare ($p<.05$), DifferenceCount ($p<.01$), and IntersectionPattern ($p<.05$), indicating TimeSets was significantly more accurate than KelpFusion in them. Only task DifferenceCount still had a significant effect with corrected p-value for multiple tests using Bonferroni correction.
+Figure~\ref{fig:accuracy} shows the mean accuracy. The RM-ANOVA test revealed a significant main effect of visualization technique ($F(1,29)=4.99, p<.05$), showing that accuracy was significantly higher with TimeSets. There was also a significant main effect of task type ($F(4,116)=8.89, p<.00001$). No significant effect of the visualization $\times$ task interaction was found ($F(4,116)=1.85, p=.12$). Paired t-tests were conducted to investigate the performance difference for each task. A significant effect was found in three tasks: IntersectionCompare ($p<.05$), DifferenceCount ($p<.01$), and IntersectionPattern ($p<.05$), indicating TimeSets was significantly more accurate than KelpFusion in them. Only the task DifferenceCount still had a significant effect with corrected p-value for multiple tests using Bonferroni correction.
 
 \subsubsection{Time}
-Figure~\ref{fig:time} shows the mean completion time. The RM-ANOVA test revealed no significant main effect of visualization technique ($F(1,29)=.05, p=.82$), indicating that the completion time for TimeSets ($M=23.87,SD=9.18$) and KelpFusion ($M=23.72,SD=11.38$) were not significantly different. There was a significant main effect of task type ($F(4,116)=23.80, p<10^{-12}$). The visualization $\times$ task interaction was also significant ($F(4,116)=3.23,p<.05$), indicating that difference in completion time due to visualization technique was significantly different across tasks. To further investigate this, a paired t-test for each task was conducted. Significant effects were found in DifferenceCount ($p<.01$), indicating TimeSets is significantly faster in this task, and SetBiggestYear ($p<.01$), indicating KelpFusion is significantly faster in this task. Both tasks still had a significant effect with corrected p-value for multiple tests using Bonferroni correction.
+Figure~\ref{fig:time} shows the mean completion time. The RM-ANOVA test revealed no significant main effect of visualization technique ($F(1,29)=.05, p=.82$), indicating that the completion time for TimeSets ($M=23.87,SD=9.18$) and KelpFusion ($M=23.72,SD=11.38$) were not significantly different. There was a significant main effect of task type ($F(4,116)=23.80, p<10^{-12}$). The visualization $\times$ task interaction was also significant ($F(4,116)=3.23,p<.05$), indicating that difference in completion time due to visualization technique was significantly different across tasks. To further investigate this, a paired t-test for each task was conducted. Significant effects were found in the DifferenceCount task ($p<.01$), indicating TimeSets is significantly faster in this task, and the SetBiggestYear task ($p<.01$), indicating KelpFusion is significantly faster in this task. Both tasks still had a significant effect with corrected p-value for multiple tests using Bonferroni correction.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 	\centering
 	 {\includegraphics[width=.4\linewidth]{figure15a}} \\
-	\subcaptionbox{Mean accuracy (in percentage).}{\label{fig:accuracy}\includegraphics[width=.7\linewidth]{figure15b}}\\
-	\subcaptionbox{Mean completion time (in seconds).}{\label{fig:time}\includegraphics[width=.7\linewidth]{figure15c}}
-	\caption{Mean accuracy and completion time of each tasks. Error bars show standard error. Significant effects are denoted by *.}
+	\subcaptionbox{Mean accuracy (in percentage).\label{fig:accuracy}}{\includegraphics[width=.8\linewidth]{figure15b}}\\
+	\subcaptionbox{Mean completion time (in seconds).\label{fig:time}}{\includegraphics[width=.8\linewidth]{figure15c}}
+	\caption{Mean accuracy and completion time for each task. Error bars show standard error. Tasks with Significant effect are \textcolor{blue}{highlighted}.}
 \end{figure}
 
 \subsubsection{User Preference}
-Participants were asked to rate both methods using a Likert scale 1 (worst) to 5 (best) after they completed all the tasks. Four questions were asked for each visualization technique: 
+Participants were asked to rate both methods using a Likert scale from 1 (worst) to 5 (best) after they completed all the tasks. The following four questions were asked for each visualization technique: 
 \begin{itemize}
-	\item How confident were they in answering the questions? 
+	\item How confident were the participants in answering the questions? 
 	\item How aesthetically pleasing were the visualizations? 
 	\item How cluttered were the visualizations?
 	\item How strong was the sense of grouping?
 \end{itemize}
 Figure~\ref{fig:ratings} shows the summary of user ratings. Fisher's exact tests found significant effects in all questions: Confidence ($p<.01$), Aesthetically Pleasing ($p<.01$), Not Cluttered ($p<.01$), and Sense of Grouping ($p<.0001$); indicating users preferred TimeSets to KelpFusion in those aspects.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 	\centering
-	\subcaptionbox{How confident were they in answering the questions?} {\label{fig:pref-confidence}
-		\includegraphics[width=.7\columnwidth]{figure16a}}
-	\subcaptionbox{How aesthetically pleasing were the visualizations?}{\label{fig:pref-nice}
-		\includegraphics[width=.7\columnwidth]{figure16b}}
-	\subcaptionbox{How cluttered were the visualizations?}{\label{fig:pref-read}
-		\includegraphics[width=.7\columnwidth]{figure16c}}
-	\subcaptionbox{How strong was the sense of grouping?}{\label{fig:pref-group}
-		\includegraphics[width=.7\columnwidth]{figure16d}}
+	\subcaptionbox{How confident were they in answering the questions?} {
+		\includegraphics[width=.93\columnwidth]{figure16a}}
+	\subcaptionbox{How aesthetically pleasing were the visualizations?}{
+		\includegraphics[width=.93\columnwidth]{figure16b}}
+	\subcaptionbox{How cluttered were the visualizations?}{
+		\includegraphics[width=.93\columnwidth]{figure16c}}
+	\subcaptionbox{How strong was the sense of grouping?}{
+		\includegraphics[width=.93\columnwidth]{figure16d}}
 	\caption{Subjective user ratings of each technique for each question. Bar width represents the number of participants selected the corresponding option.}
 	\label{fig:ratings}
 \end{figure}
 
 \subsection{Discussion}
-The results show that in overall, TimeSets is more accurate than KelpFusion, but there is no significant difference in completion time. This partly agrees with hypothesis \textbf{H1}.
+The results show that overall, TimeSets outperforms KelpFusion in accuracy, but not in completion time. This partly agrees with hypothesis \textbf{H1}.
 
-There was no significant effect of visualization technique on accuracy or completion time for the SetOverview task, which disagrees with hypothesis \textbf{H2}. The average accuracy of both methods is low, relatively to the other tasks in the experiment. Possible causes for TimeSets are discussed earlier in the hypothesis statement, and the edge length in KelpFusion, which is a prominent visual feature, is possibly not a good size indicator, either.
+For the \emph{SetOverview} task, there was no significant effect of visualization technique on either accuracy or completion time, which disagrees with hypothesis \textbf{H2}. The average accuracy of both methods is relatively low to other tasks in the experiment. Possible causes for TimeSets are discussed earlier in the hypothesis statement, and the edge length in KelpFusion -- a prominent visual feature -- is probably not either a good size indicator.
 
-The results also show that for intersection tasks, TimeSets has higher accuracy than KelpFusion; however, their completion time performances are not significantly different. This partly confirms hypothesis \textbf{H3}. Shared events in TimeSets are highlighted by color gradient, and participants are less likely to miscount them, resulting in higher accuracy. In KelpFusion, shared events are horizontally aligned, because it shares the same layout as TimeSets. We observed that some participants tried to trace shared events this way, which is prone to missing events, thus similar speed but lower accuracy.
+For intersection tasks, the results also show that TimeSets has higher accuracy than KelpFusion; however, their completion time performances are not significantly different. This partly confirms hypothesis \textbf{H3}. In TimeSets, shared events are highlighted by color gradient, thus participants are less likely to miscount them. In KelpFusion, shared events are horizontally aligned, because it shares the same layout as TimeSets. We observed that some participants tried to trace shared events using this way, which is prone to missing events, thus KelpFusion has similar speed but lower accuracy.
 
-Hypothesis \textbf{H4}, about the DifferenceCount task, is supported by the results. Events that belong to a single set are clearly shown in TimeSets as a region with a single color background. This helps improve performance in both accuracy and completion time.
+Hypothesis \textbf{H4}, about the DifferenceCount task, is supported by the results. Events that belong to a single set are clearly shown in TimeSets as a region with a single colored background. This helps improve performance in both accuracy and completion time.
 
 The results show that KelpFusion has faster completion time than TimeSets for the SetBiggestYear task, but there is no significant difference in accuracy. This partly agrees with hypothesis \textbf{H5}. The vertical lines used to denote year boundaries in this task may have helped, by splitting the visual area into columns. To solve the task, participants count the number of events in each column and pick the highest one. A KelpFusion visualization is quite similar to a network, and edges connecting events within each column can make counting easier. This may explain why participants counted faster with KelpFusion, but had the same accuracy as with TimeSets.
 

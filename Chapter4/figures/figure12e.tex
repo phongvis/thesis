@@ -1,0 +1,18 @@
+\documentclass[tikz]{standalone}
+
+\input{../../Preamble/tikz}
+
+\begin{document}
+
+\tikzstyle{aggregate} = [ultra thick,rectangle,draw=f1,minimum height=.6cm]
+\tikzstyle{bar} = [very thick,rectangle,fill=f1,scale=.6]
+	
+\begin{tikzpicture}[framed, background rectangle/.style={thick,draw=gray!50}]
+\node(b1) [aggregate] {3 events};
+\node[bar, anchor=north west, minimum width=2cm] at (b1.north west) {};
+
+\node(b2) [aggregate, right= of b1, minimum height=1cm, yshift=-0.2cm] {\LARGE 9 events};
+\node[bar, anchor=north west, minimum width=4cm,yshift=.02cm] at (b2.north west) {};
+\end{tikzpicture}
+
+\end{document}

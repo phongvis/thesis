@@ -2,21 +2,19 @@
 \label{sec:interface}
 
 \subsection{Event}
-An event is represented by a rounded rectangle with a short text inside summarizing its content. All rectangles have the same height to provide a consistent appearance, especially when they are later connected to form a schema (Section \ref{sub:schema-outline}). Rectangles are assigned the same maximum width and long texts are trimmed to fit into their rectangles. The full content of an event will be displayed when it is hovered. Events can include categorical attributes. For example, in news reports, the themes of an article can be sport, fashion or both. Inside the border of an event, small colored rectangles are added to the left of its text to indicate its categories. Only around 12 colors can be distinguished simultaneously in the human view~\cite{Munzner2014}. We choose Set 1 of qualitative colors from ColorBrewer~\cite{Harrower2003} for the colormap. The eight most appeared categories are displayed using these colors and other categories share the same different color. We also plan to combine color with another channel such as texture to increase the number of differentiated categories in the future work. Figure~\ref{fig:event} shows an example of event with three color-coded categories.
+An event is represented by a rounded rectangle with a short text inside summarizing its content. All rectangles have the same height to provide a consistent appearance, especially when they are later connected to form a schema (Section \ref{sub:schema-outline}). Rectangles are assigned the same maximum width and long texts are trimmed to fit into their rectangles. The full content of an event will be displayed when it is hovered. Events can include categorical attributes. For example, in news reports, the themes of an article can be sport, fashion or both. Inside the border of an event, small colored rectangles are added to the left of its text to indicate its categories. Note that only around 12 colors can be distinguished simultaneously in the human view~\cite{Munzner2014}. We choose Set 1 of qualitative colors from ColorBrewer~\cite{Harrower2003} for the colormap. The eight most appeared categories are displayed using these colors and other categories share the same different color. Figure~\ref{fig:event} shows an example of event with three color-coded categories.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=.5\columnwidth]{event}
-\caption{An event with three categories. The event is represented as a rounded rectangle with a summarized text inside. On the left side of the text, small color-coded rectangles indicate its categories. The event is positioned along the time axis at when it happens -- 8th of May.}
+\includegraphics[width=.4\columnwidth]{event}
+\caption{An event with three categories. The event is represented as a rounded rectangle with a summarized text inside. On the left side of the text, small color-coded rectangles indicate its categories. The event is positioned along the time axis at which it happens -- 8th of May.}
 \label{fig:event}
 \end{figure}
 
-An event is left-aligned with its temporal value on the time axis. To reduce cluttering, an event is not visually connected to its corresponding point on the axis. Instead, when the mouse hovers an event, its time point on the time axis is highlighted. The time axis is shown as a horizontal line at the bottom of all events. It consists of two hierarchical temporal scales, which are changed dynamically according to the range of the displayed events. For example, Figure~\ref{fig:event} shows two scales: ``month/day'', but they can switch to ``year/month'' if the range is larger.
+An event is left-aligned with its temporal value on the time axis. To reduce cluttering, an event is not visually connected to its corresponding point on the axis. Instead, when the mouse hovers an event, its time point is highlighted. The time axis is shown as a horizontal line at the bottom of all events. It includes two hierarchical temporal scales, which are changed dynamically according to the range of the displayed events. For example, Figure~\ref{fig:event} shows two scales: ``month/day'', but they can switch to ``year/month'' if the range is larger.
 
 \subsection{Schema}
-\todo{do the requirements, the design choices should be justified using them}
-\todo{don't define schema here. this is all about representation.}
-After discovering a number of relevant events or pieces of evidence, the analyst starts combining them to form a \textit{schema}. A schema is a set of related events that are connected to each other in a certain way. For example, a schema might contain all events about a particular person. Figure~\ref{fig:schema} shows examples of schema. 
+r of relevant events or pieces of evidence, the analyst starts combining them to form a \textit{schema}. A schema is a set of related events that are connected to each other in a certain way. For example, a schema might contain all events about a particular person. Figure~\ref{fig:schema} shows examples of schema. 
 
 \begin{figure}[ht]
 	\centering
@@ -28,7 +26,7 @@ After discovering a number of relevant events or pieces of evidence, the analyst
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{teaser}
-\caption{SchemaLine: each piece of text is an analyst note, positioned along the time axis at when the event happened. Related notes are linked together to form a ``schema'' or ``frame''. There are three frames in this example represented as colored rectilinear paths. Small color-coded rectangles on the left side of notes are ``categories''.}
+\caption{SchemaLine: each piece of text is an analyst note, positioned along the time axis at which the event happened. Related notes are linked together to form a ``schema'' or ``frame''. There are three frames in this example represented as colored rectilinear paths. Small color-coded rectangles on the left side of notes are ``categories''.}
 \label{fig:teaser}
 \end{figure}
 

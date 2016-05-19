@@ -1,64 +1,64 @@
-\chapter{Exploring Temporal Relationship of User Annotations}
+\chapter{Exploring Temporal Relationship through User Annotations}
 
 \graphicspath{{Chapter3/figures/}}
 
-Timeline visualization is an important tool for sensemaking. It allows analysts to examine information in chronological order and to identify temporal patterns and relationships. However, many existing timeline visualization methods are not designed for the dynamic and iterative nature of the sensemaking process and the various analysis activities it involves. In this chapter, we introduce a novel timeline visualization, SchemaLine, to address these deficiencies.
-
-\section{Introduction}
-The importance of timeline visualization in supporting sensemaking.
-
-The current limitation
-\begin{itemize}
-	\item no or very simple layout which is cluttered and space-inefficient
-	\item designed for presenting a known story rather than interactively constructing a hidden one
-\end{itemize}  
-
-The contribution
-\begin{itemize}
-	\item a novel  design for an interactive timeline that groups notes into schema determined by the analyst,
-	\item an algorithm to automatically generate a compact and aesthetically pleasing visualization of these schema on the timeline, and
-	\item a set of fluid interactions with the timeline to support the sensemaking activities defined in the Data-Frame model.
-\end{itemize}
-
-\section{Requirements}
-[not in the paper yet! List requirements that SchemaLine need to support including the ability to sensemaking activities from Data--frame model]
-
-\section{Visual Design}
-Visual representation of individual events and schemas
-
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\linewidth]{teaser}
-	\caption{SchemaLine: each piece of text is an analyst note, positioned along the time axis at when the event happened. Related notes are linked together to form a ``schema'' or ``frame''. There are three frames in this example represented as colored rectilinear paths. Small color-coded rectangles on the left side of notes are ``categories''.}
-	\label{fig:teaser}
-\end{figure}
-
-\section{Algorithm}
-
-%\subsection{Layout}
-Describe the algorithm that produces the compact layout of schemas and events.
-
-%\subsection{Schema Outline}
-%Describe the algorithm that produces the polygonal outline covering all events within a schema.
-
-%\section{Sensemaking with SchemaLine}
-%Discuss how SchemaLine's interactions support sensemaking activities in the Data--frame model. [the requirement for this support should be mentioned in the Requirements section.]
-
-\section{Application}
-Discuss the integration of SchemaLine into INVISQUE. SchemaLine receives data input as user notes of INVISQUE and the linking between schemas and index-cards.
-
-\section{Evaluation}
-A case study with 3 participants (different backgrounds) to use INVISQUE+SchemaLine to solve an intelligence analysis task using VAST Challenge 2011 dataset. Report how they used the tool, how the tool might help them.
-
-\section{Conclusion}
+%Timeline visualization is an important tool for sensemaking. It allows analysts to examine information in chronological order and to identify temporal patterns and relationships. However, many existing timeline visualization methods are not designed for the dynamic and iterative nature of the sensemaking process and the various analysis activities it involves. In this chapter, we introduce a novel timeline visualization, SchemaLine, to address these deficiencies.
+%
+%\section{Introduction}
+%The importance of timeline visualization in supporting sensemaking.
+%
+%The current limitation
+%\begin{itemize}
+%	\item no or very simple layout which is cluttered and space-inefficient
+%	\item designed for presenting a known story rather than interactively constructing a hidden one
+%\end{itemize}  
+%
+%The contribution
+%\begin{itemize}
+%	\item a novel  design for an interactive timeline that groups notes into schema determined by the analyst,
+%	\item an algorithm to automatically generate a compact and aesthetically pleasing visualization of these schema on the timeline, and
+%	\item a set of fluid interactions with the timeline to support the sensemaking activities defined in the Data-Frame model.
+%\end{itemize}
+%
+%\section{Requirements}
+%[not in the paper yet! List requirements that SchemaLine need to support including the ability to sensemaking activities from Data--frame model]
+%
+%\section{Visual Design}
+%Visual representation of individual events and schemas
+%
+%
+%\begin{figure}[ht]
+%	\centering
+%	\includegraphics[width=\linewidth]{teaser}
+%	\caption{SchemaLine: each piece of text is an analyst note, positioned along the time axis at when the event happened. Related notes are linked together to form a ``schema'' or ``frame''. There are three frames in this example represented as colored rectilinear paths. Small color-coded rectangles on the left side of notes are ``categories''.}
+%	\label{fig:teaser}
+%\end{figure}
+%
+%\section{Algorithm}
+%
+%%\subsection{Layout}
+%Describe the algorithm that produces the compact layout of schemas and events.
+%
+%%\subsection{Schema Outline}
+%%Describe the algorithm that produces the polygonal outline covering all events within a schema.
+%
+%%\section{Sensemaking with SchemaLine}
+%%Discuss how SchemaLine's interactions support sensemaking activities in the Data--frame model. [the requirement for this support should be mentioned in the Requirements section.]
+%
+%\section{Application}
+%Discuss the integration of SchemaLine into INVISQUE. SchemaLine receives data input as user notes of INVISQUE and the linking between schemas and index-cards.
+%
+%\section{Evaluation}
+%A case study with 3 participants (different backgrounds) to use INVISQUE+SchemaLine to solve an intelligence analysis task using VAST Challenge 2011 dataset. Report how they used the tool, how the tool might help them.
+%
+%\section{Conclusion}
 
 
 %\input{Chapter3/sections/intro.tex}
 %%\input{Chapter3/sections/related-work.tex}
-%\input{Chapter3/sections/design.tex}
-%\input{Chapter3/sections/interface.tex}
+\input{Chapter3/sections/design.tex}
+\input{Chapter3/sections/interface.tex}
 %\input{Chapter3/sections/layout.tex}
-%\input{Chapter3/sections/interaction.tex}
-%\input{Chapter3/sections/evaluation.tex}
+\input{Chapter3/sections/interaction.tex}
+\input{Chapter3/sections/evaluation.tex}
 %\input{Chapter3/sections/conclusion.tex}
