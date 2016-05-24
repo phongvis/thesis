@@ -1,9 +1,9 @@
 % Font
-\usepackage{mathpazo}
-\usepackage{libertine}
+\renewcommand*\rmdefault{ppl}
 \renewcommand*\sfdefault{phv}
+\renewcommand*\ttdefault{lmtt}
 
-\large
+\newcommand{\rmt}[1]{{\rmfamily\large{#1}}} 
 
 % Color
 \usepackage{xcolor}
@@ -16,7 +16,7 @@
 
 % tikz
 \usepackage{tikz}
-\tikzstyle{every node}=[font=\sffamily]
+\tikzstyle{every node}=[font=\sffamily\large]
 \usetikzlibrary{shapes,arrows,positioning,calc,decorations.markings,backgrounds}
 \tikzstyle{c1} = [thick,draw=b1,fill=f1]
 \tikzstyle{c2} = [thick,draw=b2,fill=f2]

@@ -43,7 +43,9 @@
   
 \usepackage{mathpazo}
 \usepackage{libertine}
+\renewcommand*\rmdefault{ppl}
 \renewcommand*\sfdefault{phv}
+\renewcommand*\ttdefault{lmtt}
 
 \fi
 
@@ -61,7 +63,7 @@
 % Captions: This makes captions of figures use a boldfaced small font.
 \RequirePackage[bf,font={small,sf}]{caption}
 \usepackage{url}
-
+\urlstyle{tt}
 
 % *************************** Graphics and figures *****************************
 
@@ -285,8 +287,7 @@
 \newcounter{listnum}
 
 % Emphasized text
-\newcommand{\strong}[1]{{\fontfamily{cmss}\bfseries\color{Brown}{#1}}} 
-\newcommand{\ppl}[1]{\fontfamily{ppl}{\selectfont{#1}}}
+\newcommand{\strong}[1]{{\textbf{\color{NavyBlue}{#1}}}} 
 
 % check and cross
 \usepackage{amssymb}% http://ctan.org/pkg/amssymb
