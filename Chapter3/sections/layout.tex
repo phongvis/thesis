@@ -1,11 +1,11 @@
 \section{Algorithm}
 \label{sec:layout}
 
-The algorithm consists of two parts. First, the layout of schemas is generated and then their outlines are computed based on the layout information.
+The algorithm consists of two parts. First, the layout of schemas is generated; and then their outlines are computed based on the layout information.
 
 \subsection{SchemaLine Layout}
 \label{sub:schema-layout}
-Besides and compact and aesthetics, we set these requirements to the layout: 
+Besides compact and aesthetics, we set these requirements to the layout: 
 \begin{enumerate}
 	\item \textbf{Horizontal position}. Along the time axis, events should be placed exactly at when they happen whenever possible.
 	\item \textbf{Relative order}. To improve the layout, events can be shifted horizontally; however, the their relative order must be maintained. 
@@ -30,7 +30,7 @@ The layout algorithm consists of the following four steps (Fig.~\ref{fig:layout-
 \subsubsection{Order Schemas}
 \label{sub:layout-order}
 This step computes the order of schemas maximizing the total number of shared events between neighboring schemas.
-We apply a strategy that prioritizes pairing of schemas according to how many events they share. To do this, we map the problem to graph path finding as below. Given a set of schemata $S$, we create an undirected graph $G = (V,E)$, where each vertex $v_i$ represents a schema $s_i \in S$. The weight of an edge $e_{ij}$ is the number of events shared by schemata $s_i$ and $s_j$. Finding a schema order with the maximum number of shared nodes placed next to each other becomes finding a path with maximum weight connecting all vertices in $G$. This classic longest path finding problem is NP-hard. The number of schemata we plan to support is at most eight due to the limitation of the small number of colors that human can distinguish. Therefore, we simply use brute-forte algorithm to find the path.
+We atextrmy a strategy that prioritizes pairing of schemas according to how many events they share. To do this, we map the problem to graph path finding as below. Given a set of schemata $S$, we create an undirected graph $G = (V,E)$, where each vertex $v_i$ represents a schema $s_i \in S$. The weight of an edge $e_{ij}$ is the number of events shared by schemata $s_i$ and $s_j$. Finding a schema order with the maximum number of shared nodes placed next to each other becomes finding a path with maximum weight connecting all vertices in $G$. This classic longest path finding problem is NP-hard. The number of schemata we plan to support is at most eight due to the limitation of the small number of colors that human can distinguish. Therefore, we simply use brute-forte algorithm to find the path.
 
 \subsubsection{Layout Individual Schemas}
 \label{sub:layout-schema}
@@ -51,7 +51,7 @@ The group of schemata that share events is added to the SchemaLine first. Their 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{layout-example}
-\caption{Schema layout algorithm. Four events \ppl{N1}, \ppl{N2}, \ppl{N3}, \ppl{N4} will be added to the schema in chronological order. \ppl{N1} is positioned at its accurate event time. \ppl{N2} can stay in the same level as \ppl{N1} because it does not intersect with \ppl{N1}. \ppl{N3} intersects with \ppl{N2} but the intersection width is small enough so that \ppl{N2} can be shifted to the left to let \ppl{N3} stay in the same level as well. However, \ppl{N4} needs to move up one level because the width of its intersection with \ppl{N3} is longer than that of \ppl{N1} and \ppl{N2}, i.e., they cannot be shifted.}
+\caption{Schema layout algorithm. Four events \textrm{N1}, \textrm{N2}, \textrm{N3}, \textrm{N4} will be added to the schema in chronological order. \textrm{N1} is positioned at its accurate event time. \textrm{N2} can stay in the same level as \textrm{N1} because it does not intersect with \textrm{N1}. \textrm{N3} intersects with \textrm{N2} but the intersection width is small enough so that \textrm{N2} can be shifted to the left to let \textrm{N3} stay in the same level as well. However, \textrm{N4} needs to move up one level because the width of its intersection with \textrm{N3} is longer than that of \textrm{N1} and \textrm{N2}, i.e., they cannot be shifted.}
 \label{fig:layout-schema-example}
 \end{figure}
 
@@ -73,14 +73,14 @@ where $\oplus$ is an operator that merges a polygonal path and a rectangle into 
 
 \begin{figure}[ht]
 	\centering
-	\subcaptionbox{\label{fig:outline-right}\ppl{R3} is on the right side of the path.}{\includegraphics[width=0.8\columnwidth]{example-right}}
+	\subcaptionbox{\label{fig:outline-right}\textrm{R3} is on the right side of the path.}{\includegraphics[width=0.8\columnwidth]{example-right}}
 	\hfill
-	\subcaptionbox{\label{fig:outline-up}\ppl{R3} is on top of the path.}{\includegraphics[width=0.55\columnwidth]{example-up}}
+	\subcaptionbox{\label{fig:outline-up}\textrm{R3} is on top of the path.}{\includegraphics[width=0.55\columnwidth]{example-up}}
 	\\
-	\subcaptionbox{\label{fig:outline-up-one}Left-side of \ppl{R3} is a bit greater than left-side of \ppl{R2}.}[.4\linewidth]{\includegraphics[width=0.25\columnwidth]{example-up-smoothing}}
+	\subcaptionbox{\label{fig:outline-up-one}Left-side of \textrm{R3} is a bit greater than left-side of \textrm{R2}.}[.4\linewidth]{\includegraphics[width=0.25\columnwidth]{example-up-smoothing}}
 	\hfill
-	\subcaptionbox{\label{fig:outline-up-two}Right-side of \ppl{R3} is shorter than right-side of \ppl{R2}.}[.4\linewidth]{\includegraphics[width=0.24\columnwidth]{example-up-shorter}}
-	\caption{Four cases when a new rectangle \ppl{R3} is appended to the polygonal path. A big circle indicates the pivot vertex of the path (top-left corner of the last rectangle). Orange circles indicate updated vertices, and blue circles indicate newly added vertices of the polygonal path.}
+	\subcaptionbox{\label{fig:outline-up-two}Right-side of \textrm{R3} is shorter than right-side of \textrm{R2}.}[.4\linewidth]{\includegraphics[width=0.24\columnwidth]{example-up-shorter}}
+	\caption{Four cases when a new rectangle \textrm{R3} is appended to the polygonal path. A big circle indicates the pivot vertex of the path (top-left corner of the last rectangle). Orange circles indicate updated vertices, and blue circles indicate newly added vertices of the polygonal path.}
 	\label{fig:outline}
 \end{figure}
 

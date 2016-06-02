@@ -1,64 +1,154 @@
 \chapter{Exploring Temporal Relationship through User Annotations}
+\label{chap:schemaline}
 
 \graphicspath{{Chapter3/figures/}}
+As the first step toward supporting sensemaking using analytic provenance, this chapter examines how to enable users to explore the temporal relationship hidden in the sensemaking task through the annotations they made. \emph{Timeline} is a simple yet powerful technique to visualize time-oriented data, enabling users to examine information chronologically and identify temporal patterns and relationships. However, many existing timeline visualization methods are not designed for the dynamic and iterative nature of the sensemaking process and the various analysis activities it involves. In this chapter, we introduce a novel timeline visualization, SchemaLine, to address these issues.
 
-%Timeline visualization is an important tool for sensemaking. It allows analysts to examine information in chronological order and to identify temporal patterns and relationships. However, many existing timeline visualization methods are not designed for the dynamic and iterative nature of the sensemaking process and the various analysis activities it involves. In this chapter, we introduce a novel timeline visualization, SchemaLine, to address these deficiencies.
-%
-%\section{Introduction}
-%The importance of timeline visualization in supporting sensemaking.
-%
-%The current limitation
-%\begin{itemize}
-%	\item no or very simple layout which is cluttered and space-inefficient
-%	\item designed for presenting a known story rather than interactively constructing a hidden one
-%\end{itemize}  
-%
-%The contribution
-%\begin{itemize}
-%	\item a novel  design for an interactive timeline that groups notes into schema determined by the analyst,
-%	\item an algorithm to automatically generate a compact and aesthetically pleasing visualization of these schema on the timeline, and
-%	\item a set of fluid interactions with the timeline to support the sensemaking activities defined in the Data-Frame model.
-%\end{itemize}
-%
-%\section{Requirements}
-%[not in the paper yet! List requirements that SchemaLine need to support including the ability to sensemaking activities from Data--frame model]
-%
-%\section{Visual Design}
-%Visual representation of individual events and schemas
-%
-%
-%\begin{figure}[ht]
-%	\centering
-%	\includegraphics[width=\linewidth]{teaser}
-%	\caption{SchemaLine: each piece of text is an analyst note, positioned along the time axis at when the event happened. Related notes are linked together to form a ``schema'' or ``frame''. There are three frames in this example represented as colored rectilinear paths. Small color-coded rectangles on the left side of notes are ``categories''.}
-%	\label{fig:teaser}
-%\end{figure}
-%
-%\section{Algorithm}
-%
-%%\subsection{Layout}
-%Describe the algorithm that produces the compact layout of schemas and events.
-%
-%%\subsection{Schema Outline}
-%%Describe the algorithm that produces the polygonal outline covering all events within a schema.
-%
-%%\section{Sensemaking with SchemaLine}
-%%Discuss how SchemaLine's interactions support sensemaking activities in the Data--frame model. [the requirement for this support should be mentioned in the Requirements section.]
-%
-%\section{Application}
-%Discuss the integration of SchemaLine into INVISQUE. SchemaLine receives data input as user notes of INVISQUE and the linking between schemas and index-cards.
-%
-%\section{Evaluation}
-%A case study with 3 participants (different backgrounds) to use INVISQUE+SchemaLine to solve an intelligence analysis task using VAST Challenge 2011 dataset. Report how they used the tool, how the tool might help them.
-%
+\section{Introduction}
+Explain the importance of timeline visualization in supporting sensemaking.
+
+Limitation of existing timeline visualization techniques:
+\begin{itemize}
+	\item no or very simple layout which is cluttered and space-inefficient
+	\item designed for presenting a known story rather than interactively constructing a hidden one
+\end{itemize}  
+
+SchemaLine contributes
+\begin{itemize}
+	\item A novel design for an interactive timeline that groups notes into schemas determined by the user
+	\item An algorithm to automatically generate a compact and aesthetically pleasing visualization of these schema on the timeline
+	\item A set of fluid interactions with the timeline to support the sensemaking activities defined in the Data-Frame model
+\end{itemize}
+
+\section{Design Requirements}
+Describe how the following requirements are elicited. Define 'event' and 'schema'.
+
+\begin{enumerate}
+	\item \textbf{Automatic layout}. Provide an automatic layout to leverage users from manually arrange the events.
+	\item \textbf{Natural flow}. Easy to follow events within the same schema chronologically.
+	\item \textbf{Data--frame activities}. Enable users to perform sensemaking activities described in the Data--frame model through fluid interactions.
+\end{enumerate}
+
+\section{Visual Design}
+\subsection{Event}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.35\columnwidth]{event}
+	\caption{An event with three categories. The event is represented as a rounded rectangle with summarized content inside. On the left side of the text, small color-coded rectangles indicate its categories. The event is positioned along the time axis at which it happens -- 8th of May.}
+	\label{fig:event}
+\end{figure}
+
+\subsection{Schema}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics{schema}
+	\caption{A schema as a colored stripe covering its events. Bottom: a simple rectangle connecting events that can display in the same row. Top: a rectilinear path connecting events that need to locate in different rows. Colored background distinguishes different schemas.}
+	\label{fig:schema}
+\end{figure}
+
+Putting it all together, Figure~\ref{fig:sl-overview} shows an example of a complete SchemaLine. The algorithm to produce this visualization is described in Section~\ref{sec:sl-algorithm}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{teaser}
+	\caption{SchemaLine visualization of user annotations. Related notes are connected to form schemas.}
+	\label{fig:sl-overview}
+\end{figure}
+
+\subsection{Interaction}
+Describe how interaction in SchemaLine supports different sensemaking activities in the Data--frame model (Requirement 3).
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.9\linewidth]{add-event-frame}
+	\caption{Elaborating a frame. Dragging and dropping an event onto the blue stripe to add it to the frame.}
+	\label{fig:drag-drop-note}
+\end{figure}
+
+\section{Algorithm}
+\label{sec:sl-algorithm}
+The algorithm consists of two parts. First, the layout of schemas is generated; and then their outlines are computed based on the layout information.
+
+\subsection{SchemaLine Layout}
+This algorithm is illustrated in Figure~\ref{fig:sl-layout-overview}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{layout-overview}
+	\caption{SchemaLine layout algorithm. First, the order of all schemas is computed. Second, the layout of each schema is generated independently. Third, schemas are compacted following the computed order. Finally, events that do not belong to any schemas are added.}
+	\label{fig:sl-layout-overview}
+\end{figure}
+
+Figure~\ref{fig:schema-layout-example} shows a step-by-step illustration of the algorithm in the second step for a timeline with four events.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{layout-example}
+	\caption{Schema layout algorithm. Four events $E_1$, $E_2$, $E_3$, $E_4$ will be added to their schema chronologically. $E_1$ is positioned at its accurate event time. $E_2$ can locate in the same level as $E_1$ because it does not intersect with $E_1$. $E_3$ intersects with $E_2$ but the intersection width is small enough for $E_2$ to shift to the left without intersecting with $E_1$, enabling $E_3$ locate in the same level as well. However, $E_4$ needs to move up one level because it is impossible to avoid overlapping while shifting previous events.}
+	\label{fig:schema-layout-example}
+\end{figure}
+
+\subsection{Schema Outline}
+In this section, we describe an algorithm to produce a polygonal outline covering all the event rectangles of a schema. 
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{\label{fig:outline-right}\textrm{R3} is on the right side of the path.}{\includegraphics[width=0.6\columnwidth]{example-right}}
+	\\
+	\subcaptionbox{\label{fig:outline-up}\textrm{R3} is on top of the path.}[.43\linewidth]{\includegraphics[height=0.2\columnwidth]{example-up}}
+	\hfill
+	\subcaptionbox{\label{fig:outline-up-one}Left of \textrm{R3} is a bit greater than left of \textrm{R2}.}[.24\linewidth]{\includegraphics[height=0.2\columnwidth]{example-up-smoothing}}
+	\hfill
+	\subcaptionbox{\label{fig:outline-up-two}Right of \textrm{R3} is shorter than right of \textrm{R2}.}[.26\linewidth]{\includegraphics[height=0.2\columnwidth]{example-up-shorter}}
+	\caption{Four cases when a new rectangle \textrm{R3} is appended to the polygonal path. A big circle indicates the pivot vertex of the path (top-left corner of the last rectangle). Orange circles indicate updated vertices, and blue circles indicate newly added vertices of the polygonal path.}
+	\label{fig:sl-outline}
+\end{figure}
+
+
+\section{Application}
+We integrate SchemaLine into INVISQUE -- INteractive VIsual Search and QUery Environment -- designed for interactive exploration of text documents. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{invisque}
+	\caption{INVISQUE interface. It shows two sets of search results for ``network'' and ``security'' from a publication dataset. Each article is displayed as an index-card with citation count at the top left corner, publication year at the top right corner; and title, keywords and authors at the center.}
+	\label{fig:invisque}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{invisque-schemaline}
+	\caption{INVISQUE with SchemaLine at the bottom. The timeline consists of three user annotations with the color coded categories indicating keywords that were searched for.}
+	\label{fig:invisque-schemaline}
+\end{figure}
+
+\section{Evaluation}
+\begin{itemize}
+	\item Goal: explore how SchemaLine is used in a sensemaking task
+	\item Method: qualitative study 
+	\item Task: Mini Challenge 3 of the VAST Challenge 2011, which requires participants to identify any potential criminal activities from a given dataset
+	\item Participants: 3 with different backgrounds
+	\item Procedure:  10-minute training $\rightarrow$ one-hour main task $\rightarrow$ semi-structured interview
+	\item Report: describe three case studies separately, followed by a general discussion of all three; focusing on how their sensemaking activities map to activities in Data--frame model and performed by interaction with SchemaLine
+\end{itemize}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{evaluation}
+	\caption{Final screen of participant \textbf{P2}. Top: a trail of his keyword searches, collapsed after being read. Middle: search results in index-card metaphor. Bottom: two schemas containing notes as supporting evidence of criminal activities he found.}
+	\label{fig:evaluation}
+\end{figure}
+
 %\section{Conclusion}
 
 
 %\input{Chapter3/sections/intro.tex}
 %%\input{Chapter3/sections/related-work.tex}
-\input{Chapter3/sections/design.tex}
-\input{Chapter3/sections/interface.tex}
+%\input{Chapter3/sections/requirements.tex}
+%\input{Chapter3/sections/design.tex}
 %\input{Chapter3/sections/layout.tex}
-\input{Chapter3/sections/interaction.tex}
-\input{Chapter3/sections/evaluation.tex}
+%\input{Chapter3/sections/interaction.tex}
+%\input{Chapter3/sections/evaluation.tex}
 %\input{Chapter3/sections/conclusion.tex}

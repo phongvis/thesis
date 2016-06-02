@@ -11,8 +11,8 @@
 \node (data) [box, c2, right=2.3cm of sm] {Provenance \\Data};
 \node (vis) [box, c3, right=2.3cm of data] {Visualization};
 
-\draw [arrow] (sm) -- (data) node[midway, yshift=.3cm] {\rmt{capture}};
-\draw [arrow] (data) -- (vis) node[midway, yshift=.3cm] {\rmt{visualize}};
+\draw [arrow] (sm) -- (data) node[midway, yshift=.25cm] {\rmt{capture}};
+\draw [arrow] (data) -- (vis) node[midway, yshift=.25cm] {\rmt{visualize}};
 \draw [arrow, rounded corners] (vis.south) |- ++(0,-.8) -| (sm.south); 
 \node [rectangle,fill=white,inner ysep=0,yshift=-1.15cm] at ($(vis)!0.5!(sm)$) {\rmt{analyze}};
 \end{tikzpicture}

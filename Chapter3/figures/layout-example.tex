@@ -18,25 +18,25 @@
 \draw [arrow, draw=gray!50, shorten >= -.1cm, shorten <= -.1cm] (b3.south west) -- (b3.south east);
 \draw [arrow, draw=gray!50, shorten >= -.1cm, shorten <= -.1cm] (b4.south west) -- (b4.south east);
 
-\node [below=.1 of b1, text width=3cm, align=center] {\large $E_1$ at position of its time};
-\node [below=.1 of b2, text width=3.3cm, align=center] {\large $E_2$ at position \\of its time, \\same level as $E_1$};
-\hyphenation{giving}\node [below=.1 of b3, text width=4.2cm, align=center] {\large $E_2$ shifted left \\allowing $E_3$ to stay at the same level as $E_2$};
-\node [below=.1 of b4, text width=4.4cm, align=center] {\large $E_3$ cannot be shifted  without overlap, \\$E_4$ moves up one level};
+\node [below=.1 of b1, text width=3cm, align=center] {$E_1$ at position of its time};
+\node [below=.1 of b2, text width=3.3cm, align=center] {$E_2$ at position \\of its time, \\same level as $E_1$};
+\hyphenation{giving}\node [below=.1 of b3, text width=4.2cm, align=center] {$E_2$ shifted left \\allowing $E_3$ to stay at the same level as $E_2$};
+\node [below=.1 of b4, text width=4.4cm, align=center] {$E_3$ cannot be shifted  without overlap, \\$E_4$ moves up one level};
 
 % Details for each box
-\node (n1) [cg, below=-.2 of b1.south west, anchor=south west, xshift=.2cm] {\rmfamily\Large $E_1$};
+\node (n1) [cg, below=-.2 of b1.south west, anchor=south west, xshift=.2cm] {$E_1$};
 
-\node (n1) [cg, below=-.2 of b2.south west, anchor=south west, xshift=.2cm] {\rmfamily\Large $E_1$};
-\node (n2) [cg, right=.8 of n1.east] {\rmfamily\Large $E_2$};
+\node (n1) [cg, below=-.2 of b2.south west, anchor=south west, xshift=.2cm] {$E_1$};
+\node (n2) [cg, right=.8 of n1.east] {$E_2$};
 
-\node (n1) [cg, below=-.2 of b3.south west, anchor=south west, xshift=.2cm] {\rmfamily\Large $E_1$};
-\node (n2) [cg, right=.2 of n1.east] {\rmfamily\Large $E_2$};
-\node (n3) [cg, right=.2 of n2.east, minimum width=1.2cm] {\rmfamily\Large $E_3$};
+\node (n1) [cg, below=-.2 of b3.south west, anchor=south west, xshift=.2cm] {$E_1$};
+\node (n2) [cg, right=.2 of n1.east] {$E_2$};
+\node (n3) [cg, right=.2 of n2.east, minimum width=1.2cm] {$E_3$};
 
-\node (n1) [cg, below=-.2 of b4.south west, anchor=south west, xshift=.2cm] {\rmfamily\Large $E_1$};
-\node (n2) [cg, right=.2 of n1.east] {\rmfamily\Large $E_2$};
-\node (n3) [cg, right=.2 of n2.east, minimum width=1.2cm] {\rmfamily\Large $E_3$};
-\node (n4) [cg, above=.2 of n3, minimum width=1cm] {\rmfamily\Large $E_4$};
+\node (n1) [cg, below=-.2 of b4.south west, anchor=south west, xshift=.2cm] {$E_1$};
+\node (n2) [cg, right=.2 of n1.east] {$E_2$};
+\node (n3) [cg, right=.2 of n2.east, minimum width=1.2cm] {$E_3$};
+\node (n4) [cg, above=.2 of n3, minimum width=1cm] {$E_4$};
 
 % Big boxes as numbered steps
 %\draw [draw=gray!50, rounded corners, very thick] ($(b1.north west) - (.7,0)$) rectangle ($(b4.south east) + (.5,-1.7)$);

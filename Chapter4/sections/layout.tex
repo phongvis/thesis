@@ -1,5 +1,5 @@
 \section{Layout}
-
+\label{sec:ts-algorithm}
 The layout algorithm, determining the positions of sets and events within them,  consists of four steps. First, the vertical ordering of sets is computed to ensure that two sets that share events are next to each other wherever possible. Then, sets are further divided into layers, and events are assigned to these layers according to their memberships. After that, the position and length of each event are computed, within the given display space. Finally, layers are compacted to remove any gaps between them, before their sizes are adjusted to yield a consistent level of detail across all sets. 
 
 \subsection{Sets Ordering}

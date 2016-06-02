@@ -490,7 +490,7 @@ supported!}
         citestyle=numeric, sorting=none, natbib=true]{biblatex}
       \setBiBLaTeXtrue
     \else
-      \RequirePackage[numbers,compress]{natbib} % numbered citation
+      \RequirePackage[numbers,compress,sort]{natbib} % numbered citation
     \fi
   \else
     \ifuseCustomBib

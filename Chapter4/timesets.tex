@@ -1,55 +1,211 @@
-\chapter{Visualizing Temporal and Thematic Relationships}
+\chapter{Exploring Complex Temporal Relationship}
+\label{chap:timesets}
 
 \graphicspath{{Chapter4/figures/}}
-%The timeline visualization in Chapter 4 cannot show events belonging to multiple sets. In this chapter, we introduce a novel timeline visualization technique, TimeSets, that helps make sense of complex temporal datasets by showing the set relationships among individual events. TimeSets visually groups events that share a topic, such as a place or a person, while preserving their temporal order. It dynamically adjusts the level of detail for each event to suit the amount of information and display estate. 
-%
-%\section{Introduction}
-%The current limitation
-%
-%\begin{itemize}
-%	\item similarity: use colors or shapes to indicate sets -- not powerful 
-%	\item proximity: not space-efficient
-%	\item uniform connectedness: cluttered
-%\end{itemize}
-%
-%The contribution: TimeSets
-%\begin{itemize}
-%	\item clearly shows the events within a set over time and their relationships with other sets; 
-%	\item dynamically adjusts the level of details of each event to suit the amount of information and display estate;
-%	\item uses color gradient backgrounds for events belonging to multiple sets and curved set outlines to emphasize its grouping.
-%\end{itemize}
-%
-%\section{Design}
-%Visual representation of individual events and sets
-%
-%
-%\begin{figure*}[ht]
-%	\centering
-%	\includegraphics[width=\linewidth]{figure1}
-%	\caption{TimeSets visualization of the CIA leak case. The timeline contains events that happened from 2002 to 2007, each has a timestamp or an interval, a label, and topics such as ``White House''. Events are positioned along the horizontal time axis based on timestamps, and vertically grouped by topics. A time-point event is shown with a white circle to its left, and an interval event with a horizontal bar on top showing its timespan. Each topic has a unique color (see the legend in the bottom right corner), and events shared by two topics have gradient backgrounds, transitioning between the colors of the two topics.}
-%	\label{fig:teaser}
-%\end{figure*}
-%
-%\section{Layout}
-%Describe the layout algorithm.
-%
-%\section{Evaluation}
-%A controlled experiment with 30 participants to compare TimeSets and the state-of-the-art set visualization technique -- KelpFusion.
-%
-%\section{Case Study 1: Publication Data}
-%Shows an application of TimeSets to publication data of 200 articles and 8 sets.
-%
-%\section{Case Study 2: VAST Challenge 2014}
-%Shows an application of TimeSets to tweets data. 
-%
-%Also use TimeSets to show user findings [not done yet! currently, findings are shown as a node-link diagram.]
-%
+The SchemaLine technique described in Chapter 3 cannot show events belonging to multiple sets limiting users from exploring complex temporal relationship. In this chapter, we introduce a novel technique -- TimeSets -- to address that issue. 
+
+%TimeSets visually groups events that share a topic, such as a place or a person, while preserving their temporal order. It dynamically adjusts the level of detail for each event to suit the amount of information and display estate. 
+
+\section{Introduction}
+Limitation of existing timeline visualization techniques when showing set relations:
+
+\begin{itemize}
+	\item similarity: use colors or shapes to indicate sets -- not powerful 
+	\item proximity: not space-efficient
+	\item uniform connectedness: cluttered
+\end{itemize}
+
+The contribution: TimeSets
+\begin{itemize}
+	\item Clearly shows the events within a set over time and their relationships with other sets.
+	\item Dynamically adjusts the level of details of each event to suit the amount of information and display estate.
+	\item Uses color gradient backgrounds for events belonging to multiple sets and curved set outlines to emphasize its grouping.
+\end{itemize}
+
+\section{Visual Design}
+
+\subsection{Event}
+Figure~\ref{fig:event-representation} shows examples these different visual representation of events.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics{figure2}\caption{Visual representations of events. Top row, left to right: a complete time-point event, a trimmed time-point event, and a aggregate of 10 events. Bottom row, left to right: an interval event, and two overlapping interval events.}
+	\label{fig:event-representation}
+\end{figure}
+
+\subsection{Set}
+\subsubsection{Design Overview}
+We use two most effective Gestalt's principles of grouping in our design: \emph{proximity} and \emph{uniform connectedness}. Events belonging to the same set are located close together, and the background of an entire set is colored to make its events visually connected.
+
+Spatial grouping is achieved through vertical positioning because the horizontal position of each event is already fixed by its temporal information. Figure~\ref{fig:layering} shows an example of a layering for three sets.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.5\columnwidth]{figure3}
+	\caption{Layering for three sets $S_1$, $S_2$, and $S_3$. $L_2$ includes events shared by $S_1$ and $S_2$, and $L_4$ includes events shared by $S_2$ and $S_3$. Shared events are shown in red. $S_2$ consists of events in three layers $L_2$, $L_3$, and $L_4$.}
+	\label{fig:layering}
+\end{figure}
+
+Discuss design choices for visualizing shared events between two non-neighboring sets (Figure~\ref{fig:layering-compare})
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{Shared events are only located in the green set, and connected to the orange set.\label{fig:layering-1}}[.47\columnwidth]
+	{\includegraphics[width=.35\columnwidth]{figure4a}}
+	\hfill	
+	\subcaptionbox{Shared events are duplicated in both green and orange sets.\label{fig:layering-2}}[.478\columnwidth]
+	{\includegraphics[width=.35\columnwidth]{figure4b}}
+	\caption{Visualization of shared events (red squares) between two non-neighboring sets.}
+	\label{fig:layering-compare}
+\end{figure}
+
+In subsequent sections, we discuss the detail of the set visualization algorithm, which consists of two main steps: generating set shapes, and then coloring them.
+
+\subsubsection{Shape Generation}
+This algorithm takes as input a list of bounding-boxes of the set's events, and generates a closed-curve containing all these boxes. 
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{The original rectilinear shape generated by a scan-line algorithm.\label{fig:shape1}} 
+	{\includegraphics[width=.47\columnwidth]{figure5a}}
+	\hfill
+	\subcaptionbox{The simplified shape by flattening and removing jags (red eclipse).\label{fig:shape2}}
+	{\includegraphics[width=.47\columnwidth]{figure5b}}
+	\caption{Rectilinear shape generation.}
+	\label{fig:shape}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{Vertical segments $e_2$ and $e_3$ are converted to diagonal ones (dashed lines).\label{fig:generation1}}
+	{\includegraphics[width=.47\columnwidth]{figure6a}}
+	\hfill
+	\subcaptionbox{Squared corners are replaced by quadrant arcs. $e_2$ and $e_3$ are further smoothened by B\'{e}zier curves.\label{fig:generation2}}
+	{\includegraphics[width=.47\columnwidth]{figure6b}}
+	\caption{Shape smoothening by reducing the degree of line bends.}
+	\label{fig:generation}
+\end{figure}
+
+\subsubsection{Set Coloring}
+Each set is filled with a color selected from Qualitative Set 2 of ColorBrewer~\cite{Harrower2003} to make them easily distinguishable. And the background of the intersection between two sets is shown as the color transitioned between the two set colors (Figure~\ref{fig:gradient}).
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{Intersection shown as a single color gradient.\label{fig:gradient1}}
+	{\includegraphics[width=0.47\columnwidth]{figure7a}}
+	\hfill
+	\subcaptionbox{Intersection shown as multiple color gradients.\label{fig:gradient2}}
+	{\includegraphics[width=0.47\columnwidth]{figure7b}}
+	\caption{Color gradient technique to encode set intersection. The gradient area shows three shared events between the yellow and green sets.}
+	\label{fig:gradient}
+\end{figure}
+
+\subsubsection{Multiple-set Events}
+Four design options are proposed to visualize the full set memberships of events.
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{Each circle represents a set.\label{fig:eventmembership1}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8a}}
+	\hfill
+	\subcaptionbox{Each ring represents a set.\label{fig:eventmembership2}}[.22\columnwidth]{\includegraphics[height=.19\columnwidth]{figure8b}}
+	\hfill
+	\subcaptionbox{Vertical gradient: each color represents a set.\label{fig:eventmembership3}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8c}}
+	\hfill
+	\subcaptionbox{Horizontal gradient: each color represents a set.\label{fig:eventmembership4}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8d}}
+	\caption{Visual representation of multiple-set events. Event 1 is single-set (green). Event 2 is double-set (green, yellow). Event 3 is triple-set (green, yellow, pink).}
+	\label{fig:eventmembership}
+\end{figure}
+
+Putting it all together, Figure~\ref{fig:sl-overview} shows an example of a complete SchemaLine. The algorithm to produce this visualization is described in Section~\ref{sec:sl-algorithm}.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{figure1}
+	\caption{TimeSets visualization of the CIA leak case. The timeline contains events that happened from 2002 to 2007, each includes a timestamp, a label, and topics such as ``White House''. Events are positioned along the horizontal time axis based on their temporal values, and vertically grouped by colored topics (see the color legend in the bottom right corner).}
+	\label{fig:ts-overview}
+\end{figure}
+
+\subsection{Interaction}
+Describe interaction including zoom, pan, mouse hover, filter.
+
+\section{Layout}
+\label{sec:ts-algorithm}
+
+\subsection{Sets Ordering}
+The same as the schema ordering algorithm in SchemaLine
+
+\subsection{Layer Layout}
+This algorithm positions all the events within a layer. We propose two algorithms: one is optimized to display as much information as possible (\emph{completeness}), and the other one is optimized for the convenience to follow events (\emph{traceability}).
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{Completeness algorithm: $\theta=1$, \\$\gamma=5/3$.}{\includegraphics[width=.47\linewidth]{figure9a}}
+	\hfill
+	\subcaptionbox{Traceability algorithm ($t_{min}=0.5$, $r_{max}=1$): $\theta=6/7$, $\gamma=2/3$.}{\includegraphics[width=.47\linewidth]{figure9b}}
+	\caption{Layer layout algorithms. Each rectangle represents an event. The line connecting centers of rectangles illustrates the  traceability.}
+	\label{fig:traceability}
+\end{figure}
+
+\subsection{Layers Compacting}
+Compact layers together leaving no gap rows among layers.
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{Before: consumed height = 6 rows.}{\includegraphics[width=.44\columnwidth]{figure10a}}
+	\hfill
+	\subcaptionbox{After: consumed height = 3 rows.}{\includegraphics[width=.44\columnwidth]{figure10b}}
+	\caption{Layers compacting.}
+	\label{fig:compacting}
+\end{figure}
+
+\subsection{Layers Balancing}
+This last step ensures that all layers have similar levels of detail; i.e., avoiding layers with many complete events and other layers with many aggregated events.
+
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{Before: $\theta_{green}=0.25$, $\theta_{yellow}=1$.}{\label{fig:balancing1}\includegraphics[width=.44\columnwidth]{figure11a}}
+	\hfill
+	\subcaptionbox{After: $\theta_{green}=\theta_{yellow}=0.5$.}{\label{fig:balancing2}\includegraphics[width=.44\columnwidth]{figure11b}}
+	\caption{Layers balancing.}
+	\label{fig:balancing}
+\end{figure}
+
+\section{Evaluation}
+\begin{itemize}
+	\item Goal: compare task performance between TimeSets and a relevant state-of-the-art visualization technique (KelpFusion)
+	\item Method: lab controlled experiment, within-subject
+	\item Task: 5 different tasks related to temporal and set relations using 4 generated datasets
+	\item Participants: 30, each answers 2 x 5 x 4 = 40 questions
+	\item Procedure:  introduction $\rightarrow$ practice $\rightarrow$ main task $\rightarrow$ subjective questionnaire 
+	\item Report: RM-ANOVA significant tests to analyze performance data and Fisher's exact tests to analyze user ratings
+\end{itemize}
+
+\section{Case Study 1: Publication Data}
+Shows an application of TimeSets to publication data of 200 articles and 8 sets. Discuss interesting findings with TimeSets.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{figure13}
+	\caption{TimeSets visualization of publication data. It shows 200 articles with the most citations in the IEEE InfoVis conference from 1995 to 2013. These articles are categorized based on their concepts (see the legend in the top left hand corner).}
+	\label{fig:citations}
+\end{figure}
+
+\section{Case Study 2: VAST Challenge 2014}
+Shows an application of TimeSets to intelligence analysis. TimeSets is used to show both tweets (\note{this is the color blending version of TimeSets, not color gradient -- should we describe the color blending one?}, Figure~\ref{fig:savi}) and findings (\note{missing figure -- currently, findings are shown as a node-link diagram})
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{HQ-savi}
+	\caption{}
+	\label{fig:savi}
+\end{figure}
+
 %\section{Conclusion}
 
 %\input{Chapter4/sections/intro.tex}
 %%\input{Chapter4/sections/related-work.tex}
-\input{Chapter4/sections/setvis.tex}
-\input{Chapter4/sections/layout.tex}
-\input{Chapter4/sections/evaluation.tex}
-\input{Chapter4/sections/case-study.tex}
+%\input{Chapter4/sections/setvis.tex}
+%\input{Chapter4/sections/layout.tex}
+%\input{Chapter4/sections/evaluation.tex}
+%\input{Chapter4/sections/case-study.tex}
 %\input{Chapter4/sections/conclusion.tex}

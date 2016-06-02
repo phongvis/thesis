@@ -1,33 +1,33 @@
-\section{Design Research and Requirements}
+\section{Visual Design}
+\label{sec:interface}
 
-right from the beginning, we should know that what is going to be addressed in each chapter and why
+\subsection{Event}
+An event is represented by a rounded rectangle with a short text inside summarizing its content. All rectangles have the same height to provide a consistent appearance, especially when they are later connected to form a schema (Section \ref{sub:schema-outline}). Rectangles are assigned the same maximum width and long texts are trimmed to fit into their rectangles. The full content of an event will be displayed when it is hovered. Events can include categorical attributes. For example, in news reports, the themes of an article can be sport, fashion or both. Inside the border of an event, small colored rectangles are added to the left of its text to indicate its categories. Note that only around 12 colors can be distinguished simultaneously in the human view~\cite{Munzner2014}. We choose Set 1 of qualitative colors from ColorBrewer~\cite{Harrower2003} for the colormap. The eight most appeared categories are displayed using these colors and other categories share the same different color. Figure~\ref{fig:event} shows an example of event with three color-coded categories.
 
-should we mention the motivation 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=.35\columnwidth]{event}
+\caption{An event with three categories. The event is represented as a rounded rectangle with summarized content inside. On the left side of the text, small color-coded rectangles indicate its categories. The event is positioned along the time axis at which it happens -- 8th of May.}
+\label{fig:event}
+\end{figure}
 
-for example, we know that the thesis address the problem by advancing from manual capture - process to automatic capture - rationale
+An event is left-aligned with its temporal value on the time axis. To reduce cluttering, an event is not visually connected to its corresponding point on the axis. Instead, when the mouse hovers an event, its time point is highlighted. The time axis is shown as a horizontal line at the bottom of all events. It includes two hierarchical temporal scales, which are changed dynamically according to the range of the displayed events. For example, Figure~\ref{fig:event} shows two scales: ``month/day'', but they can switch to ``year/month'' if the range is larger.
 
-the goal of this chapter is to understand the temporal relationship through user annotations - it's clear at the title
+\subsection{Schema}
+r of relevant events or pieces of evidence, the analyst starts combining them to form a \textit{schema}. A schema is a set of related events that are connected to each other in a certain way. For example, a schema might contain all events about a particular person. Figure~\ref{fig:schema} shows examples of schema. 
 
-yes you can do that in the introduction - why understanding such process is important.
+\begin{figure}[ht]
+	\centering
+	\includegraphics{schema}
+	\caption{.}
+	\label{fig:schema}
+\end{figure}
 
-what should we write in this section?
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{teaser}
+\caption{SchemaLine: each piece of text is an analyst note, positioned along the time axis at which the event happened. Related notes are linked together to form a ``schema'' or ``frame''. There are three frames in this example represented as colored rectilinear paths. Small color-coded rectangles on the left side of notes are ``categories''.}
+\label{fig:teaser}
+\end{figure}
 
-what do we do to understand the existing process, then elicit requirements to provide support
-
-goal: understand sense
-
-\subsection{Design Research}
-SchemaLine is intended to support tasks in sensemaking of temporal data and is influenced by the well-established sensemaking model proposed by Pirolli and Card~\cite{Pirolli2005}. This model organizes the sensemaking process into two loops: the foraging loop, which involves searching, extracting and organizing information; and the sensemaking loop, which involves building schema, creating and testing hypotheses, and presentation. In this model, \emph{schematization} serves as a bridge connecting the foraging loop and the sensemaking loop. It is a crucial step in converting raw evidence to rational explanations. Pirolli and Card suggest that the schematization process should be supported by a computer-based tool that coordinates events in the dataset to reveal relationships between them and to leverage analysts' effort in memorizing them~\cite{Pirolli2005}. As a result, we decided to investigate timeline visualization support for sensemaking. A timeline can not only reveal the temporal relationships among the findings, but also have a considerable impact on how easily they can be understood: when Pennington and Hastie~\cite{Pennington1991} studied the impact of evidence presentation order on juror decision making, they found that information was easier to understand when presented in chronological order and thus had a significant impact on jurors' decisions. 
-
-We find that the cognitive processes in the schematization process are well elaborated through different sensemaking activities in the Data-Frame model proposed by Klein et al.~\cite{Klein2003}. These sensemaking activities are \emph{Connect data to a frame}, \emph{Elaborate a frame}, \emph{Question a frame}, \emph{Preserve a frame}, and \emph{Reframe}. Sensemaking activities begin when a surprise, unexpected event with respect to our prior knowledge appears. The analyst forms an initial account for the unexpected event by connecting some evidence. In the Data-Frame model's terminology, the analyst tries to match some data to create an initial frame. When encountering new data, the analyst can either add it to the frame to elaborate the frame (if it fits to the frame) or remove existing data (if it cannot fit the frame anymore). The analyst starts questioning the frame when they detect inconsistencies between data, or poor quality data in the frame. Then, they need to decide between preserving the frame by looking for more data, or reframing it by comparing it with other frames, or seeking a completely new frame. Because of the various and detailed sensemaking activities surrounding the \textit{frame} in the Data-Frame model, we decide to support all these five activities in our the timeline visualization through fluid user interactions. The terms `schema' and `frame' are used to refer to the same concept throughout this paper.
-
-After discovering a number of relevant events or pieces of evidence, the analyst starts combining them to form a \textit{schema}. A schema is a set of related events that are connected to each other in a certain way. For example, a schema might contain all events about a particular person. Figure~\ref{fig:schema} shows examples of schema. 
-
-\subsection{Requirements}
-We propose the following requirements...
-\begin{enumerate}
-	\item \textbf{Automatic layout}. Provide an automatic layout to leverage users from manually arrange the events.
-	\item \textbf{Natural flow}. Easy to follow events within the same schema chronologically.
-	\item \textbf{Data--frame activities}. Enable users to perform sensemaking activities described in the Data--frame model through fluid interactions.
-\end{enumerate}
-
+We consider several design options to connect events within a schema such as using colored/shaped icons or node-link diagrams. However, they all have some drawbacks as discussed in the Related work (Section~\ref{sec:relatedwork}). Computational methods that allow visualize a large number of events with different themes such as ThemeRiver~\cite{Havre2002} do not work either because individual events and interactions are more essential in SchemaLine. \note{I don't quite understand what the `computational' means and the argument follows} Also, it should be easy to follow events within a schema in temporal order. We decided to visualize each schema as a colored stripe, which is inspired by Munroe's hand-drawn visualization~\cite{Munroe2009}. A character line in Munroe's work connects all events happened to that character. Similarly, our schema is a color stripe connecting all events belonging to it. Instead of using a thin line, we use a path with unique width (an event's height) to make enough space to display the event's summary text and allow interaction with individual notes. A rectilinear path is employed to provide a nice visualization rather than direct connection between events. 

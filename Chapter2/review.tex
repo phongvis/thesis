@@ -2,50 +2,167 @@
 
 \graphicspath{{Chapter2/figures/}}
 
-\input{Chapter2/sections/sensemaking.tex}
+%\input{Chapter2/sections/sensemaking.tex}
 %\input{Chapter2/sections/vis.tex}
 %\input{Chapter2/sections/provenance-vis.tex}
 %\input{Chapter2/sections/gaps.tex}
+%\input{Chapter2/sections/process.tex}
+
+\section{Sensemaking}
+Overview of sensemaking
+
+\subsection{Pirolli and Card's Model}
+Pirolli and Card~\cite{Pirolli2005} describe sensemaking as a process consisting of two major loops: the foraging loop and the sensemaking loop (Figure~\ref{fig:pirolli-card-model}). 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.8\columnwidth]{pirolli-card-model}
+	\caption{A sensemaking model proposed by Pirolli and Card. \emph{Source:~\cite{Pirolli2005}}.}
+	\label{fig:pirolli-card-model}
+\end{figure}
+
+\subsection{Data--Frame Model}
+Klein et al.~\cite{Klein2003} defines sensemaking as a deliberate effort to understand an event, starting when a person realizes the gap of their current understanding of that event. These sensemaking activities are summarized in Figure~\ref{fig:data-frame-model}. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=.8\columnwidth]{data-frame-model}
+	\caption{The data--frame model. \emph{Source:~\cite{Klein2003}}.}
+	\label{fig:data-frame-model}
+\end{figure}
+
+\section{Visualization and Visual Analytics}
+\begin{itemize}
+	\item defines visualization~\cite{Munzner2014}
+	\item how vis helps support analysis~\cite{Card1999}
+	\item vis reference model~\cite{Card1999}
+	\item difference between scivis and infovis
+	\item define visual analytics~\cite{Thomas2005, Keim2010}
+	\item visual analytics process model (Figure~\ref{fig:visual-analytics-process})
+\end{itemize}
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\columnwidth]{visual-analytics-process}
+	\caption{The data--frame model. \emph{Source:~\cite{Klein2003}}.}
+	\label{fig:visual-analytics-process}
+\end{figure}
+
+some components of visual analytics (from William's slides) (they're similar to the new definition of visual analytics in Mastering the Information Age
+"Visual analytics combines automated analysis with interactive visualizations for an effective understanding, reasoning and decision making on the basis of very large and complex
+datasets.")
+\begin{itemize}
+	\item data analysis/data mining
+	\item interactive dynamics (Heer and Shneiderman) 
+	\item assembly of evidence, argumentation (toulmin, wigmore)
+\end{itemize}
+
+\section{Information Design Principles}
+\begin{itemize}
+	\item encoding channel ranking (chap 5, 6 Munzner book)
+%	\item some of 'rules of thumbs' in her book as well
+	\item Focus+Context
+	\item Gestalt Principles
+	\item Principle of Visual Affordance
+	\item Tufte: ink-ratio
+	\item Ben Shneiderman’s influential mantra of Overview First, Zoom and Filter, Details on Demand
+\end{itemize}
 
 
-%\chapter{Literature Review}
-%\section{Sensemaking}
-%- Overview of sensemaking
+
+%pre-attentive
+
+%Proximity-Compatibility Principle
+
+
+%Ecological Interface Design
+%Representation of Functional Relationships
+
+Several interface design guidelines: Schneiderman (eight golden rules), Norman (design principles) and Nielsen’s (ten usability heuristics)
+
+%https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction#Display_designs
+%https://www.interaction-design.org/literature/book/the-glossary-of-human-computer-interaction/affordances
+
+
+%Working memory becomes an important factor as it organise and process information
+%when learning occurs (Global, 2000). Here information is sorted and organised into
+%relevant schema. Schemas can be referred to as models or hypothetical structures
+%that organises once knowledge of the world.
 %
-%- Pirolli and Card's model
+%perception for design, Colin Ware book
 %
-%- Data--frame model
+
+
+\section{Analytic Provenance}
+Overview of provenance -- provenance in ordinary context, give examples (painting)
+
+Some types of provenance: database, workflow, semantic web (see the previous review of analytic provenance)
+
+Then analytic provenance: definition from ~\cite{North2011}, our agenda~\cite{Xu2015}
+
+Modeling of analytic provenance: 4-level model by Gotz and Zhou and other vis task/action taxonomies such as classic Shneiderman's task by data type~\cite{Shneiderman1996}, Amar's low-level~\cite{Amar2005}, Amar's high-level~\cite{Amar2004}, more recent Bhemer's typology what-why-how~\cite{Brehmer2013}.
+
+Pipeline: capture - visualize - use and a summary of 'capture' and 'use' (except for directly supporting sensemaking)
+
+\subsection{Capture}
+combine previous reviews from the draft survey of analytic provenance, research agenda, and capture in the context of online sensenmaking the last paper
+\subsection{Use}
+work from the draft survey of analytic provenance: reusing the performed analysis (workflow), making tutorial, presentation
+
+\section{Visualizing Temporal Relationship of Sensemaking}
+\paragraph{Visualization of Temporal Events}
+\begin{itemize}
+	\item sequential timeline as comic strips
+	\begin{itemize}
+		\item overview: ~\cite{McCloud1993}
+		\item  examples:~\cite{Gotz2010}, DIVA~\cite{Walker2013}
+	\end{itemize}
+	\item continuous timeline
+	\begin{itemize}
+		\item one of the earliest classic examples: Chart of Biography~\cite{Priestley1765}, Gantt chart~\cite{Gantt1913}
+		\item (events as glyphs) early visualization: LifeLines~\cite{Plaisant1996, Plaisant1998} and its extensions LifeLines2~\cite{Wang2008, Wang2009}, Similan~\cite{Wongsuphasawat2009}, LifeFlow~\cite{Wongsuphasawat2011}, for interval events: EventFlow~\cite{Monroe2013} [describe what's new in them]
+		\item (events as user annotations) POLESTAR~\cite{Pioch2006}, HARVEST~\cite{Gotz2006}, Jigsaw~\cite{Stasko2007, Gorg2013}, and nSpace2 Sandbox~\cite{Wright2006, SandboxTimeline2012} -- how do they support sensemaking?
+		\item some online services
+	\end{itemize}
+	\item Storyline: show temporal dynamics of social interactions~\cite{Munroe2009, Tanahashi2012, Liu2013}
+	\item ThemeRiver: show thematic changes in large document collections -- aggregate a number of events into intervals, kind of smooth histogram~\cite{Havre2002, Byron2008}
+\end{itemize}
+
+\paragraph{Viusialization of Event Relationships}
+\begin{itemize}
+	\item drawing edges between related events: tmViewer~\cite{Kumar1998}
+	\item mutliple facets, views with different scales: Continuum~\cite{Andre2007}
+	\item time-dependent and time-independent (how?): SemaTime~\cite{Stab2010}
+\end{itemize}
+%\subsection{Visualization of Time-Oriented Data }
 %
-%\section{Visualization and Visual Analytics}
-%- Overview of vis, scivis, infovis, visual analytics
-%
-%- Show how they're used to support sensemaking
-%
-%\section{Analytic Provenance}
-%- overview of provenance, other types of provenance, then analytic provenance
-%
-%- modeling of analytic provenance: 4-level model by Gotz and Zhou and other vis task/action taxonomies
-%% such as classic Shneiderman's task by data type~\cite{Shneiderman1996}, Amar's low-level~\cite{Amar2005}, Amar's high-level~\cite{Amar2004}, more recent Bhemer's typology what-why-how~\cite{Brehmer2013}.
-%
-%- pipeline: capture - visualize - reuse and a summary of 'capture' and 'reuse'.
-%
-%the three next sections are details about 'visualize'
-%
-%\section{Exploring Temporal Relationship of Provenance Data}
-%Overview of different techniques to visualize temporal data
-%
-%Focusing on timeline
-%
-%Timeline for sensemaking
-%
-%\section{Visualizing Temporal and Thematic Relationship of Provenance Data}
-%Set visualization
-%
-%Timelines with set relations
-%
-%\section{Understanding User Reasoning through Provenance Data} 
-%Recovering user reasoning through interaction logs
-%
-%VA systems providing 'reasoning workspace'
-%
-%Other non-visualization (data mining) work
+%\subsection{Timeline Visualization of User Annotations}
+%\subsubsection{Sequential Timeline}
+%\subsubsection{Continuous Timeline}
+%\paragraph{Visualization of Complex Temporal Relationship}
+
+\section{Visualizing User Reasoning in Sensemaking}
+\paragraph{Visualization of Non-Linear Sensemaking Process}
+Visualize the branching history
+\begin{itemize}
+	\item typically, use tree; examples: ~\cite{Jankun-Kelly2007}, VisTrails:~\cite{Bavoil2005}, or general graph if 'undo' action is explicited drawn
+	\item overview of tree/graph visualizations?
+	\item 'behavior graph' in Tableau
+	\item encode time into graph: color coded~\cite{Bavoil2005}, edge length~\cite{Shrinivasan2008}
+\end{itemize}
+%\subsubsection{Tree Visualization}§
+%\subsubsection{Hierarchical Graph Layout}
+\paragraph{Visualization of Analytical Reasoning}
+\begin{itemize}
+	\item typically, use graph; examples: ~\cite{Shrinivasan2008}, Scalable Reasoning System, sandbox
+	\item more formal visual arguments? that support toulmin, wigmore
+\end{itemize}
+
+
+%\subsection{Visualization of Non-Linear Sensemaking Process}
+%\subsubsection{Tree Visualization}
+%\subsubsection{Hierarchical Graph Layout}
+%\subsection{Visualization of Analytical Reasoning}
+%\todo{read research agenda chapter}
+
+I think set visualizations will be described in the related work of TimeSets and qualtitative research in SensePath
