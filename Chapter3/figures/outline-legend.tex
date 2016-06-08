@@ -1,0 +1,27 @@
+\documentclass[tikz]{standalone}
+
+\input{../../Preamble/tikz}
+\input{outline-preamble}
+
+\tikzstyle{nc} = [circle, minimum size=.4cm, fill=black, opacity=.5]
+\tikzstyle{oc} = [circle, minimum size=.4cm, fill=b1, opacity=.5]
+\tikzstyle{uc} = [circle, minimum size=.4cm, fill=b2, opacity=.5]
+
+\tikzstyle{every node}=[font=\rmfamily \large, inner sep=0]
+
+\begin{document}
+	
+\begin{tikzpicture}[framed, background rectangle/.style={thick,draw=gray!50}]
+
+\node (n1) [nc,] {};
+\node (n2) [right=0.1 of n1, yshift=-.05cm] {unchanged vertices};
+
+\node (n3) [right=of n2, oc, yshift=.05cm] {};
+\node (n4) [right=0.1 of n3, yshift=-.05cm] {updated vertices};
+
+\node (n5) [right=of n4, uc, yshift=.05cm] {};
+\node (n6) [right=0.1 of n5] {new vertices};
+
+\end{tikzpicture}
+	
+\end{document}

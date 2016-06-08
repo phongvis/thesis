@@ -18,6 +18,7 @@ Figure~\ref{fig:event-representation} shows examples these different visual repr
 
 \subsection{Set}
 \subsubsection{Design Overview}
+should mention that it's similar to schemaline
 As discussed in Section\note{ref}, Gestalt's principles of grouping are commonly used to show set relationships among events, most effectively are \emph{proximity} and \emph{uniform connectedness}. Therefore, we also apply these two principles in our design: events belonging to the same set are located close together, and the background of an entire set is colored to make its events visually connected.
 
 Spatial grouping is achieved through vertical positioning because the horizontal position of each event is already fixed by its temporal information. Sets are stacked vertically, and each set is further divided into a maximum of three \emph{layers}: the top and the bottom layer for events shared with the set above and below respectively (if they exist), and the middle layer for other events in the set. Figure~\ref{fig:layering} shows an example of a layering for three sets.

@@ -1,0 +1,29 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{des}=[f2, align=center]
+\tikzstyle{ma}=[-stealth, line width=2pt, f2]
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+\node [anchor=north west, text width=4.3cm, minimum height=1.9cm, rounded corners, draw=gray, thick] at (1.35, 1.8) {};
+\node [des, anchor=west] (rel) at (-1.8,.75) { categories };
+\node [des, anchor=west] (text) at (6.9,.75) { content };
+
+\begin{scope}[xshift=1.5cm]
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {
+		\includegraphics[width=0.35\linewidth]{event-raw}
+	};
+		
+	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+		\draw [ma] (rel) -- ++(.51,0.0);
+		\draw [ma] (text) -- ++(-0.46,0.0);
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

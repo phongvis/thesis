@@ -1,0 +1,54 @@
+\documentclass[tikz]{standalone}
+
+\input{../../Preamble/tikz}
+\input{outline-preamble}
+
+\begin{document}
+	
+\begin{tikzpicture}
+	
+\node (r1) [rect] {$R_1$};
+\node (r2) [rect, above=.4 of r1, xshift=.6cm] {$R_2$};
+\node (r3) [rect, new, above=.4 of r2, xshift=.6cm] {$R_3$};
+
+% dash border
+\path[border] let \p1=(r1.north east), \p2=(r2.south west) in 
+(r1.south west) node[nc]{}
+-- (r1.south east) node[nc]{}
+-- (\x1, \y2) node[nc]{}
+-- (r2.south east) node[nc]{}
+-- (r2.north east) node[oc]{}
+-- (r2.north west) node[nc]{}
+-- (\x2, \y1) node[nc]{}
+-- (r1.north west) node[nc]{}
+-- cycle;
+
+% merge operator
+\draw node[cross=3pt,f3,above=.15 of r2, line width=.3mm, xshift=.33cm,rotate=45]{};
+\draw node [circle, above=.08 of r2, draw=f3, line width=.3mm, scale=.7, xshift=.4cm] {};
+
+\node (arr) [next, right=.7 of r2] {};
+
+\node (r1) [rect, right=2.4 of r1] {$R_1$};
+\node (r2) [rect, above=.4 of r1, xshift=.6cm] {$R_2$};
+\node (r3) [rect, new, above=.4 of r2, xshift=.6cm] {$R_3$};
+
+% dash border
+\path[border] let \p1=(r1.north east), \p2=(r2.north east), \p4=(r2.south west) , \p3=(r3.south west) in 
+(r1.south west) node[nc]{}
+-- (r1.south east) node[nc]{}
+-- (\x1, \y4) node[nc]{}
+-- (r2.south east) node[nc]{}
+-- (\x2, \y3) node[oc]{}
+-- (r3.south east) node[uc]{}
+-- (r3.north east) node[uc]{}
+-- (r3.north west) node[uc]{}
+-- (\x3, \y2) node[uc]{}
+-- (r2.north west) node[nc]{}
+-- (\x4, \y1) node[nc]{}
+-- (r1.north west) node[nc]{}
+-- cycle;
+	
+\end{tikzpicture}
+	
+\end{document}

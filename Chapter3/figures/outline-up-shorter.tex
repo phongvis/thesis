@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+
+\input{../../Preamble/tikz}
+\input{outline-preamble}
+
+\begin{document}
+	
+\begin{tikzpicture}
+	
+\node (r1) [rect] {$R_1$};
+\node (r2) [rect, above=.4 of r1, xshift=.6cm] {$R_2$};
+\node (r3) [rect, new, above=.4 of r2, minimum width=.4cm, inner sep=0.05cm] {$R_3$};
+
+% dash border
+\path[border] let \p1=(r1.north east), \p2=(r2.south west), \p3=(r2.north east), \p4=(r3.north east), \p5=(r3.north west) in 
+(r1.south west) node[nc]{}
+-- (r1.south east) node[nc]{}
+-- (\x1, \y2) node[nc]{}
+-- (r2.south east) node[nc]{}
+-- (r2.north east) node[nc]{}
+-- (\x4, \y3) node[uc]{}
+-- (r3.north east) node[uc]{}
+-- (r3.north west) node[uc]{}
+-- (\x5, \y3) node[uc]{}
+-- (r2.north west) node[nc]{}
+-- (\x2, \y1) node[nc]{}
+-- (r1.north west) node[nc]{}
+-- cycle;
+\end{tikzpicture}
+	
+\end{document}
