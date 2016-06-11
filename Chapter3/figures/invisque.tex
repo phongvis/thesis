@@ -1,0 +1,33 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{des}=[a1, align=center]
+\tikzstyle{ma}=[-stealth, line width=1pt, a1]
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+\begin{scope}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {
+		\includegraphics[width=\linewidth]{invisque-raw}
+	};
+		
+	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+		\node [des] (citation) at (.4,.95) { citation \\count };
+		\node [des] (year) at (.6,.95) { publication \\year };
+		\node [des, anchor=west] (title) at (.58,.73) { title };
+		\node [des, anchor=west] (keywords) at (.58,.65) { keywords };
+		\node [des, anchor=west] (author) at (.55,.55) { authors };
+		\draw [ma] (citation) -- ++(.03,-.16);
+		\draw [ma] (year) -- ++(-.08,-.16);
+		\draw [ma] (title) -- ++(-.11,0);
+		\draw [ma] (keywords) -- ++(-.16,0);
+		\draw [ma] (author) -- ++(-.16,.07);
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

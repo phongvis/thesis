@@ -1,21 +1,21 @@
 \section{Algorithm}
-\label{sec:layout}
+\label{sec:sl-algorithm}
 
 This section discusses the algorithm to produce the SchemaLine visualization as in Figure~\ref{fig:sl-overview}, consisting of two parts. First, the layout of schemas is generated; and then, their outlines are computed based on the layout information.
 
 \subsection{SchemaLine Layout}
 
-Besides compact and aesthetic, we set these requirements to the layout: 
+Besides compact and aesthetic, we set these conditions to the layout: 
 \begin{enumerate}
-	\item \textbf{Horizontal position}. Along the time axis, events should be located precisely at when they happen, if possible.
-	\item \textbf{Relative order}. To improve the layout, events can be shifted horizontally; however, their relative order should be maintained. 
+	\item \textbf{Horizontal position}. Along the time axis, events should be located accurately at when they happen, if possible.
+	\item \textbf{Relative order}. To address scalability, events can be shifted horizontally; however, their relative order should be maintained: $x(e_1) < x(e_2)$ if and only if $e_1$ happens before $e_2$, where $x(e)$ is the horizontal position of event $e$.
 	\item \textbf{Overlap free}. Events and schemas are not allowed to intersect each other.
 \end{enumerate}
 
-The layout algorithm consists of the following four steps (Fig.~\ref{fig:sl-layout-overview}):
+To meet these requirements, we design an algorithm consists of the following four steps (Figure~\ref{fig:sl-layout-overview}):
 \begin{enumerate} 
 	\item Order the schemas vertically based on their number of events.
-	\item For each schema, generate the relative positions of its events satisfying the aforementioned requirements.
+	\item For each schema, locate its events satisfying the aforementioned requirements.
 	\item Compact the schemas following the order computed in the first step.
 	\item Locate the remaining events that do not belong to any schemas. 
 \end{enumerate}
@@ -28,50 +28,49 @@ The layout algorithm consists of the following four steps (Fig.~\ref{fig:sl-layo
 \end{figure}
 
 \subsubsection{Order Schemas}
-\label{sub:layout-order}
-This step computes the vertical order of all schemas based on their number of events. The schemas with more events are located under the one with less events. This is analogous to that ``heavier'' schemas are pulled below the ``lighter'' ones -- in terms of the number of events. If two schemas consist of the same number of events, the one with longer time range is located under.
+As explained in Section~\ref{sub:schema}, schemas are vertically stacked to apply the \emph{proximity} principle. This step computes the vertical order of all schemas based on their number of events: the schemas with more events are located under the one with less events. This is analogous to that ``heavier'' schemas are pulled below the ``lighter'' ones -- in terms of the number of events. If two schemas consist of the same number of events, the one with longer time range is located under.
 
 %maximizing the total number of shared events between neighboring schemas.
 %We apply a strategy that prioritizes pairing of schemas according to how many events they share. To do this, we map the problem to graph path finding as below. Given a set of schemata $S$, we create an undirected graph $G = (V,E)$, where each vertex $v_i$ represents a schema $s_i \in S$. The weight of an edge $e_{ij}$ is the number of events shared by schemata $s_i$ and $s_j$. Finding a schema order with the maximum number of shared nodes placed next to each other becomes finding a path with maximum weight connecting all vertices in $G$. This classic longest path finding problem is NP-hard. The number of schemata we plan to support is at most eight due to the limitation of the small number of colors that human can distinguish. Therefore, we simply use brute-forte algorithm to find the path.
 
 \subsubsection{Layout Individual Schemas}
 \label{sub:layout-schema}
+The second step of the algorithm produces the layout for each schema. Events that are members of multiple schemas are replicated, allowing the layout of each schema to be generated independently. Events within a schema are sorted chronologically and added to the timeline in that order. Because all events have the same height, the layout algorithm only needs to compute the row level and horizontal position of each event. 
 
-The second step of the algorithm produces the layout of each schema. Events shared by multiple schemas are replicated for each of them; therefore, the layout of each schema can be generated independently. Events within a schema are sorted chronologically so that they can be added from left to right. The algorithm works by adding one event at a time: the new event will stay at the same horizontal level as the previous one if it can, otherwise it will move up one level. When a event $n_i$ has the same time as the previous $n_{i-1}$, it needs to be moved up one level because they must have the same x-coordinate. Otherwise, if $n_i$ intersects with $n_{i-1}$, an attempt is made to shift $n_{i-1}$ to the left to make space for $n_i$ as discussed below. If the shifting is successful, the event stays in that level; otherwise, the event needs to move up one level.
+Initially, an event $e_i$ is located on the same row as the previous one $e_{i-1}$ and at the position proportional to its temporal value (Condition 1). If these two events are separate, the algorithm moves to the next event; or else, two cases will be considered. If $e_i$ happens at the same time as $e_{i-1}$, it will be located on the upper row and at the same horizontal coordinate as $e_{i-1}$. Otherwise, $e_{i-1}$ is tentatively shifted to the left to make space for $e_i$, as discussed next. If the shift is unsuccessful, $e_i$ will be located in the upper row.
 
 \paragraph*{Shifting Events}
-To address the issues of scalability and efficient use of space, accuracy of the event position can be sacrificed. For each event, its $x$-coordinate is initially set at event time ($C1$). Then, events can be shifted horizontally to the left by a limited amount, to make room for events that are after it temporally. An event can be rendered at the non-accurate position scaled with its time. However, to keep the event close to the accurate position, we set the maximum distance that a event can shift to its width. As a result, the event still overlaps with its time point on the timeline and provides reasonable indication to viewers of its true position. When shifting, it is crucial to maintain the relative order between the shifting event and other events ($C2$). For example, if event $n_i$ was to the left of $n$ before the shifting, it should remain on the left afterwards. Another important condition is that there is no intersection with any other event after the shifting ($C3$). An illustration of this algorithm is shown in Fig.~\ref{fig:layout-schema-example}.
+To accommodate more events, the accuracy of the horizontal positions of events can be sacrificed. An event can be shifted horizontally to the left to make space for other events. However, an event should not shift too far from its accurate position to avoid misunderstanding from users. We set that shifting limit to the width of the event so that it still covers its time point on the time axis and provides a reasonable indication of its accurate position. 
 
-\subsubsection{Compact Schemas}
-\label{sub:layout-compact}
-In the third step, the algorithm stacks schemata in the order computed in the first step to produce a compact visualization. For example, if two schemata cover non-overlapping time ranges, they can be placed in the same level to save display space. 
+During shifting, it is essential to make sure that events do not overlap each other (Condition 3). Considering an event $e_{i-1}$ is shifted to make space for $e_i$, if it overlaps with $e_{i-2}$, that event should be shifted as well. Eventually, all events located on the way of the movement should also be shifted.
 
-Replicated events are connected using a light dashed line.
+It is also necessary to make sure that the relative order between events is still correct after shifting (Condition 2). Otherwise, events with wrong order need to be shifted as well to reestablish the correct order. Note that if two events happen at the same time, they must be located at the same horizontal position. 
 
-The group of schemata that share events is added to the SchemaLine first. Their relative ordering top to bottom is fixed and each schema is pushed towards the bottom as much as possible to save display space. After this, schemata without any shared event are added, again from bottom up to find the lowest level possible.
+An illustration of the layout algorithm for one schema is shown in Figure~\ref{fig:layout-schema-example}.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\linewidth]{layout-example}
-\caption{Schema layout algorithm. Four events $E_1$, $E_2$, $E_3$, $E_4$ will be added to their schema chronologically. $E_1$ is positioned at its accurate event time. $E_2$ can locate in the same level as $E_1$ because it does not intersect with $E_1$. $E_3$ intersects with $E_2$ but the intersection width is small enough for $E_2$ to shift to the left without intersecting with $E_1$, enabling $E_3$ locate in the same level as well. However, $E_4$ needs to move up one level because it is impossible to avoid overlapping while shifting previous events.}
-\label{fig:layout-schema-example}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\linewidth]{layout-example}
+	\caption{Schema layout algorithm. Four events $e_1$, $e_2$, $e_3$ and $e_4$ are added chronologically.}
+	\label{fig:layout-schema-example}
 \end{figure}
 
-\subsubsection{Add Non-schema Events}
-\label{sub:layout-non-schema}
-This last step allocates events that do not belong to any schemata. Events are sorted chronologically so that they are added to the SchemaLine from left to right. The ideal $x$-position is the event time, but an event can be shifted as described in Section~\ref{sub:layout-schema}. An event always begins at the lowest level and moves upward until there is enough space for it: that is, until it does not intersect with any other schema or events after possible horizontal shifting. 
+\subsubsection{Compact Schemas}
+In this third step, the algorithm stacks schemas in the order computed in the first step to produce a compact and overlap-free visualization. Schemas are stacked upward, starting at the bottom of the display. However, to save vertical space, it is unnecessary to place a schema on top of the previously added schema. A schema can start at the bottom, move upward, and stop when it does not overlap with any other schemas. In the worst case, it will be located at the top of the timeline.
 
-\subsection{SchemaLine Outline}
-\label{sub:schema-outline}
-In this section, we describe an algorithm to produce a polygonal outline covering all the event rectangles of a schema. We decided to use only horizontal and vertical line segments to keep the outline simple. The \emph{polygonal path} $P_n$ of a schema that contains $n$ event rectangles $R_1, R_2, ..., R_n$, ordered from left to right, is determined as follows:
+\subsubsection{Add Remaining Events}
+This last step allocates events that do not belong to any schemas. Events are sorted chronologically and processed in that order. The ideal horizontal coordinate of an event is the position proportional to its temporal value; however, it can also be shifted using the algorithm described earlier in Section~\ref{sub:layout-schema}. An event begins at the bottom of the display and moves upward until it does not overlap with any other schemas or events after possible shifts. 
+
+\subsection{Schema Outline}
+In this section, we describe an algorithm to produce a polygonal outline covering all the event rectangles of a schema. We decided to use only horizontal and vertical line segments to keep the outline simple yet aesthetic as in Figure~\ref{fig:schema}. The \emph{polygonal path} $P_n$ of a schema that contains $n$ event rectangles $R_1, R_2, ..., R_n$, ordered from left to right, is determined as follows:
 \[
 P_n=
 \begin{cases}
-R_1, & n=1 \\nat
+R_1, & n=1 \\
 P_{n-1} \oplus R_n, & n > 1
 \end{cases},
 \]
-where $\oplus$ is an operator that merges a polygonal path and a rectangle into a new polygonal path. As described in the layout of individual schema (Section \ref{sub:layout-schema}), when a new event is added to an existing schema, it either has the same level as the previous event (Figure~\ref{fig:outline-right}) or one level higher (Figure~\ref{fig:outline-up}). To produce a nice path, two other special cases need to be considered as described in Figure~\ref{fig:outline-up-one} and Figure~\ref{fig:outline-up-two}.
+where $\oplus$ is an operator that \emph{appends} a rectangle to a polygonal path. As described in the layout of individual schema (Section \ref{sub:layout-schema}), when a new event is added to an existing schema, it either has the same row as the previous event (Figure~\ref{fig:outline-right}) or one row higher (Figure~\ref{fig:outline-up}). To produce an aesthetically pleasing path, two other special cases are also considered as described in Figure~\ref{fig:outline-up-one} and Figure~\ref{fig:outline-up-two}. Technically, a path is represented by a list of vertices and is updated when new events are added. Figure~\ref{fig:sl-outline} illustrates how these vertices are updated, added or unchanged for all four aforementioned cases.
 
 \begin{figure}[!htb]
 	\centering
@@ -83,8 +82,8 @@ where $\oplus$ is an operator that merges a polygonal path and a rectangle into 
 	\subcaptionbox{\label{fig:outline-up-one}Left of $R_3$ is a bit greater than left of $R_2$.}[.26\linewidth]{\includegraphics{outline-up-smoothing}}
 	\hfill
 	\subcaptionbox{\label{fig:outline-up-two}Right of $R_3$ is shorter than right of $R_2$.}[.26\linewidth]{\includegraphics{outline-up-shorter}}
-	\caption{Four cases when a new rectangle \colorbox{f2!40}{$R_3$} is appended \textcolor{ForestGreen}{$\pmb{\oplus}$} to the polygonal path.}
+	\caption{Four cases when a new rectangle \colorbox{f2!40}{$R_3$} is appended \textcolor{ForestGreen}{$\pmb{\oplus}$} to a polygonal path -- representing by a dashed polygon. Vertices of the path are colored coded to describe how they are maintained.}
 	\label{fig:sl-outline}
 \end{figure}
 
-After producing a rectilinear path, the bends are made rounded (Fig.~\ref{fig:teaser}). The path is filled with the same stroke color but less transparency to make the border stand out with a darker hue. The beginning of the path does not have the border to indicate that the path is open on that side and the reader should follow this direction. 
+After producing a rectilinear path, all corner bends are made rounded as in Figure~\ref{fig:sl-overview}. The path is filled with the same stroke color but less transparency to make the border stand out with a darker hue. The beginning of the path does not have the border to indicate the flow of events within the path. 

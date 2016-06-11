@@ -96,16 +96,16 @@ To address this issue, we fill the intersection with a linear color gradient cha
 \subsubsection{Multiple-set Events}
 With the vertical layering of sets as discussed earlier, three sets cannot be placed adjacently; therefore, it is unable to visualize intersections among three sets or more. This is also a challenging problem with other state-of-the-art methods~\cite{Alsallakh2014}. To address this issue, similar to non-neighboring sets, we replicate events for each set that they belong to so that all events in the same set stay close together producing a compact visualization. To provide full set memberships of events, one method is connecting all replicates of the same event using edges. However, this may produce a cluttered visualization with many edge crossings. Another method is to color code the event according to its set memberships. The first option is to color the event time circle using either multiple circles (Figure~\ref{fig:eventmembership1}) or concentric rings (Figure~\ref{fig:eventmembership2}). The former requires more horizontal space, whereas the latter needs more vertical space. Another option is to color the background of the event label. Color gradient is used for a smooth color transition as in Figure~\ref{fig:eventmembership3}. This visual encoding is consistent with the use of color gradient to show two-set intersections. However, a timeline with many long-label events may produce a too colorful and distracted visualization. Also, limited label height may hamper the detection of color transition. To solve these problems, color is transitioned from left to right, and only run through a first few characters of the event label (Figure~\ref{fig:eventmembership4}). Figure~\ref{fig:citations} shows this technique in a visualization of 200 events.
 
-\begin{figure}[ht]
+\begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Each circle represents a set.\label{fig:eventmembership1}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8a}}
+	\subcaptionbox{Circles represent sets.\label{fig:eventmembership1}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8a}}
 	\hfill
-	\subcaptionbox{Each ring represents a set.\label{fig:eventmembership2}}[.22\columnwidth]{\includegraphics[height=.19\columnwidth]{figure8b}}
+	\subcaptionbox{Rings represent sets.\label{fig:eventmembership2}}[.22\columnwidth]{\includegraphics[height=.19\columnwidth]{figure8b}}
 	\hfill
-	\subcaptionbox{Vertical gradient: each color represents a set.\label{fig:eventmembership3}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8c}}
+	\subcaptionbox{Vertical gradients represent sets.\label{fig:eventmembership3}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8c}}
 	\hfill
-	\subcaptionbox{Horizontal gradient: each color represents a set.\label{fig:eventmembership4}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8d}}
-	\caption{Multiple-set events visual representation. Event 1 is single-set. Event 2 is double-set. Event 3 is triple-set.}
+	\subcaptionbox{Horizontal gradients represent sets.\label{fig:eventmembership4}}[.22\columnwidth]{\includegraphics[height=.18\columnwidth]{figure8d}}
+	\caption{Visual representation of multiple-set events. Event 1 is single-set (green). Event 2 is double-set (green, yellow). Event 3 is triple-set (green, yellow, pink).}
 	\label{fig:eventmembership}
 \end{figure}
 

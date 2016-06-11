@@ -1,0 +1,26 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{des}=[f1!80, align=center]
+\tikzstyle{ma}=[-stealth, line width=2pt, f1!80]
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+\node [des, anchor=north west] (text) at (7.31,4.35) { visual feedback };
+
+\begin{scope}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {
+		\includegraphics[width=\linewidth]{add-event-frame-raw}
+	};
+		
+	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+		\draw [ma] (text) -- ++(0.0, -.32);
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}
