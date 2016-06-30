@@ -303,7 +303,7 @@ supported!}
 }
 
 % *************************** Graphics and Figures *****************************
-\RequirePackage[usenames, dvipsnames]{color}
+\RequirePackage[usenames, dvipsnames]{xcolor}
 \ifpdf
   % Convert eps figures to pdf
   \RequirePackage{epstopdf}
@@ -777,12 +777,12 @@ wish to left align your text}
 \pagestyle{fancy}
 \ifPHD@pageStyleI
 % Style 1: Sets Page Number at the Top and Chapter/Section Name on LE/RO
-\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1\ }}
+\renewcommand{\chaptermark}[1]{\markboth{\sffamily ##1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\sffamily\thesection\ ##1\ }}
 \fancyhf{}
-\fancyhead[RO]{\nouppercase \rightmark\hspace{0.25em} | 
+\fancyhead[RO]{\nouppercase \rightmark\hspace{0.25em}   
   \hspace{0.25em} \bfseries{\thepage}}
-\fancyhead[LE]{ {\bfseries\thepage} \hspace{0.25em} | 
+\fancyhead[LE]{ {\bfseries\thepage} \hspace{0.25em}   
   \hspace{0.25em} \nouppercase \leftmark}
 
 
