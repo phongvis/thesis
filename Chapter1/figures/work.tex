@@ -5,24 +5,23 @@
 \begin{document}
 	
 \begin{tikzpicture}
-\draw [arrow,>=latex,draw=gray!50] (0,0) -- (9.3,0) node[right, text width=2.2cm, align=center] {Degree of Automation};
-\draw [arrow,>=latex,draw=gray!50] (0,0) -- (0,6.3) node[above, text width=2.1cm, align=center] {Gained Knowledge};
+\draw [arrow,>=latex,draw=gray!50] (0,0) -- (6.3,0) node[right, text width=3.2cm, align=center] {Complexity of Provenance Data};
+\draw [arrow,>=latex,draw=gray!50] (0,0) -- (0,6.3) node[above, text width=3.5cm, align=center] {Complexity of Sensemaking Type};
 \draw [draw=gray!50] (3,0) --++ (0,6) node {};
 \draw [draw=gray!50] (6,0) --++ (0,6) node {};
-\draw [draw=gray!50] (9,0) --++ (0,6) node {};
-\draw [draw=gray!50] (0,3) --++ (9,0) node {};
-\draw [draw=gray!50] (0,6) --++ (9,0) node {};
+\draw [draw=gray!50] (0,3) --++ (6,0) node {};
+\draw [draw=gray!50] (0,6) --++ (6,0) node {};
 
-\node (manual) at (1.5,0) [below] {manual};
-\node (hybrid) at (4.5,0) [below] {hybrid};
-\node (auto) at (7.5,0) [below] {automatic};
-\node (process) at (0,1.5) [above, rotate=90] {process};
-\node (rationale) at (0,4.5) [above, rotate=90] {rationale};
+\node (low) at (1.5,0) [below] {low};
+\node (high) at (4.5,0) [below] {high};
+\node (temporal) at (0,1.5) [above, rotate=90] {temporal};
+\node (rational) at (0,4.5) [above, rotate=90] {rational};
 
-\draw [arrow, draw=gray!30,line width=.5cm, rounded corners=.5cm] (1.5,1.5) -|(4.5,5);
+\draw [arrow, draw=gray!30,line width=.5cm, rounded corners=.5cm] (.75,1.5) --(4.5,1.5) --(1.5,4.5) --(5.25,4.5);
 
-\node at (1.5,1.5) [text width=3cm, align=center] {\rmt{Chapter 3\\[.3cm]Chapter 4}};
-\node at (4.5,1.5) [text width=3cm, align=center] {\rmt{Chapter 5}};
+\node at (1.5,1.5) [text width=3cm, align=center] {\rmt{Chapter 3}};
+\node at (4.5,1.5) [text width=3cm, align=center] {\rmt{Chapter 4}};
+\node at (1.5,4.5) [text width=3cm, align=center] {\rmt{Chapter 5}};
 \node at (4.5,4.5) [text width=3cm, align=center] {\rmt{Chapter 6}};
 
 \end{tikzpicture}
