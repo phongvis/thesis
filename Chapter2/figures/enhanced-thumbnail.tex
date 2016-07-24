@@ -1,0 +1,30 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{des}=[anchor=south west, f3, font=\LARGE, inner sep=1pt]
+\tikzstyle{ca}=[f1, very thick,->,>=stealth]
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+\begin{scope}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {
+		\includegraphics[width=.5\linewidth]{enhanced-thumbnail-raw-1}
+	};
+	
+	\node[anchor=south west,inner sep=0,right=2 of image] (image2) {
+			\includegraphics[width=.4\linewidth]{enhanced-thumbnail-raw-2}
+		};
+	
+	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+		\draw [ca] (.84,.95) to [out=-60, in=120]  node[yshift=.8em,xshift=-2em] {salient text} (1.6,.78);
+		\draw [ca] (.83,.7) to [out=-60, in=120] node[yshift=.8em,xshift=-.2em] {salient image} (1.45,.5);
+		\draw [ca] (.08,.94) to [out=-60, in=180] (1.32,.28) node[yshift=1.3em,xshift=-3.5em] {branding logo} ;
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

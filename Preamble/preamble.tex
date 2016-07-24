@@ -14,9 +14,8 @@
 % Ragged bottom avoids extra whitespaces between paragraphs
 \raggedbottom
 % To remove the excess top spacing for enumeration, list and description.
-% Phong: actually for me, spacing among items is too much.
 \usepackage{enumitem}
-\setlist[enumerate,itemize,description]{itemsep=0em}
+%\setlist[enumerate,itemize,description]{itemsep=0em}
 
 % *****************************************************************************
 % ******************* Fonts (like different typewriter fonts etc.)*************
@@ -303,7 +302,7 @@
 \newcommand{\tsevaluation}{\colorbox[HTML]{FFFFb3}{\emph{evaluation}}}
 
 % Image source
-\newcommand{\is}[1]{{\textrm{\emph{Image source:~#1}}}} 
+\newcommand{\is}[1]{{\textrm{\emph{Image source:~\cite{#1}.}}}} 
 
 % Hyphenation
 \hyphenation{SchemaLine}
@@ -315,3 +314,6 @@
 \definecolor{b1}{HTML}{DE6A10}
 \definecolor{b2}{HTML}{0365C0}
 \definecolor{b3}{HTML}{00882B}
+\newcommand{\textcm}[1]{\textcolor{b1}{#1}}
+\newcommand{\textch}[1]{\textcolor{b2}{#1}}
+\newcommand{\textcb}[1]{\textcolor{b3}{#1}}
