@@ -1,39 +1,42 @@
 \chapter{Introduction}
 
 \graphicspath{{Chapter1/figures/}}
+%Provide some definitions of sensemaking, from a very abstract one to a process-oriented one. [need to  rephrase]
+%\begin{itemize}
+%	\item How do we make sense of the world so we can act in it ~\cite{Snowden2005}
+%	\item Sensemaking is a motivated, continuous effort to understand connections (which can be among people, places, and events) in order to anticipate their trajectories and act effectively ~\cite{Klein2006a}
+%	\item It's the way people go about their process of collecting, organizing and creating representations of complex information sets, all centered around some problem they need to understand~\cite{Russell2008}
+%\end{itemize}
 
-[have look at Shri thesis]
-What is sensemaking? Giving examples and formal definitions. Why need to do sensemaking? May start with big data problem as the reason to do sensemaking first.
+What is sensemaking and why is it important? Explain using examples before providing formal definitions. (Use the data deluge problem, use some numbers) What need to do to support sensemaking?
 
-vis and visual analytics -- what can it support sensemaking?
+vis and visual analytics -- what are they and how can they support sensemaking?
 
-sensemaking : process - end - provenance - benefits
+analytic provenance -- what is it and why is it able to support sensemaking?
 
-vis on provenance, workflow
-
-little research?
-
+a workflow of how AP can be used to support SM
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics{workflow}
-	\caption{A pipeline of supporting sensemaking through analytic provenance. During the process in which a user solves a sensemaking task using a visualization tool, their interactions and discoveries -- we refer to both of them as \emph{provenance data} -- are captured, visualized and analyzed to provide support back to the sensemaking process.}
+	\caption{A pipeline of supporting sensemaking through analytic provenance. During the process in which a user solves a sensemaking task using a visualization tool, their interactions and discoveries -- we refer to both of them as \emph{provenance data} -- are captured and visualized to provide support back to the sensemaking process.}
 	\label{fig:workflow}
 \end{figure}
+
+\section{Research Problem and Approach}
+
+\subsection{Problem}
 In this thesis, we focus on the \textbf{visualization} part of that process:
 \begin{center}
 	\strong{How to design interactive visualizations of provenance data \\to support sensemaking?}
 \end{center}
 
-
-\section{Research Problem and Approach}
-\subsection{Problem}
 %Pirolli and Card~\cite{Pirolli2005} describe sensemaking as a process consisting of two loops: the \emph{foraging loop}, which involves searching, extracting and organizing information; and the \emph{sensemaking loop}, which involves building schemas, generating and testing hypotheses, and presenting the outcome. Schematization plays an important role in this model: connecting the foraging loop and the sensemaking loop. It is a crucial step in converting raw evidence to rational explanations. Pirolli and Card suggest that the schematization process should be supported by a computer-based tool that organizes raw evidence into small-scale stories about typical topics or in answer to typical questions (e.g., who, what, when, where, why, how). This suggestion is aligned with a recent empirical study by Kang, Görg and John Stasko~\cite{Kang2011}. It shows that all of the participants who performed the sensemaking task well spent considerable time and effort in \emph{organizing their collected information}. Their organizational schemes were flexible: a \emph{timeline} of related events, a \emph{map} connecting locations that a person has been to, and a \emph{diagram} showing relationships among suspicious targets.
 
 %One approach to provide such support is through \textbf{analytic provenance} -- an area of research focusing on understanding a user's reasoning process through the study of their interactions with a visualization tool~\cite{North2011}. More specifically, during the process in which a user solves a sensemaking task using a visualization tool, their interactions and discoveries -- we refer to both of them as \emph{provenance data} -- are captured and visualized to provide support back to the sensemaking process itself as summarized in Figure~\ref{fig:workflow}. 
 
 
-\subsection{Approach}
+
 %The research is driven by enabling users to discover the answers to the aforementioned questions (who, what, when, where, why, how) of the captured provenance data.
 %\begin{enumerate}
 %	\item \strong{when?} this is to help users to analyze the \textbf{temporal} relationship of their provenance data. Current timeline visualization has these limitations
@@ -56,21 +59,22 @@ In this thesis, we focus on the \textbf{visualization} part of that process:
 %
 %The analytic provenance approach that we take is general; however, we need to choose specific domains/tasks to demonstrate its application. Sensemaking does not only happen when using a visualization system to solve a ``serious'' intelligence analysis task. Actually, it often happens in our life such as when using a web browser to find information to select the most suitable smartwatch to buy. Therefore, to demonstrate the wide application of our visualization techniques, we target both intelligence analysis tasks using a visualization system and everyday sensemaking tasks using a web browser.
 
-We elaborate the research question by seeking answers to the three practical questions \textch{what} -- \textcm{why} -- \textcb{how}. 
+We elaborate the research question by seeking answers to the three practical questions what -- why -- how. This general approach has been used by Aigner~et~al.~\cite{Aigner2011} in their analysis of visualization techniques for time-oriented data and by Brehmer and Munzner~\cite{Brehmer2013} in their characterization of visualization tasks.
+
+%\textch{what} -- \textcm{why} -- \textcb{how}. 
 
 % Explain why this approach first then give sucessful examaples.
-%This approach has been used by Aigner~et~al.~\cite{Aigner2011} in their analysis of visualization techniques for time-oriented data and by Brehmer and Munzner~\cite{Brehmer2013} in their characterization of visualization tasks.
 
 \begin{enumerate}
 	\item What is presented?
 	
-	Using the taxonomy of dataset types by Munzner~\cite{Munzner2014}, provenance data can be classified as a \emph{table}, where each row represents an item of data and each column describes an attribute of the dataset. One essential attribute of provenance data is \emph{time} providing when a data item is collected.
+	Using the taxonomy of dataset types by Munzner~\cite{Munzner2014}, provenance data can be classified as a \emph{table}, where each row represents an item of data and each column describes an attribute of the dataset. One essential attribute of provenance data is \emph{time} providing when a data item is collected. Categorical information may be added to help make sense of more complex relationship.
 	
-	The user may provide additional information to the raw collected data to indicate relationships between data items. This transforms the tabular dataset to a \emph{network} dataset.
+	The user may also provide additional information to the raw collected data to indicate relationships between data items. This transforms the tabular dataset to a \emph{network} dataset.
 	
 	\item Why is it presented?
 	
-	The characteristics of provenance data suggests what tasks it can support users in performing. First, the inherently temporal aspect of provenance data provides an opportunity to allow users to identify temporal patterns and relationships of the sensemaking task. More challengingly, can provenance data help user identify rational relationships of sensemaking?
+	The characteristics of provenance data suggests the tasks it can provide support to users. First, the inherently temporal aspect of provenance data provides an opportunity to allow users to identify temporal patterns and relationships of the sensemaking task. More challengingly, can provenance data help user identify rational relationships of sensemaking?
 	
 	\item How is it presented?
 	
@@ -88,6 +92,8 @@ We elaborate the research question by seeking answers to the three practical que
 %	\item temporal: understand the process ('how')
 %	\item logical: understand the rationale ('why')
 %\end{itemize}
+
+\subsection{Approach}
 
 We break down the research problem to the following research questions based on the type of provenance data will be used and the task it aims to support.
 
@@ -122,6 +128,8 @@ Two domains to demonstrate:
 	\item everyday sensemaking with web browser: popular, high demands
 \end{itemize}
 
+We take a user-centered design approach in seeking solutions to all the research questions. For each question, we elicit the design requirements either by conducting a user study and/or drawing from the literature. Visual encoding and interaction are designed to meet those requirements, and the designs are implemented into a working prototype. Finally, an empirical study is conducted to explore how the tool is used by targeted users and whether it supports users as intended. 
+
 \section{Thesis Contributions}
 %Chapter 2 provides an overview of sensemaking, visualization and analytic provenance.
 %
@@ -146,9 +154,6 @@ Two domains to demonstrate:
 %How to design interactive visualization that can utilize both temporal and relational provenance data and enable users to integrate their input to explore and express complex rational relationship of sensemaking?
 
 
-
-
-For each sub-problem, workflow...
 
 Toward the overall goal of supporting users in their sensemaking processes using provenance data, this thesis contributes:
 \begin{itemize}

@@ -1,20 +1,28 @@
 \documentclass[tikz]{standalone}
-
+\usepackage{fontawesome}
 \input{../../Preamble/tikz}
 
-\tikzstyle{box} = [thick, draw, align=center, minimum height=1.2cm]
+\tikzstyle{all} = [very thick, align=center, minimum height=1.2cm, inner xsep=.2cm]
+\tikzstyle{box} = []
+\tikzstyle{data} = [cylinder, shape border rotate=90, aspect=0.25]
+\tikzstyle{vis} = [rounded corners]
+\tikzstyle{mydash} = [very thick, dash pattern=on 5pt off 5pt, draw=gray]
 
 \begin{document}
 
 \begin{tikzpicture}
-\node (sm) [box, c1] {Sensemaking \\System};
-\node (data) [box, c2, right=2.3cm of sm] {Provenance \\Data};
-\node (vis) [box, c3, right=2.3cm of data] {Visualization};
+\node (sm) [c1, all, box] {Sensemaking \\System};
+\node (data) [c2, all, data, below right=.5cm of sm, xshift=1cm] {Provenance \\Data};
+\node (vis) [c3, all, vis, below=.5cm of sm, yshift=-2cm] {Visualization};
+\node (user) [all, left=5cm of data, scale=1.4] {\Huge{\faUser} \\[-.2em] \small{User}};
 
-\draw [arrow] (sm) -- (data) node[midway, yshift=.25cm] {\rmt{capture}};
-\draw [arrow] (data) -- (vis) node[midway, yshift=.25cm] {\rmt{visualize}};
-\draw [arrow, rounded corners] (vis.south) |- ++(0,-.8) -| (sm.south); 
-\node [rectangle,fill=white,inner ysep=0,yshift=-1.15cm] at ($(vis)!0.5!(sm)$) {\rmt{analyze}};
+\draw [arrow, all] (sm) node[right=.2cm of sm,yshift=.25cm] {\rmt{capture}} -| (data);
+\draw [arrow, all] (data) |- (vis) node[midway, yshift=.25cm, xshift=-1.2cm] {\rmt{visualize}};
+\draw [<->,>=stealth, all] (sm) -- (vis);
+%\draw [mydash] (-1.6,.9) rectangle (1.6,-4.6);
+\draw[arrow, all] (user) -- (sm.west);
+\draw[arrow, all] (user) -- (vis.west);
+
 \end{tikzpicture}
 
 	
