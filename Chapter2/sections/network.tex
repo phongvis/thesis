@@ -3,29 +3,23 @@
 TODO: talk about connection and containment marks as in Munzner's book before referring to them. Basically, node-link diagrams use connection and space-filling uses containment.
 
 \subsection{Node-Link Diagrams}
-The most common visual encoding for network and tree data is with node-link diagrams, where nodes are represented as points and links connecting them are drawn as curves. Node-link diagrams use links to indicate relationships between nodes. We further discuss layouts using this visual encoding for network data with different constraints: rooted tree, directed graph and general graph.
+The most common visual encoding for network and tree data is \emph{node-link diagrams}, where nodes are represented as point marks and links connecting these nodes are represented as connection marks. We further discuss layouts using this representation for network data with different constraints: rooted tree, directed graph and general graph.
 
 \subsubsection{Tree Layout}
 A classic algorithm by Reingold and Tilford~\cite{Reingold1981} produces a tidy tree layout satisfying the following aesthetic rules:
 \begin{enumerate}
 	\item Nodes at the same level of the tree should lie along a straight line, and the straight lines defining the levels should be parallel.
-	\item A left son should be positioned to the left of its father and a right son to the right.
+	\item A left son should be positioned to the left of its father, and a right son should be positioned to the right of its father.
 	\item A father should be centered over its sons.
 \end{enumerate} 
 
-However, the layout is space-inefficient, leaving void space at the root side of the tree (\autoref{fig:lr-tree-tidy}). Marriott and Sbarski~\cite{Marriott2007} relax the rule that a parent must be placed at the center of its children, slightly shifting branches or nodes to produce a narrower tree. In practice, nodes have their sizes rather than single points, and their heights can be different. Van der Ploeg~\cite{VanderPloeg2014} relaxes the layering requirement to produce a shorter tree (\autoref{fig:lr-tree-tidy-non-layer}).
+Even though the layout produced by Reingold and Tilford's algorithm is tidy, it leaves plenty of void space at the root side of the tree as shown in \autoref{fig:lr-tree-tidy}. Marriott and Sbarski~\cite{Marriott2007} relax the rule that a parent must be placed at the center of its children by slightly shifting branches of nodes to produce a narrower tree. In practice, nodes have their sizes rather than just single points, and their heights can also be different. Van der Ploeg~\cite{VanderPloeg2014} relaxes the layering requirement to produce a shorter tree as shown in \autoref{fig:lr-tree-tidy-non-layer}.
 
-%\begin{figure}[!htb]
-%	\centering
-%	\includegraphics[width=.5\columnwidth]{tree-flare}
-%	\caption{The data--frame model. \emph{Source:~\cite{Klein2003}}.}
-%	\label{fig:data-frame-model}
-%\end{figure}
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Standard Reingold--Tilford algorithm. \is{Nguyen2002}\label{fig:lr-tree-tidy}}{\includegraphics[height=.315\columnwidth]{tree-tidy}}
+\subcaptionbox{Produced by standard Reingold--Tilford's algorithm. \is{Nguyen2002}\label{fig:lr-tree-tidy}}{\includegraphics[height=.318\columnwidth]{tree-tidy}}
 \hfill
-\subcaptionbox{Relaxed layering for shorter layout. \is{VanderPloeg2014}\label{fig:lr-tree-tidy-non-layer}}{\includegraphics[height=.315\columnwidth]{tree-tidy-non-layer}}
+\subcaptionbox{Relaxed layering for shorter layout. \is{VanderPloeg2014}\label{fig:lr-tree-tidy-non-layer}}{\includegraphics[height=.318\columnwidth]{tree-tidy-non-layer}}
 \caption{Tree layouts.}
 \end{figure}
 
