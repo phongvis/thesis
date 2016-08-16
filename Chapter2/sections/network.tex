@@ -1,5 +1,6 @@
 \section{Visualization of Network and Tree Data}
 
+Two data types appeared in network and tree datasets are items and links.
 TODO: talk about connection and containment marks as in Munzner's book before referring to them. Basically, node-link diagrams use connection and space-filling uses containment.
 
 \subsection{Node-Link Diagrams}
@@ -13,28 +14,28 @@ A classic algorithm by Reingold and Tilford~\cite{Reingold1981} produces a tidy 
 	\item A father should be centered over its sons.
 \end{enumerate} 
 
-Even though the layout produced by Reingold and Tilford's algorithm is tidy, it leaves plenty of void space at the root side of the tree as shown in \autoref{fig:lr-tree-tidy}. Marriott and Sbarski~\cite{Marriott2007} relax the rule that a parent must be placed at the center of its children by slightly shifting branches of nodes to produce a narrower tree. In practice, nodes have their sizes rather than just single points, and their heights can also be different. Van der Ploeg~\cite{VanderPloeg2014} relaxes the layering requirement to produce a shorter tree as shown in \autoref{fig:lr-tree-tidy-non-layer}.
+Even though the layout produced by Reingold and Tilford's algorithm is tidy, it still leaves plenty of void space at the root side of the tree as shown in \autoref{fig:lr-tree-tidy}. Marriott and Sbarski~\cite{Marriott2007} relax the rule that a parent must be placed at the center of its children by slightly shifting branches of nodes to produce a narrower tree. In practice, nodes have their sizes rather than just single points, and their heights can also be different. Van der Ploeg~\cite{VanderPloeg2014} relaxes the layering requirement to produce a shorter tree as shown in \autoref{fig:lr-tree-tidy-non-layer}.
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Produced by standard Reingold--Tilford's algorithm. \is{Nguyen2002}\label{fig:lr-tree-tidy}}{\includegraphics[height=.318\columnwidth]{tree-tidy}}
+\subcaptionbox{Produced by standard Reingold--Tilford algorithm. \is{Nguyen2002}\label{fig:lr-tree-tidy}}{\includegraphics[height=.318\columnwidth]{tree-tidy}}
 \hfill
 \subcaptionbox{Relaxed layering for shorter layout. \is{VanderPloeg2014}\label{fig:lr-tree-tidy-non-layer}}{\includegraphics[height=.318\columnwidth]{tree-tidy-non-layer}}
 \caption{Tree layouts.}
 \end{figure}
 
-Conventionally, tree layouts are rectilinear, children growing from the parent node from left to right or top to bottom. However, they can also be arranged radially: children are located along a circular arc of their parent. The depth of the tree is encoded as distance away from the center of the circle. Reingold--Tilford algorithm can be modified to show a radial tree as in \autoref{fig:lr-tree-radial}. Using the same dataset, \autoref{fig:lr-tree-rect} shows a conventional tree from left to right.
+Conventionally, tree layouts are rectilinear with children branching from the parent node either from left to right (\autoref{fig:lr-tree-rect}) or top to bottom. However, the children nodes can also be arranged radially, along a circular arc of their parent. The depth of a circular tree is encoded as distance away from the center of the circle. Reingold--Tilford algorithm can be modified to show a radial tree. \autoref{fig:lr-tree-radial} shows such a layout using the same dataset as in \autoref{fig:lr-tree-rect}.
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Conventional tree from left to right. \label{fig:lr-tree-rect}}{\includegraphics[height=.69\columnwidth]{tree-rect}}
+\subcaptionbox{Conventional tree, growing direction as left to right. \label{fig:lr-tree-rect}}{\includegraphics[height=.69\columnwidth]{tree-rect}}
 \hfill
 \subcaptionbox{Radial tree. Depth is encoded as distance away from the center. \label{fig:lr-tree-radial}}{\includegraphics[height=.69\columnwidth]{tree-radial}}
 \caption{Tree layouts with different orientations. TODO: regenerate -- remove text, reduce node size 1-2px to avoid overlap, make links darker}
 \end{figure}
   
 \subsubsection{Hierarchical Graph Layout}	
-The most popular method of drawing directed graphs is the Sugiyama framework~\cite{Sugiyama1981}, separating the nodes into layers to show the hierarchy effectively. \autoref{fig:lr-layered-graph} shows an example of layered graphs. The framework consists of four steps.
+The most popular method of drawing directed graphs is the Sugiyama framework~\cite{Sugiyama1981}, separating nodes into layers to show the hierarchy effectively. \autoref{fig:lr-layered-graph} shows an example of layered graphs. The framework consists of four steps.
 
 \begin{figure}[!htb]
 	\centering
