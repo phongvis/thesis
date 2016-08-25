@@ -6,19 +6,19 @@
 \tikzstyle{box} = []
 \tikzstyle{data} = [cylinder, shape border rotate=90, aspect=0.25]
 \tikzstyle{vis} = [rounded corners]
-\tikzstyle{mydash} = [very thick, dash pattern=on 5pt off 5pt, draw=gray]
+\tikzstyle{mydash} = [very thick, dash pattern=on 8pt off 5pt, draw=gray, line width=3pt]
 
 \begin{document}
 
 \begin{tikzpicture}
 \node (sm) [c1, all, box] {Sensemaking \\System};
 \node (data) [c2, all, data, below right=.5cm of sm, xshift=1cm] {Provenance \\Data};
-\node (vis) [c3, all, vis, below=.5cm of sm, yshift=-2cm] {Visualization};
+\node (vis) [c3, all, vis, below=.5cm of sm, yshift=-2cm] {Provenance\\Visualization};
 \node (user) [all, left=5cm of data, scale=1.4] {\Huge{\faUser} \\[-.2em] \small{User}};
 
 \draw [arrow, all] (sm) node[right=.2cm of sm,yshift=.25cm] {\rmt{capture}} -| (data);
 \draw [arrow, all] (data) |- (vis) node[midway, yshift=.25cm, xshift=-1.2cm] {\rmt{visualize}};
-\draw [<->,>=stealth, all] (sm) -- (vis);
+\draw [<->,>=stealth, all, mydash] (sm) -- (vis);
 %\draw [mydash] (-1.6,.9) rectangle (1.6,-4.6);
 \draw[arrow, all] (user) -- (sm.west);
 \draw[arrow, all] (user) -- (vis.west);
