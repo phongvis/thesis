@@ -1,7 +1,7 @@
 \section{Algorithm}
 \label{sec:sl-algorithm}
 
-This section discusses the algorithm to produce the SchemaLine visualization as in Figure~\ref{fig:sl-overview}, consisting of two parts. First, the layout of schemas is generated; and then, their outlines are computed based on the layout information.
+This section discusses the algorithm to produce the SchemaLine visualization as in \autoref{fig:sl-overview}, consisting of two parts. First, the layout of schemas is generated; and then, their outlines are computed based on the layout information.
 
 \subsection{SchemaLine Layout}
 
@@ -12,7 +12,7 @@ Besides compact and aesthetic, we set these conditions to the layout:
 	\item \textbf{Overlap free}. Events and schemas are not allowed to intersect each other.
 \end{enumerate}
 
-To meet these requirements, we design an algorithm consists of the following four steps (Figure~\ref{fig:sl-layout-overview}):
+To meet these requirements, we design an algorithm consists of the following four steps (\autoref{fig:sl-layout-overview}):
 \begin{enumerate} 
 	\item Order the schemas vertically based on their number of events.
 	\item For each schema, locate its events satisfying the aforementioned requirements.
@@ -28,10 +28,7 @@ To meet these requirements, we design an algorithm consists of the following fou
 \end{figure}
 
 \subsubsection{Order Schemas}
-As explained in Section~\ref{sub:schema}, schemas are vertically stacked to apply the \emph{proximity} principle. This step computes the vertical order of all schemas based on their number of events: the schemas with more events are located under the one with less events. This is analogous to that ``heavier'' schemas are pulled below the ``lighter'' ones -- in terms of the number of events. If two schemas consist of the same number of events, the one with longer time range is located under.
-
-%maximizing the total number of shared events between neighboring schemas.
-%We apply a strategy that prioritizes pairing of schemas according to how many events they share. To do this, we map the problem to graph path finding as below. Given a set of schemata $S$, we create an undirected graph $G = (V,E)$, where each vertex $v_i$ represents a schema $s_i \in S$. The weight of an edge $e_{ij}$ is the number of events shared by schemata $s_i$ and $s_j$. Finding a schema order with the maximum number of shared nodes placed next to each other becomes finding a path with maximum weight connecting all vertices in $G$. This classic longest path finding problem is NP-hard. The number of schemata we plan to support is at most eight due to the limitation of the small number of colors that human can distinguish. Therefore, we simply use brute-forte algorithm to find the path.
+As explained in \autoref{sub:schema}, schemas are vertically stacked to apply the \emph{proximity} principle. This step computes the vertical order of all schemas based on their number of events: the schemas with more events are located under the one with less events. This is analogous to that ``heavier'' schemas are pulled below the ``lighter'' ones -- in terms of the number of events. If two schemas consist of the same number of events, the one with longer time range is located under.
 
 \subsubsection{Layout Individual Schemas}
 \label{sub:layout-schema}
@@ -46,7 +43,7 @@ During shifting, it is essential to make sure that events do not overlap each ot
 
 It is also necessary to make sure that the relative order between events is still correct after shifting (Condition 2). Otherwise, events with wrong order need to be shifted as well to reestablish the correct order. Note that if two events happen at the same time, they must be located at the same horizontal position. 
 
-An illustration of the layout algorithm for one schema is shown in Figure~\ref{fig:layout-schema-example}.
+An illustration of the layout algorithm for one schema is shown in \autoref{fig:layout-schema-example}.
 
 \begin{figure}[!htb]
 	\centering
@@ -59,10 +56,10 @@ An illustration of the layout algorithm for one schema is shown in Figure~\ref{f
 In this third step, the algorithm stacks schemas in the order computed in the first step to produce a compact and overlap-free visualization. Schemas are stacked upward, starting at the bottom of the display. However, to save vertical space, it is unnecessary to place a schema on top of the previously added schema. A schema can start at the bottom, move upward, and stop when it does not overlap with any other schemas. In the worst case, it will be located at the top of the timeline.
 
 \subsubsection{Add Remaining Events}
-This last step allocates events that do not belong to any schemas. Events are sorted chronologically and processed in that order. The ideal horizontal coordinate of an event is the position proportional to its temporal value; however, it can also be shifted using the algorithm described earlier in Section~\ref{sub:layout-schema}. An event begins at the bottom of the display and moves upward until it does not overlap with any other schemas or events after possible shifts. 
+This last step allocates events that do not belong to any schemas. Events are sorted chronologically and processed in that order. The ideal horizontal coordinate of an event is the position proportional to its temporal value; however, it can also be shifted using the algorithm described earlier in \autoref{sub:layout-schema}. An event begins at the bottom of the display and moves upward until it does not overlap with any other schemas or events after possible shifts. 
 
 \subsection{Schema Outline}
-In this section, we describe an algorithm to produce a polygonal outline covering all the event rectangles of a schema. We decided to use only horizontal and vertical line segments to keep the outline simple yet aesthetic as in Figure~\ref{fig:schema}. The \emph{polygonal path} $P_n$ of a schema that contains $n$ event rectangles $R_1, R_2, ..., R_n$, ordered from left to right, is determined as follows:
+In this section, we describe an algorithm to produce a polygonal outline covering all the event rectangles of a schema. We decided to use only horizontal and vertical line segments to keep the outline simple yet aesthetic as in \autoref{fig:schema}. The \emph{polygonal path} $P_n$ of a schema that contains $n$ event rectangles $R_1, R_2, ..., R_n$, ordered from left to right, is determined as follows:
 \[
 P_n=
 \begin{cases}
@@ -70,13 +67,15 @@ R_1, & n=1 \\
 P_{n-1} \oplus R_n, & n > 1
 \end{cases},
 \]
-where $\oplus$ is an operator that \emph{appends} a rectangle to a polygonal path. As described in the layout of individual schema (Section \ref{sub:layout-schema}), when a new event is added to an existing schema, it either has the same row as the previous event (Figure~\ref{fig:outline-right}) or one row higher (Figure~\ref{fig:outline-up}). To produce an aesthetically pleasing path, two other special cases are also considered as described in Figure~\ref{fig:outline-up-one} and Figure~\ref{fig:outline-up-two}. Technically, a path is represented by a list of vertices and is updated when new events are added. Figure~\ref{fig:sl-outline} illustrates how these vertices are updated, added or unchanged for all four aforementioned cases.
+where $\oplus$ is an operator that \emph{appends} a rectangle to a polygonal path. As described in the layout of individual schema (Section \ref{sub:layout-schema}), when a new event is added to an existing schema, it either has the same row as the previous event (\autoref{fig:outline-right}) or one row higher (\autoref{fig:outline-up}). To produce an aesthetically pleasing path, two other special cases are also considered as described in \autoref{fig:outline-up-one} and \autoref{fig:outline-up-two}. Technically, a path is represented by a list of vertices and is updated when new events are added. \autoref{fig:sl-outline} illustrates how these vertices are updated, added or unchanged for all four aforementioned cases.
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics{outline-legend}\bigskip\\
 	\subcaptionbox{\label{fig:outline-right}$R_3$ is on the right side of the path.}{\includegraphics{outline-right}}
-	\\
+	
+	\vspace{.5\baselineskip}
+	
 	\subcaptionbox{\label{fig:outline-up}$R_3$ is on top of the path.}[.43\linewidth]{\includegraphics{outline-up}}
 	\hfill
 	\subcaptionbox{\label{fig:outline-up-one}Left of $R_3$ is a bit greater than left of $R_2$.}[.26\linewidth]{\includegraphics{outline-up-smoothing}}
@@ -86,4 +85,4 @@ where $\oplus$ is an operator that \emph{appends} a rectangle to a polygonal pat
 	\label{fig:sl-outline}
 \end{figure}
 
-After producing a rectilinear path, all corner bends are made rounded as in Figure~\ref{fig:sl-overview}. The path is filled with the same stroke color but less transparency to make the border stand out with a darker hue. The beginning of the path does not have the border to indicate the flow of events within the path. 
+After producing a rectilinear path, all corner bends are made rounded as in \autoref{fig:sl-overview}. The path is filled with the same stroke color but less transparency to make the border stand out with a darker hue. The beginning of the path does not have the border to indicate the flow of events within the path. 

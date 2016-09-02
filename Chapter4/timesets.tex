@@ -2,19 +2,19 @@
 \label{chap:timesets}
 
 \graphicspath{{Chapter4/figures/}}
-The SchemaLine technique described in Chapter 3 cannot show events belonging to multiple sets limiting users from exploring complex temporal relationship. In this chapter, we introduce a novel technique -- TimeSets -- to address that issue. 
 
-%TimeSets visually groups events that share a topic, such as a place or a person, while preserving their temporal order. It dynamically adjusts the level of detail for each event to suit the amount of information and display estate. 
+\blfootnote{Previously published at the \emph{Information Visualization} journal~\cite{Nguyen2015}.}\autoref{chap:schemaline} presents a timeline visualization technique, SchemaLine, to explore the temporal relationship of sensemaking through the high-level analytic provenance manually captured by users. However, SchemaLine cannot show events belonging to multiple schemas, or \emph{sets} for generality, limiting users from exploring complex temporal relationship. In this chapter, we introduce a novel technique -- \emph{\textcb{TimeSets}} -- to address that issue. TimeSets visually groups events that belong to the same set but still preserves their temporal order. It color codes the backgrounds of the entire sets to distinguish them and uses colored gradient backgrounds for the intersections among those sets. It also addresses the scalability issue in SchemaLine by dynamically adjusting the level of detail for each event to suit the amount of information and display estate. A controlled experiment was conducted to evaluate its effectiveness by comparing it to a state-of-the-art method. The results showed significant advantage in accuracy and
+user preference.
 
-%\section{Introduction}
-%Limitation of existing timeline visualization techniques when showing set relations:
-%
-%\begin{itemize}
-%	\item similarity: use colors or shapes to indicate sets -- not powerful 
-%	\item proximity: not space-efficient
-%	\item uniform connectedness: cluttered
-%\end{itemize}
-%
+\input{Chapter4/sections/intro.tex}
+\input{Chapter4/sections/related-work.tex}
+\input{Chapter4/sections/setvis.tex}
+\input{Chapter4/sections/layout.tex}
+\input{Chapter4/sections/evaluation.tex}
+\input{Chapter4/sections/case-study.tex}
+\input{Chapter4/sections/vast.tex}
+\input{Chapter4/sections/conclusion.tex}
+
 %The contribution: TimeSets
 %\begin{itemize}
 %	\item Clearly shows the events within a set over time and their relationships with other sets.
@@ -199,14 +199,3 @@ The SchemaLine technique described in Chapter 3 cannot show events belonging to 
 %	\caption{}
 %	\label{fig:savi}
 %\end{figure}
-
-%\section{Conclusion}
-
-%\input{Chapter4/sections/intro.tex}
-%%\input{Chapter4/sections/related-work.tex}
-\input{Chapter4/sections/setvis.tex}
-\input{Chapter4/sections/layout.tex}
-\input{Chapter4/sections/evaluation.tex}
-\input{Chapter4/sections/case-study.tex}
-\input{Chapter4/sections/vast.tex}
-%\input{Chapter4/sections/conclusion.tex}
