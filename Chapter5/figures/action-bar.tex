@@ -1,0 +1,34 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{every node}=[font=\sffamily \large, a1, align=center]
+\tikzstyle{ma}=[-stealth, line width=2pt, a1]
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+\node [anchor=west, text width=2.5cm] (rel) at (-1.8,.5) { Relationship (revisit)};
+\node [anchor=west] (url) at (2.8,2.5) { Context (URL)};
+\node [anchor=west, text width=2.5cm] (title) at (0,-1.1) { Context (page title)};
+\node [anchor=west, text width=2.5cm] (action) at (2.65,-1.1) { Action type (filter)};
+\node [anchor=west, text width=2.5cm] (setting) at (6,-1.1) { Context (filter setting)};
+
+\begin{scope}[xshift=1.5cm]
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {
+		\includegraphics[width=0.8\linewidth]{action-bar.png}
+	};
+		
+	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+		\draw [ma, shorten <=-0.2cm] (rel) -- ++(0.22,0.0);
+		\draw [ma] (url) -- ++(0,-0.62);
+		\draw [ma] (title) -- ++(.15,.82);
+		\draw [ma] (action) -- ++(0,.82);
+		\draw [ma] (setting) -- ++(0,.82);
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

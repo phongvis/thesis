@@ -1,0 +1,79 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\usetikzlibrary{trees}
+
+\begin{document}
+\tikzstyle{every node}=[font=\sffamily,anchor=west]
+\tikzstyle{parent}=[rectangle,draw,thick,rounded corners=.8ex]
+\begin{tikzpicture}[%
+  grow via three points={one child at (0.5,-0.7) and
+  two children at (0.5,-0.7) and (0.5,-1.4)},
+  edge from parent/.style={draw,thick},
+  edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}]
+  \node {\large \rmfamily\bfseries Action Type}
+    child { node [parent] {search \& filter}
+      child { node {
+	      \includegraphics[width=.5cm]{actions/keyword-search}
+	      \begin{tikzpicture} \node {keyword search}; \end{tikzpicture}
+	    } }
+	  child { node {
+	      \includegraphics[width=.5cm]{actions/location-search}
+	      \begin{tikzpicture} \node {location search}; \end{tikzpicture}
+	    } }
+	  child { node {
+	      \includegraphics[width=.5cm]{actions/route-search}
+	      \begin{tikzpicture} \node {route search}; \end{tikzpicture}
+	    } }	  
+	    child { node {
+ 	      \includegraphics[width=.5cm]{actions/filter}
+ 	      \begin{tikzpicture} \node {filter}; \end{tikzpicture}
+ 	    } }
+ 	}		
+    child [missing] {}	
+    child [missing] {}	
+    child [missing] {}	
+    child [missing] {}	
+    child [missing] {}	
+    child { node [parent, yshift=.4cm] {reading}
+          child { node {
+    	      \includegraphics[width=.5cm]{actions/highlight}
+    	      \begin{tikzpicture} \node {highlight}; \end{tikzpicture}
+    	    } }
+    	  child { node[yshift=-.1cm] {
+    	      \includegraphics[width=.5cm]{actions/annotation}
+    	      \begin{tikzpicture} \node {annotation}; \end{tikzpicture}
+    	    } }
+        };
+\end{tikzpicture}
+
+\hspace{1cm}
+
+\begin{tikzpicture}[%
+	grow via three points={one child at (0.5,-0.7) and
+	two children at (0.5,-0.7) and (0.5,-1.4)},
+	edge from parent/.style={draw,thick},
+	edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}]
+	\node (p0){\large\rmfamily\bfseries Relationship}
+		child { node {
+	    	\includegraphics[width=.5cm]{actions/revisit}
+	      	\begin{tikzpicture}\node {revisit};\end{tikzpicture}
+	    }}
+	    child { node {
+   	    	\includegraphics[width=.5cm]{actions/link}
+   	      	\begin{tikzpicture}\node {link};\end{tikzpicture}
+ 	    }}
+		child { node {
+   	    	\includegraphics[width=.5cm]{actions/type}
+   	      	\begin{tikzpicture}\node {type};\end{tikzpicture}
+ 	    }}child { node {
+ 	    \includegraphics[width=.5cm]{actions/bookmark}
+ 	    \begin{tikzpicture}\node {bookmark};\end{tikzpicture}
+ 	   }} 	 ;   
+
+ 	\node[below = of p0, yshift=-4.8cm]{};
+	
+	
+\end{tikzpicture}
+\end{document}

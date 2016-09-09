@@ -1,0 +1,26 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{des}=[anchor=south west, f3, font=\LARGE, inner sep=1pt]
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+\begin{scope}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {
+		\includegraphics[width=\linewidth]{overview-raw}
+	};
+	
+	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+		\node [des] at (0.94,0.06) {A};
+		\node [des] at (0.24,0.71) {B};
+		\node [des] at (0.94,0.75) {C};
+		\node [des] at (0.74,0.5) {D};		
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

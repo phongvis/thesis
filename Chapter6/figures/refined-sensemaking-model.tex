@@ -1,0 +1,23 @@
+\documentclass[tikz]{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{box} = [draw=gray!50, very thick, minimum width=3cm, minimum height=1cm]
+
+\begin{document}
+	
+\begin{tikzpicture}
+\draw [arrow,>=latex,draw=gray!50] (0,0) -- (10,0) node[xshift=-.5cm,yshift=-0.3cm] {Effort};
+\draw [arrow,>=latex,draw=gray!50] (0,0) -- (0,4) node[rotate=90,xshift=-0.8cm,yshift=0.3cm] {Structure};
+\node (col) [box, anchor=south west] at (.2,.2) {\rmt{collect}};
+\node (cur) [box, above right=.2 of col] {\rmt{curate}};
+\node (com) [box, above right=.2 of cur] {\rmt{communicate}};
+
+\draw [arrow,  draw=gray!50, ultra thick, bend left] (col) to (cur);
+\draw [arrow,  draw=gray!50, ultra thick, bend left] (cur) to  node [midway, right, xshift=.1cm] {refine \& extend}(col);
+\draw [arrow,  draw=gray!50, ultra thick, bend left] (com) to (cur);
+\draw [arrow,  draw=gray!50, ultra thick, bend left] (cur) to (com);
+
+\end{tikzpicture}
+	
+\end{document}
