@@ -70,11 +70,10 @@ $\frac{\sum\limits_{i=1}^{n}(\theta_i - \bar{\theta})^2} {n}$, where $n$ is the 
 \end{figure}
 
 \subsection{Scalability}
-Aggregation enables TimeSets to visualize a large number of events. However, the visual representation of aggregated events is imperfect. For instance, two aggregates ``2 events'' and ``100 events'' are displayed exactly the same, except for the total number, whereas their sizes are largely different. We consider four options to address this issue as shown in \autoref{fig:aggreate}.
+\label{sub:ts-scalability}
+Aggregation enables TimeSets to visualize a large number of events. However, the visual representation of aggregated events is imperfect. For instance, two aggregates ``2 events'' and ``100 events'' are displayed exactly the same, except for the total number, whereas their sizes are largely different. We consider four options to address this issue as shown in \autoref{fig:ts-aggreate}.
 
 The first option is to plot each individual event as a dot at when it happens (\autoref{fig:aggregate-1}). This also provides a temporal distribution of events rather than just the total count. When events happen closely, dots are overlapped, which makes it more difficult to see the pattern. Second, the width of the rectangular border can be scaled to indicate the number of events (\autoref{fig:aggregate-1}). The full width of an aggregate border is typically small as the length of text ``$N$ events''. Therefore, the difference among aggregate border widths could be subtle and difficult to observe from an overview. Another option is to color code the background of the bounding rectangle using luminance or intensity (\autoref{fig:aggregate-3}) according to the number of events. However, when many aggregated events are displayed, their backgrounds could interfere with the set colors and distract users. The last option we propose is to scale the font size of the label based on the number of events (\autoref{fig:aggregate-4}). Currently, each event is completely located in one single row with uniform height. Scaling the heights of aggregated events will affect the layout algorithm.
-
-%All these methods have their strengths and limitations, thus deciding the best one is challenging and out of scope for this paper. We leave the implementation and evaluation of these methods as future work.
 
 \begin{figure}[!htb]
 	\centering
@@ -93,7 +92,7 @@ The first option is to plot each individual event as a dot at when it happens (\
 	\subcaptionbox{Scale with the font size of the label.\label{fig:aggregate-4}}{
 		\includegraphics[width=.47\columnwidth]{figure12e}}
 	\caption{Proposed visual representations of aggregates emphasizing the number of its events.}
-	\label{fig:aggreate}
+	\label{fig:ts-aggreate}
 \end{figure}
 
 The existing layout is suitable for a small timeline with a few hundreds of events or a detailed view where individual events are of high importance. \autoref{fig:citations} shows 225 publications within 15 years. TimeSets relies on color to distinguish sets, therefore it is constrained by the number of colors that human can differentiate at the same time, which is about 12, according to Munzner's book~\cite{Munzner2014}.

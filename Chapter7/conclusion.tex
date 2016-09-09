@@ -1,2 +1,82 @@
 \chapter{Conclusion}
 \label{chap:conclusion}
+
+This chapter reviews the contributions that the thesis makes to support sensemaking through interactive visualizations of provenance data. It also presents the limitations of these contributions and discusses opportunities for future work.
+
+\section{Review of Contributions}
+The central problem addressed by this thesis is how to design interactive visualizations of provenance data for supporting sensemaking. The problem was then broken into four research questions based on the type of data that would be visualized and the task it aimed to support. We took a user-centered approach to address these research questions, covering requirements gathering, design, prototype implementation and user evaluation. This section reviews the contributions for each research question.
+
+\subsection{Exploring Temporal Relationship of Sensemaking}
+\emph{Research Question 1}: How to design interactive visualizations of time-oriented provenance data enabling users to explore temporal relationship of sensemaking?
+
+We contributed a novel timeline visualization, SchemaLine, that enables users to explore temporal relationship of sensemaking through the annotations they made during the sensemaking process. SchemaLine helps users examine the events recorded in those annotations in chronological order, identify interesting temporal patterns and construct narratives that account for those patterns. The SchemaLine visualization produces a compact but aesthetically pleasing layout. It also provides a set of fluid interactions supporting users in performing various sensemaking activities described in the Data--Frame model~\cite{Klein2003}, such as connecting relevant data into an explanatory frame. 
+
+Our user-centered evaluation showed that all participants found the SchemaLine visualization intuitive to use and it provided necessary support to them for solving their tasks. They extensively recorded their thoughts by note taking and constructed schemas to organize the notes. The participants were also confident in presenting the stories they found and defending them through the use of SchemaLine.
+	
+\subsection{Exploring Complex Temporal Relationship of Sensemaking}
+\emph{Research Question 2}: How to design interactive visualizations that can utilize both temporal and thematic provenance data to reveal complex temporal relationship of sensemaking?
+
+We contributed a novel timeline visualization, TimeSets, that enables users to explore complex temporal relationship of sensemaking by effectively representing both temporal and thematic provenance data. TimeSets visually groups events that shares the same theme but still preserves their temporal order. It color codes the backgrounds of the entire themes to distinguish them and uses colored gradient backgrounds for the intersections among those themes. To handle a large number of events, TimeSets dynamically adjusts the level of detail for each event within a given display estate. 
+
+We conducted a controlled experiment to compare the effectiveness of TimeSets in performing temporal and thematic related tasks against a state-of-the-art method -- KelpFusion~\cite{Meulemans2013}. The results showed that TimeSets was significantly more accurate and was the preferred choice for aesthetics and readability. TimeSets is general and can be applied to visualize any temporal, categorical data besides analytic provenance. We showed two such successful applications. One is the analysis of 200 articles from the IEEE Information Visualization conference. The other one is the visualization of streaming data, and the record and presentation of analysis findings.
+
+\subsection{Exploring Rational Relationship of Sensemaking}
+\emph{Research Question 3}: How to design interactive visualizations that can exploit time-oriented provenance data to enable users to explore rational relationship of sensemaking?
+
+We contributed a novel visualization tool, SensePath, that enables analysts to explore the rational relationship in the user's sensemaking process. To understand such relationship, analysts often carry out a time-consuming qualitative study and analysis including data collection, transcription, coding and theory abstraction. SensePath offers an alternative and possibly faster approach in performing transcription and coding. It detects and captures user's sensemaking actions automatically, thus make it possible to generate an automatic transcript. SensePath also provides multi-linked visualizations of the captured actions, allowing the analysts to gain deep understanding of the rational relationship between these actions, thus facilitate the coding process. More specifically, a timeline view allows analysts to quickly gain an overview of the sensemaking process and identify recurring patterns. It also links with a screen capture video to support a close examination of additional context when necessary. Finally, to enable analysts to continue working on later stages of analysis using their normal workflow, SensePath exports its coded transcript in a common format that can be used by other popular qualitative data analysis software packages such as InqScribe.
+
+We conducted two user-centered evaluations. The first one was to explore how SensePath would be used by a domain expert. A researcher with seven years of experience in qualitative research was recruited to analyze a sensemaking session performed by different user. She found many features of SensePath helpful for her analysis. For example, by looking at the timeline, she quickly gained an initial understanding of the user process, which can only be achieved after watching the entire video if using traditional method. It also helped her to identify recurring patterns, which she used as cues for further examination. She also mentioned that linking between actions in the timeline view and the video capture could save her an enormous amount of time in finding the right moment to watch. The second evaluation was to discover whether SensePath has any potential advantages compared with a traditional method. Two senior HCI researchers were recruited to analyze a shorter sensemaking session. One used SensePath, and one used his standard tool set: a transcribing software and Excel for coding. The analysis results in the two settings had comparable quality, but the researcher with SensePath spent much less time, especially for the transcribing part. Even though this evaluation was conducted with only two participants, it may suggest an improvement in analysis time for SensePath.
+
+\subsection{Exploring Complex Rational Relationship of Sensemaking}
+\emph{Research Question 4}: How to design interactive visualizations that can utilize both temporal and relational provenance data to enable users to explore complex rational relationship of sensemaking?
+
+We contributed a novel visual sensemaking tool, SenseMap, that enables users to explore complex rational relationship of sensemaking. It automatically captures sensemaking actions and linking relationships between these actions before visualizing both of them in a branching history tree. The temporal attribute of actions is also partially reflected in the visualization. This history tree allows users to examine the rational relationship between the actions they performed and potentially helps them remind of what have been done earlier. SenseMap offers users to assign additional meaning to the automatically collected data by spatially grouping actions or adding rational links between them, in order to help explain complex relationship. Finally, SenseMap allows users to communicate their analysis results at different levels of granularity including a big picture of user-organized findings, a more detailed analysis process and raw provenance data captured. 
+
+We conducted a user-centered evaluation in a naturalistic setting to explore how SenseMap would be used. The results showed that all participants found the visual representation and interaction of the tool intuitive to use. Three of them engaged positively with the tool and produced successful outcomes. It helped them organize information sources, quickly find and navigate to the sources they wanted, and effectively communicate their findings. However, two participants had a negative experience with the tool and were unable to change their practice from sensemaking through collections of browser tabs.
+
+\section{Limitations and Future Research}
+
+\subsection{TimeSets}
+TimeSets (\autoref{chap:timesets}) enables users to explore complex temporal relationship of sensemaking by visualizing both temporal and thematic provenance data. The evaluation showed advantage of TimeSets against a state-of-the-art method; however, it stills suffers some limitations that can be served as future directions.
+
+\begin{itemize}
+	\item \emph{Set intersections}. The major limitation of TimeSets is that it only shows the intersections between vertically neighboring sets, which is a small portion of all possible combinations of intersections. The set ordering algorithm to maximize the number of shared events and interaction to reorder sets partially helped address this issue. Future research can focus on increasing the number of visible intersections, prioritizing more important intersections based on some metrics, and providing an overview of all intersections to suggest further exploration.
+	
+	\item \emph{Set area encoding}. The area of the representing set seems to be a very strong indicator of its size; i.e., number of events. However, it is not designed like that in TimeSets. Besides the number of events, the set area also depends on the temporal distribution of its events. To address this issue, we could deemphasize the visual appearance of the set area or design a new shape outline algorithm to ensure the set area truly reflect the its size.
+	
+	\item \emph{Multiple-set events}. In \autoref{chap:timesets}, we proposed four different visual representations of multiple-set events (\autoref{sub:ts-eventmembership}). However, it is not clear which representation is the most effective and for which tasks. Therefore, a formal evaluation is necessary to examine this aspect.
+	
+	\item \emph{Aggregated events}. In the current TimeSets, there is no extra visual cue to help viewers quickly see the difference between the sizes of the aggregated events: they have to read the label. We proposed four different visual representations to display aggregations (\autoref{sub:ts-scalability}). However, similar to the previous point, a formal evaluation needs to be conducted to further investigate this design.
+\end{itemize}
+
+\subsection{SensePath}
+SensePath (\autoref{chap:sensepath}) enables analysts to explore the rational relationship in the user's sensemaking process. The evaluations suggested that SensePath provided useful features for qualitative analysis and could potentially reduce analysis time. Limitations and corresponding future research are discussed as follows.
+
+\begin{itemize}
+	\item \emph{More coding support}. SensePath supports exploration of rational relationship of captured actions, thus facilitates coding. However, the feature set for coding is limited. SensePath currently supports code assignment and editing. The analyst can either enter a new code or select from used codes. The following coding features can be added to make the tool more practical.
+	\begin{itemize}
+		\item Assign a code to a part of an action or a range of actions.
+		\item Assign multiple codes to an action.
+		\item Support hierarchical codes.
+		\item Show the codes in the timeline view more effectively.
+	\end{itemize}
+	
+	\item \emph{Action capture}. To capture \emph{search actions} in new web services that are unavailable from the current implementation, the search templates for these services need to be added to the code. To make this more accessible for non-technical users (such as the analysts), a user interface that allows specifying the search templates could be useful. More general and challenging is to provide a capture management interface that allows the analysts to choose which actions to capture and to define new actions based on some extraction rules.
+
+	\item \emph{Application for other domains}. The approach used in SensePath is general and it can be extended to support exploration of rational relationship in other domains beyond online sensemaking tasks such as usability testing. SensePath consists of two components: capture and visualization. The visualization set can be reused straightforwardly. The capture component is specially designed for capturing online sensemaking actions, thus needs to be changed according to the new domain and system.
+\end{itemize}
+
+
+\subsection{SenseMap}
+SenseMap (\autoref{chap:sensemap}) enables users to explore complex rational relationship of sensemaking. This section discuss the limitations and corresponding future research of the tool.
+
+\begin{itemize}
+	\item \emph{Engagement increase}. Our evaluation showed that three participants who engaged with the tool produced positive sensemaking outcome and communicated the findings effectively. However, the other two participants did not engage with the tool. One of the reasons was their computer screen sizes were not large enough to show all three views at the same time, and they were unable to switch between the views comfortably to keep track of the history map construction. One possible improvement is to design a more space-efficient history map so that it can display side by side with the browser view. Another option is to allow users to focus on the browser view, but provide sufficient feedback to help them understand the map development. Also, a visual summary of changes in the map could also help users catch up more quickly.
+	
+	\item \emph{Trust and reassurance increase}. SenseMap requires users to trust that it is recording their browsing activities accurately and in a manner that they can continue to understand throughout the sensemaking process. In essence, users pass control over the collection phase of their sensemaking process to the tool (trust) and curate this collection in ways that aim to provide enhanced ways to understand and present this knowledge (reassurance). However, two participants in our study did not have the trust and reassurance with the tool. To address this issue, first more engineering effort is required to ensure the tool to capture all sensemaking actions and detect the linking relationship between them correctly. Second, more research needs to be conducted to establish understanding of when and how users lost their trust and reassurance. As a result, it could help provide design guidelines for developing history and knowledge maps.
+
+	\item \emph{Large scale user study}. The evaluation showed that SenseMap provided useful sensemaking support for users in a 2-hour-long session. However, in the real world, a sensemaking task can be split into small chunks and spanned multiple days or even weeks. A larger scale and longer term study is necessary to gain better understanding of SenseMap's use. Because SenseMap is implemented as a Chrome extension, this gives us a good opportunity to conduct such a study.
+\end{itemize}
+
+\section{Closing Remarks}
+The data around the world has been produced more rapidly than ever before. It could bring us a good opportunity to collect more relevant data for solving a task, but also challenge us in manging and making sense of a large number of findings. Analytic provenance captures the actions and accompanied reasoning in the sensemaking process. Moreover, visualizations of provenance data help the user recall the process, understand the temporal and rational relationship of the process more deeply, and potentially suggest the next step in sensemaking. A deep understanding about the past could lighten the future. This thesis contributes novel visualizations to support sensemaking and hopes to help people make sense of their tasks more effectively and open more research in this direction.
