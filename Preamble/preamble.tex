@@ -213,12 +213,19 @@
 % Example todo: \mynote{Hey! I have a note}
 
 % Use this package to annotate on specific text
-\usepackage[inline]{Sty/trackchanges}
+\usepackage[inline,ignoremode]{Sty/trackchanges}
+\tcignore{\cite}{1}{0}
+\tcignore{\autoref}{1}{0}
+\tcignore{\textbf}{1}{0}
+\tcignore{\textcm}{1}{0}
+\tcignore{\textch}{1}{0}
+\tcignore{\textcb}{1}{0}
 
 % Always include todo notes
-\usepackage[colorinlistoftodos]{todonotes}
-\presetkeys{todonotes}{size=\sffamily,inline,color=yellow}{}
-\newcommand{\issue}[1]{\todo[color=red!50]{#1}}
+\usepackage[colorinlistoftodos,textwidth=2.1cm]{todonotes}
+\presetkeys{todonotes}{size=\sffamily,color=yellow,inline}{}
+\newcommand{\issue}[1]{\todo[inline,color=red!50]{#1}}
+\newcommand{\sidenote}[1]{\todo[size=\sffamily\scriptsize,color=green!50,noinline]{#1}}
 
 
 % ******************************** Phong's additional changes **********************************

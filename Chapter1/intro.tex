@@ -2,39 +2,79 @@
 
 \graphicspath{{Chapter1/figures/}}
 
-%The data around the world has been produced more rapidly than ever before. Major sources include sensors, machine logs, public websites and social media. For a single day, 50 million photos are uploaded on Instagram, 500 million tweets are sent on Twitter, 3.5 billion searches are performed on Google and 200 billion emails are sent~\footnote{\url{http://www.internetlivestats.com/}}. Lacking of data is not a problem any more; However it's challenging to understand of make sense of such data.
+In a broad context, \emph{sensemaking} reflects how we make sense of the world so that we can take further actions in it~\cite{Snowden2005}. More specifically, sensemaking is described as a motivated and continuous effort to understand the relationships among people, places and events around us in order to act more effectively~\cite{Klein2006a}. It is the process of collecting, organizing and representing complex information sets with an emphasis on some problem we need to solve~\cite{Russell2008}. For example, intelligence analysts may need to examine thousands of reports to establish deep understanding of particular persons or organizations before identifying possible threats from them. In an everyday context such as selecting a smartwatch, a person may search for different models on the Internet, learn unknown technical terminologies, and consider pros and cons between these identified models. \add{The data around the world has been produced more rapidly than ever before, with major sources including sensors, machine logs, public websites and social media. For a single day, 50 million photos are uploaded on Instagram, 500 million tweets are sent on Twitter, 3.5 billion searches are performed on Google and 200 billion emails are sent~\footnote{\url{http://www.internetlivestats.com/}}. This data deluge could help us find more relevant data to our problems; however, making sense of such a vast amount of data is a huge challenge.}
 
-%https://datafloq.com/read/understanding-sources-big-data-infographic/338\
-%http://www.internetlivestats.com/
+\emph{Visualizations} can help people perform tasks more effectively through visual representations of datasets~\cite{Munzner2014}. They can display a large amount of data in a way that quickly reveals hidden patterns. Interaction allows people to further investigate the visualized data in more detail and explore the relationship between identified patterns. Automated techniques in information retrieval and data mining can help speed up the sensemaking process. For instance, named-entity recognition techniques~\cite{Nadeau2007} can identify entities from text and classify them into predefined categories such as persons, organizations and locations. This automation saves analysts a considerable amount of time in their common tasks such as findings all reports mentioning a particular person. \add{\emph{Visual analytics} combines automated analysis techniques and interactive visualizations to effectively make sense of very large and complex datasets~\cite{Keim2010}. An immediate visualization of all data points of a large dataset could be messy and meaningless. Therefore, it is necessary to analyze the dataset before showing the most relevant aspects of the data.}
 
-In a broad context, \emph{sensemaking} reflects how we make sense of the world so that we can take further actions in it~\cite{Snowden2005}. More specifically, sensemaking is described as a motivated and continuous effort to understand the relationships among people, places and events around us in order to act more effectively~\cite{Klein2006a}. It is the process of collecting, organizing and representing complex information sets with an emphasis on some problem we need to solve~\cite{Russell2008}. For example, intelligence analysts may need to examine thousands of reports to establish deep understanding of particular persons or organizations before identifying possible threats from them. In an everyday context such as selecting a smartwatch for purchase, a person may search for different models on the Internet, learn unknown technical terminologies and consider pros and cons between these identified models. Automated techniques in information retrieval and data mining may speed up the sensemaking process. For instance, named-entity recognition technique~\cite{Nadeau2007} can identify and classifies entities in text into predefined categories such as persons, organizations and locations. It saves analysts a considerable amount of time in common tasks such as findings all reports mentioning a particular person. However, human still involves heavily in sensemaking to synthesize knowledge and draw inferences before making informed decisions.
+\add{Research in visual analytics focuses on helping people reveal hidden patterns in the data. However, sensemaking requires support beyond that. Analysts may connect individual patterns, explore the relationships between them, generate possible hypotheses explaining those relationships, and find ways to verify them.} Unfortunately, people with limited capacity of working memory cannot hold all of these artifacts simultaneously. They may forget previous findings and relations between them, or remember but fail to retrieve the information needed. They may also forget how those findings were derived, making it more difficult to find similar information. Especially for long and interrupted tasks with big datasets, people often get lost in the task space: they are unable to examine their progresses, unable to synthesize their discoveries, and unable to decide the next step effectively.
 
-\emph{Visualization} is a computer-based system designed to help people perform tasks more effectively through visual representations of datasets~\cite{Munzner2014}. It can display a large amount of data in a small space and allow for close examination of details through interaction. During the data exploration, many insights, questions and (conflict) hypotheses may appear. Unfortunately, human with limited capacity of working memory cannot simultaneously hold all of these findings. Visualization can help expand working memory by allowing people to externalize internal cognition and memory usage to the visual displays, and organize them in a meaningful structure. For instance, research has shown that spatially grouping of findings and drawing links between them to indicate their relationships can facilitate reasoning and sensemaking~\cite{Sedig2013}.
+%However, human still involves heavily in sensemaking to synthesize the generated knowledge and draw inferences before making informed decisions. During the sensemaking process, a person may derive insights, raise questions and generate possibly conflicted hypotheses about the task at hand. 
 
-Not only are the final outcomes of the sensemaking process important, but the process itself is also of great value~\cite{Ragan2016}. \emph{Analytic provenance} captures both the interactive data exploration process and the accompanied human reasoning process during sensemaking~\cite{Xu2015}. This provenance information allows users to recall and revisit the process, typically combining with undo/redo and bookmarking features~\cite{Heer2008}. It also allows reproduction of the process, possibly with a different dataset and parameter settings~\cite{Davidson2007}. Provenance can facilitate learning through building tutorials~\cite{Grabler2009}, presentation~\cite{Eccles2007} and improving communication between teachers and students~\cite{Plaisant1999}. 
+%This provenance information allows users to recall and revisit the process, typically combining with undo/redo and bookmarking features~\cite{Heer2008}. It also allows reproduction of the process, possibly with a different dataset and parameter settings~\cite{Davidson2007}. Provenance can facilitate learning through building tutorials~\cite{Grabler2009}, presentation~\cite{Eccles2007} and improving communication between teachers and students~\cite{Plaisant1999}. 
 
-Analytic provenance also has the potential to support the ongoing sensemaking process, besides many post hoc applications it provides. When a user employs a system to make sense of a problem, her interaction and discovery (both are referred as provenance data) are captured and visualized for providing support back to the sensemaking process. The visualization of provenance data could  provide an overview of the sensemaking process including what has been done, how has it been done, and why has it been done like that. It could show what knowledge the user has learned and offer ways to structure it meaningfully. A through understanding of the past process may guide the user to the next step in making sense of the task. The provenance visualization should be able to communicate with the sensemaking system to facilitate the interplay between the user and these two. \autoref{fig:intro-workflow} illustrates this sensemaking-supporting pipeline. 
+%Visualization can help expand working memory by allowing people to externalize internal cognition and memory usage to the visual displays, and organize them in a meaningful structure. For instance, research has shown that spatially grouping of findings and drawing links between them to indicate their relationships can facilitate reasoning and sensemaking~\cite{Sedig2013}.
+
+\emph{Analytic provenance} has the potential to address these problems. \add{It is a subfield of  visual analytics, focusing on understanding a user's reasoning process through the study of their interactions with the sensemaking system~\cite{North2011}.} Analytic provenance captures both the interactive data exploration process and the accompanied reasoning process during sensemaking~\cite{Xu2015}, releasing analysts from a burden of keeping track of their discoveries. \add{Analytic provenance information can be categorized using a multiple layer model based on its semantic richness~\cite{Gotz2009}. Low-level provenance can be captured automatically but contains little semantics. Whereas, higher level provenance primarily has to be captured manually but contains richer semantics. Visualizations of provenance data have been developed for different purposes including recall, replication, action recovery, collaborative communication, presentation and meta-analysis~\cite{Ragan2016}. Most of these visualizations provide post hoc applications of provenance or stop at recalling the process and revisiting past steps. They are not specifically designed to support the ongoing, iterative and dynamic sensemaking process.}
+
+%Research challenges include how to make use of a large amount of low-level provenance data, to facilitate the capture of high-level provenance, and to exploit such information for supporting sensemaking.
+
+\section{Research Problem and Approach}
+\add{We propose a cyclic process model, in which analytic provenance can be used to support sensemaking, illustrated in \autoref{fig:intro-workflow}. The process starts with a \emph{user} employing a \emph{sensemaking system} to solve a task. The sensemaking system could be any computer-based applications, such as a simple visualization tool, a complex visual analytics system and a standard web browser. During the sensemaking process, both the performed low-level actions (e.g., visualization interaction such as sort, filter and zoom) and the produced high-level reasoning artifacts (e.g., findings, assumptions and hypotheses) are captured. They are referred as \emph{provenance data} in the figure. Then, this provenance data should be visualized in a way that can provide support back to the ongoing sensemaking process. In this model, the user can interact with both the sensemaking system and the \emph{provenance visualization} to solve his or her task. The provenance visualization should be able to communicate with the sensemaking system to facilitate the interplay between the user and these two. Technically, it could be part of the sensemaking system by design or a plug-in to the existing system to augment the provenance capability.} 
+
+%\annote{Potential support from the provenance visualization includes providing an overview of the sensemaking process: what has been done and how has it been done. At a higher abstract level, it could show what knowledge the user has learned through sensemaking and offer ways to meaningfully structure the knowledge. The visualization should also allow the user to explore the temporal relationship (i.e., how) and rational relationship (i.e., why) of the provenance data and the sensemaking task. A thorough understanding of the past process may guide the user to the next step in making sense of the task.}{Is it necessary to include a discussion about potential support?} 
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics{workflow}
-	\caption{A pipeline of supporting sensemaking through analytic provenance. While employing a sensemaking system to solve a task, user interaction and discovery are captured and visualized to provide support back to the sensemaking process.}
+	\caption{A cyclic process model of supporting sensemaking through analytic provenance. While employing a sensemaking system to solve a task, user interaction and reasoning are captured and visualized to provide support back to the sensemaking process. The sensemaking system can be any computer-based applications such as visual analytics systems and web browsers. The provenance visualization should be able to communicate with the sensemaking system to provide support. As a result, the user can interact with both the sensemaking system and the provenance visualization to solve the task.}
 	\label{fig:intro-workflow}
 \end{figure}
 
-\section{Research Problem and Approach}
-
 \subsection{Problem}
-In this thesis, we focus on the \textbf{visualization} part of the sensemaking-supporting pipeline as shown in \autoref{fig:intro-workflow}.
+The central research problem of this thesis is
 \begin{center}
 	\strong{How to design interactive visualizations of provenance data \\for supporting sensemaking?}
 \end{center}
 
+\change{We elaborate this research problem by seeking answers to the three practical questions \textcm{what} -- \textch{why} -- \textcb{how}. This elaboration allows a clear understanding of what data will be visualized and what is the purpose of the visualization before diving into the design and implementation of such visualizations. This general approach has been used by Aigner~et~al.~\cite{Aigner2011} in their analysis of visualization techniques for time-oriented data and by Brehmer and Munzner~\cite{Brehmer2013} in their characterization of visualization tasks.}{We elaborate this research problem by discussing what data will be visualized and what task does the visualization aim to support.}
+
+\begin{enumerate}
+	\item \textbf{What \textcm{data} will be visualized?}
+	
+	\add{Both low-level actions (e.g., visualization interaction such as sort, filter and zoom) and high-level reasoning artifacts (e.g., findings, assumptions and hypotheses) are considered in this thesis. However, we do not examine bottom-level events such as mouse clicks and keystrokes because they contain very little semantics~\cite{Gotz2009}. One essential attribute associated with every type of provenance data is \emph{time}, providing when a data item is collected. This attribute allows reviewing the sensemaking process in chronological order.
+	
+	To support complex sensemaking tasks, it could be useful to provide additional relationship to the raw collected data. This could come from an automated process such as by assigning \emph{topics} from a topic modeling technique~\cite{Blei2003} to the provenance data. This could also come from a manual assessment, in which a user can select relevant data items and assign \emph{pair-wise relations}. More abstractly, the provenance data could contain additional \emph{categorical} attribute or become a \emph{network} dataset, respectively.}
+%		The user may also provide additional information to the raw collected data to indicate relationships between data items. This transforms the tabular dataset to a \emph{network} dataset.
+		
+%	Based on the taxonomy of dataset types by Munzner~\cite{Munzner2014}, provenance data can be classified as a \emph{table}, where each row represents an item of data and each column describes an attribute of the dataset. 
+	
+	\item \textbf{What \textch{task} does the visualization aim to support?}
+	
+	The characteristics of provenance data suggests the tasks it can support the users. First, the inherently temporal aspect of provenance data provides an opportunity to allow users to identify \emph{temporal} patterns and relationship in the sensemaking task. \add{This could enable users to recall their processes and reveal hidden storylines in the data. Timeline visualizations are often used to show such temporal relationship. However they are not specifically designed to support the iterative and dynamic nature of sensemaking. They are mainly used to present a known story instead of constructing a hidden one.
+	
+	As discussed earlier, grouping information can be added to help make sense of more complex temporal relationship. It allows users to examine storylines corresponding to individual groups and the interaction between them. However, existing visualizations are unable to effectively show both temporal and categorical information.
+	
+	After understanding how things happened, exploring why things happened like that is often the next and important step. Understanding how users make sense of tasks is essential to build effective tools to support them. Can provenance data, especially low-level actions, help an analyst understand the \emph{rational} relationship of the sensemaking process?
+	
+	As discussed earlier, during sensemaking, users can enrich the provenance data by grouping and adding connections. Can the enriched provenance data help users explore more complex rational relationship of sensemaking? Does the benefit that users gain outweigh the overload that users involve in providing extra information richness?}
+	\remove{
+	\item \textbf{\textcb{How} is it presented?}
+	
+	The visualization design depends on the data being used and the task it aims to support, and will be discussed in depth in the corresponding chapters.}
+\end{enumerate}
+
+\autoref{fig:intro-work} summarizes the four research challenges described in this data -- task analysis.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics{work}
+	\caption{Research problem split by \textcm{data} and \textch{task}. The horizontal axis represents different tasks and the vertical axis represents the complexity involved in the  task. The cells show the characteristics of data will be used to support the task.}
+	\label{fig:intro-work}
+\end{figure}
+
 %Pirolli and Card~\cite{Pirolli2005} describe sensemaking as a process consisting of two loops: the \emph{foraging loop}, which involves searching, extracting and organizing information; and the \emph{sensemaking loop}, which involves building schemas, generating and testing hypotheses, and presenting the outcome. Schematization plays an important role in this model: connecting the foraging loop and the sensemaking loop. It is a crucial step in converting raw evidence to rational explanations. Pirolli and Card suggest that the schematization process should be supported by a computer-based tool that organizes raw evidence into small-scale stories about typical topics or in answer to typical questions (e.g., who, what, when, where, why, how). This suggestion is aligned with a recent empirical study by Kang, Görg and John Stasko~\cite{Kang2011}. It shows that all of the participants who performed the sensemaking task well spent considerable time and effort in \emph{organizing their collected information}. Their organizational schemes were flexible: a \emph{timeline} of related events, a \emph{map} connecting locations that a person has been to, and a \emph{diagram} showing relationships among suspicious targets.
 
 %One approach to provide such support is through \textbf{analytic provenance} -- an area of research focusing on understanding a user's reasoning process through the study of their interactions with a visualization tool~\cite{North2011}. More specifically, during the process in which a user solves a sensemaking task using a visualization tool, their interactions and discoveries -- we refer to both of them as \emph{provenance data} -- are captured and visualized to provide support back to the sensemaking process itself as summarized in Figure~\ref{fig:workflow}. 
-
-
 
 %The research is driven by enabling users to discover the answers to the aforementioned questions (who, what, when, where, why, how) of the captured provenance data.
 %\begin{enumerate}
@@ -43,7 +83,7 @@ In this thesis, we focus on the \textbf{visualization} part of the sensemaking-s
 %		\item no or very simple layout which is cluttered and space-inefficient
 %		\item designed for presenting a known story rather than interactively constructing a hidden one
 %	\end{itemize} 
-%	\item \strong{who/what?} grouping information related to a person or a topic together allows users to have a better understanding of their provenance data. It is more useful if such \textbf{thematic} information can be visualized together with the temporal information. Currently, this is still an open challenge. These three principles of Gestalt's laws of grouping are typically employed to visualize set relations on a timeline:
+%	\item \strong{who/what?} grouping information related to a person or a topic together allows users to have a better understanding of their provenance data. It is more useful if such \textbf{categorical} information can be visualized together with the temporal information. Currently, this is still an open challenge. These three principles of Gestalt's laws of grouping are typically employed to visualize set relations on a timeline:
 %	\begin{itemize}
 %		\item similarity: use colors or shapes to indicate sets -- not powerful 
 %		\item proximity: not space-efficient
@@ -58,107 +98,109 @@ In this thesis, we focus on the \textbf{visualization} part of the sensemaking-s
 %
 %The analytic provenance approach that we take is general; however, we need to choose specific domains/tasks to demonstrate its application. Sensemaking does not only happen when using a visualization system to solve a ``serious'' intelligence analysis task. Actually, it often happens in our life such as when using a web browser to find information to select the most suitable smartwatch to buy. Therefore, to demonstrate the wide application of our visualization techniques, we target both intelligence analysis tasks using a visualization system and everyday sensemaking tasks using a web browser.
 
-We elaborate the research question by seeking answers to the three practical questions \textcm{what} -- \textch{why} -- \textcb{how}. This elaboration allows a clear understanding of what data will be visualized and what is the purpose of the visualization before diving into the design and implementation of such visualizations. This general approach has been used by Aigner~et~al.~\cite{Aigner2011} in their analysis of visualization techniques for time-oriented data and by Brehmer and Munzner~\cite{Brehmer2013} in their characterization of visualization tasks.
-
-\begin{enumerate}
-	\item \textbf{\textcm{What} is presented?}
-	
-	Based on the taxonomy of dataset types by Munzner~\cite{Munzner2014}, provenance data can be classified as a \emph{table}, where each row represents an item of data and each column describes an attribute of the dataset. One essential attribute of provenance data is \emph{time} providing when a data item is collected. A \emph{categorical} attribute, such as \emph{topics} from a topic modeling technique~\cite{Blei2003}, may be added to help make sense of more complex relationship.
-	
-	The user may also provide additional information to the raw collected data to indicate relationships between data items. This transforms the tabular dataset to a \emph{network} dataset.
-	
-	\item \textbf{\textch{Why} is it presented?}
-	
-	The characteristics of provenance data suggests the tasks it can support the users. First, the inherently temporal aspect of provenance data provides an opportunity to allow users to identify \emph{temporal} patterns and relationships of the sensemaking task. More challengingly, can provenance data help user identify \emph{rational} relationships of sensemaking?
-	
-	\item \textbf{\textcb{How} is it presented?}
-	
-	The visualization design depends on the data being used and the task it aims to support, and will be discussed in depth in the corresponding chapters.
-\end{enumerate}
-
 \subsection{Approach}
-
-The research problem is broken into the following research questions based on the \emph{\textcm{what}}--\emph{\textch{why}} combination elaborated previously. Note that in our text, we color code the \textcm{data (what)} using orange and \textch{task (why)} using blue if we want to emphasize them.
+The research problem is broken into the following research questions based on the previous data -- task elaboration. \add{They map to the four cells in \autoref{fig:intro-work}. For each question, we explain its context based on the sensemaking-support model described earlier: the sensemaking system, the user, the task and the provenance data.} Note that in our text, we color code the \textcm{data} using orange and \textch{task} using blue if we want to emphasize them.
 
 \begin{enumerate}
-	\item How to design interactive visualizations of \textcm{time-oriented provenance data} enabling users to explore \textch{temporal relationship of sensemaking}?
+	\item How to design interactive visualizations of \textcm{time-oriented provenance data} 
+	enabling users to explore \textch{temporal relationship of sensemaking}?
 	
-	\item How to design interactive visualizations that can utilize both \textcm{temporal and thematic provenance data} to reveal \textch{complex temporal relationship of sensemaking}?	
+	\add{The domain we want to focus is \emph{intelligence analysis} -- the original domain that set the foundation for visual analytics research~\cite{Thomas2005}. A common task for intelligence analysts is to examine thousands of reports to identify possible threats from particular persons or organizations. Many visual analytics have been designed to facilitate this analysis. These systems often allow users to take notes, recording the users' thought. We aim to augment these systems by a novel timeline visualization that enables users to identify temporal patterns and construct hidden stories from their annotations.}
+	
+	\item How to design interactive visualizations that can utilize both \textcm{temporal and categorical provenance data} to reveal \textch{complex temporal relationship of sensemaking}?	
+	
+	\add{This shares the same context with the previous research question. To the best of our knowledge, no existing visualization techniques is designed to show both temporal and categorical information effectively. Therefore, we also aim to design a general timeline visualization that can apply to other domains.}
 	
 	\item How to design interactive visualizations that can exploit \textcm{time-oriented provenance data} to enable users to explore \textch{rational relationship of sensemaking}?
 	
-	\item How to design interactive visualizations that can utilize both \textcm{temporal and relational provenance data} to enable users to explore \textch{complex rational relationship of sensemaking}?				
+	\add{To explore rational relationship of sensemaking, analysts often conduct a user study to observe the process, collect relevant data and analyze it. During the qualitative analysis, analysts may need to go through a lengthy process of transcribing the video recordings before coding the transcript with themes and building model based those themes. In this context, the sensemaking system mapped to \autoref{fig:intro-workflow} can be considered as a set of tools allowing the analysts to conduct a user study and analyze the collected data. We take a different approach to facilitate the transcription and coding steps. We capture analytic provenance while a user performs a sensemaking task and provide visualizations of the provenance data to enable the analyst explore the rational relationship of the user's sensemaking process. We focus only on browser-based sensemaking tasks. The provenance data could include information about visited web pages such as page URL, title and visit time.}
+	
+	\item How to design interactive visualizations that can utilize both \textcm{temporal and relational provenance data} to enable users to explore \textch{complex rational relationship of sensemaking}?
+	
+	\add{This research question targets a very common domain: browser-based online sensemaking. To make sense of everyday tasks such as selecting a camera, people often use standard web browsers -- simple sensemaking systems -- to search for different models and consider their strengths and weaknesses. The provenance data could include both automatically captured low-level actions as in the previous question and user-added relationship of the automatic capture such as by spatially grouping them or assigning pair-wise connections.}
 \end{enumerate}
-
-\autoref{fig:intro-work} summarizes these four research questions.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics{work}
-	\caption{Research problem split by \textcm{data} and \textch{task}. The horizontal axis represents different tasks and the vertical axis represents the complexity involved in the  task. The cells show the characteristics of data will be used to support the task.}
-	\label{fig:intro-work}
-\end{figure}
-
-%\begin{enumerate}
-%	\item time $\rightarrow$ temporal relationship
-%	\item time + theme $\rightarrow$ complex temporal relationship
-%	\item time $\rightarrow$ rational relationship
-%	\item time + relation $\rightarrow$ complex rational relationship
-%\end{enumerate}
 
 We take a user-centered design approach in seeking solutions to all the research questions. For each question, we elicit the design requirements by conducting a user study and/or drawing from the literature. Visual encoding and interaction are designed to meet those requirements, and the designs are implemented into a working prototype. Finally, an empirical study is conducted to explore how the tool is used by target audience and check whether it provides the intended support. 
 
-We aim to design general solutions that can be applied to sensemaking in various domains. However, as the solutions need to be empirically validated using target audience and real-world data, our implementation and evaluation focus on the two following domains. 
-
-\begin{enumerate}
-	\item \textbf{Intelligence analysis}. This is the domain where sensemaking was introduced into the visualization community with notable sensemaking models~\cite{Klein2003, Pirolli2005}.
-	\item \textbf{Everyday, online sensemaking}. This hugely popular domain is how people usually make sense of their daily problems.
-\end{enumerate}
+%We aim to design general solutions that can be applied to sensemaking in various domains. However, as the solutions need to be empirically validated using target audience and real-world data, our implementation and evaluation focus on the two following domains. 
+%
+%\begin{enumerate}
+%	\item \textbf{Intelligence analysis}. This is the domain where sensemaking was introduced into the visualization community with notable sensemaking models~\cite{Klein2003, Pirolli2005}.
+%	\item \textbf{Everyday, online sensemaking}. This hugely popular domain is how people usually make sense of their daily problems.
+%\end{enumerate}
 
 \section{Thesis Contributions}
 Toward the overall goal of supporting users in their sensemaking processes through the visualizations of provenance data, this thesis contributes:
 
 \begin{itemize}
-	\item A timeline visualization technique -- \emph{\textcb{SchemaLine}} -- that enables users to examine information in chronological order, identify temporal patterns and construct narratives from relevant user annotations. SchemaLine produces a compact but aesthetically pleasing layout and provides a set of fluid interactions allowing users to perform various sensemaking activities described in the Data--Frame model~\cite{Klein2003}. This is to address Research Question 1.
+	\item A timeline visualization technique -- \emph{\textcb{SchemaLine}} -- that enables users to examine information in chronological order, identify temporal patterns and construct narratives from relevant user annotations. SchemaLine produces a compact but aesthetically pleasing layout and provides a set of fluid interactions allowing users to perform various sensemaking activities described in the Data--Frame model~\cite{Klein2003}. This is to address Research Question 1, and the work is published as 
 	
-	\item A timeline visualization technique -- \emph{\textcb{TimeSets}} -- that enables users to explore complex temporal relationship by effectively representing both temporal and thematic provenance data. TimeSets visually groups data items that share the same theme but still preserves their temporal order. It color codes the backgrounds of the entire themes to distinguish them and uses colored gradient backgrounds for the intersections among those themes. It also adjusts the level of details of each data item dynamically to accommodate more items within a given display estate. This is to address Research Question 2. 
+	\textbf{P. H. Nguyen}, K. Xu, R. Walker, and B. L. W. Wong. SchemaLine: Timeline Visualization for Sensemaking. In \textit{International Conference on Information Visualization}, pages 225--233. IEEE, jul 2014.
 	
-	\item Qualitative research methods are often used in understanding rational relationship of sensemaking. This is a manual and time-consuming process: researchers collect observation data, transcribe screen capture videos and think-aloud recordings, identify recurring patterns, and eventually abstract the sensemaking process into a general model. We contribute a visual sensemaking tool -- \emph{\textcb{SensePath}} -- that offers an alternative and possibly faster approach in performing transcription and coding. In stead of having to transcribe the video, SensePath automatically captures and detects participant's sensemaking actions, and provides multi-linked visualizations to support further analysis. It visualizes provenance data in a timeline that enables researchers to quickly gain an overview of the sensemaking process and identify recurring sensemaking patterns. It also links with a screen capture video to allow researchers to examine  additional context when necessary. Finally, to enable researchers to continue working on later stages of analysis using their normal workflow, SensePath exports its coded transcript in a common format that can be used by other popular qualitative data analysis software packages. This is to address Research Question 3.	
+	\item A timeline visualization technique -- \emph{\textcb{TimeSets}} -- that enables users to explore complex temporal relationship by effectively representing both temporal and categorical provenance data. TimeSets visually groups data items that share the same group but still preserves their temporal order. It color codes the backgrounds of the entire groups to distinguish them and uses colored gradient backgrounds for the intersections among those groups. It also adjusts the level of details of each data item dynamically to accommodate more items within a given display estate. This is to address Research Question 2, and the work is published as  
 	
-	\item A visual sensemaking tool -- \emph{\textcb{SenseMap}} -- that enables users to explore complex rational relationship of sensemaking. It automatically captures and detects sensemaking actions and relationships between these actions before visualizing both of them in a branching history tree. This allows users to examine the rational relationship between the actions they performed and potentially helps them remind of what have been done earlier. SenseMap offers users to assign additional meaning to the automatically collected data by spatially grouping actions or adding rational links between them, in order to help explain complex relationship. Finally, SenseMap allows users to communicate their analysis results at different levels of granularity including a big picture of user-organized findings, a more detailed analysis process and raw provenance data captured. This is to address Research Question 4.
+	\textbf{P. H. Nguyen}, K. Xu, R. Walker, and B. L. W. Wong. TimeSets: Timeline visualization with set relations. \textit{Information Visualization}, 15(3):253--269, jul 2016. 
+	
+	and for the VAST Challenge case study as
+	
+	\item K. Xu, \textbf{P. H. Nguyen}, and B. Fields. Visual analysis of streaming data with SAVI and SenseMAP. In \textit{IEEE Conference on Visual Analytics Science and Technology}, pages 389--390. IEEE, oct 2014.
+	 
+	\item \add{A visual sensemaking tool -- \emph{\textcb{SensePath}} -- that enables analysts to explore rational relationship of the sensemaking process. }Qualitative research methods are often used in understanding rational relationship of sensemaking. This is a manual and time-consuming process: researchers collect observation data, transcribe screen capture videos and think-aloud recordings, identify recurring patterns, and eventually abstract the sensemaking process into a general model. \change{We contribute a visual sensemaking tool -- \emph{\textcb{SensePath}} -- that}{SensePath} offers an alternative and possibly faster approach in performing transcription and coding. In stead of having to transcribe the video, SensePath automatically captures and detects participant's sensemaking actions, and provides multi-linked visualizations to support further analysis. It visualizes provenance data in a timeline that enables researchers to quickly gain an overview of the sensemaking process and identify recurring sensemaking patterns. It also links with a screen capture video to allow researchers to examine  additional context when necessary. Finally, to enable researchers to continue working on later stages of analysis using their normal workflow, SensePath exports its coded transcript in a common format that can be used by other popular qualitative data analysis software packages. This is to address Research Question 3, and the work is published as
+	
+	\textbf{P. H. Nguyen}, K. Xu, A. Wheat, B. L. W. Wong, S. Attfield, and B. Fields. SensePath: Understanding the Sensemaking Process through Analytic Provenance. \textit{IEEE Transactions on Visualization and Computer Graphics}, 22(1):41--50, jan 2016. 
+	
+	\item A visual sensemaking tool -- \emph{\textcb{SenseMap}} -- that enables users to explore complex rational relationship of sensemaking. It automatically captures and detects sensemaking actions and relationships between these actions before visualizing both of them in a branching history tree. This allows users to examine the rational relationship between the actions they performed and potentially helps them remind of what have been done earlier. SenseMap offers users to assign additional meaning to the automatically collected data by spatially grouping actions or adding rational links between them, in order to help explain complex relationship. Finally, SenseMap allows users to communicate their analysis results at different levels of granularity including a big picture of user-organized findings, a more detailed analysis process and raw provenance data captured. This is to address Research Question 4, and the work is published as 
+
+	\textbf{P. H. Nguyen}, K. Xu, A. Bardill, S. Betul, K. Herd, and B. L. W. Wong. SenseMap: Supporting Browser-based Online Sensemaking through Analytic Provenance. In \textit{IEEE Conference on Visual Analytics Science and Technology}, 2016.
 \end{itemize}
 
-\section{Related Publications}
+\note{publication is added at the end of each contribution above and the other twos below}
 
-\subsection{Primary Publications} 
-The following publications contain the core content presented in this thesis, from \autoref{chap:schemaline} to \autoref{chap:sensemap}.
+Besides the main contributions described in this thesis, I also coauthored two other publications, contributing my knowledge in provenance for sensemaking.
 
 \begin{itemize}
-\item \textbf{P. H. Nguyen}, K. Xu, R.Walker, and B. L.W.Wong. SchemaLine: Timeline Visualization for Sensemaking. In \textit{International Conference on Information Visualization}, pages 225--233. IEEE, jul 2014.
-
-This is the main content of \autoref{chap:schemaline}.
-
-\item \textbf{P. H. Nguyen}, K. Xu, R. Walker, and B. L. W. Wong. TimeSets: Timeline visualization with set relations. \textit{Information Visualization}, 15(3):253--269, jul 2016. 
-
-This is the main content of \autoref{chap:timesets}.
-
-\item \textbf{P. H. Nguyen}, K. Xu, A. Wheat, B. L. W. Wong, S. Attfield, and B. Fields. SensePath: Understanding the Sensemaking Process through Analytic Provenance. \textit{IEEE Transactions on Visualization and Computer Graphics}, 22(1):41--50, jan 2016.
-
-This is the main content of \autoref{chap:sensepath}.
-
-\item \textbf{P. H. Nguyen}, K. Xu, A. Bardill, S. Betul, K. Herd, and B. L.W.Wong. SenseMap: Supporting Browser-based Online Sensemaking through Analytic Provenance. In \textit{IEEE Conference on Visual Analytics Science and Technology}, 2016.
-
-This is the main content of \autoref{chap:sensemap}.
+	\item I contributed to the discussion and the design of a framework for provenance in human terrain analysis, and the work was published as
+	
+	R. Walker, A. Slingsby, J. Dykes, K. Xu, J. Wood, \textbf{P. H. Nguyen}, D. Stephens, B. L. W. Wong, and Y. Zheng. An extensible framework for provenance in human terrain visual analytics. \textit{IEEE Transactions on Visualization and Computer Graphics}, 19(12):2139--2148, dec 2013.
+	
+	\item I contributed to the organization of a IEEE VIS workshop on provenance for sensemaking. The discussion at the workshop was published as
+	
+	K. Xu, S. Attfield, T. J. Jankun-Kelly, A. Wheat, \textbf{P. H. Nguyen}, and N. Selvaraj. Analytic provenance for sensemaking: a research agenda. IEEE Computer Graphics and Applications, 35(3):56--64, jan 2015.
+	
 \end{itemize}
 
-\subsection{Secondary Publications} 
-The following publications also contribute to the ideas about provenance presented in this thesis.
 
-\begin{itemize}
-\item R. Walker, A. Slingsby, J. Dykes, K. Xu, J. Wood, \textbf{P. H. Nguyen}, D. Stephens, B. L. W. Wong, and Y. Zheng. An extensible framework for provenance in human terrain visual analytics. \textit{IEEE Transactions on Visualization and Computer Graphics}, 19(12):2139--2148, dec 2013.
-\item K. Xu, S. Attfield, T. J. Jankun-Kelly, A. Wheat, \textbf{P. H. Nguyen}, and N. Selvaraj. Analytic provenance for sensemaking: a research agenda. IEEE Computer Graphics and Applications, 35(3):56--64, jan 2015.
-\item K. Xu, \textbf{P. H. Nguyen}, and B. Fields. Visual analysis of streaming data with SAVI and SenseMAP. In \textit{IEEE Conference on Visual Analytics Science and Technology}, pages 389--390. IEEE, oct 2014.
-\end{itemize}
+%\section{Related Publications}
+%
+%\subsection{Primary Publications} 
+%The following publications contain the core content presented in this thesis, from \autoref{chap:schemaline} to \autoref{chap:sensemap}.
+%
+%\begin{itemize}
+%\item \textbf{P. H. Nguyen}, K. Xu, R. Walker, and B. L. W. Wong. SchemaLine: Timeline Visualization for Sensemaking. In \textit{International Conference on Information Visualization}, pages 225--233. IEEE, jul 2014.
+%
+%This is the main content of \autoref{chap:schemaline}.
+%
+%\item \textbf{P. H. Nguyen}, K. Xu, R. Walker, and B. L. W. Wong. TimeSets: Timeline visualization with set relations. \textit{Information Visualization}, 15(3):253--269, jul 2016. 
+%
+%This is the main content of \autoref{chap:timesets}.
+%
+%\item \textbf{P. H. Nguyen}, K. Xu, A. Wheat, B. L. W. Wong, S. Attfield, and B. Fields. SensePath: Understanding the Sensemaking Process through Analytic Provenance. \textit{IEEE Transactions on Visualization and Computer Graphics}, 22(1):41--50, jan 2016.
+%
+%This is the main content of \autoref{chap:sensepath}.
+%
+%\item \textbf{P. H. Nguyen}, K. Xu, A. Bardill, S. Betul, K. Herd, and B. L. W. Wong. SenseMap: Supporting Browser-based Online Sensemaking through Analytic Provenance. In \textit{IEEE Conference on Visual Analytics Science and Technology}, 2016.
+%
+%This is the main content of \autoref{chap:sensemap}.
+%\end{itemize}
+%
+%\subsection{Secondary Publications} 
+%The following publications also contribute to the ideas about provenance presented in this thesis.
+%
+%\begin{itemize}
+%\item R. Walker, A. Slingsby, J. Dykes, K. Xu, J. Wood, \textbf{P. H. Nguyen}, D. Stephens, B. L. W. Wong, and Y. Zheng. An extensible framework for provenance in human terrain visual analytics. \textit{IEEE Transactions on Visualization and Computer Graphics}, 19(12):2139--2148, dec 2013.
+%\item K. Xu, S. Attfield, T. J. Jankun-Kelly, A. Wheat, \textbf{P. H. Nguyen}, and N. Selvaraj. Analytic provenance for sensemaking: a research agenda. IEEE Computer Graphics and Applications, 35(3):56--64, jan 2015.
+%\item K. Xu, \textbf{P. H. Nguyen}, and B. Fields. Visual analysis of streaming data with SAVI and SenseMAP. In \textit{IEEE Conference on Visual Analytics Science and Technology}, pages 389--390. IEEE, oct 2014.
+%\end{itemize}
 
 \section{Thesis Outline} 
 The remainder of this thesis is organized as follows.
@@ -167,7 +209,7 @@ First, \autoref{chap:review} reviews the core work related to sensemaking, analy
 
 \autoref{chap:schemaline} discusses the SchemaLine timeline visualization of user annotations enabling the users to explore temporal relationship of sensemaking -- addressing Research Question 1.
 
-\autoref{chap:timesets} extends \autoref{chap:schemaline} to present the TimeSets visualization technique that can effectively show both temporal and thematic provenance data in order to reveal complex temporal relationship of sensemaking -- addressing Research Question 2.
+\autoref{chap:timesets} extends \autoref{chap:schemaline} to present the TimeSets visualization technique that can effectively show both temporal and categorical provenance data in order to reveal complex temporal relationship of sensemaking -- addressing Research Question 2.
 
 \autoref{chap:sensepath} discusses the SensePath visualization tool that can exploit time-oriented provenance data, enabling users to explore rational relationship of sensemaking -- addressing Research Question 3.
 
