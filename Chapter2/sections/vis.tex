@@ -1,41 +1,59 @@
-\section{Visualization}
-
-%\todo{reconsider the first two subsections to move some parts to Introduction}
-%\subsection{Visualization}
-%Defines vis~\cite{Munzner2014}. difference between scivis and infovis. Classic example: Minard's map of Napoleon's march.
-%
-%How does vis support analysis?~\cite{Card1999} Classic example Anscombe's quartet
-%
-%The value of vis (Wijk, Fekete)
-%
-%vis reference model~\cite{Card1999}
-%
-%
-%\subsection{Visual Analytics}
-%Define v/a~\cite{Thomas2005, Keim2010}
-%
-%Describe visual analytics process model (Figure~\ref{fig:visual-analytics-process})
-%
-%\begin{figure}[!htb]
-%	\centering
-%	\includegraphics[width=\columnwidth]{visual-analytics-process}
-%	\caption{The visual analytics process model. \emph{Source:~\cite{Keim2010}}.}
-%	\label{fig:visual-analytics-process}
-%\end{figure}
-%
-%%some components of visual analytics (from William's slides) (they're similar to the new definition of visual analytics in Mastering the Information Age
-%%"Visual analytics combines automated analysis with interactive visualizations for an effective understanding, reasoning and decision making on the basis of very large and complex
-%%datasets.")
-%%\begin{itemize}
-%%	\item data analysis/data mining
-%%	\item interactive dynamics (Heer and Shneiderman) 
-%%	\item assembly of evidence, argumentation (toulmin, wigmore)
-%%\end{itemize}
-%
-%Next, we discuss three essential aspects of visualization research that also contribute to our proposed solutions described in upcoming chapters: information design principles, interaction techniques, and methods to evaluate visualizations.
-
+\section{Visualization and Visual Analytics}
 Computer-based visualization systems provide visual representations of datasets designed to help people carry out tasks more effectively~\cite{Munzner2014}. Because the design space of possible visual ``idioms'' is huge, it is challenging to create effective visualizations. Understanding well-established information design principles and interaction techniques could guide designers toward the right direction. Also, every visualization needs to be evaluated to check whether it meets its design purposes and how it helps or hinder users.
 
+\subsection{Overview}
+
+What is vis? Classic example. What vis can help from cognition (Ben) and Wijk, Fekete?
+
+Large datasets -> simple aggregation, reduction like filtering, interaction, ; larger datasets, more sophiscated emthods extract patterns and vis to display them. and allow further. That is the idea of visual analytics. Orginal def, new def. Model.
+
+Describe visual analytics process model (Figure~\ref{fig:visual-analytics-process})
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\columnwidth]{visual-analytics-process}
+	\caption{The visual analytics process model. \emph{Source:~\cite{Keim2010}}.}
+	\label{fig:visual-analytics-process}
+\end{figure}
+
+
+Next, discuss basics of vis and models. and evaluation.
+
+\subsection{Visualization Design}
+
+
+\subsection{Automated Analysis Methods}
+Data mining is the computational process of extracting patterns in large datasets~\cite{Tan2006}. Data mining tasks can be broadly divided into two major categories:
+
+\begin{itemize}
+		\item \emph{Descriptive tasks}. The objective is to derive patterns (correlations, trends, clusters, trajectories and anomalies) that summarizes the underlying relationships in data. Examples include cluster and association analyses. \emph{Clustering} aims to split data items to groups so that items within a group are more similar to each other than those in other groups. For example, clustering can be used to help marketers discover distinct groups of their customers before applying appropriate marketing strategies to those groups. \emph{Association} analysis discovers the connections among a set of data items. For example, it can be used to identify products that customers often purchase together such as bread and milk.
+		
+		\item \emph{Predictive tasks}. The objective is to predict the value of an unknown (target) attribute based on the values of other (explanatory) attributes. Examples include classification and regression. \emph{Classification} predicts discrete target variables whereas, \emph{regression} focuses on continuous ones. For example, predicting whether a customer buys a marketing product is a classification task because the target variable is binary. However, estimating a future house price is a regression task because price is a continuous-valued variable.
+\end{itemize}
+
+Next, we will discuss the clustering and classification tasks in more detail and how they are applied together with visualizations to help users gain deeper insight into the data. We also present some commonly used text mining techniques for exploring large sets of documents, which is essential in visual analytics~\cite{Thomas2005}.
+
+\subsubsection{Clustering}
+Cluster analysis finds similarities between data points based on the characteristics of data attributes and groups similar data points into clusters. Clustering is regarded as \emph{unsupervised learning}~\cite{Han2011} because it can reveal hidden structure of a dataset that does not have \emph{labels} (or groups) defined. The most common clustering algorithm is \emph{k-means}~\cite{Lloyd1982}. Given a set of data points $(x_1, x_2, \dots, x_n)$, k-means clustering aims to partition them into $k$ clusters $(S_1, S_2, \dots, S_n)$, such that the within-cluster sum of squared distances is minimized: 
+\[
+\sum_{i=1}^k\sum_{x\in S_i} \lVert x-\mu_i \rVert^2
+\]
+where $\mu_i$ is the center of points (i.e., centroids) in $S_i$. 
+
+The algorithms works as follows. Initially, partition data points into $k$ non-empty random subsets. Then, compute the centroids of the current clusters, and assign each data point to the cluster with the nearest centroid. Repeatedly recompute the centroids and reassign the cluster of each data point until no assignment can be done. This k-means clustering algorithm is efficient but often terminates at a local optimal. More detailed analysis of k-means and other clustering algorithms are out of the scope of this thesis; they can be found in data mining textbooks~\cite{Tan2006,Han2011}.
+ 
+ 
+ \subsubsection{Classification}
+Classification predicts the value of a categorical (discrete or nominal) attribute based on the values of other attributes. It builds a model (or \emph{classifier}) based on a labeled training dataset (i.e., \emph{supervised learning}) and applies it in labeling new data~\cite{Han2011}. The model needs to not only identify the labels in the training dataset well but also be general enough to predict the labels of new data correctly. One common and intuitive classification algorithm is decision tree induction~\cite{Quinlan1986}. Each non-leaf node represents a ``test'' on an attribute, which splits the node to multiple branches, each for an outcome of the test. Each leaf node is associated with a class label and is the result of a sequence of tests starting from the root node.
+
+The importance of building a decision tree is choosing which attribute to split at each node. Intuitively, we should choose attributes that can divide nodes into ``pure'' child nodes so that all data items in a child node belong to a single class and no further splits is needed. For example, in a binary classification, consider a training dataset with 10 records, 5 labeled ``true'' and 5 labeled ``false''. Attribute $A1$ splits the set to two subsets: (5 ``true'', 0 ``false'') and (0 ``true'', 5 ``false''). Attribute $A2$ splits the set to (3 ``true'', 2 ``false'') and (2 ``true'', 3 ``false''). The subsets split by $A1$ is ``purer'' than the one by $A2$ because they do not contain a mix of ``true'' and ``false''. To achieve this purity, several attribute measurements have been proposed such as \emph{information gain} and \emph{gini index}~\cite{Tan2006}. More detailed analysis of these measurements and other classification algorithms are out of the scope of this thesis; they can be found in data mining textbooks~\cite{Tan2006,Han2011}.
+
+\subsubsection{Text Mining Techniques}
+
+ Textflow: Towards better understanding of evolving topics in text
+ 
+ 
+ topic over time
 \subsection{Information Design Principles}
 \label{sub:lr-design}
 
@@ -243,3 +261,20 @@ A common downstream approach is to conduct a controlled experiment comparing the
 
 \subsubsection{Algorithm Design}
 The primary threat at this level is the algorithm is suboptimal in terms of time or memory performance. In interactive visualization, it is essential to ensure the interaction responsive in real-time. Analyzing the complexity of the algorithm using the standard approaches from the computer science literature~\cite{Cormen2009} is an intermediate form of validation. The complexity can be computed based on the size of dataset or the display screen. Downstream approaches include measuring running time and memory usage for benchmark datasets.
+
+
+
+
+
+
+
+
+
+
+
+
+
+%http://www.cc.gatech.edu/~stasko/papers/vast09-eval.pdf
+%https://www.purdue.edu/discoverypark/vaccine/assets/pdfs/publications/pdf/Beyond%20Usability.pdf
+%http://www.cc.gatech.edu/~stasko/7450/Papers/fekete08.pdf
+%https://www.cs.ubc.ca/~tmm/courses/cpsc533c-05-fall/readings/vov.pdf
