@@ -35,6 +35,8 @@ Data mining is the computational process of extracting patterns in large dataset
 Next, we will discuss the clustering and classification tasks in more detail and how they are applied together with visualizations to help users gain deeper insight into the data. We also present some commonly used text mining techniques for exploring large sets of documents, which is essential in visual analytics~\cite{Thomas2005}.
 
 \subsubsection{Clustering}
+
+\paragraph{Overview}
 Cluster analysis finds similarities between data points based on the characteristics of data attributes and groups similar data points into clusters. Clustering is regarded as \emph{unsupervised learning}~\cite{Han2011} because it can reveal hidden structure of a dataset that does not have \emph{labels} (or groups) defined. The most common clustering algorithm is \emph{k-means}~\cite{Lloyd1982}. Given a set of data points $(x_1, x_2, \dots, x_n)$, k-means clustering aims to partition them into $k$ clusters $(S_1, S_2, \dots, S_n)$, such that the within-cluster sum of squared distances is minimized: 
 \[
 \sum_{i=1}^k\sum_{x\in S_i} \lVert x-\mu_i \rVert^2
@@ -43,7 +45,17 @@ where $\mu_i$ is the center of points (i.e., centroids) in $S_i$.
 
 The algorithms works as follows. Initially, partition data points into $k$ non-empty random subsets. Then, compute the centroids of the current clusters, and assign each data point to the cluster with the nearest centroid. Repeatedly recompute the centroids and reassign the cluster of each data point until no assignment can be done. This k-means clustering algorithm is efficient but often terminates at a local optimal. More detailed analysis of k-means and other clustering algorithms are out of the scope of this thesis and can be found in data mining textbooks~\cite{Tan2006,Han2011}.
 
-An example of using k-means: MotionFlow
+\paragraph{Application Examples}
+What is motion tracking data? What is the problem? What is clustered and how? How is a cluster visualized? What does the vis help?
+
+Human motion tracking data has been applied in various research fields such as medicine, sports and animation~\cite{Bernard2013}. The data typically consists of temporal sequences of human poses represented by a set of 3D joint positions (e.g., head, hands, elbows and knees). However, analyzing a large collection of this temporal, high-dimensional dataset is challenging. To gaining an overall understanding of the data, MotionFlow~\cite{Jang2016} applies a k-means clustering method using a simple Euclidean distance of 3D joints as the similarity measurement. A cluster of human poses is represented as glyph with a stick figure showing the centroid of the cluster and semi-transparent ghosts around the center figure for other similar poses [todo figure 4]. MotionFlow uses a force-directed graph of clusters to illustrate their relationship with node distance mapping to the similarity of pose clusters and edges indicating the directed transition between two clusters. Edges are color coded to represent the transition frequency.
+
+In MotionFlow, a user is allowed to interactively change the number $k$ of clusters, enabling exploration of the dataset. However, the re-clustering process may change all existing clusters and make it difficult for the user to keep track. To address this issue, MotionFlow allows the user to select the clusters to be locked or unchanged during the re-clustering process. He or she is also able to interactively merge or split clusters according to her or his own assessment.
+
+To achieve the same objective of gaining an overall understanding of human motion tracking data, MotionExplorer~\cite{Bernard2013} applies a different cluster analysis method -- hierarchical clustering~\cite{Han2011} -- which seeks to build a hierarchy of clusters. MotionExplorer takes a decisive approach considering all data items initially are in the same cluster and splitting them until a termination condition is met. One of the important decisions in this clustering technique is to determine which cluster to split next. The user is allowed to choose among several splitting strategies such as the maximum standard deviation to split the most varied cluster first and the highest number of elements to split the largest cluster first. The hierarchy 
+A clustering of the data objects is obtained by cutting
+the dendrogram at the desired level, then each
+connected component forms a cluster
 hierarchical clustering: MotionExplorer
 spatial+temporal clustering: MobilityGraph 
 aggolemeative clustering: NewsLab
