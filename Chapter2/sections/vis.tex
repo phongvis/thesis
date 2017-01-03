@@ -63,6 +63,29 @@ Classification predicts the value of a categorical (discrete or nominal) attribu
 The importance of building a decision tree is choosing which attribute to split at each node. Intuitively, we should choose attributes that can divide nodes into ``pure'' child nodes so that all data items in a child node belong to a single class and no further splits is needed. For example, in a binary classification, consider a training dataset with 10 records, 5 labeled ``true'' and 5 labeled ``false''. Attribute $A1$ splits the set to two subsets: (5 ``true'', 0 ``false'') and (0 ``true'', 5 ``false''). Attribute $A2$ splits the set to (3 ``true'', 2 ``false'') and (2 ``true'', 3 ``false''). The subsets split by $A1$ is ``purer'' than the one by $A2$ because they do not contain a mix of ``true'' and ``false''. To achieve this purity, several attribute measurements have been proposed such as \emph{information gain} and \emph{gini index}~\cite{Tan2006}. More detailed analysis of these measurements and other classification algorithms are out of the scope of this thesis and can be found in data mining textbooks~\cite{Tan2006,Han2011}.
 
 \paragraph{Application Examples}
+Exploring a large image collection, such as the set of images available on the Internet, is challenging. Besides the low-level visual features, the semantic contents of images are also effective in searching for relevant ones. Image classification techniques can be used to extract such semantic contents. For example, Fan~et~al.~\cite{Fan2004} detect salient objects in images and associate them with predefined semantic contents according to their perceptual properties. Similar contents are then grouped into a higher level semantic concept; for instance, ``sand field'', ``sea water'' and ``boat'' salient objects construct the concept of ``sea world''. Visualization can help make the output of classification algorithms more interpretable and interactive. To provide an overview of an image collection, Yang~et~al.~\cite{Yang2006} shows the extracted semantic contents, with each as a glyph, in a 2D display so that related contents are located close together using a multidimensional dimension scaling method~\cite{Borg2005}. Similarly, images are also displayed based on their similarity as in Figure 1. Zooming and panning are provided to make the visualization more scalable. When an image is selected, the visualization can be switched to a \emph{rainfall} mode, in which the selected image is shown at the bottom and related images are stacked atop based on their similarity with the selected one (figure b). Users are allowed to reassign the contents computed for each image; however, the model does not take into account the changes to improve its accuracy when classifying new images.
+
+\cite{Migut2010} problem: considering a binary classifiers: two types of errors: false positives and false negatives. cost between these are different. visualize the model with decision boundary nad performance curve. explain that curve. changing 'opearing point' to adjust FPr or FNr. Also reassign class.
+
+\cite{Bosch2013} classification needs training data, which is time-consuming and laborious if doing manually => interactive visual classifers"- first, multiple keyword coocurrence filters to have a set of core relevant tweets
+- then, use them as positive messages and irrelevant as negative messages in a SVM classifier
+- user inspects and corrects, changes update classifier
+- also iterations of self-training
+- classifier used for live tweets"	- tweets with geotagged shown as dots on the map, color coded by relevant/irrelevant interest and brightness based on classification confidence
+
+\cite{Krause2014} An essential step in classification of high dimensional datasets is feature selection. The data may contain redundant or irrlevant features, thus can be removed without much loss of information. This step simplifies the model and reduces training time. XXX provide a visualization tool 
+"- thousands of features.
+- cross-validation folds to prevent bias.
+- feature selection to simplify the model, shorter training times, enhaced generalization
+- last is apply classifier 
+--> the problem is too many features for a complex process"	"- contribution is to improve the classification result
+"	"- glyph-based vis with each glyph for a feature
+- circle glyph splits to 4 parts, each for an attribute selection algorithm; and each slice further splits to multiple validation groups; each slice shows the importance of the feature
+- glyphs sorted by overall importance but can switch to a scatter plot layout to explore two  metrics (average rank, most used) at the same time
+- classifier view: compares the score produced by a combination of att. selection and classifier in tabular form
+- select custom attributes to build own model"
+
+
 
 \subsubsection{Information Design Principles}
 \label{sub:lr-design}
