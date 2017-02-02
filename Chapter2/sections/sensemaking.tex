@@ -1,8 +1,8 @@
 \section{Sensemaking}
-\emph{Sensemaking} reflects how we make sense of the world so that we can act in it~\cite{Snowden2005}. Sensemaking has been studied in many different contexts, most notably including information science~\cite{Dervin1983}, human-computer interaction~\cite{Russell1993}, organizational studies~\cite{Weick1995} and intelligence analysis~\cite{Pirolli2005,Klein2003}. In this section, we review the sensemaking research discussed in these contexts, with an emphasis on the last two sensemaking models that have been highly applied in visualization research. 
+\emph{Sensemaking} reflects how we make sense of the world so that we can act in it~\cite{Snowden2005}. Sensemaking has been studied in many different contexts, most notably including information science~\cite{Dervin1983}, organization~\cite{Weick1995}, human-computer interaction~\cite{Russell1993} and intelligence analysis~\cite{Pirolli2005,Klein2003}. In this section, we also review the sensemaking research discussed in these contexts.
 
 \subsection{Gap-Bridging Metaphor}
-Dervin develops a sensemaking theory focusing on information seeking and use behaviors~\cite{Dervin1983}. It underlies the cognitive gap that individuals experience when attempting to make sense of observed data. \autoref{fig:lr-dervin} summarizes this \emph{gap-bridging} metaphor. The theory assumes that people moves through time-space in some particular context and situation. Sensemaking starts when they encounter a gap that needs to overcome such as something is unclear or confused. To bridge the gap, they may seek and use information from a variety of sources such as documents, media and other people. These sources are evaluated based on relevant attributes to assess their usefulness. 
+Dervin~\cite{Dervin1983} develops a sensemaking theory focusing on information seeking and use behaviors. It underlies the cognitive gap that individuals experience when attempting to make sense of observed data. \autoref{fig:lr-dervin} summarizes this \emph{gap-bridging} metaphor. The theory assumes that people move through time-space in some particular context and situation. Sensemaking starts when people encounter a gap that prevents their movement and needs to be overcame such as some unclear or confused problem. To bridge that gap, or to address that problem, they may seek and use information from a variety of sources such as documents, media and other people. These sources are evaluated based on relevant attributes to assess their usefulness: whether they help or impede the movement.
 
 \begin{figure}[!htb]
 	\centering
@@ -13,28 +13,30 @@ Dervin develops a sensemaking theory focusing on information seeking and use beh
 
 Dervin also implements the theory into a set of questions that can be used in interview to understand sensemaking within a context~\cite{Dervin1983}. The questions elaborate all parts of the model, aiming to establish an understanding on the situation (\emph{What happened?}), the gap (\emph{What did you struggle with?}), the bridge (\emph{What idea did you come to?}) and the outcome (\emph{How did that help?}).
 
-\subsection{Learning Loop Complex}
-In the context of human-computer interaction, Russell~et~al.~\cite{Russell1993} defines sensemaking as the process of searching for a representation and encoding data in that representation to answer task-specific questions. That cyclic process is called the \emph{learning loop complex} as illustrated in \autoref{fig:lr-russell}. First, the sensemaker searches for a representation to capture salient features of the data (\emph{Generation Loop}). During sensemaking, new information is sought and encoded into this representation (\emph{Data Coverage Loop}). The data unfit to the representation (\emph{residue}) requires the sensemaker to adjusts and produces a more suitable one. This entire learning loop complex is guided by the task with an aim to reduce its cost.
-
-\begin{figure}[!htb]
-	\centering
-	\includegraphics{russell}
-	\caption{The learning loop complex theory of sensemaking. It consists of three iterative loops: searching for a good representation, encoding data to the representation, and adjusting the representation for a better data coverage. \is{Russell1993}}
-	\label{fig:lr-russell}
-\end{figure}
-
 \subsection{Sensemaking in Organizations}
-Different from Dervin and Russell who study sensemaking for individuals, Weick focuses on sensemaking at an organization level~\cite{Weick1995}. He proposes that sensemaking consists of these seven following properties.
+Different from Dervin who study sensemaking for individuals, Weick focuses on sensemaking at an organization level~\cite{Weick1995}. He proposes that sensemaking consists of these seven following properties.
 
 \begin{enumerate}
 	\item \emph{Grounded in identity construction}. Who people think they are, both individually and collectively, affect what they interpret and act.
 	\item \emph{Retrospective}. People look back and make sense from what they have said and what they have done before.
 	\item \emph{Enactive of sensible environments}. People make sense and contribute to the environments during their sensemaking processes.
-	\item \emph{Social}. This is an inherent property of sensemaking in organization where people interact and socialize with others, and also are influenced by others.
-	\item \emph{Ongoing}. Sensemaking is a continuous flow because the world and our understanding about the word are constantly changing.
+	\item \emph{Social}. This is an inherent property of sensemaking in an organization where people interact and socialize with others, and also are influenced by others.
+	\item \emph{Ongoing}. Sensemaking is continuous because the world and our understanding about it are constantly changing.
 	\item \emph{Focused on and by extracted cues}. Cues are things from the context that people have attention to and may use them to guide further exploration and assessment of the sensemaking problem.
 	\item \emph{Driven by plausibility rather than accuracy}. Sensemaking is about plausibility and sufficiency rather than accuracy and completeness. People tend to stop searching when they find an acceptable solution.
 \end{enumerate}
+
+\subsection{Learning Loop Complex}
+Russell~et~al.~\cite{Russell1993} define sensemaking as the process of searching for a representation and encoding data in that representation to answer task-specific questions. That cyclic process is called the \emph{learning loop complex} as illustrated in \autoref{fig:lr-russell}. First, the sensemaker searches for a representation to capture salient features of the data (\emph{Generation Loop}). During sensemaking, new information is sought and encoded into this representation (\emph{Data Coverage Loop}). The data unfit to the representation (\emph{residue}) requires the sensemaker to adjust and produce a more suitable one. This entire learning loop complex is guided by the task with an aim to reduce its cost. 
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics{russell}
+	\caption{The learning loop complex theory of sensemaking. It consists of three iterative loops: searching for a good representation, encoding data to the representation, and adjusting the representation for a better data coverage. These loops are guided by the task and the instantiated representations are then used to implement the task. \is{Russell1993}}
+	\label{fig:lr-russell}
+\end{figure}
+
+%To clarify the model, consider a case study described by Russell and his colleagues~\cite{Russell1993}. A team from the Xerox education division wanted to design a new generic training course on laser printing for Xerox technicians. A major goal of this course was to cover a wide range of laser printers and reduce overall training time by moving common materials from courses on specific printers to this course. The team started the course design by constructing schemas decomposing information about printers into common blocks.
 
 \subsection{A Process Model}
 \label{sub:lr-pcm}
@@ -59,8 +61,7 @@ In this model, \emph{schematization} plays an important role in converting raw e
 
 \subsection{Data--Frame Model}
 \label{sub:lr-dfm}
-Klein et al.~\cite{Klein2003} propose a sensemaking model that centers around \emph{data} and \emph{frame}. Data is the information that a person receives or searches for, and frame is the mental structure that organizes and explains the relationship of such data. For instance, a frame can be a \emph{story}, explaining the chronology of events and the causal relationships between
-them; or a \emph{map}, showing where the events take place and the routes between them. Sensemaking is considered as a deliberate effort to understand an event, starting when a person realizes a gap of their current understanding of that event. Klein and his associates describe seven activities involved in sensemaking and are summarized in \autoref{fig:lr-data-frame-model}.
+Klein et al.~\cite{Klein2003} propose a sensemaking model that centers around \emph{data} and \emph{frame}. Data is the information that a person receives or searches for, and frame is the mental structure that organizes and explains the relationship of such data. For instance, a frame can be a \emph{story}, explaining the chronology of events and the causal relationships between them; or a \emph{map}, showing where the events take place and the routes between them. Sensemaking is considered as a deliberate effort to understand an event, starting when a person realizes a gap of their current understanding of that event. Klein and his associates describe seven activities involved in sensemaking and are summarized in \autoref{fig:lr-data-frame-model}.
 
 \begin{figure}[!htb]
 	\centering
@@ -81,5 +82,6 @@ them; or a \emph{map}, showing where the events take place and the routes betwee
 
 The Pirolli and Card's model describes a step-by-step process of sensemaking, in which the analyst collects relevant data and eventually transposes it into rational answers. However, the various sensemaking activities in the Data--Frame model may explain the strategies used by the analyst more comprehensively.
 
-TODO: summary
+\subsection{Summary}
+
 A recent and comprehensive review of sensemaking can be found in the article by Maitlis and Christianson~\cite{Maitlis2014}.

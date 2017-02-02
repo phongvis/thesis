@@ -1,30 +1,31 @@
 \section{Visualization and Visual Analytics}
 
 \subsection{Overview}
-Computer-based visualization systems provide visual representations of datasets designed to help people carry out tasks more effectively~\cite{Munzner2014}. 
+Computer-based visualization systems provide visual representations of datasets designed to help people carry out tasks more effectively~\cite{Munzner2014}. Card, Mackinlay and Shneiderman~\cite{Card1999} in their seminal book about information visualization propose major ways in which external visual representations can amplify human cognition. The first way is to  leverage the limited working memory of human by offloading work from cognitive to perceptual system. Visualizations can help enhance recognition of patterns and reduce the effort of exhaustive searching for information. Unlike static diagrams, visualizations can offer interactive operations to allow exploration of large and complex datasets from different perspectives.
 
-why more effectively? why visual rep can help? perceptiog/cognition, cite ben's work?
+Anscombe's quartet~\cite{Anscombe1973} is a classic example demonstrating the benefit of visually showing all data points in addition to a data summary by descriptive statistics. \autoref{fig:lr-anscombe} shows scatter plots of four small datasets with  identical descriptive statistics including mean, variance, correlation, and linear regression line. However, the structures of these datasets are completely different. The top-left dataset has a typical structure for a positive correlation with points gathering around the linear regression line. However, the top-right plot shows a nonlinear pattern in the data. Both datasets at the bottom show how an outlier makes the linear regression line differ from the true pattern with a small change in the left dataset and a complete change in the right one. Again, graphically showing all data points helps us easily see all these patterns that invisible in the descriptive statistics.
 
-Because the design space of possible visual ``idioms'' is huge, it is challenging to create effective visualizations. Understanding well-established information design principles and interaction techniques could guide designers toward the right direction. Also, every visualization needs to be evaluated to check whether it meets its design purposes and how it helps or hinder users.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\columnwidth]{anscombe}
+	\caption{Four datasets with identical statistics can have
+very different structures that are easily seen by using simple graphics. \is{Anscombe1973}}
+	\label{fig:lr-anscombe}
+\end{figure}
 
-Overview: what is vis? what can vis help? what is VA? what can VA help, in addition to vis? explain the VA process model. briefly explain the 3 important blocks in the model, which are then discussed in detail next. 
-
-%What is vis? Classic example. What vis can help from cognition (Ben) and Wijk, Fekete?
-%
-%Large datasets -> simple aggregation, reduction like filtering, interaction, ; larger datasets, more sophiscated emthods extract patterns and vis to display them. and allow further. That is the idea of visual analytics. Orginal def, new def. Model.
-%
-Describe visual analytics process model (Figure~\ref{fig:visual-analytics-process})
+For a much larger and complex dataset, a naive visual representation of the entire dataset often leads to a messy and ineffective visualization. In this case, analysis techniques in machine learning and data mining can be complemented such as applying a clustering method to aggregate data into a representative and more manageable set before visualizing it. The combination of interactive visualization and automated data analysis is the foundation for the field \emph{visual analytics}~\cite{Thomas2005}. Keim~et~al.~\cite{Keim2010} suggest a process model for visual analytics as in \autoref{fig:lr-visual-analytics-process} with interactive visualization and the data analysis model as the two main components to transform data input to knowledge output. 
 
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=\columnwidth]{visual-analytics-process}
 	\caption{The visual analytics process model. \is{Keim2010}}
-	\label{fig:visual-analytics-process}
+	\label{fig:lr-visual-analytics-process}
 \end{figure}
 
-%Next, discuss basics of vis and models. and evaluation.
+Next, we will review core work in interactive visualization (\autoref{sub:lr-visualization}) and automated analysis (\autoref{sub:lr-analysis}). An essential part in every visualization and visual analytics system is to perform validation to check whether it meets its design purposes and  to understand how it helps or hinder users. This will be discussed in \autoref{sub:lr-evaluation}.
 
 \subsection{Visualization Design}
+\label{sub:lr-visualization}
 
 \subsubsection{Information Design Principles}
 \label{sub:lr-design}
@@ -39,127 +40,128 @@ Marks are basic geometric elements that depict items or links, and channels cont
 	\label{fig:lr-marks}
 \end{figure}
 
-A visual channel control the appearance of marks, independent of their dimensionality. Examples include position, color, shape, angle and size. However, not all channels can be applied to all marks. For instance, an area mark is used in a geographic map to denote a region. It is already associated with a shape and size, thus cannot be size coded to represent another quantitative attribute.
-some visual channels. some cannot encode size, example. \autoref{fig:lr-channel-example} shows a progression of chart types, with each showing one more data attribute using one more visual channel. \autoref{fig:lr-channel-example-1} shows a bar chart representing a single quantitative attribute using the \emph{vertical position} channel. \autoref{fig:lr-channel-example-2} shows a scatter plot encoding the second quantitative attribute using the \emph{horizontal position} channel. \autoref{fig:lr-channel-example-3} adds the \emph{color} channel to represent a categorical attribute, and \autoref{fig:lr-channel-example-4} adds the \emph{size} channel to represent another quantitative attribute. In these examples, each attribute is encoded with a single channel. However, multiple channels can be combined to redundantly encode the same attribute, helping perceive it more easily.
+A visual channel control the appearance of marks, independent of their dimensionality, such as position, color, shape, angle and size. However, not all channels can be applied to all marks. For instance, an area mark can be used in a geographic map to denote a region. Because it already has a shape and size, it cannot be size coded to represent another quantitative attribute. 
 
-\begin{figure}[!htb]
-\centering
-\subcaptionbox{Line marks with horizontal position for a categorical attribute and vertical position for a quantitative attribute.\label{fig:lr-channel-example-1}}{\includegraphics[width=.23\columnwidth]{channel-example-1}} 
-\hfill
-\subcaptionbox{Point marks with both horizontal and vertical position channels for quantitative attributes.\label{fig:lr-channel-example-2}}{\includegraphics[width=.23\columnwidth]{channel-example-2}} 
-\hfill
-\subcaptionbox{A categorical attribute is added using the color channel.\label{fig:lr-channel-example-3}}{\includegraphics[width=.23\columnwidth]{channel-example-3}}
-\hfill
-\subcaptionbox{Another quantitative attribute is added using the size channel.\label{fig:lr-channel-example-4}}{\includegraphics[width=.23\columnwidth]{channel-example-4}}
-\caption{Using marks and channels.}
-\label{fig:lr-channel-example}
-\end{figure}
+%\autoref{fig:lr-channel-example} shows a progression of chart types, with each showing one more data attribute using one more visual channel. \autoref{fig:lr-channel-example-1} shows a bar chart representing a single quantitative attribute using the \emph{vertical position} channel. \autoref{fig:lr-channel-example-2} shows a scatter plot encoding the second quantitative attribute using the \emph{horizontal position} channel. \autoref{fig:lr-channel-example-3} adds the \emph{color} channel to represent a categorical attribute, and \autoref{fig:lr-channel-example-4} adds the \emph{size} channel to represent another quantitative attribute. In these examples, each attribute is encoded with a single channel. However, multiple channels can be combined to redundantly encode the same attribute, helping perceive it more easily.
+%
+%\begin{figure}[!htb]
+%\centering
+%\subcaptionbox{Line marks with horizontal position for a categorical attribute and vertical position for a quantitative attribute.\label{fig:lr-channel-example-1}}{\includegraphics[width=.23\columnwidth]{channel-example-1}} 
+%\hfill
+%\subcaptionbox{Point marks with both horizontal and vertical position channels for quantitative attributes.\label{fig:lr-channel-example-2}}{\includegraphics[width=.23\columnwidth]{channel-example-2}} 
+%\hfill
+%\subcaptionbox{A categorical attribute is added using the color channel.\label{fig:lr-channel-example-3}}{\includegraphics[width=.23\columnwidth]{channel-example-3}}
+%\hfill
+%\subcaptionbox{Another quantitative attribute is added using the size channel.\label{fig:lr-channel-example-4}}{\includegraphics[width=.23\columnwidth]{channel-example-4}}
+%\caption{Using marks and channels.}
+%\label{fig:lr-channel-example}
+%\end{figure}
 
-All channels are not equal; they are processed and perceived differently by our human visual systems. Also, not all channels are appropriate for encoding both ordered and categorical attributes. Ordered attributes should be shown using magnitude channels, with \emph{aligned spatial position} as the most effective channel and \emph{3D volume} as the least effective one. Categorical attributes should be shown using identity channels, with \emph{spatial region} as the most effective channel and \emph{shape} as the least effective one. \autoref{fig:lr-channel-ranking} shows the detailed ranking of effectiveness of many visual channels, separated by the type of attribute. This ranking is documented by Munzner~\cite{Munzner2014}, based on many empirical studies such as the work by Cleveland and McGill~\cite{Cleveland1985}, and by Heer and Bostock~\cite{Heer2010a}.
+All channels are not equal; they are processed and perceived differently by our human visual systems. Also, not all channels are appropriate for encoding both ordered and categorical attributes. Ordered attributes should be shown using magnitude channels, with \emph{aligned spatial position} as the most effective channel and \emph{3D volume} as the least effective one. Categorical attributes should be shown using identity channels, with \emph{spatial region} as the most effective channel and \emph{shape} as the least effective one. Munzer's book~\cite{Munzner2014} describes the detailed ranking of effectiveness of visual channels, which is based on many empirical studies such as the work by Cleveland and McGill~\cite{Cleveland1985}, and by Heer and Bostock~\cite{Heer2010a}.
+%
+%\begin{figure}[!htb]
+%	\centering
+%	\includegraphics[width=\linewidth]{channel-ranking}
+%	\caption{Channels ranked by effectiveness according to data and channel type. \is{Munzner2014}}
+%	\label{fig:lr-channel-ranking}
+%\end{figure}
+
+Color is a special channel that can be used for both data attributes. Color luminance and saturation are used in magnitude channels, and color hue is used in identity channels. A colormap specifies a mapping between colors and data values, and designing an effective colormap is challenging. ColorBrewer~\cite{Harrower2003} is an excellent source for colormap reference, providing color schemes for both categorical and ordered attributes. Human can only distinguish around 12 colors simultaneously~\cite{Munzner2014}. \autoref{fig:lr-colorbrewer-1} shows such a categorical colormap with 12 distinguished color hues. Ordered colormaps can be either sequential (\autoref{fig:lr-colorbrewer-2}) or diverging (\autoref{fig:lr-colorbrewer-3}). Diverging colormaps use two different color hues to emphasize values below and above the middle point.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{channel-ranking}
-	\caption{Channels ranked by effectiveness according to data and channel type. \is{Munzner2014}}
-	\label{fig:lr-channel-ranking}
+	\subcaptionbox{Categorical colormap with distinguishable color hues.\label{fig:lr-colorbrewer-1}}[\columnwidth]{\includegraphics[width=.6\columnwidth]{colorbrewer-1}} 
+	\\
+	\subcaptionbox{Sequential colormap: a single color hue with different saturation level.\label{fig:lr-colorbrewer-2}}[\columnwidth]{\hspace{-.15\columnwidth}\includegraphics[width=.45\columnwidth]{colorbrewer-2}}
+	\\
+	\subcaptionbox{Diverging colormap: two color hues emphasizing positive and negative values.\label{fig:lr-colorbrewer-3}}[\columnwidth]{\hspace{-.05\columnwidth} \includegraphics[width=.55\columnwidth]{colorbrewer-3}}
+	\caption{Colormaps from ColorBrewer. \is{Harrower2003}}
 \end{figure}
 
-Color is a special channel that can be used for both data attributes. As shown in \autoref{fig:lr-channel-ranking}, color luminance and saturation are used in magnitude channels, and color hue is used in identity channels. A colormap specifies a mapping between colors and data values, and designing an effective colormap is challenging. ColorBrewer~\cite{Harrower2003} is an excellent source for colormap reference, providing color schemes for both categorical and ordered attributes. Human can only distinguish around 12 colors simultaneously~\cite{Munzner2014}. \autoref{fig:lr-colorbrewer-1} shows such a categorical colormap with 12 distinguished color hues. Ordered colormaps can be either sequential (\autoref{fig:lr-colorbrewer-2}) or diverging (\autoref{fig:lr-colorbrewer-3}). Diverging colormaps use two different color hues to emphasize values below and above the middle point.
-
-\begin{figure}[!htb]
-\centering
-\subcaptionbox{Categorical colormap with distinguishable color hues.\label{fig:lr-colorbrewer-1}}[\columnwidth]{\includegraphics[width=.6\columnwidth]{colorbrewer-1}} 
-\\
-\subcaptionbox{Sequential colormap: a single color hue with different saturation level.\label{fig:lr-colorbrewer-2}}[\columnwidth]{\hspace{-.15\columnwidth}\includegraphics[width=.45\columnwidth]{colorbrewer-2}}
-\\
-\subcaptionbox{Diverging colormap: two color hues emphasizing positive and negative values.\label{fig:lr-colorbrewer-3}}[\columnwidth]{\hspace{-.05\columnwidth} \includegraphics[width=.55\columnwidth]{colorbrewer-3}}
-\caption{Colormaps from ColorBrewer. \is{Harrower2003}}
-\end{figure}
-
-\subparagraph{Gestalt Principles}
+\paragraph{Gestalt Principles}
 \label{sub:lr-gestalt}
-Gestalt principles describe how we see patterns in visual displays~\cite{Koffka1935}. This section reviews three commonly used principles in representing groups of items.
+Gestalt principles describe how we see patterns in visual displays~\cite{Koffka1935}. This section reviews three commonly used Gestalt principles.
 
 \subparagraph{Similarity} 
 Similar elements tend to be grouped together. \autoref{fig:lr-gestalt-similarity-1} shows a matrix of point marks with uniform spacing, but using two different shapes: dot and cross. The similarity of shapes helps us see the rows more clearly than the columns. Two separable channels can be applied together to reveal patterns by either rows or columns. In \autoref{fig:lr-gestalt-similarity-2}, green is used to depict rows, and texture is used to depict columns.
 
 \begin{figure}[!htb]
-\centering
-\subcaptionbox{Similarity of shapes distinguishes rows.\label{fig:lr-gestalt-similarity-1}}[.47\columnwidth]{\includegraphics[height=.35\columnwidth]{gestalt-similarity-1}} 
-\hfill
-\subcaptionbox{Color and texture delineate rows and columns, respectively.\label{fig:lr-gestalt-similarity-2}}[.47\columnwidth]{\includegraphics[height=.35\columnwidth]{gestalt-similarity-2}} \label{fig:lr-gestalt-similarity}
-\caption{Similarity principle: similar elements are perceived as a group. \is{Ware2013}}
+	\centering
+	\subcaptionbox{Similarity of shapes distinguishes rows.\label{fig:lr-gestalt-similarity-1}}[.47\columnwidth]{\includegraphics[height=.35\columnwidth]{gestalt-similarity-1}} 
+	\hfill
+	\subcaptionbox{Color and texture delineate rows and columns, respectively.\label{fig:lr-gestalt-similarity-2}}[.47\columnwidth]{\includegraphics[height=.35\columnwidth]{gestalt-similarity-2}} \label{fig:lr-gestalt-similarity}
+	\caption{Similarity principle: similar elements are perceived as a group. \is{Ware2013}}
 \end{figure}
 
 \subparagraph{Proximity} 
 Elements that are close together are perceptually grouped together. \autoref{fig:lr-gestalt-proximity-1} clearly shows two groups of dots. \autoref{fig:lr-gestalt-proximity-2} shows rows of dots. However, with a small change of spacing, these dots are perceived as columns in \autoref{fig:lr-gestalt-proximity-3}. The application of this principle is straightforward: organizing related information close together. It helps separate groups of unrelated objects and facilitates searching for information.
 
 \begin{figure}[!htb]
-\centering
-\subcaptionbox{Two groups of dots.\label{fig:lr-gestalt-proximity-1}}{\includegraphics[width=.25\columnwidth]{gestalt-proximity-1}} 
-\hfill
-\subcaptionbox{Rows of dots.\label{fig:lr-gestalt-proximity-2}}{\includegraphics[width=.31\columnwidth]{gestalt-proximity-2}} 
-\hfill
-\subcaptionbox{Columns of dots.\label{fig:lr-gestalt-proximity-3}}{\includegraphics[width=.31\columnwidth]{gestalt-proximity-3}}
-\label{fig:lr-gestalt-proximity}
-\caption{Spatial proximity principle: spatially close elements are perceived as a group. \is{Ware2013}}
+	\centering
+	\subcaptionbox{Two groups of dots.\label{fig:lr-gestalt-proximity-1}}{\includegraphics[width=.25\columnwidth]{gestalt-proximity-1}} 
+	\hfill
+	\subcaptionbox{Rows of dots.\label{fig:lr-gestalt-proximity-2}}{\includegraphics[width=.31\columnwidth]{gestalt-proximity-2}} 
+	\hfill
+	\subcaptionbox{Columns of dots.\label{fig:lr-gestalt-proximity-3}}{\includegraphics[width=.31\columnwidth]{gestalt-proximity-3}}
+	\label{fig:lr-gestalt-proximity}
+	\caption{Spatial proximity principle: spatially close elements are perceived as a group. \is{Ware2013}}
 \end{figure}
 
-\paragraph{Connectedness} 
+\subparagraph{Connectedness} 
 Elements that are connected by visual properties are perceived as being more related than elements that are not connected. This principle can be achieved simply by drawing a border around a group of elements as in \autoref{fig:lr-gestalt-connectedness-1}. This is extensively applied in designing complex graphical user interface: groups of related features are separated by borders. Another approach to implement connectedness is by drawing lines between related elements as in \autoref{fig:lr-gestalt-connectedness-2}. This is the basics of \emph{node-link diagrams} -- one of the most common methods of representing relationships between elements.
 
 \begin{figure}[!htb]
-\centering
-\subcaptionbox{Using border to denote a group.\label{fig:lr-gestalt-connectedness-1}}{\includegraphics[width=.4\columnwidth]{gestalt-connectedness-1}} 
-\hfill
-\subcaptionbox{Using lines to denote a group.\label{fig:lr-gestalt-connectedness-2}}{\includegraphics[width=.4\columnwidth]{gestalt-connectedness-2}} 
-\caption{Connectedness principle: visually connected elements are perceived as a group. \is{Ware2013}}
-\label{fig:lr-gestalt-connectedness}
+	\centering
+	\subcaptionbox{Using border to denote a group.\label{fig:lr-gestalt-connectedness-1}}{\includegraphics[width=.4\columnwidth]{gestalt-connectedness-1}} 
+	\hfill
+	\subcaptionbox{Using lines to denote a group.\label{fig:lr-gestalt-connectedness-2}}{\includegraphics[width=.4\columnwidth]{gestalt-connectedness-2}} 
+	\caption{Connectedness principle: visually connected elements are perceived as a group. \is{Ware2013}}
+	\label{fig:lr-gestalt-connectedness}
 \end{figure}
 
 Among these three Gestalt principles of representing groups of elements, connectedness has the strongest effect, followed by proximity and then similarity. \autoref{fig:lr-gestalt} illustrates this comparison. In \autoref{fig:lr-gestalt-1}, even though spacing between dots in rows is shorter than spacing between dots in columns, the lines make the vertical links clearer than rows. In \autoref{fig:lr-gestalt-2}, the lines also make the horizontal links more notable than groups of colored circles. In \autoref{fig:lr-gestalt-3}, two spatial groups are more clearly perceived than colored groups.
 
 \begin{figure}[!htb]
-\centering
-\subcaptionbox{Links are more clearly perceived than spatial groups.\label{fig:lr-gestalt-1}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-1}} 
-\hfill
-\subcaptionbox{Links are more clearly perceived than colored groups.\label{fig:lr-gestalt-2}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-2}} 
-\hfill
-\subcaptionbox{Spatial groups are more clearly perceived than colored groups.\label{fig:lr-gestalt-3}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-3}}
-\caption{Comparison of Gestalt principles. Connectedness is stronger than proximity, and proximity is stronger than similarity. \is{Ware2013}}
-\label{fig:lr-gestalt}
+	\centering
+	\subcaptionbox{Links are more clearly perceived than spatial groups.\label{fig:lr-gestalt-1}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-1}} 
+	\hfill
+	\subcaptionbox{Links are more clearly perceived than colored groups.\label{fig:lr-gestalt-2}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-2}} 
+	\hfill
+	\subcaptionbox{Spatial groups are more clearly perceived than colored groups.\label{fig:lr-gestalt-3}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-3}}
+	\caption{Comparison of Gestalt principles. Connectedness is stronger than proximity, and proximity is stronger than similarity. \is{Ware2013}}
+	\label{fig:lr-gestalt}
 \end{figure}
 
 \paragraph{Tufte's Principles}
-Tufte proposes a number of principles for a well-designed graphic, documented in his series of books, most notably including \emph{The Visual Display of Quantitative Information}~\cite{Tufte1983} and \emph{Envisioning Information}~\cite{Tufte1990}. This section reviews a few principles that have been commonly applied in graphic design and visualization.
+Tufte proposes a number of principles for a well-designed graphic, documented in his series of books, most notably including \emph{The Visual Display of Quantitative Information}~\cite{Tufte1983} and \emph{Envisioning Information}~\cite{Tufte1990}. This section reviews three principles that have been commonly applied in graphic design and visualization.
 
 \subparagraph{Graphical Integrity}
-This principle emphasizes that the graphical representation should tell the truth about the data. Representation of numbers, as physically measured on the surface of the	graphic	itself,	must be directly proportional to the numerical quantities represented~\cite{Tufte1983}. \autoref{fig:lr-tufte-integrity-1} shows a falsely big drop in stock market value between 2001 and 2002. It because the chart uses a relative scale with the value range from 450 to 500, causing its height disproportional to the market value. \autoref{fig:lr-tufte-integrity-2} corrects this error by using an absolute scale with the value range starting from 0.
+This principle emphasizes that the graphical representation should tell the truth about the data. Representation of numbers, as physically measured on the surface of the	graphic	itself,	must be directly proportional to the numerical quantities represented. \autoref{fig:lr-tufte-integrity-1} shows a falsely big drop in stock market value between 2001 and 2002. It because the chart uses a relative scale with the value range from 450 to 500, causing its height disproportional to the market value. \autoref{fig:lr-tufte-integrity-2} corrects this error by using an absolute scale with the value range starting from 0.
 
 \begin{figure}[!htb]
-\centering
-\subcaptionbox{Using a relative value range causes a falsely big drop of stock market value between 2001 and 2002.\label{fig:lr-tufte-integrity-1}}{\includegraphics[width=.47\columnwidth]{tufte-integrity-1}} 
-\hfill
-\subcaptionbox{Using an absolute value range to depict the data accurately.\label{fig:lr-tufte-integrity-2}}{\includegraphics[width=.47\columnwidth]{tufte-integrity-2}} 
-\caption{Graphical integrity principle. The chart should tell the truth about the data.}
-\label{fig:lr-tufte-integrity}
+	\centering
+	\subcaptionbox{Using a relative value range causes a falsely big drop of stock market value between 2001 and 2002.\label{fig:lr-tufte-integrity-1}}{\includegraphics[width=.47\columnwidth]{tufte-integrity-1}} 
+	\hfill
+	\subcaptionbox{Using an absolute value range to depict the data accurately.\label{fig:lr-tufte-integrity-2}}{\includegraphics[width=.47\columnwidth]{tufte-integrity-2}} 
+	\caption{Graphical integrity principle. The chart should tell the truth about the data.}
+	\label{fig:lr-tufte-integrity}
 \end{figure}
 
 \subparagraph{Data-Ink Ratio Maximization}
-Data-ink includes the pixels in the graphic that are used for representing the data. Data-ink ratio is defined as the ratio between the data-ink and the total non-background pixels used in the graphic. This principle aims to maximize this ratio by erasing non-data-ink and erasing redundant data-ink.
+Data-ink includes the pixels in the graphic that are used for representing the data. Data-ink ratio is defined as the ratio between the data-ink and the total non-background pixels used in the graphic. This principle aims to maximize this ratio by erasing non-data-ink and erasing redundant data-ink. \autoref{fig:lr-tufte-ink} illustrates this principle.
 
 \begin{figure}[!htb]
-\centering
-\subcaptionbox{A bar chart with poor data-ink ratio.\label{fig:lr-tufte-ink-1}}{\includegraphics[width=.47\columnwidth]{tufte-ink-1}} 
-\hfill
-\subcaptionbox{A bar chart with high data-ink ratio by removing background, border and grid lines.\label{fig:lr-tufte-ink-2}}{\includegraphics[width=.47\columnwidth]{tufte-ink-2}} 
-\caption{Data-ink ratio maximization principle: removing the graphic that does not contribute to the understanding of the data.}
-\label{fig:lr-tufte-ink}
+	\centering
+	\subcaptionbox{A bar chart with poor data-ink ratio.\label{fig:lr-tufte-ink-1}}{\includegraphics[width=.47\columnwidth]{tufte-ink-1}} 
+	\hfill
+	\subcaptionbox{A bar chart with high data-ink ratio by removing background, border and grid lines.\label{fig:lr-tufte-ink-2}}{\includegraphics[width=.47\columnwidth]{tufte-ink-2}} 
+	\caption{Data-ink ratio maximization principle: removing the graphic that does not contribute to the understanding of the data.}
+	\label{fig:lr-tufte-ink}
 \end{figure}
 % Source: http://www.infovis-wiki.net/index.php/Data-Ink_Ratio
 
 \subparagraph{Micro/Macro Readings}
-This principle suggests that a graphic can contain both enormous details and an overall pattern. This allows the viewer to glance from a distance to observe the big picture, and later drill-down closely to examine its individual pieces. Classic stem-and-leaf plot is a great example to illustrate this principle (\autoref{fig:lr-tufte-micro}). The plot shows all individual data items at meaningful level of detail, and provides an understanding of the data distribution. The micro/macro principle is extensively applied in interactive visualization, where zooming are panning are made possible, such as Google Maps. Data items at different scales can be represented with different levels of detail to provide appropriate information based on the allowed display area.
+This principle suggests that a graphic can contain both enormous details and an overall pattern. This allows the viewer to glance from a distance to observe the big picture, and later drill-down closely to examine its individual pieces. Classic stem-and-leaf plot is a great example to illustrate this principle (\autoref{fig:lr-tufte-micro}). The plot shows all individual data items at meaningful level of detail, and provides an understanding of the data distribution. The micro/macro principle is extensively applied in interactive visualization, where zooming and panning are made possible, such as in Google Maps. Data items at different scales can be represented with different levels of detail to provide appropriate information based on the allowed display area.
 
 \begin{figure}[!htb]
 	\centering
@@ -204,7 +206,8 @@ Another concept that can be applied to improve existing interaction techniques i
 
 Typically, interaction techniques are combined to explore the data or present a known story. A classic visual information-seeking mantra by Shneiderman~\cite{Shneiderman1996} summarizes many design guidelines and interaction techniques for designing information visualizations: \emph{Overview first, zoom and filter, then details-on-demand}. With large datasets, it it challenging to create an overview and provides cues for further exploration. A more suitable approach in this case is \emph{Search, show context, expand on demand}~\cite{VanHam2009}.
 
-\subsection{Automated Analysis Methods}
+\subsection{Automated Analysis Techniques}
+\label{sub:lr-analysis}
 Data mining is the computational process of extracting patterns in large datasets~\cite{Tan2006}. Data mining tasks can be broadly divided into two major categories:
 
 \begin{itemize}
@@ -312,6 +315,7 @@ An essential step in classification of high dimensional datasets is feature sele
 \end{figure}
 
 \subsection{Evaluation Methods}
+\label{sub:lr-evaluation}
 A visualization, no matter how novel and interesting it is, needs to be evaluated to check whether it meets the design goals and supports the target users to complete the intended tasks. Evaluation has been a research topic in visualization when the field becomes more matured~\cite{Plaisant2004}. Excellent reviews of visualization evaluation with different perspectives include evaluation techniques~\cite{Carpendale2008}, scenarios~\cite{Lam2012} and design process~\cite{Munroe2009}.
 
 In this section, we review the evaluation techniques based on the visualization design model by Munzner~\cite{Munroe2009}, helping address different concerns separately. The four levels include: explain the tasks and available data in the vocabulary of the problem domain, abstract them into domain-independent operations and data types, design visual encoding and interaction techniques to solve the abstract tasks, and develop algorithms to execute these techniques efficiently. Each level has its own \emph{threats} to validity and methods to address them. Two types of methods are distinguished: \emph{immediate} approaches can be done before inner levels are implemented, whereas \emph{downstream} approaches requires all inner levels are completed. The threats and evaluation methods are summarized in \autoref{fig:lr-nested-model}.
