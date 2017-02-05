@@ -94,25 +94,24 @@ Treemap is very effective when size is the most important feature to be displaye
 
 Alternatively, other space-filling techniques have been proposed to better represent the hierarchical structure. \autoref{fig:lr-other-space-filling} shows the three techniques that we discuss next using the same dataset as in \autoref{fig:lr-treemap} for treemap. 
 
+\begin{figure}[!htb]
+	\centering
+	\subcaptionbox{Circle packing. \label{fig:lr-circle-pack}}{\includegraphics[height=.48\columnwidth]{circle-pack}}
+	\hfill
+	\subcaptionbox{Sunburst. \label{fig:lr-sunburst}}{\includegraphics[height=.48\columnwidth]{sunburst}}
+	
+	\vspace{.5\baselineskip}
+	
+	\subcaptionbox{Icicle plot. \label{fig:lr-icile}}{\includegraphics[width=\columnwidth]{icicle-plot}}
+	\caption{Other space-filling techniques. Data is the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b} as in \autoref{fig:lr-treemap}. Color also represents the top-level classes.}
+	\label{fig:lr-other-space-filling}
+\end{figure}
+
 Circle packing~\cite{Wang2006} also employs containment to represent the hierarchy, but using circles to represent nodes. Circle sizes correspond to some node values. All child nodes are packed into their parent node so that they are tangent to some of their sibling nodes. This method uses more space than treemap but provides better hierarchy structure.
 
 Icicle plot~\cite{Kruskal1983} does not strictly use containment; instead, it places child nodes \emph{under} their parent node. Similar to treemap, icicle plot uses rectangles to represent nodes, but they all share the same height. Therefore, node width corresponds to some attribute value. Icicle plot shows parent nodes explicitly, making it more effective in tasks related to the parents such as comparing directories by size. The direct trade-off is space for showing those parent nodes. Icicle plot shows the tree structure and supports path tracing more effectively than treemap. However, small leaf nodes are very thin and difficult to read its label or interact with.
 
 Sunburst~\cite{Zhang2000} is a radial version of icicle plot. Child nodes are located under their parent node in a circular layout. The root node is at the center and deeper levels are further away from it. The angle swept out by a node, or a curved segment, corresponds to its value. Color is also commonly used to represent additional information.
-
-\begin{figure}[!htb]
-\centering
-\subcaptionbox{Circle packing. \label{fig:lr-circle-pack}}{\includegraphics[height=.48\columnwidth]{circle-pack}}
-\hfill
-\subcaptionbox{Sunburst. \label{fig:lr-sunburst}}{\includegraphics[height=.48\columnwidth]{sunburst}}
-
-\vspace{.5\baselineskip}
-
-\subcaptionbox{Icicle plot. \label{fig:lr-icile}}{\includegraphics[width=\columnwidth]{icicle-plot}}
-\caption{Other space-filling techniques. Data is the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b} as in \autoref{fig:lr-treemap}. Color also represents the top-level classes.}
-\label{fig:lr-other-space-filling}
-\end{figure}
-
 
 %circle packing: https://bl.ocks.org/mbostock/4063530
 %sunburst: http://bl.ocks.org/mbostock/4348373
@@ -120,5 +119,4 @@ Sunburst~\cite{Zhang2000} is a radial version of icicle plot. Child nodes are lo
 %icile: https://bl.ocks.org/mbostock/1005873
 
 \subsection{Summary}
-list 3 mappings
-chap 6 shows network data, at the end, we dont develop new techqnieus the knowledge help select the right approach and choice. to address scalabitlity, we apply semantic zooming, collapsing
+\add{This section reviews the most common techniques to visualize network data including node-link diagrams, matrix views and space-filling. \autoref{chap:sensemap} uses network data showing relationship between provenance data items such as opening relationship between web pages. Even though it uses an existing compact tree layout, the research discussed in this section provides a valuable knowledge for making suitable design decision. To address scalability, our tree visualization applies interactive features such as semantic zooming (appropriate designs for different levels of detail).}
