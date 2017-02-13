@@ -1,19 +1,25 @@
 \section{Approach and Requirements}
+We began by exploring the literature to get a better understanding of sensemaking in intelligence analysis. As discussed in the Literature Review chapter, \autoref{sub:lr-pcm}, Pirolli and Card describe sensemaking performed by intelligence analysts as a cyclic process including two major loops: the foraging loop and the sensemaking loop. In that model, \emph{schematization} serves as a bridge connecting the two loops and plays an important role in converting raw evidence to rational explanations. Pirolli and Card~\cite{Pirolli2005} suggest that schematization should be supported by a computer-based tool that coordinates events in the dataset to reveal their relationships, and to reduce the effort from analysts in memorizing them. A user study by Kang, Görg and John Stasko~\cite{Kang2011} also shows that timeline is a common choice of participants for organizing related events in an attempt to make sense of them.
 
-% How do you go about solving the problem: supporting temporal sensemaking?
-% Explain our choice of support: schematization.
-We began by exploring the literature to identify the essential points of the sensemaking process to support. As discussed in the Literature Review chapter, \autoref{sub:lr-pcm}, Pirolli and Card describe sensemaking as a cyclic process including two major loops: the foraging loop and the sensemaking loop. In that model, \emph{schematization} serves as a bridge connecting the two loops and plays an important role in converting raw evidence to rational explanations. Pirolli and Card~\cite{Pirolli2005} suggest that schematization should be supported by a computer-based tool that coordinates events in the dataset to reveal their relationships, and to reduce the effort from users in memorizing them. Therefore, we decided to support \emph{temporal schematization} through interactive visualization.
+% Importance of presenting information in story order
+A timeline does not only reveal the temporal relationships of individual findings, but also affects how easily they can be understood. A study by Pennington and Hastie~\cite{Pennington1991} suggests that the presentation order of evidence has a significant impact on making decisions in a court trial. The juror constructs stories based on evidence from witnesses, exhibits and arguments before concluding with the most plausible one. The study shows that participants were most likely (78\%) to convict when the prosecution evidence was presented in story order and the defense evidence was presented in non-story order; whereas, participants were least likely (31\%) to convict when these sets of evidence were presented in the other way round. Therefore, we decided to support \emph{temporal schematization} through interactive visualization.
 
-% Transition from schematization to Data-frame model
-Also discussed in the Literature Review chapter, \autoref{sub:lr-dfm}, the cognitive processes in schematization are well elaborated through various sensemaking activities centering around \emph{data} and \emph{frame} in the Data--Frame model. For instance, during sensemaking, the user finds some pieces of interesting information. Then, he or she realizes that these pieces mention the same person, thus decides to connect them based on when each event happens to reveal the hidden story. Using the terminology of the Data--Frame model, the user connects data (the pieces of interesting information) to a frame (the story). We decided to enable users to perform all sensemaking activities in the Data--Frame model through intuitive interaction with a timeline visualization. 
-
-% Terminology definition
-Note that we use \emph{schema} and \emph{frame} to refer to to the same concept: a structure that defines the relationship of data. In this chapter, we focus on the temporal relationship, explaining the chronology of events discovered during the sensemaking process. We use \emph{events} instead of general data to emphasize on their temporal aspect. Therefore, a schema or frame can be defined as a chronological sequence of related events.
-
-We propose the following design requirements for our timeline visualization.
+Based on our understanding about sensemaking in intelligence analysis~\cite{Heuer1999,Pirolli2005}, we set the following requirements for the temporal schematization stage:
 
 \begin{enumerate}
-	\item \textbf{Automatic layout}. Provide an automatic layout to leverage users from manual arrangement of events.
+	\item \textbf{Knowledge externalization}. Allow analysts to externalize their thoughts and associate them with relevant raw data.
+	\item \textbf{Narrative construction}. Support analysts to create and refine plausible stories from their recorded thoughts.
+\end{enumerate}
+
+The first requirement is system dependent and technically straightforward. Note taking or \emph{annotation} is simply implemented in visual analytics systems to allow analysts to record their thoughts. We will discuss it in the context of a specific application system in the evaluation of this chapter (\autoref{sub:sl-evaluation}).
+
+For the second requirement, we propose a system agnostic timeline visualization so that it can be easily integrated into many visual analytic systems. To elaborate on the narrative construction process, we employ various sensemaking activities centering around \emph{data} (annotation/note) and \emph{frame} (schema/story) in the Data--Frame model (\autoref{sub:lr-dfm}). For instance, during sensemaking, an analyst finds some pieces of interesting information. Then, he or she realizes that these pieces mention the same person, thus decides to connect them based on when each event happens in order to reveal the hidden story. Using the terminology of the Data--Frame model, the analyst connects data (the pieces of interesting information) to a frame (the story). To support narrative construction, we decided to enable analysts to perform all sensemaking activities in the Data--Frame model through intuitive interaction with a timeline visualization. 
+
+% Terminology definition
+Note that \emph{schema} and \emph{frame} are referred to the same concept: a structure that defines the relationship of data. This chapter focuses on the temporal structure that explains the chronology of events discovered during the sensemaking process. Therefore, a schema or frame can be defined as a chronological sequence of related events. We use \emph{events} instead of general data items or annotations to emphasize on their temporal aspect. To address the second design requirement, we propose the following technical requirements for our timeline visualization.
+
+\begin{enumerate}
+	\item \textbf{Automatic layout}. Provide an automatic layout to leverage analysts from manual arrangement of events.
 	\item \textbf{Natural flow}. Easy to follow events within the same schema chronologically.
-	\item \textbf{Data--frame model}. Enable users to perform sensemaking activities described in the Data--frame model through intuitive interaction.
+	\item \textbf{Data--Frame model}. Enable analysts to perform sensemaking activities described in the Data--Frame model through intuitive interaction.
 \end{enumerate}
