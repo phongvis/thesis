@@ -4,7 +4,7 @@ We began by exploring the literature to get a better understanding of sensemakin
 % Importance of presenting information in story order
 A timeline does not only reveal the temporal relationships of individual findings, but also affects how easily they can be understood. A study by Pennington and Hastie~\cite{Pennington1991} suggests that the presentation order of evidence has a significant impact on making decisions in a court trial. The juror constructs stories based on evidence from witnesses, exhibits and arguments before concluding with the most plausible one. The study shows that participants were most likely (78\%) to convict when the prosecution evidence was presented in story order and the defense evidence was presented in non-story order; whereas, participants were least likely (31\%) to convict when these sets of evidence were presented in the other way round. Therefore, we decided to support \emph{temporal schematization} through interactive visualization.
 
-Based on our understanding about sensemaking in intelligence analysis~\cite{Heuer1999,Pirolli2005}, we set the following requirements for the temporal schematization stage:
+Based on our understanding about sensemaking in intelligence analysis~\cite{Heuer1999,Pirolli2005}, we set the following requirements for the temporal schematization stage.
 
 \begin{enumerate}
 	\item \textbf{Knowledge externalization}. Allow analysts to externalize their thoughts and associate them with relevant raw data.
@@ -19,7 +19,7 @@ For the second requirement, we propose a system agnostic timeline visualization 
 Note that \emph{schema} and \emph{frame} are referred to the same concept: a structure that defines the relationship of data. This chapter focuses on the temporal structure that explains the chronology of events discovered during the sensemaking process. Therefore, a schema or frame can be defined as a chronological sequence of related events. We use \emph{events} instead of general data items or annotations to emphasize on their temporal aspect. To address the second design requirement, we propose the following technical requirements for our timeline visualization.
 
 \begin{enumerate}
-	\item \textbf{Automatic layout}. Provide an automatic layout to leverage analysts from manual arrangement of events.
-	\item \textbf{Natural flow}. Easy to follow events within the same schema chronologically.
+	\item \textbf{Event representation}. For each annotation, show its content and its timestamp. This helps remind an analyst what each event is about and when it happens, facilitating the connection of related information.
+	\item \textbf{Schema layout}. Easy to follow events within the same schema chronologically. This is essential because an analyst needs to quickly understand and retrieve the schemas he or she created.
 	\item \textbf{Data--Frame model}. Enable analysts to perform sensemaking activities described in the Data--Frame model through intuitive interaction.
 \end{enumerate}

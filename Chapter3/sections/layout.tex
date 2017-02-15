@@ -1,18 +1,16 @@
 \section{Algorithm}
 \label{sec:sl-algorithm}
-
-This section discusses the algorithm to produce the SchemaLine visualization as in \autoref{fig:sl-overview}, consisting of two parts. First, the layout of schemas is generated; and then, their outlines are computed based on the layout information.
+This section discusses how to produce the SchemaLine visualization such as the one in \autoref{fig:sl-overview}. First, the layout of schemas is generated; and then, their outlines are computed based on the layout information.
 
 \subsection{SchemaLine Layout}
-
-Besides compact and aesthetic, we set these conditions to the layout: 
+The layout should satisfy these conditions: 
 \begin{enumerate}
-	\item \textbf{Horizontal position}. Along the time axis, events should be located accurately at when they happen, if possible.
-	\item \textbf{Relative order}. To address scalability, events can be shifted horizontally; however, their relative order should be maintained: $x(e_1) < x(e_2)$ if and only if $e_1$ happens before $e_2$, where $x(e)$ is the horizontal position of event $e$.
+	\item \textbf{Horizontal position}. Along the time axis, events should be located accurately at when they happen, if possible. This is to meet Technical Requirement 1 -- event representation.
+	\item \textbf{Relative order}. However, to address scalability, events can be shifted horizontally as long as their relative order is maintained: $x(e_1) < x(e_2)$ if and only if $e_1$ happens before $e_2$, where $x(e)$ is the horizontal position of event $e$.
 	\item \textbf{Overlap free}. Events and schemas are not allowed to intersect each other.
 \end{enumerate}
 
-To meet these requirements, we design an algorithm consists of the following four steps (\autoref{fig:sl-layout-overview}):
+To meet these conditions, the layout algorithm consists of the following four steps (\autoref{fig:sl-layout-overview}):
 \begin{enumerate} 
 	\item Order the schemas vertically based on their number of events.
 	\item For each schema, locate its events satisfying the aforementioned requirements.
@@ -32,9 +30,9 @@ As explained in \autoref{sub:schema}, schemas are vertically stacked to apply th
 
 \subsubsection{Layout Individual Schemas}
 \label{sub:layout-schema}
-The second step of the algorithm produces the layout for each schema. Events that are members of multiple schemas are replicated, allowing the layout of each schema to be generated independently. Events within a schema are sorted chronologically and added to the timeline in that order. Because all events have the same height, the layout algorithm only needs to compute the row level and horizontal position of each event. 
+The second step produces the layout for each schema. Events that are members of multiple schemas are replicated, allowing the layout of each schema to be generated independently. Events within a schema are sorted chronologically and added to the timeline in that order. Because all events have the same height, only the row level and horizontal position of each event are needed to compute as follows.
 
-Initially, an event $e_i$ is located on the same row as the previous one $e_{i-1}$ and at the position proportional to its temporal value (Condition 1). If these two events are separate, the algorithm moves to the next event; or else, two cases will be considered. If $e_i$ happens at the same time as $e_{i-1}$, it will be located on the upper row and at the same horizontal coordinate as $e_{i-1}$. Otherwise, $e_{i-1}$ is tentatively shifted to the left to make space for $e_i$, as discussed next. If the shift is unsuccessful, $e_i$ will be located in the upper row.
+Initially, an event $e_i$ is located on the same row as the previous one $e_{i-1}$ and at the position proportional to its temporal value (Condition 1). If these two events are separate, $e_i$ stays at where it is. Otherwise, two cases will be considered. First, if $e_i$ happens at the same time as $e_{i-1}$, it will be located on the upper row and at the same horizontal coordinate as $e_{i-1}$. Second, $e_{i-1}$ is tentatively shifted to the left to make space for $e_i$, as discussed next. If the shift is unsuccessful, $e_i$ will be located in the upper row.
 
 \paragraph*{Shifting Events}
 To accommodate more events, the accuracy of the horizontal positions of events can be sacrificed. An event can be shifted horizontally to the left to make space for other events. However, an event should not shift too far from its accurate position to avoid misunderstanding from analysts. We set that shifting limit to the width of the event so that it still covers its time point on the time axis and provides a reasonable indication of its accurate position. 
@@ -53,10 +51,10 @@ An illustration of the layout algorithm for one schema is shown in \autoref{fig:
 \end{figure}
 
 \subsubsection{Compact Schemas}
-In this third step, the algorithm stacks schemas in the order computed in the first step to produce a compact and overlap-free visualization. Schemas are stacked upward, starting at the bottom of the display. However, to save vertical space, it is unnecessary to place a schema on top of the previously added schema. A schema can start at the bottom, move upward, and stop when it does not overlap with any other schemas. In the worst case, it will be located at the top of the timeline.
+This third step stacks schemas in the order computed in the first step to produce a compact and overlap-free visualization. Schemas are stacked upward, starting at the bottom of the display. However, to save vertical space, it is unnecessary to place a schema on top of the previously added schema. A schema can start at the bottom, move upward, and stop when it does not overlap with any other schemas. In the worst case, it will be located at the top of the timeline.
 
 \subsubsection{Add Remaining Events}
-This last step allocates events that do not belong to any schemas. Events are sorted chronologically and processed in that order. The ideal horizontal coordinate of an event is the position proportional to its temporal value; however, it can also be shifted using the algorithm described earlier in \autoref{sub:layout-schema}. An event begins at the bottom of the display and moves upward until it does not overlap with any other schemas or events after possible shifts. 
+This last step allocates events that do not belong to any schemas. Events are sorted chronologically and processed in that order. The ideal horizontal coordinate of an event is the position proportional to its temporal value; however, it can also be shifted using the \emph{shifting} method described earlier in \autoref{sub:layout-schema}. An event begins at the bottom of the display and moves upward until it does not overlap with any other schemas or events after possible shifts. 
 
 \subsection{Schema Outline}
 In this section, we describe an algorithm to produce a polygonal outline covering all the event rectangles of a schema. We decided to use only horizontal and vertical line segments to keep the outline simple yet aesthetic as in \autoref{fig:schema}. The \emph{polygonal path} $P_n$ of a schema that contains $n$ event rectangles $R_1, R_2, ..., R_n$, ordered from left to right, is determined as follows:
