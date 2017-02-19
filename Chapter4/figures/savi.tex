@@ -1,0 +1,33 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{des}=[anchor=south west, red, font=\LARGE, inner sep=1pt]
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+\begin{scope}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {
+		\includegraphics[width=\linewidth]{savi-stack}
+	};
+	
+	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+%		\node [des] at (0.01,0.85) {C};
+%		\node [des] at (0.01,0.045) {A};
+%		\node [des] at (0.495,0.85) {B};
+%		\node [des] at (0.92,0.85) {D};
+%		\node [des] at (0.96,0.12) {E};		
+		\node [des] at (0.02,0.95) {C};
+		\node [des] at (0.02,0.57) {A};
+		\node [des] at (0.93,0.95) {B};
+		\node [des] at (0.02,0.42) {D};
+		\node [des] at (0.05,0.05) {E};		
+
+	\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}

@@ -4,11 +4,11 @@ The layout algorithm, determining the positions of sets and events within them, 
 
 \subsection{Sets Ordering}
 \label{sec:set-ordering}
-The set ordering algorithm aims to maximize the number of events shared by neighboring sets. This can be mapped to a graph path problem. Given a list of sets $S=\{s_1, s_2, \dotsc, s_n\}$, an undirected graph $G = (V,E)$ is created with each vertex $v_i$ representing a set $s_i \in S$. Two vertices $v_i$ and $v_j$ are connected if $s_i$ and $s_j$ share an event. The weight of edge $e_{ij}$ is the number of events shared by $s_i$ and $s_j$. Finding a set order with the maximum number of events shared by neighboring sets is equivalent to finding a path with the maximum weight connecting all vertices in $G$. This longest path problem is known to be NP-hard. The number of sets we plan to support is constrained by the number of colors that human can easily distinguish when they are shown together; and they are only around 12 colors~\cite{Munzner2014}. Therefore, we decide to use a brute-force approach to find the optimal solution.
+The set ordering step aims to maximize the number of events shared by neighboring sets. This can be mapped to a graph path problem. Given a list of sets $S=\{s_1, s_2, \dotsc, s_n\}$, an undirected graph $G = (V,E)$ is created with each vertex $v_i$ representing a set $s_i \in S$. Two vertices $v_i$ and $v_j$ are connected if $s_i$ and $s_j$ share an event. The weight of edge $e_{ij}$ is the number of events shared by $s_i$ and $s_j$. Finding a set order with the maximum number of events shared by neighboring sets is equivalent to finding a path with the maximum weight connecting all vertices in $G$. This longest path problem is known to be NP-hard. The number of sets we plan to support is constrained by the number of colors that human can easily distinguish when they are shown together; and they are only around 12 colors~\cite{Munzner2014}. Therefore, we decide to use a brute-force approach to find the optimal solution.
 
 \subsection{Layer Layout}
 % Requirements
-This algorithm positions all the events within a layer. Its inputs include:
+This step positions all the events within a layer. Its inputs include:
 \begin{itemize}
 	\item The events belonging to the layer with their \emph{label} and \emph{time} values.
 	\item The maximum width and height of the layer.
@@ -22,24 +22,24 @@ The outputs are event locations within the constrained display area, optimizing 
 	$\gamma=\frac{\sum\limits_{i=1}^{|E|}(|l_{i+1} - l_i|)}{|E|-1}$	, where $|E|$ is the number of all events within the layer and $l_i$ is the row level of event $e_i$.
 \end{description}
 
-The horizontal position of an event is fixed by its time. The layout algorithm decides on which row to position an event; i.e., vertical position,  and the level of detail for its label.
+The horizontal position of an event is fixed by its time. The layout therefore decides on which row to position an event; i.e., vertical position, and the level of detail for its label.
 
-\subsubsection{Completeness Algorithm}
+\subsubsection{Completeness Layout}
 Starting with an empty layer, the algorithm processes events chronologically. An event is located at the possibly lowest row where it does not overlap with any other events. If such a row does not exist, one of the earlier located events is trimmed to make space for it. Among these events, the one with the least text being trimmed is selected. However, if the label space of that event is too short for a single word after trim, it will combine with the current event to form a new aggregated event labeled ``2 events''. Aggregated events cannot be trimmed, thus if a new event overlaps with them, it will be added into the existing aggregate. For example, a new event that overlaps with a ``2 events'' aggregated event will be grouped together producing the ``3 events'' aggregate.
 
-The completeness algorithm maximizes the number of complete events $|E_c|$ and trimmed events $|E_t|$, thus yielding a maximum completeness ratio $\theta$. However, this algorithm does not optimize traceability because an event is located in the possibly lowest row disregarding the row level of its preceding event.
+The completeness layout maximizes the number of complete events $|E_c|$ and trimmed events $|E_t|$, thus yielding a maximum completeness ratio $\theta$. However, this layout does not optimize traceability because an event is located in the possibly lowest row disregarding the row level of its preceding event.
 
-\subsubsection{Traceability Algorithm}
-To improve traceability, the algorithm inserts a new event at the same row as its preceding event. If they overlap, the preceding event is trimmed to make space for the currently adding one. We define the \emph{trim ratio} of an event as the ratio of the remaining text length to its original length. An event can only be trimmed if the resulting trim ratio is greater than a minimum threshold $t_{min}$, where $0\leq t_{min} \leq 1$. This value determines how much completeness can be traded for traceability. If the resulting trim ratio is smaller than $t_{min}$, the event moves up or down, up to $r_{max}$ rows on both sides, to find a satisfied row. $r_{max}$ decides how far, in terms of row level difference, an event can be from the preceding event, which essentially trades traceability for completeness. If no suitable row can be found within $\pm r_{max}$ rows, the currently adding event returns to the level of its preceding event, which is then trimmed or aggregated with the preceding event as in the completeness algorithm.
+\subsubsection{Traceability Layout}
+To improve traceability, this layout inserts a new event at the same row as its preceding event. If they overlap, the preceding event is trimmed to make space for the currently adding one. We define the \emph{trim ratio} of an event as the ratio of the remaining text length to its original length. An event can only be trimmed if the resulting trim ratio is greater than a minimum threshold $t_{min}$, where $0\leq t_{min} \leq 1$. This value determines how much completeness can be traded for traceability. If the resulting trim ratio is smaller than $t_{min}$, the event moves up or down, up to $r_{max}$ rows on both sides, to find a satisfied row. $r_{max}$ decides how far, in terms of row level difference, an event can be from the preceding event, which essentially trades traceability for completeness. If no suitable row can be found within $\pm r_{max}$ rows, the currently adding event returns to the level of its preceding event, which is then trimmed or aggregated with the preceding event as in the completeness layout.
 
-\autoref{fig:traceability} shows an example of these two algorithms. Both layer layout algorithms run in linear time in terms of the number of events, because during the event insertion, the completeness algorithm checks up to a constant number -- the layer height -- of times, and the traceability algorithm checks at most ($2 \times r_{max}+1$) rows.
+\autoref{fig:traceability} shows an example of these two layouts. Both  run with linear time in terms of the number of events, because during the event insertion, the completeness layout checks up to a constant number -- the layer height -- of times, and the traceability layout checks at most ($2 \times r_{max}+1$) rows.
 
 \begin{figure}[!htb]
 \centering
 	\subcaptionbox{Completeness algorithm: $\theta=1$, \\$\gamma=5/3$.}{\includegraphics[width=.48\linewidth]{figure9a}}
 	\hfill
 	\subcaptionbox{Traceability algorithm ($t_{min}=0.5$, $r_{max}=1$): $\theta=6/7$, $\gamma=2/3$.}{\includegraphics[width=.48\linewidth]{figure9b}}
-\caption{Layer layout algorithms. Each rectangle represents an event. The line connecting centers of rectangles illustrates the  traceability.}
+\caption{Layer layouts. Each rectangle represents an event. The line connecting centers of rectangles illustrates the  traceability.}
 \label{fig:traceability}
 \end{figure}
 
@@ -58,7 +58,7 @@ The aforementioned layer layout needs a maximum number of rows it can use as an 
 
 \subsection{Layers Balancing}
 This last step ensures that all layers have similar levels of detail; i.e., avoiding layers with many complete events and other layers with many aggregated events. This is achieved by minimizing the variance of completeness ratios of all layers,
-$\frac{\sum\limits_{i=1}^{n}(\theta_i - \bar{\theta})^2} {n}$, where $n$ is the number of layers and $\bar{\theta}$ is the mean of all completeness ratios. A brute force approach tests all possible combinations of layer height $h_i$ such that $\sum\limits_{i=1}^{n}h_i=H$ for a minimum variance, where $H$ is the height of the display area. However, the number of combinations is an exponential of $n$. Instead, we apply a heuristic algorithm that relies on a simple observation that the completeness ratio increases with layer height. Therefore, the algorithm reduces the completeness ratio variance by iteratively transferring a row from the layer with the largest ratio to the layer with the smallest one, until the variance no longer decreases. \autoref{fig:balancing} shows an example of balancing.
+$\frac{\sum\limits_{i=1}^{n}(\theta_i - \bar{\theta})^2} {n}$, where $n$ is the number of layers and $\bar{\theta}$ is the mean of all completeness ratios. A brute force approach tests all possible combinations of layer height $h_i$ such that $\sum\limits_{i=1}^{n}h_i=H$ for a minimum variance, where $H$ is the height of the display area. However, the number of combinations is an exponential of $n$. Instead, we apply a heuristic that relies on a simple observation that the completeness ratio increases with layer height. Therefore, the algorithm reduces the completeness ratio variance by iteratively transferring a row from the layer with the largest ratio to the layer with the smallest one, until the variance no longer decreases. \autoref{fig:balancing} shows an example of balancing.
 
 \begin{figure}[!htb]
 	\centering
