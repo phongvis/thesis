@@ -2,19 +2,19 @@
 \label{sec:sp-design}
 
 \subsection{Approach}
-The design process started with a close examination of the analysis steps we plan to support. For transcription, we ruled out the possibility of automatic video or audio transcribing because these are research challenges in their own right and require expertise different from visual analytics. During our meta observation data analysis, we noticed that a large portion of time spent on transcribing video recordings was to identify the sensemaking actions that the participants performed (such as searching) and contextual information associated with these actions (such as the search keyword and its timing). These pieces of information can potentially be captured within the browser, thus considerably reduces transcribing time.
+The design process started with a close examination of the analysis steps we plan to support. For transcription, we ruled out the possibility of automatic video or audio transcribing because these are research challenges in their own right and require expertise different from visualization and visual analytics. During our meta observation data analysis, we noticed that a large portion of time spent on transcribing video recordings was to identify the sensemaking actions that the participants performed (such as searching) and contextual information associated with these actions (such as the search keyword and its timing). These pieces of information can potentially be captured within the browser, thus considerably reduces transcribing time.
 
-From the aforementioned participatory design session, we found that an important part of the coding process is to understand the sensemaking activities from the video transcripts. For instance, when a participant spent several minutes on a page, he was likely reading through the information. When the participant switched between two pages back and forth, he might be comparing two smart watch models. Understanding the nature of such sensemaking activities; i.e., reading or comparison, is the prerequisite for identifying common themes and naming them. To a certain extent, this is equivalent to inferring ``sub-task'' from ``action'' in the Gotz and Zhou's model~\cite{Gotz2009}. However, this process is difficult to be completely automated~\cite{Dou2009}. After further discussion with the HCI researchers, we identified three important factors to this process that can be supported by visual analytics:
+From the aforementioned participatory design session, we found that an important part of the coding process is to understand the sensemaking activities from the video transcripts. For instance, when a participant spent several minutes on a page, he was likely reading through the information. When the participant switched between two pages back and forth, he might be comparing two smart watch models. Understanding the nature of such sensemaking activities; i.e., reading or comparison, is the prerequisite for identifying common themes and naming them. To a certain extent, this is equivalent to inferring ``sub-task'' from ``action'' in the Gotz and Zhou's model. However, this process is difficult to be completely automated~\cite{Dou2009}. After further discussion with the HCI researchers, we identified three important factors to this process that can be supported by visualization:
 \begin{enumerate}
-	\item \textbf{Seeing the actions before and after the current one}. These provide useful contextual information because an ``action'' is usually a part of a ``sub-task'', which consists of a number of actions. For example, when a participant went through the web page of a number of hotels in succession, they might be comparing these hotels, especially if all these pages are opened from the same hotel booking website. Showing a number of actions together would help a researcher to identify the connections between them and potentially find an interpretation for all the actions in the sequence as a whole.
+	\item \textbf{Seeing the actions before and after the current one}. This provides useful contextual information because an ``action'' is usually a part of a ``sub-task'', which consists of a number of actions. For example, when a participant went through the web page of a number of hotels in succession, they might be comparing these hotels, especially if all these pages are opened from the same hotel booking website. Showing a number of actions together would help a researcher to identify the connections between them and potentially find an interpretation for all the actions in the sequence as a whole.
 	\item \textbf{Seeing what a participant was looking at}. It may appear obvious, but it can give a researcher the needed context to understand the sensemaking actions. For example, looking at Google Maps may indicate the participant was trying to locate a certain place. This can be particularly useful if the researcher is absent from the observation.
 	\item \textbf{Understanding what a participant was thinking}. Even though this can be partly captured through think-aloud protocol or post hoc interview, another common technique is to enable participants to record their own thinking by providing note taking support.
 \end{enumerate}
 
 \subsection{Overview}
-Our tool -- SensePath -- is designed as a Chrome extension consisting of two parts. The first one is a background process running in the participant's browser to automatically capture all the required analytic provenance during the observation stage of the qualitative study. It also offers additional features to add note and highlight text on a web page (Factor 3 -- understanding what a participant was thinking). Besides, participants will not notice any difference from their normal sensemaking session (Requirement 4 -- non-intrusiveness).
+SensePath is designed as a Chrome extension consisting of two parts. The first one is a background process running in the participant's browser to automatically capture all the required analytic provenance during the observation stage of the qualitative study. It also offers additional features to add note and highlight text on a web page (Factor 3 -- understanding what a participant was thinking). Besides, participants will not notice any difference from their normal sensemaking session (Requirement 4 -- non-intrusiveness). 
 
-The second part includes a set of four linked visualizations of the captured provenance data (\autoref{fig:sp-overview}), designed to facilitate transcription and coding (Requirement 1 and 2).
+The second part is designed to facilitate transcription and coding (Requirement 1 and 2), including a set of four linked visualizations of the captured provenance data (\autoref{fig:sp-overview}) as follows.
 
 \begin{itemize}
 \item A \emph{timeline} view displaying participant's sensemaking actions in their temporal order (\autoref{fig:sp-overview}A). This enables researchers to see an action in the context of other actions (Factor 1 -- seeing the actions before and after the current one).
@@ -32,7 +32,7 @@ The second part includes a set of four linked visualizations of the captured pro
 
 \subsection{Provenance Capture}
 \label{sub:sp-provenance}
-During the participatory design session, the HCI researchers suggested to capture rich semantic  information that is able to explain the rationale of actions the participant performed. However, this is not always technically feasible. For example, it is possible to detect that a web page has been opened for a long time, but it may be impossible to know whether the participant was reading, thinking, or simply away from the computer screen just by using the information available from the browser alone. Therefore, we agreed to capture the analytic provenance corresponding to the \emph{action} level in the Gotz and Zhou's model~\cite{Gotz2009}. This capture can be done automatically yet still provides reasonable amount of semantics to the researchers. We decided to record the following aspects of actions that were regarded useful for qualitative analysis of sensemaking by the HCI researchers.
+During the participatory design session, the HCI researchers suggested to capture rich semantic  information that is able to explain the rationale of actions the participant performed. However, this is not always technically feasible. For example, it is possible to detect that a web page has been opened for a long time, but it may be impossible to know whether the participant was reading, thinking, or simply away from the computer screen just by using the information available from the browser alone. Therefore, we agreed to capture the analytic provenance corresponding to the ``action'' level in the Gotz and Zhou's model. This capture can be done automatically yet still provides reasonable amount of semantics to the researchers. We decided to record the following aspects of actions that were regarded useful for qualitative analysis of sensemaking by the HCI researchers.
 
 \begin{itemize}
 	\item \textbf{Type}: When a participant opens a web page, the default type for that action is \emph{browsing}, which lasts until the page becomes inactive. During that period, two common action types are focused: \emph{search \& filter} and \emph{reading}. The former type includes \emph{keyword search}, \emph{location search}, \emph{route search} and \emph{filter}. The latter type includes \emph{highlight} and \emph{annotation}, provided for taking notes and capturing part of the participant's thinking.
@@ -75,7 +75,7 @@ An \emph{action tile} contains similar analytic provenance information but with 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=.5\linewidth]{action-tile}
-\caption{An action tile augments the action bar with a page screenshot.}
+\caption{An action tile complementing the action bar with a page screenshot.}
 \label{fig:sp-action-tile}
 \end{figure}
 
@@ -99,7 +99,7 @@ Both action bar and tile can reduce their widths through zooming to accommodate 
 \label{fig:sp-timeline-zoom}
 \end{figure}
 
-\paragraph{Aggregate Action}
+\paragraph{Aggregate Actions}
 Instead of showing individual actions, adjacent ones happened on the same web page are merged to save space. It may also help the researcher to quickly understand the participant's process. \autoref{fig:sp-action-bar-merge} shows an aggregated action with eight highlights, which were made on the same Google Plus page.
 
 \begin{figure}[!htb]
@@ -123,7 +123,7 @@ SensePath includes a number of interactive features to support the analysis of t
 \end{figure}
 
 \paragraph{Selective Zooming}
-SensePath implements focus+context technique~\cite{Cockburn2009} through \emph{selective zooming}: when a zoom is executed, only a selected set of actions affects. This enables researchers to concentrate on certain actions without losing their context. However, they may forget the difference in zoom levels of actions, thus misunderstand the action lengths indicated by the bar widths. SensePath provides a reset button to change the zoom levels of all actions to the default value. \autoref{fig:sp-selective-zooming} illustrates this technique.
+SensePath implements focus+context technique~\cite{Cockburn2008} through \emph{selective zooming}: when a zoom is executed, only a selected set of actions affects. This enables researchers to concentrate on certain actions without losing their context. However, they may forget the difference in zoom levels of actions, thus misunderstand the action lengths indicated by the bar widths. SensePath provides a reset button to change the zoom levels of all actions to the default value. \autoref{fig:sp-selective-zooming} illustrates this technique.
 
 \begin{figure}[!htb]
 \centering
@@ -147,7 +147,7 @@ In traditional qualitative analysis, researchers analyze transcripts to identify
 
 \subsection{Browser View}
 \label{sub:webpage}
-When an action is selected in the timeline, its associated web page is showed in the browser view (\autoref{fig:sp-overview}B). This enables researchers to examine the web page that the participant was looking at when performing a sensemaking action. If the action is an annotation or highlight, the browser view will automatically navigate to the location of the web page where the annotation or highlight was made, informing researchers which part of the page the participant was interested in.
+When an action is selected in the timeline, its associated web page is shown in the browser view (\autoref{fig:sp-overview}B). This enables researchers to examine the web page that the participant was looking at when performing a sensemaking action. If the action is an annotation or highlight, the browser view will automatically navigate to the location of the web page where the annotation or highlight was made, informing researchers which part of the page the participant was interested in.
 
 \subsection{Replay View}
 \label{sub:playback}

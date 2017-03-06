@@ -1,0 +1,24 @@
+\documentclass{standalone}
+
+\input{../../Preamble/tikz}
+
+\tikzstyle{ma}=[-stealth, line width=2pt, f3]
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+\begin{scope}[xshift=1.5cm]
+\node[anchor=south west,inner sep=0] (image) at (0,0) {
+	\includegraphics[width=0.35\linewidth]{user-definition}
+};
+
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw [ma] (.25,.55) -- ++(.1,0);
+\draw [ma] (.7,.55) -- ++(.1,0);
+\end{scope}
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}
