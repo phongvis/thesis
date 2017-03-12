@@ -159,7 +159,7 @@ Detailed information of an action can be revealed by mouse over; however, it is 
 All the information displayed in the transcription view can be exported as a timeline in the SMPTE format~\footnote{ \url{http://en.wikipedia.org/wiki/SMPTE_timecode}}, which can be imported by many popular qualitative data analysis software packages such as InqScribe~\footnote{\url{http://www.inqscribe.com/}} as a transcript. This enables researchers to continue their existing workflows with such software (Requirement 3). Moreover, SMPTE transcript can be used as a subtitle file in popular video players such as VLC~\footnote{\url{http://www.videolan.org/vlc/index.en_GB.html}}.
 
 \subsection{Implementation}
-
+\label{sub:sp-impl}
 \subsubsection{Architecture}
 SensePath is implemented as a Chrome extension using modern web technologies including HTML5, CSS3, JavaScript and D3.js~\cite{Bostock2011} for visualization. Therefore, it satisfies Requirement 6 about lightweight and support multiple operating systems. Highlight and annotation features require the modification of web page structure, thus they must be implemented as a browser plugin. We decided to target Chrome browser first due to its popularity.
 

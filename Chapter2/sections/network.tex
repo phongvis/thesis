@@ -1,7 +1,7 @@
 \section{Visualization of Network and Tree Data}
 
 \subsection{Node-Link Diagrams}
-The most common visual encoding for network and tree data is \emph{node-link diagrams}, where nodes are represented as point marks and links connecting these nodes are represented as \emph{connection} marks. We further discuss layouts using this representation for network data with different constraints: rooted tree, directed graph and general graph.
+The most common visual encoding for network and tree data is \emph{node-link diagrams}, where nodes are represented as point marks and links connecting these nodes are represented as \emph{connection} marks. We further discuss layouts using this representation for network data with different constraints of graph structure: rooted tree, directed graph and general graph.
 
 \subsubsection{Tree Layout}
 A classic algorithm by Reingold and Tilford~\cite{Reingold1981} produces a tidy tree layout satisfying the following aesthetic rules:
@@ -15,25 +15,25 @@ Even though the layout produced by Reingold and Tilford's algorithm is tidy, it 
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Produced by standard Reingold--Tilford algorithm. \is{Nguyen2002}\label{fig:lr-tree-tidy}}{\includegraphics[height=.318\columnwidth]{tree-tidy}}
+\subcaptionbox{Reingold -- Tilford algorithm. \is{Nguyen2002}\label{fig:lr-tree-tidy}}{\includegraphics[height=.318\columnwidth]{tree-tidy}}
 \hfill
 \subcaptionbox{Relaxed layering for shorter layout. \is{VanderPloeg2014}\label{fig:lr-tree-tidy-non-layer}}{\includegraphics[height=.318\columnwidth]{tree-tidy-non-layer}}
 \caption{Tree layouts.}
 \end{figure}
 
-Conventionally, tree layouts are rectilinear with children branching from the parent node either from left to right or top to bottom. However, the children nodes can also be arranged radially, along a circular arc of their parent. The depth of a circular tree is encoded as distance away from the center of the circle. Reingold--Tilford algorithm can be modified to show a radial tree. \autoref{fig:lr-tree} shows the class hierarchy of the \emph{Flare} visualization toolkit~\cite{Heer2009b} using both a conventional tree and a radial tree. The toolkit consists of 10 top-level classes, which determine the color of nodes in these figures.
+Conventionally, tree layouts are rectilinear with children branching from the parent node either from left to right or top to bottom. However, the children nodes can also be arranged radially, along a circular arc of their parent. The depth of a circular tree is encoded as distance away from the center of the circle. Reingold -- Tilford algorithm can be modified to show a radial tree. The radial version could be a bit more compact than the linear one and because the outer layer is longer than the inner ones, it has more space to show its nodes. However, it could be easier to see the hierarchical structure with the linear structure because of its familiarity. \autoref{fig:lr-tree} shows the class hierarchy of the \emph{Flare} visualization toolkit~\cite{Heer2009b} using both a conventional tree and a radial tree. The toolkit consists of 10 top-level classes, which determine the color of nodes in these figures.
 
 \begin{figure}[!htb]
 \centering
 \subcaptionbox{Conventional tree, growing direction as left to right. \label{fig:lr-tree-rect}}{\includegraphics[height=.77\columnwidth]{tree-rect}}
 \hfill
 \subcaptionbox{Radial tree. Depth is encoded as distance away from the center. \label{fig:lr-tree-radial}}{\includegraphics[height=.77\columnwidth]{tree-radial}}
-\caption{Tree layouts with different orientations. Data is the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b}. Color represents the top-level classes.}
+\caption{Tree layouts with different orientations. Data is the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b} with color representing the top-level classes.}
 \label{fig:lr-tree}
 \end{figure}
   
-\subsubsection{Hierarchical Graph Layout}	
-The most popular method of drawing directed graphs is the Sugiyama framework~\cite{Sugiyama1981}, separating nodes into layers to show the hierarchy effectively. \autoref{fig:lr-layered-graph} shows an example of layered graphs. The framework consists of four steps.
+\subsubsection{Directed Graphs -- Hierarchical Graph Layout}	
+The most popular method of drawing directed graphs is the Sugiyama framework~\cite{Sugiyama1981}, separating nodes into layers to show the hierarchy effectively (\autoref{fig:lr-layered-graph}). The framework consists of four steps.
 
 \begin{figure}[!htb]
 	\centering
@@ -43,14 +43,14 @@ The most popular method of drawing directed graphs is the Sugiyama framework~\ci
 \end{figure}
 
 \begin{enumerate}
-	\item \emph{Cycle removal}. If the input graph contains directed cycles, temporarily reverse the direction of some edges to make the graph acyclic.
-	\item \emph{Layer assignment}. Nodes are assigned to horizontal layers, which determines their y-coordinate.
+	\item \emph{Cycle removal}. If the input graph contains directed cycles, the directions of some edges are temporarily reversed to make the graph acyclic.
+	\item \emph{Layer assignment}. Nodes are assigned to horizontal layers, which determines their y-coordinates.
 	\item \emph{Vertex ordering}. Within each layer, the nodes are ordered to minimize edge crossings between adjacent layers.
 	\item \emph{Horizontal coordinate assignment}. The x-coordinate of each node is determined, typically aiming to make edges straight.
 \end{enumerate}
 
-\subsubsection{Force-Directed Layout}
-Force-directed layout is a popular method to visualize general graphs using node-link metaphor~\cite{Eades1984}. It positions nodes based on a simulation of physical forces: \emph{spring-like attractive} forces attract nodes, and \emph{repulsive} forces like those of electrically charged particles push them away from each other. The layout usually starts with a random arrangement of nodes and then iteratively refines their locations according to the behavior of the simulation. The layout stops when the simulation reaches a stable state or a maximum number of iterations. \autoref{fig:lr-force-directed-idea} illustrates the idea of physical simulation, and \autoref{fig:lr-force-directed-example} shows an example with color indicating node type.
+\subsubsection{General Graph -- Force-Directed Layout}
+Force-directed layout~\cite{Eades1984} is a popular method to visualize general graphs using node-link metaphor. It positions nodes based on a simulation of physical forces: \emph{spring-like attractive} forces attract nodes, and \emph{repulsive} forces like those of electrically charged particles push them away from each other. The layout usually starts with a random arrangement of nodes and then iteratively refines their locations according to the behavior of the simulation. The simulation stops when it reaches a stable state or a maximum number of iterations. \autoref{fig:lr-force-directed-idea} illustrates the idea of physical simulation, and \autoref{fig:lr-force-directed-example} shows an example with color indicating node type.
 
 \begin{figure}[!htb]
 \centering
@@ -119,4 +119,4 @@ Sunburst~\cite{Zhang2000} is a radial version of icicle plot. Child nodes are lo
 %icile: https://bl.ocks.org/mbostock/1005873
 
 \subsection{Summary}
-\add{This section reviews the most common techniques to visualize network data including node-link diagrams, matrix views and space-filling. \autoref{chap:sensemap} uses network data showing relationship between provenance data items such as opening relationship between web pages. Even though it uses an existing compact tree layout, the research discussed in this section provides a valuable knowledge for making suitable design decision. To address scalability, our tree visualization applies interactive features such as semantic zooming (appropriate designs for different levels of detail).}
+\add{This section reviews the most common techniques to visualize network data including node-link diagrams, matrix views and space-filling. \autoref{chap:sensemap} uses network data showing pair-wise relationship between provenance data items. Even though it applies an existing tree layout, the research discussed in this section lays the foundation for making suitable design decision. To address scalability, our tree visualization includes representations for different levels of detail and interactive features such as semantic zooming and panning.}
