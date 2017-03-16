@@ -34,11 +34,11 @@ Conventionally, tree layouts are rectilinear with children branching from the pa
 \end{figure}
   
 \subsubsection{Directed Graphs -- Hierarchical Graph Layout}	
-The most popular method of drawing directed graphs is the Sugiyama framework~\cite{Sugiyama1981}, separating nodes into layers to show the hierarchy effectively (\autoref{fig:lr-layered-graph}). The framework consists of four steps.
+The most popular method of drawing directed graphs is the Sugiyama method~\cite{Sugiyama1981}, which separates nodes into layers to show the hierarchy effectively (\autoref{fig:lr-layered-graph}). The method consists of four steps.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics{layered-graph}
+	\includegraphics[width=.5\columnwidth]{layered-graph}
 	\caption{A layered graph. Nodes are assigned to horizontal layers. Within each layer, nodes are ordered to minimize edge crossings and assigned x-coordinate to make edges as straight as possible. \textrm{\emph{Image source: yWorks.}}}
 	\label{fig:lr-layered-graph}
 \end{figure}
@@ -64,7 +64,7 @@ Force-directed layout~\cite{Eades1984} is a popular method to visualize general 
 Force-directed layout is aesthetically pleasing, aiming to produce uniform edge length, symmetry and even node distribution~\cite{Fruchterman1991}. However, its major weakness is scalability, in terms of both the visual complexity and the running time~\cite{Munzner2014}. The layout quickly degenerates into a hairball of visual clutter with even a few hundred nodes. Another limitation is its nondeterministic output: the layout looks different each time it runs, breaking user mental model.
 
 \subsection{Matrix Views}
-A network can be represented by an adjacency matrix. Each row and column of the matrix corresponds to a node, and a cell indicates whether the pair of corresponding nodes is connected in the network. Additional information about edges are often encoded to the visual representation of cells using color, shape and size. Matrix views can also show weighted networks, where each link associates with a quantitative value attribute, by encoding cells with an ordered visual channel such as color luminance or size. \autoref{fig:lr-matrix} shows examples of matrix views, compared with node-link diagrams of the same dataset.
+A network can be represented by an adjacency matrix. Each row and column of the matrix corresponds to a node, and a cell indicates whether the pair of corresponding nodes is connected in the network. Additional information about edges are often encoded to the visual representation of cells using color, shape and size. Matrix views can also show weighted networks, where each link associates with a quantitative value attribute, by encoding cells with an ordered visual channel such as color luminance or size. \autoref{fig:lr-matrix} shows examples of matrix views, compared with node-link diagrams of the same datasets.
 
 \begin{figure}[!htb]
 \centering
@@ -77,12 +77,12 @@ A network can be represented by an adjacency matrix. Each row and column of the 
 \label{fig:lr-matrix}
 \end{figure}
 
-A major strength of matrix views is the scalability. It can easily show a networks with thousands of nodes and millions of edges without suffering from the cluttering issue as in node-link diagrams. Matrix views are stable: adding a new node or edge will only cause a small visual change. Whereas, adding a new item in a force-directed view may lead to a major change~\cite{Munzner2014}. Nodes, as columns and rows in a matrix view, can be reordered, allowing users to reveal outliers, clusters, and patterns of the network~\cite{Henry2007}.
+A major strength of matrix views is the scalability. It can easily show a network with thousands of nodes and millions of edges without suffering from the cluttering issue as in node-link diagrams. Matrix views are also stable: adding a new node or edge will only cause a small visual change. Whereas, adding a new item in a force-directed view may lead to a major change~\cite{Munzner2014}. Nodes, as columns and rows in a matrix view, can be reordered, allowing users to reveal outliers, clusters, and patterns of the network~\cite{Henry2007}.
 
 A major weakness of matrix views is their difficulty in exploring the topological structure of the network, such as path tracing. This because they show links in a more indirect way than the direct connections of node-link diagrams -- a trade-off for their strength in avoiding clutter. Another weakness of matrix views is unfamiliarity: users easily interpret small node-link diagrams but require training to understand matrix views~\cite{Munzner2014}. A study shows that for many low-level abstract network tasks, node-link diagrams are best for small networks, whereas matrix views are best for large networks~\cite{Ghoniem2005}.
 
 \subsection{Space-Filling Techniques}
-Space-filling techniques only apply to tree data and uses \emph{containment} marks to represent hierarchical relationship, placing child nodes within their parent node. Treemap~\cite{Shneiderman1992} represents a node as a rectangle, which is recursively subdivided into smaller rectangles, each represents a child of the node. The rectangle size is proportional to a quantitative attribute of the node. The original motivation of treemap is to analyze the utilization of storage space on a hard disk. Each leaf node represents a computer file, and the node size encodes the file size. The size of a parent node simply maps to the containing folder size. Color is also commonly used to encode additional information to nodes such as file type. \autoref{fig:lr-treemap} shows such an example of treemap.
+Space-filling techniques can only be applied to tree data and uses \emph{containment} marks to represent hierarchical relationship, placing child nodes within their parent node. Treemap~\cite{Shneiderman1992} represents a node as a rectangle, which is recursively subdivided into smaller rectangles, each representing a child of the node. The rectangle size is proportional to a quantitative attribute of its node. The original motivation of treemap is to analyze the utilization of storage space on a hard disk. Each leaf node represents a computer file, and the node size encodes the file size. The size of a parent node simply maps to the containing folder size. Color is also commonly used to encode additional information to nodes such as file type. \autoref{fig:lr-treemap} shows such an example of treemap.
 
 \begin{figure}[!htb]
 	\centering
@@ -91,26 +91,26 @@ Space-filling techniques only apply to tree data and uses \emph{containment} mar
 	\label{fig:lr-treemap}
 \end{figure}
 
-Treemap is very effective when size is the most important feature to be displayed. It easily spots outliers of very large attribute values such as large files. However, containment is not as effective as connection in node-link diagrams for tasks focused on topological structure. It is difficult to identify the path of a given node, thus suitable for hierarchies with just a few levels. Borders of nodes or shading~\cite{Wijk1999} can be used to depict the tree structure more strongly.
+Treemap is very effective when size is the most important feature to be displayed. It easily spots outliers of very large attribute values such as large files. However, containment is not as effective as connection in node-link diagrams for tasks focused on topological structure. It is difficult to identify the path of a given node, thus suitable for hierarchies with just a few levels. Borders of nodes or shading can be used to depict the tree structure more strongly~\cite{Wijk1999}.
 
-Alternatively, other space-filling techniques have been proposed to better represent the hierarchical structure. \autoref{fig:lr-other-space-filling} shows the three techniques that we discuss next using the same dataset as in \autoref{fig:lr-treemap} for treemap. 
+Alternatively, other space-filling techniques have been proposed to represent the hierarchical structure more effectively. \autoref{fig:lr-other-space-filling} shows three techniques that will be discussed next using the same dataset as in \autoref{fig:lr-treemap} for treemap. 
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Circle packing. \label{fig:lr-circle-pack}}{\includegraphics[height=.48\columnwidth]{circle-pack}}
+	\subcaptionbox{Circle packing. Circle containment indicates parent-child relationship. Circle size represents a quantitative attribute.  \label{fig:lr-circle-pack}}{\includegraphics[height=.48\columnwidth]{circle-pack}}
 	\hfill
-	\subcaptionbox{Sunburst. \label{fig:lr-sunburst}}{\includegraphics[height=.48\columnwidth]{sunburst}}
+	\subcaptionbox{Sunburst. A curved segment is the parent of its next outer segments. Segment angle represents a quantitative attribute.  \label{fig:lr-sunburst}}{\includegraphics[height=.48\columnwidth]{sunburst}}
 	
 	\vspace{.5\baselineskip}
 	
-	\subcaptionbox{Icicle plot. \label{fig:lr-icile}}{\includegraphics[width=\columnwidth]{icicle-plot}}
-	\caption{Other space-filling techniques. Data is the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b} as in \autoref{fig:lr-treemap}. Color also represents the top-level classes.}
+	\subcaptionbox{Icicle plot. A rectangle is the parent of rectangles under it. Rectangle width represents a quantitative attribute. \label{fig:lr-icile}}{\includegraphics[width=\columnwidth]{icicle-plot}}
+	\caption{Other space-filling techniques using the same dataset as in \autoref{fig:lr-treemap}. Color also represents the top-level classes of the Flare visualization toolkit~\cite{Heer2009b}.}
 	\label{fig:lr-other-space-filling}
 \end{figure}
 
-Circle packing~\cite{Wang2006} also employs containment to represent the hierarchy, but using circles to represent nodes. Circle sizes correspond to some node values. All child nodes are packed into their parent node so that they are tangent to some of their sibling nodes. This method uses more space than treemap but provides better hierarchy structure.
+Circle packing~\cite{Wang2006} also employs containment to represent the hierarchy, but using circles to show nodes. Similar to rectangle size in treemap, the circle size also corresponds to some node value. All child nodes are packed into their parent node so that they are tangent to some of their sibling nodes. This method uses more space than treemap, but actually the additional void space helps convey the hierarchy structure more easily.
 
-Icicle plot~\cite{Kruskal1983} does not strictly use containment; instead, it places child nodes \emph{under} their parent node. Similar to treemap, icicle plot uses rectangles to represent nodes, but they all share the same height. Therefore, node width corresponds to some attribute value. Icicle plot shows parent nodes explicitly, making it more effective in tasks related to the parents such as comparing directories by size. The direct trade-off is space for showing those parent nodes. Icicle plot shows the tree structure and supports path tracing more effectively than treemap. However, small leaf nodes are very thin and difficult to read its label or interact with.
+Icicle plot~\cite{Kruskal1983} does not strictly use containment; instead, it places child nodes \emph{under} their parent node. Similar to treemap, icicle plot uses rectangles to represent nodes, but they all share the same height. Therefore, node width corresponds to some attribute value. Icicle plot shows parent nodes explicitly, making it more effective in tasks related to the parents such as comparing directories by size. The direct trade-off is space for showing those parent nodes. Icicle plot shows the tree structure and supports path tracing more effectively than treemap. However, small leaf nodes are very thin and difficult to read its label or to interact with.
 
 Sunburst~\cite{Zhang2000} is a radial version of icicle plot. Child nodes are located under their parent node in a circular layout. The root node is at the center and deeper levels are further away from it. The angle swept out by a node, or a curved segment, corresponds to its value. Color is also commonly used to represent additional information.
 
@@ -120,4 +120,4 @@ Sunburst~\cite{Zhang2000} is a radial version of icicle plot. Child nodes are lo
 %icile: https://bl.ocks.org/mbostock/1005873
 
 \subsection{Summary}
-\add{This section reviews the most common techniques to visualize network data including node-link diagrams, matrix views and space-filling. \autoref{chap:sensemap} uses network data showing pair-wise relationship between provenance data items. Even though it applies an existing tree layout, the research discussed in this section lays the foundation for making suitable design decision. To address scalability, our tree visualization includes representations for different levels of detail and interactive features such as semantic zooming and panning.}
+\add{This section reviews the most common techniques to visualize network data including node-link diagrams, matrix views and space-filling. Node-link diagrams are user-friendly and suitable for small datasets, whereas matrix views are better at large datasets. Space-filling techniques produce a compact visualization of tree data and are effective in using size to represent a quantitative attribute. \autoref{chap:sensemap} also uses network data showing pair-wise relationship between provenance data items. Even though it applies an existing tree layout, the research discussed in this section lays the foundation for making suitable design decision. To address scalability, our tree visualization includes representations for different levels of detail and interactive features such as semantic zooming and panning.}
