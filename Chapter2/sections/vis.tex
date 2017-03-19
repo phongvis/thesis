@@ -40,31 +40,8 @@ Marks are basic geometric elements that depict items or links, and channels cont
 	\label{fig:lr-marks}
 \end{figure}
 
-A visual channel controls the appearance of marks such as position, color, shape, angle and size. However, not all channels can be applied to all marks. For instance, an area mark can be used in a geographic map to denote a region. Because the area mark (as a geographic region) is already associated with a shape, it cannot be size-coded to represent another quantitative attribute. 
-
-%\autoref{fig:lr-channel-example} shows a progression of chart types, with each showing one more data attribute using one more visual channel. \autoref{fig:lr-channel-example-1} shows a bar chart representing a single quantitative attribute using the \emph{vertical position} channel. \autoref{fig:lr-channel-example-2} shows a scatter plot encoding the second quantitative attribute using the \emph{horizontal position} channel. \autoref{fig:lr-channel-example-3} adds the \emph{color} channel to represent a categorical attribute, and \autoref{fig:lr-channel-example-4} adds the \emph{size} channel to represent another quantitative attribute. In these examples, each attribute is encoded with a single channel. However, multiple channels can be combined to redundantly encode the same attribute, helping perceive it more easily.
-%
-%\begin{figure}[!htb]
-%\centering
-%\subcaptionbox{Line marks with horizontal position for a categorical attribute and vertical position for a quantitative attribute.\label{fig:lr-channel-example-1}}{\includegraphics[width=.23\columnwidth]{channel-example-1}} 
-%\hfill
-%\subcaptionbox{Point marks with both horizontal and vertical position channels for quantitative attributes.\label{fig:lr-channel-example-2}}{\includegraphics[width=.23\columnwidth]{channel-example-2}} 
-%\hfill
-%\subcaptionbox{A categorical attribute is added using the color channel.\label{fig:lr-channel-example-3}}{\includegraphics[width=.23\columnwidth]{channel-example-3}}
-%\hfill
-%\subcaptionbox{Another quantitative attribute is added using the size channel.\label{fig:lr-channel-example-4}}{\includegraphics[width=.23\columnwidth]{channel-example-4}}
-%\caption{Using marks and channels.}
-%\label{fig:lr-channel-example}
-%\end{figure}
-
+A visual channel or graphical attribute controls the appearance of marks such as position, color, shape, angle and size. However, not all channels can be applied to all marks. For instance, an area mark can be used in a geographic map to denote a region. Because the area mark (as a geographic region) is already associated with a shape, it cannot be size-coded to represent another quantitative attribute. 
 All channels are not equal; they are processed and perceived differently by our human visual systems. Also, not all channels are appropriate for encoding both ordered and non-ordered attributes. Ordered attributes should be shown using magnitude channels, with \emph{aligned spatial position} as the most effective channel and \emph{3D volume} as the least effective one. Categorical (non-ordered) attributes should be shown using identity channels, with \emph{spatial region} as the most effective channel and \emph{shape} as the least effective one. Munzer's book~\cite{Munzner2014} describes the detailed ranking of effectiveness of visual channels, which is based on empirical studies such as the work by Cleveland and McGill~\cite{Cleveland1985}, and by Heer and Bostock~\cite{Heer2010a}.
-%
-%\begin{figure}[!htb]
-%	\centering
-%	\includegraphics[width=\linewidth]{channel-ranking}
-%	\caption{Channels ranked by effectiveness according to data and channel type. \is{Munzner2014}}
-%	\label{fig:lr-channel-ranking}
-%\end{figure}
 
 Color is a special channel that can be used for both data attribute types. Color luminance and saturation are used in magnitude channels, and color hue is used in identity channels. A colormap specifies a mapping between colors and data values, and designing such an effective colormap is challenging. ColorBrewer~\cite{Harrower2003} is an excellent source for colormap reference, providing color schemes for both ordered and categorical attributes. Human can only distinguish around 12 colors at the same time~\cite{Munzner2014}. \autoref{fig:lr-colorbrewer-1} shows such a categorical colormap with 12 distinguished color hues. Ordered colormaps can be either sequential (\autoref{fig:lr-colorbrewer-2}) or diverging (\autoref{fig:lr-colorbrewer-3}). Diverging colormaps use two different color hues to emphasize values below and above the middle point.
 
@@ -161,7 +138,7 @@ Data-ink includes the pixels in the graphic that are used for representing the d
 % Source: http://www.infovis-wiki.net/index.php/Data-Ink_Ratio
 
 \subparagraph{Micro/Macro Readings}
-This principle suggests that a graphic can contain both enormous details and an overall pattern. This allows the viewer to glance from a distance to observe the big picture before drilling-down closely to examine its individual pieces. Classic stem-and-leaf plot is a great example of this principle (\autoref{fig:lr-tufte-micro}). The plot shows all individual data items at an understandable level of detail, and from an overview, it provides the data distribution. The micro/macro principle is extensively applied in interactive visualization, where zooming and panning are made possible, such as in Google Maps. Data items at different scales can be represented with different levels of detail to provide appropriate information depending on the allowed display area.
+This principle suggests that a graphic can contain both enormous details and an overall pattern. This allows the viewer to glance from a distance to observe the big picture before drilling-down closely to examine its individual pieces. Classic stem-and-leaf plot is a great example of this principle (\autoref{fig:lr-tufte-micro}). The plot shows all individual data items at an understandable level of detail, and from an overview, it provides the data distribution. The micro/macro principle is extensively applied in interactive visualization, where zooming and panning are made possible.
 
 \begin{figure}[!htb]
 	\centering
@@ -177,23 +154,30 @@ This principle suggests that a graphic can contain both enormous details and an 
 %https://www.interaction-design.org/literature/article/shneiderman-s-eight-golden-rules-will-help-you-design-better-interfaces
 
 \subsubsection{Interaction Techniques}
-Interaction typically refers to the set of controls provided to the user to manipulate an interface~\cite{Pike2009a}. A static visualization can only show one aspect from a dataset. When the dataset is large enough, showing all the data at once may also make its visualization become cluttered. Interaction plays an important role in addressing this problem. It can help explore large datasets at multiple levels of detail, identify patterns through examination of different visual representations, and understand the connections between them.
+Interaction typically refers to the set of controls provided to the user to manipulate an interface~\cite{Pike2009a}. A static visualization can only show one aspect from a dataset. When the dataset is large enough, showing all the data at once may also make the visualization become cluttered. Interaction plays an important role in addressing this problem. It can help explore large datasets at multiple levels of detail, identify patterns through examination of different visual representations, and understand the connections between them.
 
-Examples of interaction include standard techniques commonly used in graphical user interface such as mouse clicking and scrolling, and more visualization specific techniques such as \emph{linking and brushing}~\cite{Kosara2003} and \emph{focus+context}~\cite{Cockburn2008}. Multiple views in a visualization are often linked together to exploit their strengths. The user can select points of interest using the brushing technique, typically done directly on the visual data representation such as dragging a rectangular area. The points are brushed in one view and are highlighted in other views, allowing the user to explore them with different perspectives and representations (\autoref{fig:lr-linking}). Focus+Context is a technique that brings both the overview (context) and the detailed information (focus) together in one view. Fisheye~\cite{Furnas1986,Furnas2006} is one example of this technique: the focal region is magnified and displayed within its surrounding context (\autoref{fig:lr-fisheye}). Many other interaction techniques can be found in the taxonomies by Dix and Ellis~\cite{Dix1998}, by Keim~\cite{Keim2002}, and by Wilkinson~\cite{Wilkinson2005}.
+Examples of interaction include standard techniques commonly used in graphical user interface such as mouse clicking and scrolling, and more visualization specific techniques such as \emph{linking and brushing}~\cite{Kosara2003}. Commonly, a visualization consists of multiple views, each showing an aspect of the dataset. These views should be linked together to best exploit their strengths. The user can select points of interest using the brushing technique, typically done directly on the visual data representation such as dragging a rectangular area. Besides spatial selection, data can also be selected by data-related similarity with a given point such as all items having the same given attribute value~\cite{Heer2008a}. The data points are brushed in one view and are highlighted in other views, allowing the user to explore them with different perspectives and representations (\autoref{fig:lr-linking}). 
 
 \begin{figure}[!htb]
-\centering
-\subcaptionbox{Linking and brushing. Data points brushed in one view are linked and highlighted in other views.\label{fig:lr-linking}}{\includegraphics[height=.43\columnwidth]{linking}} 
-\hfill
-\subcaptionbox{Fisheye view for focus+context. Both the overview and the detailed information are displayed in one view.\label{fig:lr-fisheye}}{\includegraphics[height=.43\columnwidth]{fisheye}} 
-\caption{Examples of interaction techniques.}
-\label{fig:lr-interaction}
+	\centering
+	\includegraphics[width=.8\columnwidth]{linking}
+	\caption{Linking and brushing. Data points brushed in one view are linked and highlighted in other views.}
+	\label{fig:lr-linking}
 \end{figure}
 
-Very often, a user performs an interaction to achieve some goal, thus interaction techniques can also be classified based on their intents. Different interaction techniques in different visualizations may actually serve for the same purpose. For example, both drilling-down in a treemap~\cite{Shneiderman1992} and semantic zooming~\cite{Perlin1993} aim to get more details. Taxonomies of high-level interaction can be found in the work by Yi~et~al.~\cite{Yi2007}, by Heer and Shneiderman~\cite{Heer2012}, and by Brehmer and Munzner~\cite{Brehmer2013}. These classifications could help visualization designers select suitable interaction techniques to serve for the capabilities they want to offer to the users.
+Many approaches are proposed to visualize a large amount of information such as overview and detail~\cite{Cockburn2008} and semantic zooming~\cite{Perlin1993}. The former method uses two views: one to see the current detail and one to keep track of its global context. This is analogous to the world we can see and its geographic map. The later method uses a single view but with representations for different levels of detail. It lets the user to adjust zoom level to explore the information of interest. Focus+Context is another technique that brings both the overview (context) and the detailed information (focus) together in one view. Fisheye~\cite{Furnas1986,Furnas2006} is one example of this technique: the focal region is magnified and displayed within its surrounding context (\autoref{fig:lr-fisheye}). For all these techniques, interaction is the key factor allowing the user to navigate through a large amount of information and examine the one of interest.
+
+\begin{figure}[!htb]
+	\centering	
+	\includegraphics[width=.8\columnwidth]{fisheye}
+	\caption{Fisheye view for focus+context. Both the overview and the detailed information are displayed in one view.} 
+\label{fig:lr-fisheye}
+\end{figure}
+
+Taxonomies of interaction techniques by type include the work by Dix and Ellis~\cite{Dix1998}, by Keim~\cite{Keim2002}, and by Wilkinson~\cite{Wilkinson2005}. Very often, a user performs a particular interaction (or a series of them) to achieve some goal, thus interaction techniques can also be classified based on their intent. Different interaction techniques in different visualizations may actually serve for the same purpose. For example, both drilling-down in a treemap~\cite{Shneiderman1992} and semantic zooming aim to get more details. Taxonomies of high-level interaction can be found in the work by Yi~et~al.~\cite{Yi2007}, by Heer and Shneiderman~\cite{Heer2012}, and by Brehmer and Munzner~\cite{Brehmer2013}. These classifications could help visualization designers select suitable interaction techniques to serve for the capabilities they want to offer to the users.
 
 %Several methods can improve existing different interaction techniques. 
-Traditional graphical user interface widgets are often used to control different settings of a visualization, such as buttons and sliders. Its disadvantage is that visual feedback does not appear where the interaction happens, but elsewhere in the visualization. It also takes time for the user to search for the appropriate setting controllers. Direct manipulation~\cite{Shneiderman1982} is an approach to address this problem. It enables the user to directly interact with the visual representation and receive immediate feedback. One example is using mouse scrolling to adjust zoom level while exploring a map instead of clicking on a button in the toolbar. Another example is that parallel coordinates plot with axes can be reordered by direct dragging and values can be filtered by direct brushing on the axes (\autoref{fig:lr-pcp}). Surrogate objects can be used when the data objects are small or distant~\cite{Kwon2011}. An example is the use of interactive legends as filtering means~\cite{Riche2010b}.
+Traditional graphical user interface widgets are often used to control different settings of a visualization, such as buttons and sliders. Its disadvantage is that visual feedback does not appear where the interaction happens, but elsewhere in the visualization. It also takes time for the user to search for the appropriate setting controllers. Direct manipulation~\cite{Shneiderman1982} of visualization is an approach to address this problem. It enables the user to directly interact with the visual representation and receive immediate feedback. One example is that the axes of a parallel coordinates plot can be reordered by direct dragging and values can be filtered by direct brushing on the axes (\autoref{fig:lr-pcp}). Surrogate objects can be effective when the data objects are small or distant, thus difficult to manipulate~\cite{Kwon2011}. An example is the use of interactive legends as filtering means~\cite{Riche2010b}.
 
 \begin{figure}[!htb]
 	\centering
@@ -354,4 +338,4 @@ The primary threat at this level is the algorithm is suboptimal in terms of time
 %https://www.cs.ubc.ca/~tmm/courses/cpsc533c-05-fall/readings/vov.pdf
 
 \subsection{Summary}
-\add{Visualization helps people carry out tasks more effectively by amplifying human cognition through visual representation and interaction. Visual analytics includes automated analysis techniques to help make sense of complex datasets. This thesis contributes novel visualization techniques and systems to support the sensemaking process. The visualizations are designed based on a number of principles and guidelines described in this chapter such as Gestalt laws, color mapping and fluid interaction. The designs are implemented and evaluated rigorously with suitable methods as discussed previously. The visualizations make use of the provenance data captured during the sensemaking process. Next, we will discuss the literature on capture and visualization of provenance data.}
+Visualization helps people carry out tasks more effectively by amplifying human cognition through visual representation and interaction. Visual analytics includes automated analysis techniques to help make sense of complex datasets. This thesis contributes novel visualization techniques and systems to support the sensemaking process. The visualizations are designed based on a number of principles and guidelines described in this chapter such as Gestalt laws, color mapping and fluid interaction. The designs are implemented and evaluated rigorously with suitable methods as discussed previously. The visualizations make use of the provenance data captured during the sensemaking process. Next, we will discuss the literature on capture and visualization of provenance data.
