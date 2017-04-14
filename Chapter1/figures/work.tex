@@ -5,28 +5,24 @@
 \begin{document}
 	
 \begin{tikzpicture}
-\draw [arrow,>=latex,draw=gray!50] (0,0) -- (6.3,0) node[right, text width=2.2cm, align=center] {Relationship Type};
-\draw [arrow,>=latex,draw=gray!50] (0,0) -- (0,6.3) node[above, text width=2.5cm, align=center] {Complexity of Relationship};
-\draw [draw=gray!50] (3,0) --++ (0,6) node {};
-\draw [draw=gray!50] (6,0) --++ (0,6) node {};
-\draw [draw=gray!50] (0,3) --++ (6,0) node {};
-\draw [draw=gray!50] (0,6) --++ (6,0) node {};
+\draw [arrow,>=latex,draw=gray] (0,0) -- (6.3,0) node[right, text width=2.2cm, align=center] {Relationship Type};
+\draw [arrow,>=latex,draw=gray] (0,0) -- (0,6.3) node[above, text width=2.5cm, align=center] {Complexity of Relationship};
+\draw [draw=gray] (3,0) --++ (0,6) node {};
+\draw [draw=gray] (6,0) --++ (0,6) node {};
+\draw [draw=gray] (0,3) --++ (6,0) node {};
+\draw [draw=gray] (0,6) --++ (6,0) node {};
 
-\node (temporal) at (1.5,0) [below] {\textch{temporal}};
-\node (rational) at (4.5,0) [below] {\textch{rational}};
-\node (simple) at (0,1.5) [above, rotate=90] {\textch{simple}};
-\node (complex) at (0,4.5) [above, rotate=90] {\textch{complex}};
+\node (temporal) at (1.5,0) [below] {temporal};
+\node (rational) at (4.5,0) [below] {rational};
+\node (simple) at (0,1.5) [above, rotate=90] {simple};
+\node (complex) at (0,4.5) [above, rotate=90] {complex};
 
-%\draw [arrow, draw=gray!30,line width=.5cm, rounded corners=.5cm] (.75,1.5) --(4.5,1.5) --(1.5,4.5) --(5.25,4.5);
-
-\node at (1.5,1.5) [text width=3cm, align=center] {\textcm{\rmt{\textcolor{gray}{RQ 1} \\\smallskip \faHourglassHalf \quad time}}};
-\node at (4.5,1.5) [text width=3cm, align=center] {\textcm{\rmt{\textcolor{gray}{RQ 3}\\\smallskip \faHourglassHalf \quad time}}};
-%\node at (1.5,4.5) [text width=3cm, align=center] {\rmt{RQ 2\\\smallskip \faHourglassHalf \quad time \\\smallskip \faTags \quad theme}};
-\node at (1.5,5.1) [text width=3cm, align=center] {\rmt{\textcolor{gray}{RQ 2}}};
-\node at (2,4.3) [text width=3cm] {\textcm{\rmt{\faHourglassHalf \quad \thinspace time \\\smallskip \faTags \quad group}}};
-%\node at (4.5,4.5) [text width=3cm, align=center] {\rmt{RQ 4\\\smallskip \faHourglassHalf \quad time \\\smallskip \faLink \quad relation}};
-\node at (4.5,5.1) [text width=3cm, align=center] {\rmt{\textcolor{gray}{RQ 4}}};
-\node at (4.9,4.3) [text width=3cm] {\textcm{\rmt{\faHourglassHalf \quad time \\\smallskip \faLink \quad relation}}};
+\node at (1.5,1.5) [text width=3cm, align=center] {\rmt{\textcolor{gray}{RQ 1} \\\medskip \faHourglassHalf \quad time}};
+\node at (4.5,1.5) [text width=3cm, align=center] {\rmt{\textcolor{gray}{RQ 3}\\\medskip \faHourglassHalf \quad time}};
+\node at (1.5,5.2) [text width=3cm, align=center] {\rmt{\textcolor{gray}{RQ 2}}};
+\node at (2,4.3) [text width=3cm] {\rmt{\faHourglassHalf \quad \thinspace time \\\smallskip \faTags \quad group}};
+\node at (4.5,5.2) [text width=3cm, align=center] {\rmt{\textcolor{gray}{RQ 4}}};
+\node at (4.9,4.3) [text width=3cm] {\rmt{\faHourglassHalf \quad time \\\smallskip \faLink \quad relation}};
 
 \end{tikzpicture}
 	
