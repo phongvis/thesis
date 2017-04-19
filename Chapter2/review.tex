@@ -3,10 +3,18 @@
 
 \graphicspath{{Chapter2/figures/}}
 
-First, this chapter reviews the core work in sensemaking and visualization. Then, it discusses the literature on analytic provenance with a focus on visualization of provenance data for supporting sensemaking. Finally, it presents visualization techniques of time-oriented and network data because these two data types are heavily involved in the research problem of the thesis.
+First, this chapter reviews the core work in sensemaking and visualization. Then, it discusses the literature on analytic provenance with a focus on visualization of provenance data for supporting sensemaking. Finally, it presents visualization techniques of time-oriented and network data because these two data types are heavily involved in the research questions addressed in the thesis.
 
-%\input{Chapter2/sections/sensemaking.tex} 
+\input{Chapter2/sections/sensemaking.tex} 
 \input{Chapter2/sections/vis.tex}
-%\input{Chapter2/sections/provenance-all.tex}
-%\input{Chapter2/sections/time.tex}
-%\input{Chapter2/sections/network.tex}
+\input{Chapter2/sections/provenance-all.tex}
+\input{Chapter2/sections/time.tex}
+\input{Chapter2/sections/network.tex}
+
+\section{Chapter Summary}
+This chapter reviews the background and research related to the problem addressed in this thesis – visualization of analytic provenance for sensemaking. In this section, we briefly preview the relationship between the literature and our designs discussed in subsequent chapters. 
+
+Sensemaking support is the ultimate goal of the thesis. We use the Pirolli and Card’s model and the Data–Frame model as the theoretical foundation for sensemaking, and design visualizations to support key parts of those models. These visualizations make use of analytic provenance data captured while the user interacts with the sensemaking system to solve his or her problem. Both manual and automatic capture data are used in this thesis. The visualizations are designed based on a number of well-established design principles and interaction techniques such as Gestalt laws for representing grouping information; brushing \& linking and fluid interaction for coordinating linked views; and semantic zooming with different levels of detail for scalability. Specific design ideas motivated by the literature include using horizontal axis to represent time (from time-oriented visualization) and using node-link diagrams to show pair-wise relations (from network visualization). The designs are validated rigorously using suitable evaluation methods discussed earlier. Design decisions are justified carefully before implementation and case studies with target audience are conducted to explore the effectiveness of the prototypes in supporting sensemaking. For specific design elements, a lab controlled experiment is used (\autoref{chap:timesets}) to compare user performance in simpler tasks such as readability. 
+
+The four subsequent chapters will address the four research questions in the same order described in \autoref{intro:questions} based on the knowledge summarized here. The next chapter will address the first research question: designing visualization of timestamped provenance data to explore temporal relationship in sensemaking.
+

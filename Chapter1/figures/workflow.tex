@@ -14,7 +14,7 @@
 \node (sm) [box, all] {Sensemaking \\System};
 \node (data) [box, all, data, below right=.5cm of sm, xshift=1cm] {Provenance \\Data};
 \node (vis) [box, all, vis, below=.5cm of sm, yshift=-2cm] {Provenance\\Visualization};
-\node (user) [all, left=5cm of data, scale=2.5, yshift=0.05cm] {\LARGE{\faUser} \\[-0.27cm] \tiny{User}};
+\node (user) [all, left=5cm of data, scale=2.5, yshift=0.08cm] {\LARGE{\faUser} \\[-0.27cm] \tiny{User}};
 
 \draw [arrow, all] (sm) node[right=.2cm of sm,yshift=.25cm] {\rmt{\textbf{capture}}} -| (data);
 \draw [arrow, all] (data) |- (vis) node[midway, yshift=.25cm, xshift=-1.2cm] {\rmt{\textbf{visualize}}};
