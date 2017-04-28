@@ -1,0 +1,32 @@
+\documentclass[tikz]{standalone}
+\usepackage{fontawesome}
+\input{../../Preamble/tikz}
+
+\tikzstyle{active} = [color=black, font=\bfseries\large]
+\tikzstyle{passive} = [color=gray!50, font=\large]
+
+\begin{document}
+	
+\begin{tikzpicture}
+\draw [arrow,>=latex,draw=gray!50] (0,0) -- (6.3,0) node[right, text width=2.2cm, align=center] {Relationship Type};
+\draw [arrow,>=latex,draw=gray!50] (0,0) -- (0,6.3) node[above, text width=2.5cm, align=center] {Complexity of Relationship};
+\draw [draw=gray!50] (3,0) --++ (0,6) node {};
+\draw [draw=gray!50] (6,0) --++ (0,6) node {};
+\draw [draw=gray!50] (0,3) --++ (6,0) node {};
+\draw [draw=gray!50] (0,6) --++ (6,0) node {};
+
+\node (temporal) at (1.5,0) [below] {\textcolor{gray!50}{temporal}};
+\node (rational) at (4.5,0) [below] {\textbf{rational}};
+\node (simple) at (0,1.5) [above, rotate=90] {\textcolor{gray!50}{simple}};
+\node (complex) at (0,4.5) [above, rotate=90] {\textbf{complex}};
+
+\node at (1.5,1.5) [text width=3cm, align=center, passive] {\rmt{Chapter 3} \\\medskip \faHourglassHalf \quad time};
+\node at (4.5,1.5) [text width=3cm, align=center, passive] {\rmt{Chapter 5\\\medskip \faHourglassHalf \quad time}};
+\node at (1.5,5.2) [text width=3cm, align=center, passive] {\rmt{Chapter 4}};
+\node at (2,4.3) [text width=3cm, passive] {\rmt{\faHourglassHalf \quad \thinspace time \\\smallskip \faTags \quad group}};
+\node at (4.5,5.4) [text width=3cm, align=center, active] {\rmt{Chapter 6}};
+\node at (4.9,4.3) [text width=3cm, active] {\rmt{\faHourglassHalf \quad time \\\smallskip \faTags \hspace{0.2cm} group \\\smallskip \faLink \quad link}};
+
+\end{tikzpicture}
+	
+\end{document}

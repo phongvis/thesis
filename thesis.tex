@@ -106,27 +106,30 @@
 \includeonly{Chapter1/chapter1}
 \fi
 
+
 % ******************************** Front Matter ********************************
 \begin{document}
 
 \frontmatter
 
 \begin{titlepage}
-%  \maketitle
+  \maketitle
 \end{titlepage}
 
 
-%\include{Dedication/dedication}
+\include{Dedication/dedication}
 %\include{Declaration/declaration}
-%\include{Acknowledgement/acknowledgement}
-%\include{Abstract/abstract}
+\include{Acknowledgement/acknowledgement}
+\include{Abstract/abstract}
 
 % *********************** Adding TOC and List of Figures ***********************
-%\tableofcontents
 
-%\listoffigures
-%
-%\listoftables
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
 
 % \printnomenclature[space] space can be set as 2em between symbol and description
 %\printnomenclature[3em]
@@ -136,15 +139,14 @@
 % ******************************** Main Matter *********************************
 \mainmatter
 
-
 %\include{test-figures}
-%\include{Chapter1/intro}
-%\include{Chapter2/review}
+\include{Chapter1/intro}
+\include{Chapter2/review}
 \include{Chapter3/schemaline}
-%\include{Chapter4/timesets}
-%\include{Chapter5/sensepath}
-%\include{Chapter6/sensemap}
-%\include{Chapter7/conclusion}
+\include{Chapter4/timesets}
+\include{Chapter5/sensepath}
+\include{Chapter6/sensemap}
+\include{Chapter7/conclusion}
 %TODO: check reference + figure permission
 
 % ********************************** Back Matter *******************************

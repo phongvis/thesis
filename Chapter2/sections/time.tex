@@ -4,8 +4,8 @@ Time is an essential aspect of life because everything contains inherent tempora
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{biography-chart}
-	\caption{Joseph Priestley's Chart of Biography portraying the lifespans of famous persons. Each line segment represents a person, starting at when he/she was born and ending at when he/she died. \is{Priestley1765}}
+	\includegraphics[width=.7\columnwidth]{biography-chart}
+	\caption[Joseph Priestley's Chart of Biography]{Joseph Priestley's Chart of Biography portraying the lifespans of famous persons. Each line segment represents a person, starting at when he/she was born and ending at when he/she died. \is{Priestley1765}}
 	\label{fig:lr-biography-chart}
 \end{figure}
 
@@ -24,7 +24,7 @@ Time-series data is a sequence of data points collected at uniform intervals suc
 \subcaptionbox{Line chart: connecting data points with lines. \label{fig:lr-line}}{\includegraphics[height=.222\columnwidth]{line-chart}}
 \hfill
 \subcaptionbox{Bar chart: showing data points as aligned bars. \label{fig:lr-bar}}{\includegraphics[height=.222\columnwidth]{bar-chart}}
-\caption{Three charts showing the same time-series dataset with the horizontal axis representing time and the vertical axis representing a numerical value. \is{Aigner2011}}
+\caption[Three charts showing the same time-series dataset]{Three charts showing the same time-series dataset with the horizontal axis representing time and the vertical axis representing a numerical value. \is{Aigner2011}}
 \label{fig:lr-scatter-line-bar}
 \end{figure}
 
@@ -35,18 +35,18 @@ Horizon graph~\cite{Reijner2008} is an improvement of line chart for visualizing
 \subcaptionbox{The construction steps: color $\rightarrow$ mirror $\rightarrow$ layer. \label{fig:lr-horizon-step}}[.36\columnwidth]{\includegraphics[height=.36\columnwidth]{horizon-graph-step}}
 \hfill
 \subcaptionbox{A horizon graph showing prices of 50 stocks over a year, each row for a stock. \label{fig:lr-horizon}}{\includegraphics[height=.36\columnwidth]{horizon-graph}}
-\caption{Horizon Graph: a space-efficient visualization of time-series data compared to line chart. \is{Reijner2008}}
+\caption[Horizon Graph]{Horizon Graph: a space-efficient visualization of time-series data compared to line chart. \is{Reijner2008}}
 \label{fig:lr-horizon-graph}
 \end{figure}
 
 Horizon graph uses space more efficiently than line chart in visualizing time-series data. A study by Heer, Kong and Agrawala~\cite{Heer2009a} investigates their performances in value comparison tasks. The results show that mirroring a chart (flipping negative values) does not have negative effects; it neither slowed completion time nor hurt accuracy. Moreover, for charts with small sizes, layered bands are even more effective than line chart.
 
-Stacking multiple area charts on top of each other is a suitable approach to visualize multiple time-dependent variables. ThemeRiver~\cite{Havre2002} can be considered as a smooth and symmetric version of stacked graph, designed to show thematic variations over time within a large collection of documents. Each theme is displayed as a colored current flowing through the time, and at any point, the width of the current maps to the strength of the associated theme. The overall river consists of multiple colored currents, providing a good overview of the themes that were important at certain points in time. 
+Stacking multiple area charts on top of each other is a suitable approach to visualize multiple time-dependent variables. ThemeRiver~\cite{Havre2002} can be considered as a smooth and symmetric version of stacked graph, designed to show thematic variations over time within a large collection of documents (\autoref{fig:lr-theme-river}). Each theme is displayed as a colored current flowing through the time, and at any point, the width of the current maps to the strength of the associated theme. The overall river consists of multiple colored currents, providing a good overview of the themes that were important at certain points in time. 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{theme-river}
-	\caption{ThemeRiver uses a river metaphor to represent themes with each colored current corresponding to a theme. The data is a collection of Fidel Castro's speeches, interviews and articles from the end of 1959 to mid-1961. \is{Havre2002}}
+	\includegraphics[width=.7\columnwidth]{theme-river}
+	\caption[ThemeRiver]{ThemeRiver uses a river metaphor to represent themes with each colored current corresponding to a theme. The data is a collection of Fidel Castro's speeches, interviews and articles from the end of 1959 to mid-1961. \is{Havre2002}}
 	\label{fig:lr-theme-river}
 \end{figure}
 
@@ -54,16 +54,16 @@ Byron and Wattenberg discuss considerations of aesthetics and legibility for des
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Traditional stacked graph with the baseline at 0. \label{fig:lr-streamgraph-1}}{\includegraphics[width=\columnwidth]{streamgraph-1}}
+\subcaptionbox{Traditional stacked graph with the baseline at 0. \label{fig:lr-streamgraph-1}}{\includegraphics[width=.7\columnwidth]{streamgraph-1}}
 
 \vspace{0.5cm}
 
-\subcaptionbox{ThemeRiver aiming for a symmetric layout around the horizontal  xis. \label{fig:lr-streamgraph-2}}{\includegraphics[width=\columnwidth]{streamgraph-2}}
+\subcaptionbox{ThemeRiver aiming for a symmetric layout around the horizontal axis. \label{fig:lr-streamgraph-2}}[\columnwidth]{\includegraphics[width=.7\columnwidth]{streamgraph-2}}
 
 \vspace{0.5cm}
 
-\subcaptionbox{Stream Graph minimizing the number of wiggles of layers. \label{fig:lr-streamgraph-3}}{\includegraphics[width=\columnwidth]{streamgraph-3}}
-\caption{Stacked graphs with different design considerations. \is{Aigner2011}}
+\subcaptionbox{Stream Graph minimizing the number of wiggles of layers. \label{fig:lr-streamgraph-3}}{\includegraphics[width=.7\columnwidth]{streamgraph-3}}
+\caption[Stacked graphs with different design considerations]{Stacked graphs with different design considerations. \is{Aigner2011}}
 \label{fig:lr-streamgraph}
 \end{figure}
 
@@ -72,19 +72,19 @@ Instead of representing another data attribute, the vertical dimension can be us
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{lifelines}
-	\caption{LifeLines. The timeline consists of several facets, stacked vertically. Each facet includes health-related records shown as horizontal bars, which may be located in different rows to avoid overlapping. \is{Plaisant1998}}
+	\includegraphics[width=.7\columnwidth]{lifelines}
+	\caption[LifeLines]{LifeLines. The timeline consists of several facets, stacked vertically. Each facet includes health-related records shown as horizontal bars, which may be located in different rows to avoid overlapping. \is{Plaisant1998}}
 	\label{fig:lr-lifelines}
 \end{figure}
 
 Another example of timeline with more complex data structure is Continuum~\cite{Andre2007}, which targets hierarchically structured temporal data; for instance, the relationship of era, composers and pieces in the music domain. The timeline shows the lifespans of composers as rectangles, where the width represents temporal information, and the height depends on the number of pieces they composed. It also uses vertical position to produce an overlap-free layout.
 
-Temporal visualization often encodes additional relationship of data items. Gantt chart~\cite{Gantt1913} is a classic method for displaying planning activities in project management. Each activity is shown as a horizontal bar covering the planning time, and text from the left part of the chart shows activity names. Dependency is a common relationship in planning and can be shown as an arrow. For instance, an arrow pointing from the end of activity $A$ to the beginning of activity $B$ can indicate that $B$ must happen after $A$. Activities are often organized in hierarchical structure such as tasks and sub-tasks. They can be ordered and arranged with indentation to reflect this structure. Timeline tree~\cite{Burch2008} draws an explicit node-link tree on the left part of the timeline to show the hierarchy. \autoref{fig:lr-ganttchart} shows a Gantt chart with hierarchically structured tasks.
+Temporal visualization often encodes additional relationship of data items. Gantt chart~\cite{Gantt1913} is a classic method for displaying planning activities in project management. Each activity is shown as a horizontal bar covering the planning time, and text from the left part of the chart shows activity names. Dependency is a common relationship in planning and can be shown as an arrow. For instance, an arrow pointing from the end of activity $A$ to the beginning of activity $B$ can indicate that $B$ must happen after $A$. Activities are often organized in hierarchical structure such as tasks and sub-tasks. They can be ordered and arranged with indentation to reflect this structure. \autoref{fig:lr-ganttchart} shows a Gantt chart with hierarchically structured tasks.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{gantt-chart}
-	\caption{Gantt chart. Each task is shown in an individual row with task name on the left and horizontal bar on the right, covering the task time. Arrows show dependency, and label indentation indicates the hierarchy of tasks. \is{Aigner2011}}
+	\includegraphics[width=.7\columnwidth]{gantt-chart}
+	\caption[Gantt chart]{Gantt chart. Each task is shown in an individual row with task name on the left and horizontal bar on the right, covering the task time. Arrows show dependency, and label indentation indicates the hierarchy of tasks. \is{Aigner2011}}
 	\label{fig:lr-ganttchart}
 \end{figure}
 
@@ -93,7 +93,7 @@ Spatial proximity is another method to represent relationship. This method is ap
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=\columnwidth]{storyline}
-	\caption{Storyline visualization of the movie \emph{Star Wars}. Each line represents a character, and a bundle of lines represents an interaction of those characters. \is{Tanahashi2012}}
+	\caption[Storyline visualization of the movie \emph{Star Wars}]{Storyline visualization of the movie \emph{Star Wars}. Each line represents a character, and a bundle of lines represents an interaction of those characters. \is{Tanahashi2012}}
 	\label{fig:lr-storyline}
 \end{figure}
 
@@ -101,8 +101,8 @@ Similarly, TimeNets~\cite{Kim2010} also applies \emph{proximity} to visualize re
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{timenets}
-	\caption{TimeNet visualization of genealogical data. Lifelines represent people with converging lines signifying marriage, and dotted lines indicating children. \is{Kim2010}}
+	\includegraphics[width=.7\columnwidth]{timenets}
+	\caption[TimeNet visualization of genealogical data]{TimeNet visualization of genealogical data. Lifelines represent people with converging lines signifying marriage, and dotted lines indicating children. \is{Kim2010}}
 	\label{fig:lr-timenets}
 \end{figure}
 
@@ -112,7 +112,7 @@ Another representation of time is mapping it to a \emph{spiral} axis, and data i
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=.4\columnwidth]{spiral}
-	\caption{Spiral graph. Time is represented along a spiral with color intensity and line thickness are used to indicate time-dependent, numerical values. Two variables are distinguished using different color hue: yellow and red. \is{Weber2001}}
+	\caption[Spiral graph]{Spiral graph. Time is represented along a spiral with color intensity and line thickness are used to indicate time-dependent, numerical values. Two variables are distinguished using different color hue: yellow and red. \is{Weber2001}}
 	\label{fig:lr-spiral}
 \end{figure}
 
@@ -125,7 +125,7 @@ Spiral graph is effective at spotting periodic patterns of the data, but it high
 \subcaptionbox{Spiral graph: no pattern is found with 24-day cycle. \label{fig:lr-spiral-2}}{\includegraphics[height=.325\columnwidth]{spiral-2}}
 \hfill
 \subcaptionbox{Spiral graph: weekly pattern is clear with 28-day cycle. \label{fig:lr-spiral-3}}{\includegraphics[height=.325\columnwidth]{spiral-3}}
-\caption{Different insights can be gained from visual representations depending on whether the linear or cyclic character of the data is emphasized. \is{Aigner2011}}
+\caption[Cycles in spiral graphs]{Different insights can be gained from visual representations depending on whether the linear or cyclic character of the data is emphasized. \is{Aigner2011}}
 \label{fig:lr-spiral-all}
 \end{figure}
 
@@ -134,10 +134,10 @@ Time can also be represented using a \emph{tree-ring} metaphor. In a tree, a new
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Cross section of a Douglas Fir tree showing its tree-rings. \is{Theron2006} \label{fig:lr-circle-view-1}}{\includegraphics[height=.465\columnwidth]{tree-ring}}
+\subcaptionbox{Cross section of a Douglas Fir tree showing its tree-rings. \is{Theron2006} \label{fig:lr-circle-view-1}}[.47\columnwidth]{\includegraphics[height=.3\columnwidth]{tree-ring}}
 \hfill
-\subcaptionbox{Circle View showing six variables over ten time steps. \is{Keim2004} \label{fig:lr-circle-view-2}}{\includegraphics[height=.465\columnwidth]{circle-view}}
-\caption{Tree ring. Concentric rings expanding from the center, each indicating a time step.}
+\subcaptionbox{Circle View showing six variables over ten time steps. \is{Keim2004} \label{fig:lr-circle-view-2}}[.47\columnwidth]{\includegraphics[height=.3\columnwidth]{circle-view}}
+\caption[Tree ring]{Tree ring. Concentric rings expanding from the center, each indicating a time step.}
 \label{fig:lr-circle-view}
 \end{figure}
 
@@ -145,10 +145,10 @@ Based on tree-rings, Therón~\cite{Theron2006} develops a technique to show both
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Hierarchy is shown as a tree with temporal values annotated next to the nodes. \label{fig:lr-tree-ring-time}}[.48\columnwidth]{\includegraphics[height=.4\columnwidth]{tree-ring-time}}
+\subcaptionbox{Hierarchy is shown as a tree with temporal values annotated next to the nodes. \label{fig:lr-tree-ring-time}}[.48\columnwidth]{\includegraphics[height=.3\columnwidth]{tree-ring-time}}
 \hfill
-\subcaptionbox{Hierarchy is shown as a tree embedded on a circle view with rings indicating temporal values. \label{fig:lr-tree-ring-tree}}[.48\columnwidth]{\includegraphics[height=.4\columnwidth]{tree-ring-tree}}
-\caption{Tree rings encoding both temporal and hierarchical information at the same time. \is{Theron2006}}
+\subcaptionbox{Hierarchy is shown as a tree embedded on a circle view with rings indicating temporal values. \label{fig:lr-tree-ring-tree}}[.48\columnwidth]{\includegraphics[height=.3\columnwidth]{tree-ring-tree}}
+\caption[Tree rings encoding both temporal and hierarchical information]{Tree rings encoding both temporal and hierarchical information at the same time. \is{Theron2006}}
 \end{figure}
 
 \subsection{Calendar}
@@ -156,8 +156,8 @@ Another method to represent time is using a popular \emph{calendar}. A day is us
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{calendar}
-	\caption{Calendar visualization of a one-year data of daily power consumption. A cell for each day is color coded to reveal data patterns. \is{VanWijk1999}}
+	\includegraphics[width=.7\columnwidth]{calendar}
+	\caption[Calendar visualization]{Calendar visualization of a one-year data of daily power consumption. A cell for each day is color coded to reveal data patterns. \is{VanWijk1999}}
 	\label{fig:lr-calendar}
 \end{figure}
 
@@ -166,20 +166,20 @@ Another method to depict changes over time is \emph{small multiples} -- a set of
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{small-multiples}
-	\caption{Small multiples of bar charts showing average annual Medicare spending on ambulance services per dialysis patient by U.S. state from 2001 to 2011. \is{SmallMultiples2014}}
+	\includegraphics[width=.7\columnwidth]{small-multiples}
+	\caption[Small multiples of bar charts]{Small multiples of bar charts showing average annual Medicare spending on ambulance services per dialysis patient by U.S. state from 2001 to 2011. \is{SmallMultiples2014}}
 	\label{fig:lr-small-multiples}
 \end{figure}
 
 To facilitate the exploration of relationship in the data at multiple time steps, the miniatures should be interactive and linked together, rather than just static thumbnails. They are often sortable to reveal the pattern more effectively. For example, bar charts in \autoref{fig:lr-small-multiples} are sorted decreasingly by the value spent on the last year. Alternatively, they can be ordered alphabetically by state names to facilitate lookup. Brushing and linking can also helps compare the subsets of interest. Showing thumbnails at multiple time steps makes the comparison easier; however, the number of visible steps is limited by the thumbnail size.
 
 \subsection{Animation}
-Animation is another technique to convey time that can be applied to virtually all static visualization techniques. It relies on human perception in perceiving changes while a visualization smoothly updates from one time step to another. A notable example is Trendalyzer by Gapminder Foundation~\cite{Gapminder} -- an interactive visualization and presentation tool based on scatter plots. The animation is controlled via a time slider, a play/pause button, and a speed slider. Only a few data items should be animated, and they are often highlighted so that the user can keep track of the changes. Trails may also be displayed to maintain the path of a data item through time. A study by Robertson~et~al.~\cite{Robertson2008} shows that animation is both slower and less accurate than small multiples in conveying trends over time.
+Animation is another technique to convey time that can be applied to virtually all static visualization techniques. It relies on human perception in perceiving changes while a visualization smoothly updates from one time step to another. A notable example is Trendalyzer by Gapminder Foundation~\cite{Gapminder} -- an interactive visualization and presentation tool based on scatter plots (\autoref{fig:lr-animation}). The animation is controlled via a time slider, a play/pause button, and a speed slider. Only a few data items should be animated, and they are often highlighted so that the user can keep track of the changes. Trails may also be displayed to maintain the path of a data item through time. A study by Robertson~et~al.~\cite{Robertson2008} shows that animation is both slower and less accurate than small multiples in conveying trends over time.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{animation}
-	\caption{Trendalyzer interface. A scatter plot with an animation controller to traverse through time. Additionally, trails are activated for the selected countries, Austria and Germany, which help to preserve the path of a variable in animation. \is{Aigner2011}}
+	\includegraphics[width=.7\columnwidth]{animation}
+	\caption[Trendalyzer]{Trendalyzer interface. A scatter plot with an animation controller to traverse through time. Additionally, trails are activated for the selected countries, Austria and Germany, which help to preserve the path of a variable in animation. \is{Aigner2011}}
 	\label{fig:lr-animation}
 \end{figure}
 

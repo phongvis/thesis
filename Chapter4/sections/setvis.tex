@@ -13,7 +13,8 @@ An event is represented as a line of text -- \emph{label} -- summarizing its con
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=.8\columnwidth]{figure2}\caption{Visual representations of events. Top row, left to right: a \emph{complete} time-point event, a \emph{trimmed} time-point event, and an \emph{aggregate} of 10 events. Bottom row, left to right: an interval event, and two overlapping interval events.}
+\includegraphics[width=.8\columnwidth]{figure2}
+\caption[Visual representations of events]{Visual representations of events. Top row, left to right: a \emph{complete} time-point event, a \emph{trimmed} time-point event, and an \emph{aggregate} of 10 events. Bottom row, left to right: an interval event, and two overlapping interval events.}
 \label{fig:event-representation}
 \end{figure}
 
@@ -24,7 +25,7 @@ Similar to SchemaLine (\autoref{sub:schema}), TimeSets also applies the two most
 \begin{figure}[!htb]
 \centering
 \includegraphics{figure3}
-\caption{Layering for three sets $S_1$, $S_2$, and $S_3$. $L_2$ includes events shared by $S_1$ and $S_2$, and $L_4$ includes events shared by $S_2$ and $S_3$. Shared events are shown in red. $S_2$ consists of events in three layers $L_2$, $L_3$, and $L_4$.}
+\caption[Layering for three sets]{Layering for three sets $S_1$, $S_2$, and $S_3$. $L_2$ includes events shared by $S_1$ and $S_2$, and $L_4$ includes events shared by $S_2$ and $S_3$. Shared events are shown in red. $S_2$ consists of events in three layers $L_2$, $L_3$, and $L_4$.}
 \label{fig:layering}
 \end{figure}
 
@@ -37,7 +38,7 @@ Shared events between two non-neighboring sets can reside in one set and connect
 	\hfill
 	\subcaptionbox{Shared events are duplicated in both green and orange sets.\label{fig:layering-2}}[.47\columnwidth]
 	{\includegraphics[width=.35\columnwidth]{figure4b}}
-	\caption{Visualizations of shared events (red squares) between two non-neighboring sets: the green set and the orange set.}
+	\caption[Visualizations of shared events]{Visualizations of shared events (red squares) between two non-neighboring sets: the green set and the orange set.}
 	\label{fig:layering-compare}
 \end{figure}
 
@@ -104,7 +105,7 @@ Based on the vertical layering of sets as discussed earlier, three sets cannot b
 	\subcaptionbox{Vertical gradients represent sets.\label{fig:eventmembership3}}[.22\columnwidth]{\includegraphics[height=.15\columnwidth]{figure8c}}
 	\hfill
 	\subcaptionbox{Horizontal gradients represent sets.\label{fig:eventmembership4}}[.22\columnwidth]{\includegraphics[height=.15\columnwidth]{figure8d}}
-	\caption{Visual representations of multiple-set events. Event 1 is single-set (green). Event 2 is double-set (green, yellow). Event 3 is triple-set (green, yellow, pink).}
+	\caption[Visual representations of multiple-set events]{Visual representations of multiple-set events. Event 1 is single-set (green). Event 2 is double-set (green, yellow). Event 3 is triple-set (green, yellow, pink).}
 	\label{fig:eventmembership}
 \end{figure}
 
@@ -115,7 +116,7 @@ Putting it all together, \autoref{fig:ts-overview} shows a TimeSets visualizatio
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=\linewidth]{figure1}
-	\caption{TimeSets visualization of the CIA leak case. The timeline contains events that happened from 2002 to 2007, each including a timestamp, a label, and topics such as ``White House''. Events are positioned along the horizontal time axis based on their temporal values, and vertically grouped by colored topics (see the color legend in the bottom right corner).}
+	\caption[TimeSets visualization of the CIA leak case]{TimeSets visualization of the CIA leak case. The timeline contains events that happened from 2002 to 2007, each including a timestamp, a label, and topics such as ``White House''. Events are positioned along the horizontal time axis based on their temporal values, and vertically grouped by colored topics (see the color legend in the bottom right corner).}
 	\label{fig:ts-overview}
 \end{figure}
 

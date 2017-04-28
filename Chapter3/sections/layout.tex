@@ -21,7 +21,7 @@ To meet these conditions, we design a layout algorithm consisting of the followi
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=\linewidth]{layout-overview}
-\caption{SchemaLine layout algorithm consisting of four steps. First, the vertical order of schemas is computed. Second, the layout of each schema is generated independently. Third, the schemas are compacted based on the computed order. Last, events that do not belong to any schemas are added to the visualization.}
+\caption[Summary of SchemaLine layout algorithm]{SchemaLine layout algorithm consisting of four steps. First, the vertical order of schemas is computed. Second, the layout of each schema is generated independently. Third, the schemas are compacted based on the computed order. Last, events that do not belong to any schemas are added to the visualization.}
 \label{fig:sl-layout-overview}
 \end{figure}
 
@@ -44,7 +44,7 @@ During shifting, it is essential to make sure that events do not overlap each ot
 \begin{figure}[!htb]
 	\centering
 	\includegraphics[width=\linewidth]{layout-example}
-	\caption{Schema layout algorithm. Four events $e_1$, $e_2$, $e_3$ and $e_4$ are added chronologically.}
+	\caption[Example of Schema layout algorithm]{Example of Schema layout algorithm. Four events $e_1$, $e_2$, $e_3$ and $e_4$ are added chronologically.}
 	\label{fig:layout-schema-example}
 \end{figure}
 
@@ -77,7 +77,7 @@ where $\oplus$ is an operator that appends a rectangle to a polygonal path. As d
 	\subcaptionbox{\label{fig:outline-up-one}Left of $R_3$ is a bit greater than left of $R_2$.}[.26\linewidth]{\includegraphics{outline-up-smoothing}}
 	\hfill
 	\subcaptionbox{\label{fig:outline-up-two}Right of $R_3$ is shorter than right of $R_2$.}[.26\linewidth]{\includegraphics{outline-up-shorter}}
-	\caption{Four cases when a new rectangle \colorbox{f2!40}{$R_3$} is appended \textcolor{ForestGreen}{$\pmb{\oplus}$} to a polygonal path -- representing by a dashed polygon. Vertices of the path are colored coded to describe how they are maintained.}
+	\caption[Rectangle appended into a polygonal path]{Four cases when a new rectangle \colorbox{f2!40}{$R_3$} is appended \textcolor{ForestGreen}{$\pmb{\oplus}$} to a polygonal path -- representing by a dashed polygon. Vertices of the path are colored coded to describe how they are maintained.}
 	\label{fig:sl-outline}
 \end{figure}
 

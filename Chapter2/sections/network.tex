@@ -26,10 +26,10 @@ Conventionally, tree layouts are rectilinear with children branching from the pa
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Conventional tree, growing direction as left to right. \label{fig:lr-tree-rect}}{\includegraphics[height=.77\columnwidth]{tree-rect}}
+\subcaptionbox{Conventional tree, growing direction as left to right. \label{fig:lr-tree-rect}}[.3\columnwidth]{\includegraphics[height=.6\columnwidth]{tree-rect}}
 \hfill
-\subcaptionbox{Radial tree. Depth is encoded as distance away from the center. \label{fig:lr-tree-radial}}{\includegraphics[height=.77\columnwidth]{tree-radial}}
-\caption{Tree layouts with different orientations. Data is the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b} with color representing the top-level classes.}
+\subcaptionbox{Radial tree. Depth is encoded as distance away from the center. \label{fig:lr-tree-radial}}[.65\columnwidth]{\includegraphics[height=.6\columnwidth]{tree-radial}}
+\caption[Tree layouts with different orientations]{Tree layouts with different orientations. Data is the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b} with color representing the top-level classes.}
 \label{fig:lr-tree}
 \end{figure}
   
@@ -38,8 +38,8 @@ The most popular method of drawing directed graphs is the Sugiyama method~\cite{
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=.5\columnwidth]{layered-graph}
-	\caption{A layered graph. Nodes are assigned to horizontal layers. Within each layer, nodes are ordered to minimize edge crossings and assigned x-coordinate to make edges as straight as possible. \textrm{\emph{Image source: yWorks.}}}
+	\includegraphics[width=.3\columnwidth]{layered-graph}
+	\caption[A layered graph]{A layered graph. Nodes are assigned to horizontal layers. Within each layer, nodes are ordered to minimize edge crossings and assigned x-coordinate to make edges as straight as possible. \textrm{\emph{Image source: yWorks.}}}
 	\label{fig:lr-layered-graph}
 \end{figure}
 
@@ -55,9 +55,9 @@ Force-directed layout~\cite{Eades1984} is a popular method to visualize general 
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{A physical simulation. \label{fig:lr-force-directed-idea}}{\includegraphics[height=.31\columnwidth]{force-directed-idea}}
-\hfill
-\subcaptionbox{An example with color showing node type. \label{fig:lr-force-directed-example}}{\includegraphics[height=.6\columnwidth]{force-directed-example}}
+\subcaptionbox{A physical simulation. \label{fig:lr-force-directed-idea}}{\includegraphics[height=.25\columnwidth]{force-directed-idea}}
+\hspace{1cm}
+\subcaptionbox{An example with color showing node type. \label{fig:lr-force-directed-example}}{\includegraphics[height=.5\columnwidth]{force-directed-example}}
 \caption{Force-directed layout.}
 \end{figure}
 
@@ -73,7 +73,7 @@ A network can be represented by an adjacency matrix. Each row and column of the 
 \subcaptionbox{Matrix view of larger network. \label{fig:lr-matrix-2}}{\includegraphics[height=.39\columnwidth]{matrix-2}}
 \hfill
 \subcaptionbox{Force-directed layout of larger network. \label{fig:lr-matrix-3}}{\includegraphics[height=.39\columnwidth]{matrix-3}}
-\caption{Comparison of node-link diagrams and matrix views. Gray cells indicate edge connectivity. \is{Munzner2014}}
+\caption[Comparison of node-link diagrams and matrix views]{Comparison of node-link diagrams and matrix views. Gray cells indicate edge connectivity. \is{Munzner2014}}
 \label{fig:lr-matrix}
 \end{figure}
 
@@ -86,8 +86,8 @@ Space-filling techniques can only be applied to tree data and uses \emph{contain
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{treemap}
-	\caption{Treemap showing the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b}. Area represents class sizes and color represents the top-level classes.}
+	\includegraphics[width=.7\columnwidth]{treemap}
+	\caption[Treemap]{Treemap showing the class hierarchy of the Flare visualization toolkit~\cite{Heer2009b}. Area represents class sizes and color represents the top-level classes.}
 	\label{fig:lr-treemap}
 \end{figure}
 
@@ -97,14 +97,14 @@ Alternatively, other space-filling techniques have been proposed to represent th
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Circle packing. Circle containment indicates parent-child relationship. Circle size represents a quantitative attribute.  \label{fig:lr-circle-pack}}{\includegraphics[height=.48\columnwidth]{circle-pack}}
+	\subcaptionbox{Circle packing. Circle containment indicates parent-child relationship. Circle size represents a quantitative attribute.  \label{fig:lr-circle-pack}}[.47\columnwidth]{\includegraphics[height=.35\columnwidth]{circle-pack}}
 	\hfill
-	\subcaptionbox{Sunburst. A curved segment is the parent of its next outer segments. Segment angle represents a quantitative attribute.  \label{fig:lr-sunburst}}{\includegraphics[height=.48\columnwidth]{sunburst}}
+	\subcaptionbox{Sunburst. A curved segment is the parent of its next outer segments. Segment angle represents a quantitative attribute.  \label{fig:lr-sunburst}}[.47\columnwidth]{\includegraphics[height=.35\columnwidth]{sunburst}}
 	
 	\vspace{.5\baselineskip}
 	
-	\subcaptionbox{Icicle plot. A rectangle is the parent of rectangles under it. Rectangle width represents a quantitative attribute. \label{fig:lr-icile}}{\includegraphics[width=\columnwidth]{icicle-plot}}
-	\caption{Other space-filling techniques using the same dataset as in \autoref{fig:lr-treemap}. Color also represents the top-level classes of the Flare visualization toolkit~\cite{Heer2009b}.}
+	\subcaptionbox{Icicle plot. A rectangle is the parent of rectangles under it. Rectangle width represents a quantitative attribute. \label{fig:lr-icile}}[\columnwidth]{\includegraphics[width=.7\columnwidth]{icicle-plot}}
+	\caption[Other space-filling techniques]{Other space-filling techniques using the same dataset as in \autoref{fig:lr-treemap}. Color also represents the top-level classes of the Flare visualization toolkit~\cite{Heer2009b}.}
 	\label{fig:lr-other-space-filling}
 \end{figure}
 

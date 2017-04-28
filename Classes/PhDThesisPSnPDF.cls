@@ -1009,15 +1009,18 @@ wish to left align your text}
 \vspace*{2em}
 \fi
 
+
+% Submission Text
+\vspace*{2em}
+{\usebox{\PHD@submission}}
+
 % Department and University
+\vfill
 {\usebox{\PHD@dept}}
 \vspace{.2\PHD@titlepagespacing}
 
-% Submission Text
-{\usebox{\PHD@submission}}
-
 % College and degree date
-\vfill
+\vspace*{-3em}
 {\usebox{\PHD@collegedate}}
     
 \end{center}

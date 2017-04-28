@@ -3,22 +3,21 @@
 \subsection{Overview}
 Computer-based visualization systems provide visual representations of datasets designed to help people carry out tasks more effectively~\cite{Munzner2014}. Card, Mackinlay and Shneiderman, in their seminal \emph{Readings in Information Visualization} book~\cite{Card1999} propose major ways in which external visual representations can amplify human cognition. First, it can leverage the limited working memory of human by offloading work from cognitive to perceptual system. Visualization can enhance recognition of patterns and reduce the effort of exhaustive searching for information. Unlike static diagrams, visualization can offer interactive operations to allow exploration of large and complex datasets from different perspectives.
 
-Anscombe's quartet~\cite{Anscombe1973} is a classic example for the benefit of displaying all data points in addition to a data summary by descriptive statistics. \autoref{fig:lr-anscombe} shows scatter plots of four small datasets with identical descriptive statistics including mean, variance, correlation and linear regression line. However, the structures of these datasets are completely different. The top-left plot has a typical structure for a positive correlation with points gathering around the linear regression line. However, the top-right plot shows a nonlinear pattern in the data. Both datasets at the bottom show how an outlier makes the linear regression line differ from the true pattern with a small change in the left dataset and a complete change in the right one. Again, graphically showing all data points helps us easily see all these patterns that are hidden in the descriptive statistics.
+Anscombe's quartet~\cite{Anscombe1973} is a classic example for the benefit of displaying all data points in addition to a data summary by descriptive statistics. \autoref{fig:lr-anscombe} shows scatter plots of four small datasets with identical descriptive statistics including mean, variance, correlation and linear regression line. However, the structures of these datasets are completely different. The top-left plot has a typical structure for a positive correlation with points gathering around the linear regression line. However, the top-right plot shows a nonlinear pattern in the data. Both datasets at the bottom show how an outlier makes the linear regression line differ from the true pattern with a small change in the left dataset and a complete change in the right one. Again, graphically showing all data points helps us easily see all these patterns hidden in the descriptive statistics.
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{anscombe}
-	\caption{Four datasets with identical statistics can have
-very different structures that are easily seen by using simple graphics. \is{Anscombe1973}}
+	\includegraphics[width=.7\columnwidth]{anscombe}
+	\caption[An example showing benefit of visualization]{Four datasets with identical statistics can have very different structures that are easily seen by using simple graphics. \is{Anscombe1973}}
 	\label{fig:lr-anscombe}
 \end{figure}
 
-For a much larger and more complex dataset, a naive visual representation of the entire dataset often leads to a messy and ineffective visualization. In this case, analysis techniques in machine learning and data mining can be complemented such as applying a clustering method to aggregate data into a representative and more manageable set before visualizing it. The combination of interactive visualization and automated data analysis sets the foundation for the field \emph{visual analytics}~\cite{Keim2008}. In the pioneering book \emph{Illuminating the Path} by Thomas and Cook, with a human sensemaking emphasis, visual analytics is defined as ``the science of analytical reasoning facilitated by interactive visual interfaces''~\cite{Thomas2005}. Keim~et~al.~\cite{Keim2010} suggest a process model for visual analytics as in \autoref{fig:lr-visual-analytics-process} with interactive visualization and data analysis model as the two main components to transform data input to knowledge output. 
+For a much larger and more complex dataset, a naive visual representation of the entire dataset often leads to a messy and ineffective visualization. In this case, analysis techniques in machine learning and data mining can be complemented such as applying a clustering method to aggregate data into a representative and more manageable set before visualizing it. The combination of interactive visualization and automated data analysis sets the foundation for the field \emph{visual analytics}~\cite{Keim2008}. In the pioneering book \emph{Illuminating the Path} by Thomas and Cook~\cite{Thomas2005}, with a human sensemaking emphasis, visual analytics is defined as ``the science of analytical reasoning facilitated by interactive visual interfaces''. Keim~et~al.~\cite{Keim2010} suggest a process model for visual analytics as in \autoref{fig:lr-visual-analytics-process} with interactive visualization and data analysis model as the two main components to transform data input to knowledge output. 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\columnwidth]{visual-analytics-process}
-	\caption{An iterative visual analytics process model. It centers around the interaction between data, visualization, models about the data and the users in order to produce knowledge. \is{Keim2010}}
+	\includegraphics[width=.7\columnwidth]{visual-analytics-process}
+	\caption[An iterative visual analytics process model]{An iterative visual analytics process model. It centers around the interaction between data, visualization, models about the data and the users in order to produce knowledge. \is{Keim2010}}
 	\label{fig:lr-visual-analytics-process}
 \end{figure}
 
@@ -31,28 +30,30 @@ Next, we will review the core work in interactive visualization (\autoref{sub:lr
 \label{sub:lr-design}
 
 \paragraph{Marks and Channels}
-Marks are basic geometric elements that depict items or links, and channels control their appearance~\cite{Munzner2014}. The number of dimensions in item marks can be zero as a \emph{point}, one as a \emph{line}, two as an \emph{area}, and three as a \emph{volume}. Link marks include \emph{connection} showing a pairwise relationship between two items using a line and \emph{containment} showing hierarchical relationship using areas. \autoref{fig:lr-marks} illustrates these marks. 
+Marks are basic geometric elements that depict items or links, and channels control their appearance~\cite{Munzner2014}. The number of dimensions in item marks can be zero as a \emph{point}, one as a \emph{line}, two as an \emph{area}, and three as a \emph{volume}. Link marks include \emph{connection} showing a pairwise relationship between two items using a line and \emph{containment} showing hierarchical relationship using areas. 
 
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[width=.8\linewidth]{marks}
-	\caption{Item and link marks as geometric primitives. \is{Munzner2014}}
-	\label{fig:lr-marks}
-\end{figure}
+%\autoref{fig:lr-marks} illustrates these marks. 
+
+%\begin{figure}[!htb]
+%	\centering
+%	\includegraphics[width=.8\linewidth]{marks}
+%	\caption{Item and link marks as geometric primitives. \is{Munzner2014}}
+%	\label{fig:lr-marks}
+%\end{figure}
 
 A visual channel or graphical attribute controls the appearance of marks such as position, color, shape, angle and size. However, not all channels can be applied to all marks. For instance, an area mark can be used in a geographic map to denote a region. Because the area mark (as a geographic region) is already associated with a shape, it cannot be size-coded to represent another quantitative attribute. 
 All channels are not equal; they are processed and perceived differently by our human visual systems. Also, not all channels are appropriate for encoding both ordered and non-ordered attributes. Ordered attributes should be shown using magnitude channels, with \emph{aligned spatial position} as the most effective channel and \emph{3D volume} as the least effective one. Categorical (non-ordered) attributes should be shown using identity channels, with \emph{spatial region} as the most effective channel and \emph{shape} as the least effective one. Munzer's book~\cite{Munzner2014} describes the detailed ranking of effectiveness of visual channels, which is based on empirical studies such as the work by Cleveland and McGill~\cite{Cleveland1985}, and by Heer and Bostock~\cite{Heer2010a}.
 
-Color is a special channel that can be used for both data attribute types. Color luminance and saturation are used in magnitude channels, and color hue is used in identity channels. A colormap specifies a mapping between colors and data values, and designing such an effective colormap is challenging. ColorBrewer~\cite{Harrower2003} is an excellent source for colormap reference, providing color schemes for both ordered and categorical attributes. Human can only distinguish around 12 colors at the same time~\cite{Munzner2014}. \autoref{fig:lr-colorbrewer-1} shows such a categorical colormap with 12 distinguished color hues. Ordered colormaps can be either sequential (\autoref{fig:lr-colorbrewer-2}) or diverging (\autoref{fig:lr-colorbrewer-3}). Diverging colormaps use two different color hues to emphasize values below and above the middle point.
+Color is an interesting channel that can be used for both data attribute types. Color luminance and saturation are used for magnitude channels, and color hue is used for identity channels. A colormap specifies a mapping between colors and data values, and designing such an effective colormap is challenging. ColorBrewer~\cite{Harrower2003} is an excellent source for colormap reference, providing color schemes for both ordered and categorical attributes. Human can only distinguish around 12 colors at the same time~\cite{Munzner2014}. \autoref{fig:lr-colorbrewer-1} shows such a categorical colormap with 12 distinguished color hues. Ordered colormaps can be either sequential (\autoref{fig:lr-colorbrewer-2}) or diverging (\autoref{fig:lr-colorbrewer-3}). Diverging colormaps use two different color hues to emphasize values below and above the middle point.
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Categorical colormap with distinguishable color hues.\label{fig:lr-colorbrewer-1}}[\columnwidth]{\includegraphics[width=.6\columnwidth]{colorbrewer-1}} 
+	\subcaptionbox{Categorical colormap with distinguishable color hues.\label{fig:lr-colorbrewer-1}}[\columnwidth]{\includegraphics[height=.07\columnwidth]{colorbrewer-1}} 
 	\\
-	\subcaptionbox{Sequential colormap: a single color hue with different saturation level.\label{fig:lr-colorbrewer-2}}[\columnwidth]{\hspace{-.15\columnwidth}\includegraphics[width=.45\columnwidth]{colorbrewer-2}}
+	\subcaptionbox{Sequential colormap: a single color hue with different saturation level.\label{fig:lr-colorbrewer-2}}[\columnwidth]{\hspace{-.11\columnwidth}\includegraphics[height=.07\columnwidth]{colorbrewer-2}}
 	\\
-	\subcaptionbox{Diverging colormap: two color hues emphasizing positive and negative values.\label{fig:lr-colorbrewer-3}}[\columnwidth]{\hspace{-.05\columnwidth} \includegraphics[width=.55\columnwidth]{colorbrewer-3}}
-	\caption{Colormaps from ColorBrewer. \is{Harrower2003}}
+	\subcaptionbox{Diverging colormap: two color hues emphasizing positive and negative values.\label{fig:lr-colorbrewer-3}}[\columnwidth]{\hspace{-.045\columnwidth} \includegraphics[height=.07\columnwidth]{colorbrewer-3}}
+	\caption[Colormaps from ColorBrewer]{Colormaps from ColorBrewer. \is{Harrower2003}}
 \end{figure}
 
 \paragraph{Gestalt Principles}
@@ -64,10 +65,10 @@ Similar elements tend to be perceived as a group. \autoref{fig:lr-gestalt-simila
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Similarity of shapes distinguishes rows.\label{fig:lr-gestalt-similarity-1}}[.47\columnwidth]{\includegraphics[height=.35\columnwidth]{gestalt-similarity-1}} 
+	\subcaptionbox{Similarity of shapes distinguishes rows.\label{fig:lr-gestalt-similarity-1}}[.47\columnwidth]{\includegraphics[height=.25\columnwidth]{gestalt-similarity-1}} 
 	\hfill
-	\subcaptionbox{Color and texture delineate rows and columns, respectively.\label{fig:lr-gestalt-similarity-2}}[.47\columnwidth]{\includegraphics[height=.35\columnwidth]{gestalt-similarity-2}} \label{fig:lr-gestalt-similarity}
-	\caption{Similarity principle: similar elements are perceived as a group. \is{Ware2013}}
+	\subcaptionbox{Color and texture delineate rows and columns, respectively.\label{fig:lr-gestalt-similarity-2}}[.47\columnwidth]{\includegraphics[height=.25\columnwidth]{gestalt-similarity-2}} \label{fig:lr-gestalt-similarity}
+	\caption[Similarity principle]{Similarity principle: similar elements are perceived as a group. \is{Ware2013}}
 \end{figure}
 
 \subparagraph{Proximity} 
@@ -75,13 +76,13 @@ Elements that are close together are perceptually grouped together. \autoref{fig
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Two groups of dots.\label{fig:lr-gestalt-proximity-1}}{\includegraphics[width=.25\columnwidth]{gestalt-proximity-1}} 
+	\subcaptionbox{Two groups of dots.\label{fig:lr-gestalt-proximity-1}}[.3\columnwidth]{\includegraphics[width=.15\columnwidth]{gestalt-proximity-1}} 
 	\hfill
-	\subcaptionbox{Rows of dots.\label{fig:lr-gestalt-proximity-2}}{\includegraphics[width=.31\columnwidth]{gestalt-proximity-2}} 
+	\subcaptionbox{Rows of dots.\label{fig:lr-gestalt-proximity-2}}[.3\columnwidth]{\includegraphics[width=.25\columnwidth]{gestalt-proximity-2}} 
 	\hfill
-	\subcaptionbox{Columns of dots.\label{fig:lr-gestalt-proximity-3}}{\includegraphics[width=.31\columnwidth]{gestalt-proximity-3}}
+	\subcaptionbox{Columns of dots.\label{fig:lr-gestalt-proximity-3}}[.3\columnwidth]{\includegraphics[width=.25\columnwidth]{gestalt-proximity-3}}
 	\label{fig:lr-gestalt-proximity}
-	\caption{Spatial proximity principle: spatially close elements are perceived as a group. \is{Ware2013}}
+	\caption[Spatial proximity principle]{Spatial proximity principle: spatially close elements are perceived as a group. \is{Ware2013}}
 \end{figure}
 
 \subparagraph{Connectedness} 
@@ -89,10 +90,10 @@ Elements that are connected by visual properties are perceived as being more rel
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Using border to denote a group.\label{fig:lr-gestalt-connectedness-1}}{\includegraphics[width=.4\columnwidth]{gestalt-connectedness-1}} 
+	\subcaptionbox{Using border to denote a group.\label{fig:lr-gestalt-connectedness-1}}[.47\columnwidth]{\includegraphics[width=.3\columnwidth]{gestalt-connectedness-1}} 
 	\hfill
-	\subcaptionbox{Using lines to denote a group.\label{fig:lr-gestalt-connectedness-2}}{\includegraphics[width=.4\columnwidth]{gestalt-connectedness-2}} 
-	\caption{Connectedness principle: visually connected elements are perceived as a group. \is{Ware2013}}
+	\subcaptionbox{Using lines to denote a group.\label{fig:lr-gestalt-connectedness-2}}[.47\columnwidth]{\includegraphics[width=.3\columnwidth]{gestalt-connectedness-2}} 
+	\caption[Connectedness principle]{Connectedness principle: visually connected elements are perceived as a group. \is{Ware2013}}
 	\label{fig:lr-gestalt-connectedness}
 \end{figure}
 
@@ -100,12 +101,12 @@ Among these three principles, connectedness has the strongest effect, followed b
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Links are more clearly perceived than spatial groups.\label{fig:lr-gestalt-1}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-1}} 
+	\subcaptionbox{Links are more clearly perceived than spatial groups.\label{fig:lr-gestalt-1}}[.3\columnwidth]{\includegraphics[height=.08\columnwidth]{gestalt-1}} 
 	\hfill
-	\subcaptionbox{Links are more clearly perceived than colored groups.\label{fig:lr-gestalt-2}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-2}} 
+	\subcaptionbox{Links are more clearly perceived than colored groups.\label{fig:lr-gestalt-2}}[.3\columnwidth]{\includegraphics[height=.08\columnwidth]{gestalt-2}} 
 	\hfill
-	\subcaptionbox{Spatial groups are more clearly perceived than colored groups.\label{fig:lr-gestalt-3}}[.3\columnwidth]{\includegraphics[height=.12\columnwidth]{gestalt-3}}
-	\caption{Comparison of Gestalt principles. Connectedness is stronger than proximity, and proximity is stronger than similarity. \is{Ware2013}}
+	\subcaptionbox{Spatial groups are more clearly perceived than colored groups.\label{fig:lr-gestalt-3}}[.3\columnwidth]{\includegraphics[height=.08\columnwidth]{gestalt-3}}
+	\caption[Comparison of Gestalt principles]{Comparison of Gestalt principles. Connectedness is stronger than proximity, and proximity is stronger than similarity. \is{Ware2013}}
 	\label{fig:lr-gestalt}
 \end{figure}
 
@@ -117,10 +118,10 @@ This principle emphasizes that the graphical representation should tell the trut
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{Using a relative value range causes a falsely big drop of stock market value between 2001 and 2002.\label{fig:lr-tufte-integrity-1}}{\includegraphics[width=.47\columnwidth]{tufte-integrity-1}} 
+	\subcaptionbox{Using a relative value range causes a falsely big drop of stock market value between 2001 and 2002.\label{fig:lr-tufte-integrity-1}}[.47\columnwidth]{\includegraphics[width=.4\columnwidth]{tufte-integrity-1}} 
 	\hfill
-	\subcaptionbox{Using an absolute value range to depict the data accurately.\label{fig:lr-tufte-integrity-2}}{\includegraphics[width=.47\columnwidth]{tufte-integrity-2}} 
-	\caption{Graphical integrity principle. The chart should tell the truth about the data.}
+	\subcaptionbox{Using an absolute value range to depict the data accurately.\label{fig:lr-tufte-integrity-2}}[.47\columnwidth]{\includegraphics[width=.4\columnwidth]{tufte-integrity-2}} 
+	\caption[Graphical integrity principle]{Graphical integrity principle. The chart should tell the truth about the data.}
 	\label{fig:lr-tufte-integrity}
 \end{figure}
 
@@ -129,10 +130,10 @@ Data-ink includes the pixels in the graphic that are used for representing the d
 
 \begin{figure}[!htb]
 	\centering
-	\subcaptionbox{A bar chart with poor data-ink ratio.\label{fig:lr-tufte-ink-1}}{\includegraphics[width=.47\columnwidth]{tufte-ink-1}} 
+	\subcaptionbox{A bar chart with poor data-ink ratio.\label{fig:lr-tufte-ink-1}}[.47\columnwidth]{\includegraphics[width=.4\columnwidth]{tufte-ink-1}} 
 	\hfill
-	\subcaptionbox{A bar chart with high data-ink ratio by removing background, border and grid lines.\label{fig:lr-tufte-ink-2}}{\includegraphics[width=.47\columnwidth]{tufte-ink-2}} 
-	\caption{Data-ink ratio maximization principle: removing the graphic that does not contribute to the understanding of the data.}
+	\subcaptionbox{A bar chart with high data-ink ratio by removing background, border and grid lines.\label{fig:lr-tufte-ink-2}}[.47\columnwidth]{\includegraphics[width=.4\columnwidth]{tufte-ink-2}} 
+	\caption[Data-ink ratio maximization principle]{Data-ink ratio maximization principle: removing the graphic that does not contribute to the understanding of the data.}
 	\label{fig:lr-tufte-ink}
 \end{figure}
 % Source: http://www.infovis-wiki.net/index.php/Data-Ink_Ratio
@@ -142,8 +143,8 @@ This principle suggests that a graphic can contain both enormous details and an 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=.9\linewidth]{tufte-micro}
-	\caption{Micro/macro principle. A stem-and-leaf plot shows both the data distribution and individual items. \is{Tufte1983}}
+	\includegraphics[width=.7\linewidth]{tufte-micro}
+	\caption[Micro/macro principle]{Micro/macro principle. A stem-and-leaf plot shows both the data distribution and individual items. \is{Tufte1983}}
 	\label{fig:lr-tufte-micro}
 \end{figure}
 
@@ -160,8 +161,8 @@ Examples of interaction include standard techniques commonly used in graphical u
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=.8\columnwidth]{linking}
-	\caption{Linking and brushing. Data points brushed in one view are linked and highlighted in other views.}
+	\includegraphics[width=.5\columnwidth]{linking}
+	\caption[Linking and brushing]{Linking and brushing. Data points brushed in one view are linked and highlighted in other views.}
 	\label{fig:lr-linking}
 \end{figure}
 
@@ -169,8 +170,8 @@ Many approaches are proposed to visualize a large amount of information such as 
 
 \begin{figure}[!htb]
 	\centering	
-	\includegraphics[width=.8\columnwidth]{fisheye}
-	\caption{Fisheye view for focus+context. Both the overview and the detailed information are displayed in one view.} 
+	\includegraphics[width=.5\columnwidth]{fisheye}
+	\caption[Fisheye view for focus+context]{Fisheye view for focus+context. Both the overview and the detailed information are displayed in one view.} 
 \label{fig:lr-fisheye}
 \end{figure}
 
@@ -181,8 +182,8 @@ Traditional graphical user interface widgets are often used to control different
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{pcp}
-	\caption{Direct manipulation in a parallel coordinates plot with reorder-able and brush-able axes.}
+	\includegraphics[width=.7\linewidth]{pcp}
+	\caption[Direct manipulation in a parallel coordinates plot]{Direct manipulation in a parallel coordinates plot with reorder-able and brush-able axes.}
 	\label{fig:lr-pcp}
 \end{figure}
 
@@ -192,10 +193,10 @@ Interaction techniques are often combined to explore the data or explain a known
 
 \subsection{Automated Analysis Techniques}
 \label{sub:lr-analysis}
-Data mining is the computational process of extracting patterns in large datasets~\cite{Tan2006}. Data mining tasks can be broadly divided into two major categories:
+Data mining is a computational process of extracting patterns in large datasets~\cite{Tan2006}. Its tasks can be broadly divided into two major categories:
 
 \begin{itemize}
-		\item \emph{Descriptive tasks}. The objective is to derive patterns (correlations, trends, clusters, trajectories and anomalies) that summarize the underlying relationships in data. Example tasks include cluster and association analyses. \emph{Clustering} aims to split data items to groups so that items within a group are more similar to each other than those in other groups. For example, clustering can be used to help marketers discover distinct groups of their customers before applying appropriate marketing strategies to those groups. \emph{Association} analysis discovers the connections among a set of data items. For example, it can be used to identify products that customers often purchase together such as bread and milk.
+		\item \emph{Descriptive tasks}. The objective is to derive patterns (correlations, clusters, trajectories and anomalies) that summarize the underlying relationships in data. Example tasks include cluster and association analyses. \emph{Clustering} aims to split data items to groups such that items within a group are more similar to each other than those in other groups. For example, clustering can be used to help marketers discover distinct groups of their customers before applying appropriate marketing strategies to those groups. \emph{Association} analysis discovers the connections among a set of data items. For example, it can be used to identify products that customers often purchase together such as bread and milk.
 		
 		\item \emph{Predictive tasks}. The objective is to predict the value of an unknown (target) attribute based on the values of other (explanatory) attributes. Example tasks include classification and regression. \emph{Classification} predicts discrete target variables whereas, \emph{regression} focuses on continuous ones. For example, predicting whether a customer buys a marketing product is a classification task because the target variable is binary. However, estimating a future house price is a regression task because price is a continuous-valued variable.
 \end{itemize}
@@ -218,8 +219,8 @@ Human motion tracking data has been applied in various research fields such as m
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{clus-MotionFlow}
-	\caption{Visual representation of human pose clusters. The dark gray stick figure represents the centroid of the cluster, and other light gray ones indicate other poses in the cluster. \is{Jang2016}}
+	\includegraphics[width=.7\linewidth]{clus-MotionFlow}
+	\caption[Visual representation of human pose clusters]{Visual representation of human pose clusters. The dark gray stick figure represents the centroid of the cluster, and other light gray ones indicate other poses in the cluster. \is{Jang2016}}
 	\label{fig:lr-MotionFlow}
 \end{figure}
 
@@ -229,8 +230,8 @@ Similarly, to provide an overall understanding of human motion tracking data, Mo
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{clus-MotionExplorer}
-	\caption{A divisive hierarchical clustering of human poses visualized as a dendrogram. Clusters are connected branches after the dendrogram is cut at the desired vertical level. \is{Bernard2013}}
+	\includegraphics[width=.7\linewidth]{clus-MotionExplorer}
+	\caption[A divisive hierarchical clustering of human poses]{A divisive hierarchical clustering of human poses visualized as a dendrogram. Clusters are connected branches after the dendrogram is cut at the desired vertical level. \is{Bernard2013}}
 	\label{fig:lr-MotionExplorer}
 \end{figure}
 
@@ -238,8 +239,8 @@ A different approach in hierarchical clustering is bottom-up or agglomerative cl
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{clus-NewsLab}
-	\caption{An agglomerative hierarchical clustering of video captions visualized as streams. Each cluster is a colored stream, with related clustered placed close together. \is{Ghoniem2007}}
+	\includegraphics[width=.7\linewidth]{clus-NewsLab}
+	\caption[An agglomerative hierarchical clustering of video captions]{An agglomerative hierarchical clustering of video captions visualized as streams. Each cluster is a colored stream, with related clustered placed close together. \is{Ghoniem2007}}
 	\label{fig:lr-NewsLab}
 \end{figure}
 
@@ -247,8 +248,8 @@ Understanding people movement patterns in both space and time plays an important
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{clus-MobilityGraphs}
-	\caption{Spatial and temporal aggregation of movement data. Seven temporal clusters of simplified places are shown and color coded together with a calendar view to reveal daily pattern. \is{Landesberger2016}}
+	\includegraphics[width=.7\linewidth]{clus-MobilityGraphs}
+	\caption[Spatial and temporal aggregation of movement data]{Spatial and temporal aggregation of movement data. Seven temporal clusters of simplified places are shown and color coded together with a calendar view to reveal daily pattern. \is{Landesberger2016}}
 	\label{fig:lr-MobilityGraphs}
 \end{figure}
 
@@ -263,11 +264,11 @@ Exploring a large image collection is challenging. Besides the low-level visual 
 
 \begin{figure}[!htb]
 \centering
-\subcaptionbox{Multidimensional dimension scaling view of images.\label{fig:lr-SIBa}}{\includegraphics[height=.5\columnwidth]{clas-SIBa}} 
+\subcaptionbox{Multidimensional dimension scaling view of images.\label{fig:lr-SIBa}}[.47\columnwidth]{\includegraphics[height=.4\columnwidth]{clas-SIBa}} 
 \hfill
-\subcaptionbox{Rainfall view of a selected image with highly related images at the bottom.\label{fig:lr-SIBb}}{\includegraphics[height=.5\columnwidth]{clas-SIBb}} 
+\subcaptionbox{Rainfall view of a selected image with highly related images at the bottom.\label{fig:lr-SIBb}}[.47\columnwidth]{\includegraphics[height=.4\columnwidth]{clas-SIBb}} 
 \label{fig:lr-SIB}
-\caption{Large-scale image browser with semantic content-based image classification. \is{Yang2006}}
+\caption[Large-scale image browser using classification]{Large-scale image browser with semantic content-based image classification. \is{Yang2006}}
 \end{figure}
 
 In a binary classification, the classifier output is either \emph{positive} or \emph{negative}. Two types of error can happen including \emph{false positive} (classified as positive but the actual class is negative) and \emph{false negative} (classified as negative but the actual class is positive). Depending on a particular domain, the costs of these error types might be considerably different. For example, wrong prediction of a healthy patient with a cancer has a much lower impact than missing a patient with a real cancer. Migut and Worring~\cite{Migut2010} allow users to adjust the trade-off between these two error types through a visualization of the classification model as shown in \autoref{fig:lr-Migut}.
@@ -277,7 +278,7 @@ In a binary classification, the classifier output is either \emph{positive} or \
 \subcaptionbox{Performance curve of the classification model with horizontal axis showing the false positive rate and vertical axis showing the false negative rate.\label{fig:lr-Migut1}}[\columnwidth]{\includegraphics[width=\columnwidth]{clas-Migut1}} 
 \\
 \subcaptionbox{Data with color indicating original class and size showing classification accuracy.\label{fig:lr-Migut2}}[\columnwidth]{\includegraphics[width=\columnwidth]{clas-Migut2}}
-\caption{Visualization and interaction of a classification model. Middle figures show the initial state of the system, with initial operating point on the performance curve and corresponding data scatter plot. Left figures show the state of the system when an expert manipulates the operating point to include more false negatives and on the right to include more false positives. \is{Migut2010}}
+\caption[Visualization and interaction of a classification model]{Visualization and interaction of a classification model. Middle figures show the initial state of the system, with initial operating point on the performance curve and corresponding data scatter plot. Left figures show the state of the system when an expert manipulates the operating point to include more false negatives and on the right to include more false positives. \is{Migut2010}}
 \label{fig:lr-Migut}
 \end{figure}
 
@@ -287,8 +288,8 @@ Classification requires training data; however, it can be time-consuming and lab
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{clas-ScatterBlogs2}
-	\caption{ScatterBlogs2 speeding up the creation of a classifier through interactive visualization. \is{Bosch2013}}
+	\includegraphics[width=.7\linewidth]{clas-ScatterBlogs2}
+	\caption[ScatterBlogs2 -- interactive classifier]{ScatterBlogs2 speeding up the creation of a classifier through interactive visualization. \is{Bosch2013}}
 	\label{fig:lr-ScatterBlogs2}
 \end{figure}
 
@@ -296,8 +297,8 @@ An essential step in classification of high dimensional datasets is feature sele
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[width=\linewidth]{clas-INFUSE}
-	\caption{INFUSE allowing comparison of feature selection and classification algorithms. The circle glyph is divided into 4 quadrants, each for a feature selection algorithm. Each quadrant is further split into 10 slices, each for a cross-validation fold. \is{Krause2014}}
+	\includegraphics[width=.7\linewidth]{clas-INFUSE}
+	\caption[INFUSE -- comparison of features in classification]{INFUSE allowing comparison of feature selection and classification algorithms. The circle glyph is divided into 4 quadrants, each for a feature selection algorithm. Each quadrant is further split into 10 slices, each for a cross-validation fold. \is{Krause2014}}
 	\label{fig:lr-INFUSE}
 \end{figure}
 
@@ -309,8 +310,8 @@ In this section, we review the evaluation techniques based on the visualization 
 
 \begin{figure}[!htb]
 	\centering
-	\includegraphics{nested-model}
-	\caption{Threats and validation at each of the four nested levels of visualization design. \is{Munzner2014}}
+	\includegraphics[width=.7\linewidth]{nested-model}
+	\caption[Nested validation model of visualization design]{Threats and validation at each of the four nested levels of visualization design. \is{Munzner2014}}
 	\label{fig:lr-nested-model}
 \end{figure}
 
