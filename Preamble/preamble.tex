@@ -15,7 +15,7 @@
 \raggedbottom
 % To remove the excess top spacing for enumeration, list and description.
 \usepackage{enumitem}
-%\setlist[enumerate,itemize,description]{itemsep=0em}
+\setlist[enumerate,itemize,description]{itemsep=0em,topsep=0.25em}
 
 % *****************************************************************************
 % ******************* Fonts (like different typewriter fonts etc.)*************
@@ -80,6 +80,19 @@
 % This is for people stuck with older versions of texlive
 %\usepackage{sty/caption/subcaption}
 \usepackage{subcaption}
+
+%% only top
+\makeatletter
+\renewcommand*{\fps@figure}{tbp}
+\makeatother
+
+\setcounter{topnumber}{1}
+\setcounter{bottomnumber}{1}
+\setcounter{totalnumber}{2}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.7}
 
 % ********************************** Tables ************************************
 \usepackage{booktabs} % For professional looking tables
@@ -308,7 +321,7 @@
 \newcommand{\tsevaluation}{\colorbox[HTML]{FFFFb3}{\emph{evaluation}}}
 
 % Image source
-\newcommand{\is}[1]{{\textrm{\emph{Image source:~\cite{#1}.}}}} 
+\newcommand{\is}[1]{{\emph{Image source:~\cite{#1}.}}} 
 
 % Hyphenation
 \hyphenation{SchemaLine}
@@ -337,3 +350,10 @@
   \addtocounter{footnote}{-1}%
   \endgroup
 }
+
+% big letter starting chapter
+\usepackage{lettrine}
+
+% For rotating figures, tables, etc.
+%  including their captions
+\usepackage{rotating}

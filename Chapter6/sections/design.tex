@@ -18,7 +18,7 @@ SenseMap consists of three views:
 	\item A \emph{Knowledge Map} (\autoref{fig:sm-overview}C) that allows users to curate the collected information. This map is separate from History Map to preserve the semantic and temporal structure of the captured information (Point 3 above).
 \end{itemize}
 
-\begin{figure}[!htb]
+\begin{figure}
  	\centering
  	\includegraphics[width=\linewidth]{overview}
  	\caption[Three linked views of SenseMap]{Three linked views of SenseMap. \textbf{A:} This is the standard browser with additional sensemaking and provenance support. \textbf{B:} The history map captures and visualizes user actions to provide an overview of the sensemaking process. \textbf{C:} The knowledge map enables users to curate and make sense of the most relevant information to their tasks.}
@@ -27,7 +27,7 @@ SenseMap consists of three views:
 
 In the next three sections, we will discuss these views and how they address the design requirements. \autoref{fig:view-and-process} summarizes the support that each view provides.
 
-\begin{figure}[!htb]
+\begin{figure}
 	\centering
 	\includegraphics{view-and-process}
 	\caption[Views and the sensemaking subprocesses they support]{Views and the sensemaking subprocesses they support. \emph{Collection} is supported in Browser View and History Map. \emph{Curation} is supported in History Map and Knowledge Map. \emph{Communication} is supported in all three views.}
@@ -46,9 +46,9 @@ When a web page is visited, SenseMap takes a screenshot and uses it to represent
 This map provides an overview of the sensemaking process using the captured actions and their provenance (\autoref{fig:sm-overview}B).
 
 \subsubsection{Visual Representation}
-An action is represented as a bar with an icon indicating its type and text showing the contextual information. Icons help users to recognize action types faster and we use the same icon set as shown in the previous chapter, \autoref{fig:icon-list}. If the action type is the default \textit{browsing}, the favorite icon of its web page is used instead. The contextual text is important to understand what the action is about and it is truncated up to a certain length to fit to the limited space. \autoref{fig:action-bar} shows an example of a keyword search action.
+An action is represented as a bar with an icon indicating its type and text showing the contextual information. Icons help users recognize action types faster and we use the same icon set as shown in the previous chapter, \autoref{fig:icon-list}. If the action type is the default \textit{browsing}, the favorite icon of its web page is used instead. The contextual text is important to understand what the action is about and it is truncated up to a certain length to fit to the limited space. \autoref{fig:action-bar} shows an example of a keyword search action.
 
-\begin{figure}[!htb]
+\begin{figure}
 	\centering
 	\includegraphics[width=.3\linewidth]{action-bar}
 	\caption{Action bar for a keyword search ``visual analytics conference''.}
@@ -57,16 +57,16 @@ An action is represented as a bar with an icon indicating its type and text show
 
 Highlights and annotations of the same web page are grouped together as in \autoref{fig:action-highlights}. They are located in separate rows below the web page title. By default, just a few highlights and annotations are shown to ensure a reasonable height for the page. All of them can be revealed using a menu available when hovering on any highlight or annotation.
 
-\begin{figure}[!htb]
+\begin{figure}
 	\centering
 	\includegraphics[width=.3\linewidth]{action-highlights}
 	\caption{A page with one highlight and one note.}
 	\label{fig:action-highlights}
 \end{figure}
 
-To provide a connection between the history map and the browser view, the action bar corresponding to the active browser tab is highlighted in cyan. Pages that have been opened but have not seen yet (could be the result of opening links in new tabs) are shown with a dashed border, which may help to remind the user on reading them. \autoref{fig:action-active-not-seen} shows an example of pages with these two states.
+To provide a connection between the history map and the browser view, the action bar corresponding to the active browser tab is highlighted in cyan. Pages that have been opened but have not seen yet (could be the result of opening links in new tabs) are shown with a dashed border, which may help to remind the user to read them. \autoref{fig:action-active-not-seen} shows an example of pages with these two states.
 
-\begin{figure}[!htb]
+\begin{figure}
 	\centering
 	\includegraphics[width=.6\linewidth]{action-active-not-seen}
 	\caption[Representation of active page]{The user is active on a search result page (left bar) and opens a link in a new tab (right bar).}
@@ -92,7 +92,7 @@ The history map displays all captured actions; however, probably not all of them
 
 When a node is removed, it and its links are removed from the map. When a node is minimized, it is collapsed into a small circle. This enables users to focus on other nodes and also save the display space. Favorite nodes are displayed with a yellow background and a thumbnail of the captured screenshot to increase their recognizability. \autoref{fig:action-minimize-favorite} shows an example of minimized and favorite nodes.
 
-\begin{figure}[!htb]
+\begin{figure}
 	\centering
 	\includegraphics[width=.75\linewidth]{action-minimize-favorite}
 	\caption[Pre-curated nodes]{Nodes are pre-curated: two irrelevant nodes in the middle are minimized, whereas the last one is set favorite.}
@@ -100,9 +100,10 @@ When a node is removed, it and its links are removed from the map. When a node i
 \end{figure}
 
 \subsubsection{Scalability}
+\label{sub:sm-scalability}
 Nodes can reduce their size through zooming to accommodate more nodes within the visible part of the history map. By default, all nodes have the same width and the same maximum height, which allows a few words of the contextual text visible, and a reasonably large thumbnail image, which may help users recognize the visited pages. For each smaller level, both the node width and the number of highlights are reduced. The node height is adjusted so that the ratio between it and the node width remains unchanged. At the smallest level, only the action type icon or a small thumbnail image is shown. \autoref{fig:zoom} shows an example of different zoom levels applied onto the same node.
 
-\begin{figure}[!htb]
+\begin{figure}
 	\centering
 	\includegraphics[width=.85\linewidth]{zoom}
 	\caption{The same node with four zoom levels.}
@@ -127,7 +128,7 @@ The curation process starts by adding nodes from the history map to the knowledg
 \subsubsection{Spatial Organization}
 The limit of single dimensional ordering tabs from left to right is addressed in the knowledge map through the spatial organization of nodes (Requirement 7). The user can freely move nodes by simply dragging them around. This enables the user to spatially group nodes and to assign different meanings to them. \autoref{fig:free-movement} shows an example of a knowledge map with three clear groups based on their locations.
 
-\begin{figure}[!htb]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{free-movement}
 	\caption[An example of knowledge map]{A knowledge map with three clear groups of nodes as the result of free movement.}
@@ -144,6 +145,9 @@ Currently, SenseMap does not support any formal argumentation methods. However, 
 
 \subsubsection{Collection -- Curation}
 All nodes in the knowledge map appear in the history map, but the other direction is not always true because only relevant and important nodes may be curated. To help the user quickly recognize which nodes in the history map are already curated, a green ``tick'' icon is superimposed at the top right hand corner. Also, hovering a node in one map will highlight that node, if it exists, in the other map.
+
+\subsubsection{Scalability}
+By default, the knowledge map may only able to show several tens of nodes, which might be enough for a short sensemaking session. When the session is longer and the size of the map increases, semantic zooming (the same as in \autoref{sub:sm-scalability}) could help users manage the map in a certain extent. Addressing a larger map is our future work.
 
 \subsection{Communication}
 The final organization of curated information provides a complete picture of the sensemaking task, including the most important and relevant information to the users, which makes it ideal for them to present their findings (Requirement 11). If the process is of interest, the history map can be used alongside the knowledge map. Moreover, the user can refer to raw data, via node revisitation, to support their presentation (Requirement 12).
