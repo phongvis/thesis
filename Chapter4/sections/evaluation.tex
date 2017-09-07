@@ -26,14 +26,14 @@ We used generated data for the experiment to avoid that participants might be di
 
 %We introduce four approaches to visualize intersections between more than two sets; however, evaluating all of them would triple the number of trials and make the experiment too long. We plan a separate experiment to study which method is the most effective as our future work. In this experiment, we only tested two-sets intersections and simple white circles are used for events' time indicators.
 
-Images of these datasets using the KelpFusion method were generously provided by the method's author. To avoid bias, our method also used static images instead of interactive visualizations. Colors for both methods were Qualitative Set 2 of ColorBrewer~\cite{Harrower2003}. KelpFusion does not have its own layout; therefore, our layout algorithm was used for both settings. Only one algorithm was used to prevent adding another factor to the experiment, which doubles the number of trials for participants. The traceability algorithm was chosen because reading comprehension is not required for the tasks. \autoref{fig:evaluation} shows example images used in the experiment.
+Images of these datasets using the KelpFusion method were generously provided by the method's author. To avoid bias, our method also used static images instead of interactive visualizations. Colors for both methods were Qualitative Set 2 of ColorBrewer~\cite{Harrower2003}. KelpFusion does not have its own layout; therefore, our layout algorithm was used for both settings. Only one algorithm was used to prevent adding another factor to the experiment, which doubles the number of trials for participants. The traceability algorithm was chosen because reading comprehension is not required for the tasks. \autoref{fig:ts-evaluation} shows example images used in the experiment.
 
 \begin{figure}
 	\centering
-	\subcaptionbox{TimeSets.\label{fig:evaluation1}}{\includegraphics[width=\linewidth]{figure14a}}\\
-	\subcaptionbox{KelpFusion.\label{fig:evaluation2}}{\includegraphics[width=\linewidth]{figure14b}}
+	\subcaptionbox{TimeSets.\label{fig:ts-evaluation1}}{\includegraphics[width=\linewidth]{figure14a}}\\
+	\subcaptionbox{KelpFusion.\label{fig:ts-evaluation2}}{\includegraphics[width=\linewidth]{figure14b}}
 	\caption{Example images used in the experiment.}
-	\label{fig:evaluation}
+	\label{fig:ts-evaluation}
 \end{figure}
 
 \subsubsection{Tasks} We followed the task design in the evaluation of KelpFusion~\cite{Meulemans2013}, including tasks for estimation and precise comparison of set sizes, and counting the number of elements in a set. Two time-related tasks were added to evaluate the temporal aspect of the  visualization, resulting five tasks in total. Three categories of set readability tasks are considered including the \textit{set} itself, the \textit{intersection} of two sets, and the \textit{difference} between two sets. However, it was impractical to include all 5 $\times$ 3 task types in the experiment. Therefore, we decided to use a combination of them: two tasks for the set itself, two tasks for the intersection, and one task for the difference. All tasks together with examples are listed in \autoref{table:tasks}. Each participant would complete a total of 40 questions.
