@@ -1,10 +1,9 @@
-\pagebreak
 \section{Visual Design}
 
 \subsection{Event}
 An event is represented by a rounded rectangle with a short text inside summarizing its content. The width of the event rectangle is constrained by a threshold and long text is trimmed to fit into its area. The full content of an event will be revealed when it is mouse hovered. Events can be classified into different categories based on certain criteria. For example, a news article may write about \emph{sport}, \emph{fashion} or both. Small colored badges are added to the left of the text of an event to indicate its categories. However, only around 12 colors can be distinguished simultaneously in the human view~\cite{Munzner2014}. Therefore, only the eight most frequently appeared categories are displayed using a given colormap (chosen from Qualitative Set 1 of  ColorBrewer~\cite{Harrower2003}); whereas, the rest share another color. \autoref{fig:event} shows an event with three categories.
 
-\begin{figure}[b]
+\begin{figure}
 \centering
 \includegraphics{event}
 \caption[Visual representation of an event]{Visual representation of an event. Text shows the content and colored badges indicate the categories.}
@@ -31,7 +30,7 @@ Putting it all together, \autoref{fig:sl-overview} shows an example of a complet
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{overview}
-	\caption[SchemaLine visualization of events]{SchemaLine visualization of events; related ones are connected into schemas.}
+	\caption[SchemaLine visualization of events]{SchemaLine visualization of events; related ones are connected into schemas. Note that events are duplicated if they belong to multiple schemas.}
 	\label{fig:sl-overview}
 \end{figure}
 

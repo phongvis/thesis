@@ -1,9 +1,9 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for info on how to use the template
 
-\documentclass[a4paper,10pt,customfont,custommargin,numbered,print,twoside,PageStyleI,
-%draftclassic 
-]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,11pt,customfont,custommargin,numbered,print,twoside,PageStyleI,
+draftclassic 
+]{Classes/PhDThesisPSnPDFbook}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -84,7 +84,7 @@
 
 % ************************ Thesis Information & Meta-data **********************
 % Thesis title and author information, refernce file for biblatex
-\input{thesis-info}
+\input{book-info}
 
 % ***************************** Abstract Separate ******************************
 % To printout only the titlepage and the abstract with the PhD title and the
@@ -109,21 +109,16 @@
 
 % ******************************** Front Matter ********************************
 \begin{document}
-%
+
 %\frontmatter
 %
 %\begin{titlepage}
 %  \maketitle
 %\end{titlepage}
-%
-%
-%\include{Dedication/dedication}
-%%\include{Declaration/declaration}
-%\include{Acknowledgement/acknowledgement}
-%\include{Abstract/abstract}
+
 
 % *********************** Adding TOC and List of Figures ***********************
-
+%\include{Dedication/dedication}
 
 %\tableofcontents
 
@@ -131,15 +126,13 @@
 %
 %\listoftables
 
-% \printnomenclature[space] space can be set as 2em between symbol and description
-%\printnomenclature[3em]
-%\printnomenclature
-
+%\include{Abstract/preface}
 
 % ******************************** Main Matter *********************************
 \mainmatter
 
 %\include{test-figures}
+
 \include{Chapter1/intro}
 %\include{Chapter2/review}
 %\include{Chapter3/schemaline}

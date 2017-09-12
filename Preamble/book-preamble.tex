@@ -5,12 +5,14 @@
 % Set {innerside margin / outerside margin / topmargin / bottom margin}  and
 % other page dimensions
 \ifsetCustomMargin
-  \RequirePackage[paperwidth=156mm,paperheight=234mm,left=22mm,right=19mm,top=22mm,bottom=19mm]{geometry}
+  \RequirePackage[paperwidth=6.14in,paperheight=9.21in,left=20mm,right=18mm,top=20mm,bottom=18mm]{geometry}
   \setFancyHdr % To apply fancy header after geometry package is loaded
 \fi
 
+\usepackage[center,dvips,frame]{crop}
+
 % Add spaces between paragraphs
-%\setlength{\parskip}{0.5em}
+\setlength{\parskip}{0.25em}
 % Ragged bottom avoids extra whitespaces between paragraphs
 \raggedbottom
 % To remove the excess top spacing for enumeration, list and description.
@@ -41,8 +43,10 @@
   %  \newfontfamily\libertinesystemfont{Linux Libertine O}
   
 \usepackage{mathpazo}
-\renewcommand*\rmdefault{ppl}
-\renewcommand*\sfdefault{phv}
+\usepackage{libertine}
+%\usepackage[scaled=0.95]{helvet}
+%\renewcommand*\rmdefault{ppl}
+%\renewcommand*\sfdefault{phv}
 \renewcommand*\ttdefault{lmtt}
 
 \fi
@@ -83,11 +87,11 @@
 
 % Adjust default settings of float
 \makeatletter
-\renewcommand*{\fps@figure}{tbp}
+\renewcommand*{\fps@figure}{t}
 \makeatother
 
-\setcounter{topnumber}{1}
-\setcounter{bottomnumber}{1}
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{0}
 \setcounter{totalnumber}{2}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.85}
@@ -118,7 +122,10 @@
 
 % \doublespacing
 % \onehalfspacing
-% \singlespacing
+%\singlespacing
+
+%custom
+\renewcommand{\baselinestretch}{0.99}
 
 
 % ************************ Formatting / Footnote *******************************
@@ -244,22 +251,28 @@
 % Format headings
 \usepackage{titlesec}  
 
-%\titleformat{\chapter}[display]
-%	{\filcenter}
-%	{\color{Gray}\Huge Chapter \thechapter}{0pt}
-%	{\color{NavyBlue}\Huge\sffamily}
-\titleformat{\section}{\sffamily\Large\color{NavyBlue}}{\thesection}{16pt}{}
-\titleformat{\subsection}{\sffamily\large\color{NavyBlue}}{\thesubsection}{14pt}{}
-\titleformat{\subsubsection}{\sffamily\color{NavyBlue}}{\thesubsubsection}{12pt}{}
-\titleformat{\paragraph}[runin]{\sffamily\bfseries\color{NavyBlue}}{\theparagraph}{}{}
-\titleformat{\subparagraph}[runin]{\sffamily\itshape\color{NavyBlue}}{\thesubparagraph}{}{}
+\titleformat{\section}{\sffamily\Large\color{NavyBlue}}{\thesection}{14pt}{}
+\titleformat{\subsection}{\sffamily\large\color{NavyBlue}}{\thesubsection}{12pt}{}
+\titleformat{\subsubsection}{\sffamily\color{NavyBlue}}{\thesubsubsection}{10pt}{}
+\titleformat{\paragraph}[runin]{\sffamily\bfseries}{\theparagraph}{}{}
+\titleformat{\subparagraph}[runin]{\sffamily\itshape}{\thesubparagraph}{}{}
+
+% left-above-under
+\titlespacing*{\section}{0pt}{10pt}{8pt} 
+\titlespacing*{\subsection}{0pt}{9pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{4pt}
+
+% left-above-right
+\titlespacing{\paragraph}{0pt}{6pt}{12pt}
+\titlespacing{\subparagraph}{12pt}{6pt}{12pt}
 
 % fancy chapter
 \definecolor{chapbgcolor}{HTML}{DFEDFF}
 \definecolor{chapnumcolor}{HTML}{7FB7FF}
 
 \usepackage[Bjornstrup]{fncychap}
-\ChNumVar{\fontsize{76}{80}\usefont{T1}{phv}{m}{n}\selectfont}
+\ChNumVar{\fontsize{60}{60}\usefont{T1}{phv}{m}{n}\selectfont}
+%\ChTitleVar{\raggedleft\color{NavyBlue}\fontsize{20}{28}\usefont{T1}{phv}{m}{n}\selectfont}
 \ChTitleVar{\raggedleft\color{NavyBlue}\Huge\sffamily}
 
 \makeatletter
