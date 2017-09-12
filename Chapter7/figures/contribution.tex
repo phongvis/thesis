@@ -39,7 +39,7 @@
 \draw [arrow, all] (sm) node[right=.2cm of sm,yshift=-.25cm] {\rmt{\textbf{capture}}} -| (data);
 \draw [arrow, all] (data) |- (vis) node[midway, yshift=.25cm, xshift=-1.2cm] {\rmt{\textbf{visualize}}};
 \draw [<->,>=stealth, all, mydash] (sm) -- (vis) node[midway, xshift=.3cm,rotate=-90] {\rmt{\textcolor{gray}{link}}};
-\draw[arrow, all, draw=gray] ($(user.north) - (0,0.5)$) |- (sm.west) node[midway, xshift=1.1cm, yshift=-.25cm] {\textcolor{gray}{\rmt{solve}}};
+\draw[arrow, all, draw=gray] ($(user.north) - (0,0.5)$) |- (sm.west) node[midway, xshift=1.1cm, yshift=-.25cm] {\textcolor{gray}{\rmt{use}}};
 \draw[arrow, all] (vis.west) -| ($(user.south) + (0,0.5)$) node[midway, xshift=1.1cm, yshift=.25cm] (support) {\textbf{\rmt{support}}};
 
 \node (p1) [v, below=0 of support, xshift=-1.5cm, yshift=0.3cm] {process summary};
