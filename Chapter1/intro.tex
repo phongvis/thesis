@@ -21,9 +21,9 @@ The central research problem of this thesis is
 
 To approach the research problem, we propose a cyclic process model, in which analytic provenance can be used to support sensemaking as illustrated in \autoref{fig:intro-workflow}. The process starts with a \emph{user} employing a \emph{sensemaking system} to solve a problem. The sensemaking system could be any computer-based applications, such as a simple visualization tool, a complex visual analytics system and a standard web browser. During the sensemaking process, both the performed low-level actions (e.g., sort, filter and zoom) and the produced high-level reasoning artifacts (e.g., findings, assumptions and hypotheses) are captured, referred to as \emph{provenance data}. This provenance data should be visualized in a way that can provide support back to the ongoing sensemaking process. The user can interact with both the sensemaking system and the \emph{provenance visualization} to solve the sensemaking problem. These two components should communicate with each other to facilitate the interplay between the user and these two. The provenance visualization here acts as a black box and can be implemented using the classic visualization pipeline~\cite{Card1999}.
 
-\begin{figure}[h]
+\begin{figure}
 	\centering
-	\includegraphics{workflow}
+	\includegraphics[width=.8\linewidth]{workflow}
 	\caption[A cyclic sensemaking-support model through analytic provenance]{A cyclic process model of supporting sensemaking through analytic provenance. While using a sensemaking system to solve a problem, both the interaction and reasoning performed by the user are \emph{captured} and \emph{visualized} to provide \emph{support} back to the sensemaking process. The sensemaking system can be any computer-based applications such as visual analytics systems and web browsers. The two-way dashed line indicates the communication between the provenance visualization and the sensemaking system to provide sensemaking support. As a result, the user interacts with both the sensemaking system and the provenance visualization to make sense of his or her problem.}
 	\label{fig:intro-workflow}
 \end{figure}
@@ -52,9 +52,9 @@ The \emph{time} attribute of provenance data suggests the task it can support th
 \paragraph{Reasoning Relationship}
 After understanding how things happened in a particular order, it is essential to investigate the \emph{rationale} driving them happened in that way; i.e., advancing from \emph{when} to \emph{why}. Such knowledge is valuable for building effective tools to support the users in making sense of their problems. Considering the sensemaking task as ``selecting a smartwatch'', reasoning relationships can include the rationale behind the smartwatch choice, the strategy in approaching the task and the steps taken to implement that strategy. Additional grouping and linking attributes of provenance data could also help explore more complex reasoning relationships.
 
-\begin{figure}[tb]
+\begin{figure}
 	\centering
-	\includegraphics{work}
+	\includegraphics[width=.8\linewidth]{work}
 	\caption[Four research questions]{Four research questions (RQ1 -- RQ4). The research problem is split into the four questions by the data that will be visualized and the task that will be supported in each research question. The horizontal axis represents different types of relationship in sensemaking and the vertical axis represents the complexity involved in the relationship. The cells define the scope of the research questions: the relationship type, its complexity and the characteristics of provenance data involved. For example, Research Question 4 explores complex reasoning relationships in sensemaking based on timestamped provenance data, and additional groupings and pair-wise links between data items.}
 	\label{fig:intro-work}
 \end{figure}

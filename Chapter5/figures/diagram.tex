@@ -2,7 +2,7 @@
 % Font
 \usepackage{mathpazo}
 \usepackage{libertine}
-\renewcommand*\sfdefault{phv}
+%\renewcommand*\sfdefault{phv}
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,calc}
@@ -12,7 +12,7 @@
 \tikzstyle{line} = [thick]
 
 \begin{document}
-\begin{tikzpicture}[node distance=0.8cm]
+\begin{tikzpicture}[node distance=0.5cm]
 \node (p0) [node] {start};
 \node (p1) [node, right=of p0, text width = 2.4cm] {Google to find address of HQ};
 \draw [arrow] (p0)--(p1);

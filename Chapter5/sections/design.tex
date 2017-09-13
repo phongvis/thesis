@@ -20,7 +20,7 @@ The second part is designed to facilitate transcription and coding (Requirement 
 \item A \emph{timeline} view displaying participant's sensemaking actions in their temporal order (\autoref{fig:sp-overview}A). This enables researchers to see an action in the context of other actions (Factor 1 -- seeing the actions before and after the current one).
 \item A \emph{browser} view showing the web page where the sensemaking action was performed (\autoref{fig:sp-overview}B). This provides the contextual information of sensemaking actions (Factor 2 -- seeing what a participant was looking at).
 \item A \emph{replay} view showing screen capture video (\autoref{fig:sp-overview}C). This provides additional contextual information about browser interaction that is missing from the timeline such as scrolling and mouse movement (also Factor 2).
-\item A \emph{transcription} view detailing selected sensemaking actions (\autoref{fig:sp-overview}D). The generated transcript can be exported and then used in popular qualitative data analysis software (Requirement 3 -- existing workflow integration).
+\item A \emph{transcription} view displaying details of selected sensemaking actions (\autoref{fig:sp-overview}D). The generated transcript can be exported and then used in popular qualitative data analysis software (Requirement 3 -- existing workflow integration).
 \end{itemize}
 
 \begin{figure}
@@ -46,7 +46,7 @@ During the participatory design session, the HCI researchers suggested to captur
 
 \begin{figure}
 	\centering
-	\includegraphics{action-type}
+	\includegraphics[width=\linewidth]{action-type}
 	\caption[Action types and relationships]{All the action types and relationships that SensePath captures, next to the icons representing them.}
 	\label{fig:icon-list}
 \end{figure}
@@ -62,7 +62,7 @@ An action is represented as either a bar or a tile, presenting all four aspects 
 
 \begin{figure}
 \centering
-\includegraphics{action-bar}
+\includegraphics[width=\linewidth]{action-bar}
 \caption[An action bar]{An action bar showing all four aspects of provenance information.}
 \label{fig:sp-action-bar}
 \end{figure}
@@ -173,8 +173,8 @@ The four linked visualizations communicate to each other using the \textit{messa
 Detecting all \emph{search} actions applies URL parsing. When a web page is loaded, its URL is parsed and compared against a set of query templates to check whether a search was performed and to identify its type and parameters. In this prototype, we support automatic detection from many popular web services: keyword search engines (Google, Yahoo, Bing, Ask.com and DuckDuckGo), map search engines (Google Maps, OpenStreetMap and Yahoo Maps), social networking websites (Facebook and Twitter), e-commerce websites (Amazon and ebay) and hotel booking websites (Booking.com and Expedia). All these web services follow their own query templates and expose all necessary parameters in the URLs, allowing extracting the required information from them. The following examples show the query templates and parameters:
 
 \begin{itemize}
-	\item Google keyword search: \texttt{https://www.google.com/search?\textbf{q=\{keyword\}}}
-	\item Yahoo Maps route search: \texttt{https://maps.yahoo.com/directions/?\\\textbf{o=\{source\}\&d=\{destination\}}}
+	\item Google keyword search: \texttt{https://www.google.com/search?\\\textbf{q=\{keyword\}}}
+	\item Yahoo Maps route search: \texttt{https://maps.yahoo.com/directions?\\\textbf{o=\{source\}\&d=\{destination\}}}
 \end{itemize}
 
 SensePath uses a structure with three parameters to represent these templates, including a host name (\texttt{www.google.}), a path name (\texttt{/search}) and a regular expression (\verb|/\Wq=([\w%+]*)/i|) for keyword extraction. Adding detection support to other services only requires the knowledge of these three parameters.
@@ -191,16 +191,16 @@ Detecting \emph{filter} actions also uses URL parsing as in detecting \emph{sear
 For example, considering these two consecutive URLs:
 \begin{enumerate}
 	\item \url{hotel.com/search?loc=london&guests=1}
-	\item \url{hotel.com/search?loc=london&guests=2&checkIn=2015%2F10%2F24}
+	\item \url{hotel.com/search?loc=london&guests=2&in=2015%2F10%2F24}
 \end{enumerate}
 
-Following our heuristic of comparing URLs, this filter action can be captured as ``\texttt{add:} \texttt{\{checkIn=2015/10/24\}, update:} \texttt{\{guests=1$\rightarrow$2\}}'', and may be interpreted as ``the participant set a new check-in date and changed the number of guests from 1 to 2''.
+Following our heuristic of comparing URLs, this filter action can be captured as ``\texttt{add:} \texttt{\{in=2015/10/24\}, update:} \texttt{\{guests=1$\rightarrow$2\}}'', and may be interpreted as ``the participant set a new check-in date and changed the number of guests from 1 to 2''.
 
 \paragraph{Limitations} Both \emph{highlight} and \emph{annotation} actions are implemented using the content script~\footnote{\url{https://developer.chrome.com/extensions/content_scripts}} in the Chrome extension API, thus all information needed can be saved. To allow revisiting to the exact location where a passage of text is highlighted, the relative location of its DOM element to the root element of the web page is captured. However, when the web page structure is changed, the recorded position might become invalid, leading to inaccurate recovery.
 
 All the heuristics applied for search and filter actions only work if web services expose their parameters in the URL. In other words, our method fails to work if POST or AJAX requests are used. So far, for all services we planned to support, we have never encountered such a case. For example, Google Maps uses AJAX calls to load map tiles, but all the information we want to extract is available in the URL. Also, most popular online services use GET instead of POST requests. It is actually possible to support web services that encode the required information in POST or AJAX requests by monitoring all the communication between the browser and the server, not just the changes in URL. However, this requires considerably more implementation effort and is only possible with open source browsers such as Firefox and Chrome that provide access to all client-server communication.
 
-For GET requests, it is also infeasible to extract the meaning of URL parameters if they are encoded. We encountered one such case, Bing Maps, which encodes query parameters as HEX strings. For example, this lengthy URL, \url{https://www.bing.com/maps/#Y3A9NTEuNTkwMTk5fi0wLjIyNTAw...}, is the URL produced by searching for ``london''.
+For GET requests, it is also infeasible to extract the meaning of URL parameters if they are encoded. We encountered one such case, Bing Maps, which encodes query parameters as HEX strings. For example, this lengthy URL, \url{https://www.bing.com/maps/#Y3A9NTEuNTkwMTk5fi0wLjIyNTAw...}, \\is the URL produced by searching for ``london''.
 
 To guarantee an exact restoration of a visited web page, it is necessary to save a static copy of the web page when an action happened. This is similar to the \emph{P-Set model}~\cite{Jankun-Kelly2007} for visualization exploration where the visual transforms, parameters, and results are stored for fully describing and reproducing the performed process. However, for simplicity, we only capture the action type (i.e., visual transforms) and context (i.e., parameters), but not the resulting web page (i.e., results). The browser snapshot and computer screen video are captured to compensate for this limitation to a certain extent.
 

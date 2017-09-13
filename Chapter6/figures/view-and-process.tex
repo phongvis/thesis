@@ -11,9 +11,9 @@
 \node (history) [view, text width=1.4cm, right=of browser] {History Map};
 \node (knowledge) [view, text width=2cm, right=0.8 of history] {Knowledge Map};
 
-\draw [draw=gray!30, very thick] ($(browser)!.5!(history)$) ellipse (2.9cm and 1.2cm);
-\draw [draw=gray!30, very thick] ($(knowledge)!.5!(history)$) ellipse (3.1cm and 1.2cm);
-\draw [draw=gray!30, very thick] (history) (2.85,0) ellipse (4.6cm and 1.9cm);
+\draw [thick] ($(browser)!.5!(history)$) ellipse (2.9cm and 1.2cm);
+\draw [thick] ($(knowledge)!.5!(history)$) ellipse (3.1cm and 1.2cm);
+\draw [thick] (history) (2.85,0) ellipse (4.6cm and 1.9cm);
 
 \node [fill=white, left=-1 of browser.west, anchor=west, yshift=1.2cm] {\rmt{collect}};
 \node [fill=white, right=-1.2 of knowledge.east, anchor=east, yshift=1.2cm] {\rmt{curate}};

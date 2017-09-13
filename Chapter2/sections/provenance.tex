@@ -73,11 +73,11 @@ the truncation method) are required for recognizing web sites, and 28 -- 39 lett
 
 \begin{figure}
 \centering
-\subcaptionbox{A sequence of icons representing the analysis process. \is{Gotz2009}\label{fig:lr-action-1}}[\columnwidth]{\includegraphics[width=.75\columnwidth]{action-1}}
+\subcaptionbox{A sequence of icons representing the analysis process. \is{Gotz2009}\label{fig:lr-action-1}}[\columnwidth]{\includegraphics[width=.8\columnwidth]{action-1}}
 
 \vspace{.5\baselineskip}
 
-\subcaptionbox{Iconic actions connecting two visualization states. \is{Ma1999}\label{fig:lr-action-2}}[\columnwidth]{\includegraphics[width=.75\columnwidth]{action-2}}
+\subcaptionbox{Iconic actions connecting two visualization states. \is{Ma1999}\label{fig:lr-action-2}}[\columnwidth]{\includegraphics[width=.8\columnwidth]{action-2}}
 \caption{Icons as visual representation of actions.}
 \end{figure}
 
@@ -96,7 +96,7 @@ The default snapshot may also be an imperfect representation of a web page, espe
 
 \begin{figure}
 	\centering
-	\includegraphics[width=.7\columnwidth]{enhanced-thumbnail}
+	\includegraphics[width=.8\columnwidth]{enhanced-thumbnail}
 	\caption[An enhanced web thumbnail]{An enhanced web thumbnail (right) as a composite of salient text, a salient image and a branding logo. \is{Teevan2009}}
 	\label{fig:lr-enhanced-thumbnail}
 \end{figure}
@@ -114,23 +114,23 @@ Besides recognizing previous states, seeing the difference between a state and t
 	\label{fig:lr-comic-strip}
 \end{figure}
 
-If the absolute timestamps of actions are of interest, a continuous timeline~\cite{Derthick2001} is a more suitable layout. Actions are positioned along the time axis at when they happen (\autoref{fig:lr-continuous-timeline-1}) or during which they last (\autoref{fig:lr-continuous-timeline-2}). The time axis can be either horizontal or vertical~\cite{SandboxTimeline2012}. The layout algorithms found in these provenance timelines are quite naive. POLESTAR~\cite{Pioch2006} and the timeline from Jigsaw~\cite{Liu2010} require manual rearrangement of the events from users to solve the overlapping problem. The timeline from nSpace2 Sandbox~\cite{SandboxTimeline2012} shows events at the exact time when they happen without considering possible intersection between of them.
-
 \begin{figure}
-\centering
-\subcaptionbox{Time-point provenance data. User annotations are positioned along a time axis at when their associated events happen. \is{Gotz2006}\label{fig:lr-continuous-timeline-1}}[\columnwidth]{\includegraphics[width=\columnwidth]{continuous-timeline-1}}
-
-\vspace{.5\baselineskip}
-
-\subcaptionbox{Interval provenance data. User actions are shown as horizontal bars a long a time axis covering their durations. \is{Plaisant1999}\label{fig:lr-continuous-timeline-2}}[\columnwidth]{\includegraphics[width=\columnwidth]{continuous-timeline-2}}
-\caption{Timeline layout for visualizing the analysis process.}
+	\centering
+	\subcaptionbox{Time-point provenance data. User annotations are positioned along a time axis at when their associated events happen. \is{Gotz2006}\label{fig:lr-continuous-timeline-1}}[\columnwidth]{\includegraphics[width=\columnwidth]{continuous-timeline-1}}
+	
+	\vspace{.5\baselineskip}
+	
+	\subcaptionbox{Interval provenance data. User actions are shown as horizontal bars a long a time axis covering their durations. \is{Plaisant1999}\label{fig:lr-continuous-timeline-2}}[\columnwidth]{\includegraphics[width=\columnwidth]{continuous-timeline-2}}
+	\caption{Timeline layout for visualizing the analysis process.}
 \end{figure}
+
+If the absolute timestamps of actions are of interest, a continuous timeline~\cite{Derthick2001} is a more suitable layout. Actions are positioned along the time axis at when they happen (\autoref{fig:lr-continuous-timeline-1}) or during which they last (\autoref{fig:lr-continuous-timeline-2}). The time axis can be either horizontal or vertical~\cite{SandboxTimeline2012}. The layout algorithms found in these provenance timelines are quite naive. POLESTAR~\cite{Pioch2006} and the timeline from Jigsaw~\cite{Liu2010} require manual rearrangement of the events from users to solve the overlapping problem. The timeline from nSpace2 Sandbox~\cite{SandboxTimeline2012} shows events at the exact time when they happen without considering possible intersection between of them.
 
 Another approach is to use both the horizontal and vertical axes to represent time. BrowseLine~\cite{Hoeber2009} uses the vertical axis for \emph{macro-time} and the horizontal axis for \emph{micro-time}, similar to stem-and-leaf plots. More specifically, a two-dimensional timeline (\autoref{fig:lr-timeline-2d}) is divided into rows, each for a macro time-slot, such as one hour. In each row, events happening within that hour are positioned along the horizontal axis without considering their absolute timestamps. This design assumes that users may only remember roughly when events happen, thus absolute positioning in the vertical axis facilitate them in recognizing past events. Moreover, relative positioning in the horizontal axis could help pack more events and prevent overlapping.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=.7\columnwidth]{timeline-2d}
+	\includegraphics[width=\columnwidth]{timeline-2d}
 	\caption[Two-dimensional timeline]{2D timeline. The vertical axis represents macro-time, whereas the horizontal axis represents micro-time. Events within a macro time-slot are positioned in chronological order as a comic strip. \is{Hoeber2009}}
 	\label{fig:lr-timeline-2d}
 \end{figure}
@@ -139,7 +139,7 @@ Another approach is to use both the horizontal and vertical axes to represent ti
 
 \begin{figure}
 	\centering
-	\includegraphics[width=.5\columnwidth]{tree}
+	\includegraphics[width=.6\columnwidth]{tree}
 	\caption[Tree visualization for branching analysis process]{Tree visualization for branching analysis process. Nodes are thumbnails of past visualization states and links are transforming actions. \is{Jankun-Kelly2007}}
 	\label{fig:lr-tree-prov}
 \end{figure}
@@ -149,7 +149,7 @@ In a tree layout, the order of actions can be inferred through the direction of 
 
 \begin{figure}
 \centering
-\subcaptionbox{Node backgrounds are color coded based on time. \is{UniversityofUtah2012}\label{fig:lr-tree-time-1}}{\includegraphics[height=0.21\columnwidth]{tree-time-1}}
+\subcaptionbox{Node backgrounds are color based on time. \is{UniversityofUtah2012}\label{fig:lr-tree-time-1}}{\includegraphics[height=0.21\columnwidth]{tree-time-1}}
 \hfill
 \subcaptionbox{The edge length between two nodes represents the interval between them. \is{Shrinivasan2008}\label{fig:lr-tree-time-2}}{\includegraphics[height=0.21\columnwidth]{tree-time-2}}
 \caption{Encoding temporal information into provenance trees.}
@@ -174,9 +174,9 @@ Typically, provenance data is shown in a separate view, linked with other data v
 
 \begin{figure}
 \centering
-\subcaptionbox{Zooming in to work on the active visualization.\label{fig:lr-detail}}[0.33\columnwidth]{\includegraphics[height=0.45\columnwidth]{GraphTrail-detail}}
+\subcaptionbox{Zooming in to work on the active visualization.\label{fig:lr-detail}}[0.33\columnwidth]{\includegraphics[height=0.5\columnwidth]{GraphTrail-detail}}
 \hfill
-\subcaptionbox{Zooming out to see an overview as the history of the exploration process.\label{fig:lr-overview}}[0.57\columnwidth]{\includegraphics[height=0.45\columnwidth]{GraphTrail-overview}}
+\subcaptionbox{Zooming out to see an overview as the history of the exploration process.\label{fig:lr-overview}}[0.57\columnwidth]{\includegraphics[height=0.5\columnwidth]{GraphTrail-overview}}
 \caption[Unification of the exploration view and the history view]{Unification of the exploration view and the history view. \is{Dunne2012}}
 \end{figure}
 
@@ -192,9 +192,9 @@ Tasks and sub-tasks can be captured by allowing the user to externalize them man
 
 \begin{figure}
 \centering
-\subcaptionbox{Geometric annotation.\label{fig:lr-annotation-1}}{\includegraphics[height=0.5\columnwidth]{annotation-1}}
+\subcaptionbox{Geometric annotation.\label{fig:lr-annotation-1}}{\includegraphics[height=0.6\columnwidth]{annotation-1}}
 \hspace{1cm}
-\subcaptionbox{Data-aware annotation.\label{fig:lr-annotation-2}}{\includegraphics[height=0.5\columnwidth]{annotation-2}}
+\subcaptionbox{Data-aware annotation.\label{fig:lr-annotation-2}}{\includegraphics[height=0.6\columnwidth]{annotation-2}}
 \caption[User annotation of bookmarked visualization]{User annotation of bookmarked visualization as a form of manual capture of tasks and sub-tasks. \is{Heer2012}}
 \label{fig:lr-annotation}
 \end{figure}
@@ -203,9 +203,9 @@ Even though an individual note only represents a fraction of the analytic proven
 
 \begin{figure}
 \centering
-\subcaptionbox{A diagram of user notes showing their thoughts. \is{Shrinivasan2008}\label{fig:lr-reasoning-simple-note}}{\includegraphics[height=0.4\columnwidth]{reasoning-simple-note}}
+\subcaptionbox{A diagram of user notes showing their thoughts. \is{Shrinivasan2008}\label{fig:lr-reasoning-simple-note}}{\includegraphics[height=0.42\columnwidth]{reasoning-simple-note}}
 \hfill
-\subcaptionbox{A formal reasoning diagram with nodes having different roles: evidence, casual relationship, assumption and hypothesis. \is{Pike2009a}\label{fig:lr-reasoning-diagram-SRS}}{\includegraphics[height=.4\columnwidth]{reasoning-diagram-SRS}}
+\subcaptionbox{A formal reasoning diagram with nodes having different roles: evidence, casual relationship, assumption and hypothesis. \is{Pike2009a}\label{fig:lr-reasoning-diagram-SRS}}{\includegraphics[height=.42\columnwidth]{reasoning-diagram-SRS}}
 \caption{Task and subtask visualization.}
 \end{figure}
 
@@ -214,9 +214,9 @@ More analytical reasoning methods have also been integrated to visual analytics 
 
 \begin{figure}
 \centering
-\subcaptionbox{Argument tree. Analysts elaborate arguments via a tree structure of claims, sub-claims, and facts. \is{Pioch2006}\label{fig:lr-reasoning-argument-editor}}{\includegraphics[height=0.3\columnwidth]{reasoning-argument-editor}}
+\subcaptionbox{Argument tree with claims, sub-claims, and facts. \is{Pioch2006}\label{fig:lr-reasoning-argument-editor}}{\includegraphics[height=0.3\columnwidth]{reasoning-argument-editor}}
 \hfill
-\subcaptionbox{Analysis of competing hypotheses. The interface allows adding multiple hypotheses, each with weighted supporting/counter evidence, and producing a summary matrix to evaluate them. \emph{\textrm{Image source: a video snapshot of~\cite{Wright2006}.}}\label{fig:lr-reasoning-ACH}}{\includegraphics[height=0.3\columnwidth]{reasoning-ACH}}
+\subcaptionbox{Analysis of competing hypotheses with weighted supporting/counter evidence. \emph{Image source: a video snapshot of~\cite{Wright2006}.}\label{fig:lr-reasoning-ACH}}{\includegraphics[height=0.3\columnwidth]{reasoning-ACH}}
 \caption[Analytical support for the sensemaking process]{Analytical support for the sensemaking process with externalized thinking artifacts.}
 \label{fig:lr-reasoning}
 \end{figure}
