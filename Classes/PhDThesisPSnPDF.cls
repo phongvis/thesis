@@ -734,10 +734,10 @@ wish to left align your text}
   \renewcommand{\chaptermark}[1]{\markboth{##1}{}}
   \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1\ }}
   \fancyhf{}
-  \fancyhead[RO]{\nouppercase \rightmark\hspace{0.25em} | 
-    \hspace{0.25em} \bfseries{\thepage}}
-  \fancyhead[LE]{ {\bfseries\thepage} \hspace{0.25em} | 
-    \hspace{0.25em} \nouppercase \leftmark}
+  \fancyhead[RO]{\nouppercase \rightmark\hspace{0.3em}
+    \hspace{0.3em} \bfseries{\thepage}}
+  \fancyhead[LE]{ {\bfseries\thepage} \hspace{0.3em}
+    \hspace{0.3em} \nouppercase \leftmark}
 }
 
 % Style 2: Sets Page Number at the Bottom with Chapter/Section Name on LO/RE

@@ -48,22 +48,8 @@ We contributed a novel visualization tool, SensePath, that enables analysts to e
 
 We contributed a novel visual sensemaking tool, SenseMap, that enables users to explore complex reasoning relationships of sensemaking. It automatically captures sensemaking actions and linking relationships between these actions before visualizing both of them in a branching history tree. The temporal attribute of actions is also partially reflected in the visualization. This history tree allows users to examine the reasoning relationships between the actions they performed and potentially helps them remind of what have been done earlier. SenseMap offers users to assign additional meaning to the automatically collected data by spatially grouping actions or adding reasoning links between them, in order to help explain complex relationship. Finally, SenseMap allows users to communicate their analysis results at different levels of granularity including a big picture of user-organized findings, a more detailed analysis process and raw provenance data captured. We conducted a user-centered evaluation in a naturalistic setting to explore how SenseMap would be used. The results showed that all participants found the visual representation and interaction of the tool intuitive to use. Participants who were engaged positively with the tool produced successful sensemaking outcomes. It helped them organize information sources, quickly find and navigate to the sources they wanted, and effectively communicate their findings.
 
-\subsection{SensePath}
-SensePath currently lacks a practical feature set of coding analysis. It facilitates coding through exploration of reasoning relationships of captured actions; however, it only supports simple code assignment and editing. The analyst can select an action and assign a new code or select from used ones. In practice, analysts could require more convenient and sophisticated features such as the following ones.
-	\begin{itemize}
-		\item Assign a code to a part of an action or a range of actions.
-		\item Assign multiple codes to an action.
-		\item Support hierarchical codes.
-		\item Show the codes in the timeline view more effectively.
-	\end{itemize}
-
-\subsection{SenseMap}
-The major limitation of SensePath is its low user engagement. Two participants in the evaluation did not engage with the tool and led to a poor sensemaking performance. One of the reasons was their computer screen sizes were not large enough to show all three views at the same time, and they were unable to switch between the views comfortably to keep track of the history map construction. A possible improvement is to design a more space-efficient history map so that it can display side by side with the browser view. Another option is to allow users to focus on the browser view, but provide sufficient feedback to help them understand the map development. Also, a visual summary of changes in the map could also help users catch up more quickly.
-
-The evaluation showed that SenseMap provided useful sensemaking support for users in a 2-hour-long session. However, in the real world, a sensemaking task can be split into small chunks and spanned multiple days or even weeks. A larger scale and longer term study is necessary to gain better understanding of SenseMap's use. Because SenseMap is implemented as a Chrome extension that available to all Chrome users, this gives us a good opportunity to conduct such a study.
-
 \section{Future Directions}
-We suggest the following future research that can have a high impact on supporting sensemaking through analytic provenance.
+Besides addressing limitation discussed at the end of each chapter, we suggest the following future research that can have a high impact on supporting sensemaking through analytic provenance.
 
 \paragraph{Automatic inference of sub-tasks from actions}
 User actions such as ``search'' and ``filter'' can be captured automatically but they provide little semantics. A large number of actions poses a challenge in visualizing and summarizing the sensemaking processes, preventing users from quickly understanding what has been done. Therefore, it is important to generate a high-level summary of low-level actions automatically. This problem is a huge challenge and might be impossible to design a generic and automatic algorithm to produce such an inference. Focusing on a particular sensemaking task in a specific domain could make the inference more feasible thus could be a good starting point.
