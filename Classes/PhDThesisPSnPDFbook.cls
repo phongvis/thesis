@@ -930,7 +930,7 @@ wish to left align your text}
 	{\usebox{\PHD@collegecrest}}
 	\vspace{.1\PHD@titlepagespacing}
 \else
-	\vspace{.25\PHD@titlepagespacing}
+	\vspace{.15\PHD@titlepagespacing}
 	{\usebox{\PHD@crest}}
 	\vspace{.15\PHD@titlepagespacing}
 \fi
@@ -975,7 +975,7 @@ wish to left align your text}
 
 \newenvironment{dedication}
 {
-\cleardoublepage
+%\cleardoublepage
 \setsinglecolumn
 \vspace*{0.2\textheight}
 \thispagestyle{empty}
