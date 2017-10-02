@@ -627,7 +627,7 @@ supported!}
   \fi
 
   \if@twoside
-    \hypersetup{pdfpagelayout=TwoPageRight}
+    \hypersetup{pdfpagelayout=OneColumn}
   \else
     \hypersetup{pdfpagelayout=OneColumn}
   \fi
